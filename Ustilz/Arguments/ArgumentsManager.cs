@@ -4,7 +4,6 @@
 
     using System;
     using System.Linq;
-    using System.Reflection;
     using System.Text;
 
     using Ustilz.Annotations;
@@ -12,57 +11,66 @@
 
     #endregion
 
-    /// <summary>The arguments manager.</summary>
+    /// <summary>The arguments manager. </summary>
     [PublicAPI]
     public static class ArgumentsManager
     {
         #region Champs statiques
 
-        /// <summary>The no m_ method e_ parse.</summary>
+        /// <summary>The no m_ method e_ parse. </summary>
         private const string NOM_METHODE_PARSE = "Parse";
 
         #endregion
 
         #region Méthodes statiques
 
-        /// <summary>The init.</summary>
-        /// <typeparam name="T">The t</typeparam>
-        /// <param name="args">The args.</param>
-        /// <returns>The <see cref="T"/>.</returns>
+        /// <summary>The init. </summary>
+        /// <typeparam name="T">The t </typeparam>
+        /// <param name="args">The args. </param>
+        /// <returns>The <see cref="T"/>. </returns>
         public static T Init<T>(string[] args) where T : new()
         {
             return Init<T>(args, false);
         }
 
-        /// <summary>The init.</summary>
-        /// <typeparam name="T">The t</typeparam>
-        /// <param name="args">The args.</param>
-        /// <param name="afficherResume">The afficher Resume.</param>
-        /// <returns>The <see cref="T"/>.</returns>
+        /// <summary>The init. </summary>
+        /// <typeparam name="T">The t </typeparam>
+        /// <param name="args">The args. </param>
+        /// <param name="afficherResume">The afficher Resume. </param>
+        /// <returns>The <see cref="T"/>. </returns>
         public static T Init<T>(string[] args, bool afficherResume) where T : new()
         {
-            T retour = new T();
+            var retour = new T();
             var atts =
                 typeof(T).GetProperties()
-                    .Select(prop => new { Property = prop, Attribute = (ArgumentAttribute)Attribute.GetCustomAttribute(prop, typeof(ArgumentAttribute)) })
+                    .Select(
+                        prop =>
+                        new
+                            {
+                                Property = prop, 
+                                Attribute =
+                            (ArgumentAttribute)Attribute.GetCustomAttribute(prop, typeof(ArgumentAttribute))
+                            })
                     .Where(a => a.Attribute != null);
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("************************************************************\n");
 
             foreach (var arguments in atts)
             {
                 sb.AppendFormat("\t ~ {0} ({1}) : ", arguments.Property.Name, arguments.Attribute.Key);
-                int index = args.IndexOf(arguments.Attribute.Key);
+                var index = args.IndexOf(arguments.Attribute.Key);
                 if (index >= 0)
                 {
-                    MethodInfo methodInfo = arguments.Property.PropertyType.GetMethod(NOM_METHODE_PARSE, new[] { typeof(string) });
+                    var methodInfo = arguments.Property.PropertyType.GetMethod(
+                        NOM_METHODE_PARSE, 
+                        new[] { typeof(string) });
                     object valeur = null;
                     if (methodInfo != null)
                     {
                         try
                         {
-                            valeur = methodInfo.Invoke(null, new[] { args.ElementAt(index + 1) });
+                            valeur = methodInfo.Invoke(null, new object[] { args.ElementAt(index + 1) });
                         }
                         catch (Exception e)
                         {
@@ -80,12 +88,12 @@
                     }
                     else
                     {
-                        ConstructorInfo construct = arguments.Property.PropertyType.GetConstructor(new[] { typeof(string) });
+                        var construct = arguments.Property.PropertyType.GetConstructor(new[] { typeof(string) });
                         if (construct != null)
                         {
                             try
                             {
-                                valeur = construct.Invoke(new[] { args.ElementAt(index + 1) });
+                                valeur = construct.Invoke(new object[] { args.ElementAt(index + 1) });
                             }
                             catch (Exception e)
                             {
@@ -107,7 +115,10 @@
                     if (arguments.Attribute.IsRequired)
                     {
                         throw new ArgumentMissingException(
-                            string.Format("L'argument {0} ({1}) obligatoire, est manquant.", arguments.Property.Name.ToLower(), arguments.Attribute.Key));
+                            string.Format(
+                                "L'argument {0} ({1}) obligatoire, est manquant.", 
+                                arguments.Property.Name.ToLower(), 
+                                arguments.Attribute.Key));
                     }
                 }
             }

@@ -10,20 +10,28 @@
 
     #endregion
 
-    /// <summary>The xml utils.</summary>
+    /// <summary>
+    /// The xml utils.
+    /// </summary>
     [PublicAPI]
     public static class XmlUtils
     {
         #region Méthodes statiques
 
-        /// <summary>The print xml.</summary>
-        /// <param name="document">The document.</param>
-        /// <returns>The <see cref="string"/>.</returns>
-        public static string PrintXML(XmlDocument document)
+        /// <summary>
+        /// The print xml.
+        /// </summary>
+        /// <param name="document">
+        /// The document.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public static string PrintXml(XmlDocument document)
         {
-            using (MemoryStream str = new MemoryStream())
+            using (var str = new MemoryStream())
             {
-                using (XmlTextWriter writer = new XmlTextWriter(str, Encoding.Unicode))
+                using (var writer = new XmlTextWriter(str, Encoding.Unicode))
                 {
                     writer.Formatting = Formatting.Indented;
 
@@ -39,7 +47,7 @@
                 str.Position = 0;
 
                 // Read MemoryStream contents into a StreamReader.
-                using (StreamReader reader = new StreamReader(str))
+                using (var reader = new StreamReader(str))
                 {
                     return reader.ReadToEnd();
                 }

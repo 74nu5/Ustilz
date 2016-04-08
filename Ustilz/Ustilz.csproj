@@ -49,8 +49,8 @@
     <Compile Include="Arguments\ArgumentAttribute.cs" />
     <Compile Include="Arguments\ArgumentMissingException.cs" />
     <Compile Include="Arguments\ArgumentsManager.cs" />
+    <Compile Include="Extensions\ExtensionsDump.cs" />
     <Compile Include="Extensions\ExtensionsIList.cs" />
-    <Compile Include="Extensions\ExtensionsT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
   </ItemGroup>
