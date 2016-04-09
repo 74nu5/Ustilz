@@ -21,6 +21,8 @@
 
             List<Version> vv = new List<Version>() { new Version("8.8.9.8"), new Version("9.0.7.6") };
             vv.DumpConsole();
+
+            Console.ReadLine();
         }
     }
 }
