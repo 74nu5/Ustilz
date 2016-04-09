@@ -1,9 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz", "Ustilz\Ustilz.csproj", "{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Test", "Ustilz.Test\Ustilz.Test.csproj", "{2E51410B-DF95-4AB3-88F3-07D17D7AA160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.3.5", "Ustilz.3.5\Ustilz.3.5.csproj", "{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net 3.5", ".Net 3.5", "{956CCFCC-3566-4184-A81B-A4B1025E3B1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net 4.6", ".Net 4.6", "{D23253EA-B33A-4723-823F-B9E542759F32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,8 +27,16 @@ Global
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E} = {D23253EA-B33A-4723-823F-B9E542759F32}
+		{A74B9B67-F7DE-4F35-AB53-46C23B9C04FA} = {956CCFCC-3566-4184-A81B-A4B1025E3B1A}
 	EndGlobalSection
 EndGlobal
