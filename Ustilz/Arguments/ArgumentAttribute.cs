@@ -15,18 +15,10 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="ArgumentAttribute"/> class.</summary>
-        /// <param name="key">The key.</param>
-        public ArgumentAttribute(string key)
-        {
-            this.Key = key;
-            this.IsRequired = false;
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="ArgumentAttribute"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ArgumentAttribute" /> class.</summary>
         /// <param name="key">The key.</param>
         /// <param name="isRequired">The is Required.</param>
-        public ArgumentAttribute(string key, bool isRequired)
+        public ArgumentAttribute(string key, bool isRequired = false)
         {
             this.Key = key;
             this.IsRequired = isRequired;
@@ -38,11 +30,11 @@
 
         /// <summary>Gets the key.</summary>
         /// <value>The key.</value>
-        public string Key { get; private set; }
+        public string Key { get; }
 
         /// <summary>Gets a value indicating whether is required.</summary>
         /// <value>The is required.</value>
-        public bool IsRequired { get; private set; }
+        public bool IsRequired { get; }
 
         #endregion
     }

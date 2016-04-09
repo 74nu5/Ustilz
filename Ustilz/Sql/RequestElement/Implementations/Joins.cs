@@ -12,12 +12,12 @@ namespace Ustilz.Sql.RequestElement.Implementations
     {
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
-        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
+        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
         public override string ToString()
         {
-            StringBuilder sql = new StringBuilder();
-            foreach (IJoin join in this)
+            var sql = new StringBuilder();
+            foreach (var join in this)
             {
                 sql.Append(join);
             }

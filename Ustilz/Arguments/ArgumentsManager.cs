@@ -4,7 +4,6 @@
 
     using System;
     using System.Linq;
-    using System.Reflection;
     using System.Text;
 
     using Ustilz.Annotations;
@@ -28,7 +27,7 @@
         /// <summary>The init. </summary>
         /// <typeparam name="T">The t </typeparam>
         /// <param name="args">The args. </param>
-        /// <returns>The <see cref="T"/>. </returns>
+        /// <returns>The <see cref="T" />. </returns>
         public static T Init<T>(string[] args) where T : new()
         {
             return Init<T>(args, false);
@@ -38,25 +37,25 @@
         /// <typeparam name="T">The t </typeparam>
         /// <param name="args">The args. </param>
         /// <param name="afficherResume">The afficher Resume. </param>
-        /// <returns>The <see cref="T"/>. </returns>
+        /// <returns>The <see cref="T" />. </returns>
         public static T Init<T>(string[] args, bool afficherResume) where T : new()
         {
-            T retour = new T();
+            var retour = new T();
             var atts =
                 typeof(T).GetProperties()
                     .Select(prop => new { Property = prop, Attribute = (ArgumentAttribute)Attribute.GetCustomAttribute(prop, typeof(ArgumentAttribute)) })
                     .Where(a => a.Attribute != null);
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("************************************************************\n");
 
             foreach (var arguments in atts)
             {
                 sb.AppendFormat("\t ~ {0} ({1}) : ", arguments.Property.Name, arguments.Attribute.Key);
-                int index = args.IndexOf(arguments.Attribute.Key);
+                var index = args.IndexOf(arguments.Attribute.Key);
                 if (index >= 0)
                 {
-                    MethodInfo methodInfo = arguments.Property.PropertyType.GetMethod(NOM_METHODE_PARSE, new[] { typeof(string) });
+                    var methodInfo = arguments.Property.PropertyType.GetMethod(NOM_METHODE_PARSE, new[] { typeof(string) });
                     object valeur = null;
                     if (methodInfo != null)
                     {
@@ -80,7 +79,7 @@
                     }
                     else
                     {
-                        ConstructorInfo construct = arguments.Property.PropertyType.GetConstructor(new[] { typeof(string) });
+                        var construct = arguments.Property.PropertyType.GetConstructor(new[] { typeof(string) });
                         if (construct != null)
                         {
                             try
@@ -106,8 +105,7 @@
                 {
                     if (arguments.Attribute.IsRequired)
                     {
-                        throw new ArgumentMissingException(
-                            string.Format("L'argument {0} ({1}) obligatoire, est manquant.", arguments.Property.Name.ToLower(), arguments.Attribute.Key));
+                        throw new ArgumentMissingException($"L'argument {arguments.Property.Name.ToLower()} ({arguments.Attribute.Key}) obligatoire, est manquant.");
                     }
                 }
             }

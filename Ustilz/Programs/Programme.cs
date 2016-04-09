@@ -31,8 +31,8 @@
             IList<Action> enumerable = actions.ToList();
             do
             {
-                int i = 1;
-                foreach (Action action in actions)
+                var i = 1;
+                foreach (var action in actions)
                 {
                     Console.WriteLine("{0}) {1}", i++, action.Method.Name);
                 }
@@ -43,14 +43,14 @@
                     enumerable.Add(() => Environment.Exit(-1));
                 }
 
-                string entry = Console.ReadLine();
+                var entry = Console.ReadLine();
                 if (enumerable.Count == 0)
                 {
                     return;
                 }
 
                 int choix;
-                bool isChoixNumerique = int.TryParse(entry, out choix);
+                var isChoixNumerique = int.TryParse(entry, out choix);
 
                 if (!isChoixNumerique || (choix <= enumerable.Count && choix > 0))
                 {

@@ -3,19 +3,6 @@ namespace Ustilz.Sql
     /// <summary>The constantes. </summary>
     internal class Constantes
     {
-        #region Champs statiques
-
-        /// <summary>The egal. </summary>
-        internal const string Egal = " = ";
-
-        /// <summary>The space. </summary>
-        internal const string Space = " ";
-
-        /// <summary>The virgule space. </summary>
-        internal const string VirguleSpace = ", ";
-
-        #endregion
-
         #region Nested type: SQL
 
         /// <summary>The sql. </summary>
@@ -33,16 +20,6 @@ namespace Ustilz.Sql
             /// <summary>The keyword. </summary>
             internal class Keyword
             {
-                #region Champs statiques
-
-                /// <summary>The from. </summary>
-                internal const string FROM = "from";
-
-                /// <summary>The select. </summary>
-                internal const string SELECT = "select";
-
-                #endregion
-
                 #region Nested type: Join
 
                 /// <summary>The join. </summary>
@@ -108,10 +85,33 @@ namespace Ustilz.Sql
                 }
 
                 #endregion
+
+                #region Champs statiques
+
+                /// <summary>The from. </summary>
+                internal const string FROM = "from";
+
+                /// <summary>The select. </summary>
+                internal const string SELECT = "select";
+
+                #endregion
             }
 
             #endregion
         }
+
+        #endregion
+
+        #region Champs statiques
+
+        /// <summary>The egal. </summary>
+        internal const string Egal = " = ";
+
+        /// <summary>The space. </summary>
+        internal const string Space = " ";
+
+        /// <summary>The virgule space. </summary>
+        internal const string VirguleSpace = ", ";
 
         #endregion
     }

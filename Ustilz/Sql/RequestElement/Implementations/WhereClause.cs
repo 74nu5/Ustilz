@@ -14,8 +14,10 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="WhereClause"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="WhereClause"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WhereClause" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="WhereClause" />.
+        /// </summary>
         /// <param name="firstCondition">The first Condition.</param>
         internal WhereClause(ICondition firstCondition)
         {
@@ -41,11 +43,11 @@
             this.FirstCondition = new WhereCondition(condition);
         }
 
-        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
-        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
+        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
         public override string ToString()
         {
-            StringBuilder whereBuilder = new StringBuilder(Constantes.Space);
+            var whereBuilder = new StringBuilder(Constantes.Space);
             whereBuilder.Append(Constantes.SQL.Keyword.Where.WHERE);
             whereBuilder.Append(this.FirstCondition);
             return whereBuilder.ToString();

@@ -19,14 +19,14 @@
         /// <summary>The dump. </summary>
         /// <param name="o">The o. </param>
         /// <typeparam name="T">The Type </typeparam>
-        /// <returns>The <see cref="T"/>. </returns>
+        /// <returns>The <see cref="T" />. </returns>
         public static T DumpConsole<T>(this T o)
         {
-            IEnumerable list = o as IEnumerable;
+            var list = o as IEnumerable;
             if (list != null && !(o is string))
             {
-                object[] enumerable = list as object[] ?? list.Cast<object>().ToArray();
-                Console.WriteLine(string.Format("[{0}]", string.Join(", ", enumerable.Select(t => t.ToString()).ToArray())));
+                var enumerable = list as object[] ?? list.Cast<object>().ToArray();
+                Console.WriteLine("[{0}]", string.Join(", ", enumerable.Select(t => t.ToString()).ToArray()));
                 return o;
             }
 

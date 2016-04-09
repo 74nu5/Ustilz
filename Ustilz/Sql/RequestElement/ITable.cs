@@ -10,6 +10,14 @@
     [PublicAPI]
     public interface ITable
     {
+        #region Méthodes publiques
+
+        /// <summary>The to string.</summary>
+        /// <returns>The <see cref="string" />.</returns>
+        string ToString();
+
+        #endregion
+
         #region Propriétés publiques, Indexeurs
 
         /// <summary>Gets the alias.</summary>
@@ -25,14 +33,6 @@
         /// <value>The name.</value>
         [NotNull]
         string Name { get; }
-
-        #endregion
-
-        #region Méthodes publiques
-
-        /// <summary>The to string.</summary>
-        /// <returns>The <see cref="string"/>.</returns>
-        string ToString();
 
         #endregion
     }

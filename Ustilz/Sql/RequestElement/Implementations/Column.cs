@@ -12,23 +12,18 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="Column"/> class. Initialise une nouvelle instance de la classe<see cref="Column"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Column" /> class. Initialise une nouvelle instance de la classe
+        ///     <see cref="Column" />.
+        /// </summary>
         /// <param name="table">The table.</param>
         /// <param name="name">The name.</param>
         /// <param name="alias">The alias.</param>
-        public Column(ITable table, string name, string alias)
+        public Column(ITable table, string name, string alias = null)
         {
             this.OwnerTable = table;
             this.Name = name;
             this.Alias = alias;
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="Column"/> class. Initialise une nouvelle instance de la classe<see cref="Column"/>.</summary>
-        /// <param name="table">The table.</param>
-        /// <param name="name">The name.</param>
-        public Column(ITable table, string name)
-            : this(table, name, null)
-        {
         }
 
         #endregion
@@ -41,13 +36,7 @@
 
         /// <summary>Gets a value indicating whether has alias. </summary>
         /// <value>The has alias.</value>
-        public bool HasAlias
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(this.Alias);
-            }
-        }
+        public bool HasAlias => !string.IsNullOrEmpty(this.Alias);
 
         /// <summary>Gets the name. </summary>
         /// <value>The name.</value>
@@ -61,18 +50,18 @@
 
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
-        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
+        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
         public override string ToString()
         {
-            return this.HasAlias ? string.Format("{0} as {1}", this.Name, this.Alias) : this.Name;
+            return this.HasAlias ? $"{this.Name} as {this.Alias}" : this.Name;
         }
 
         /// <summary>The to string condition. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         public string ToStringCondition()
         {
-            return this.OwnerTable.HasAlias ? string.Format("{0}.{1}", this.OwnerTable.Alias, this.Name) : this.Name;
+            return this.OwnerTable.HasAlias ? $"{this.OwnerTable.Alias}.{this.Name}" : this.Name;
         }
 
         #endregion

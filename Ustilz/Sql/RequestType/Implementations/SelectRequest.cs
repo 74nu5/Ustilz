@@ -15,8 +15,19 @@
 
     /// <summary>The select request. </summary>
     [PublicAPI]
-    internal class SelectRequest : ISelectRequest
+    internal sealed class SelectRequest : ISelectRequest
     {
+        #region Méthodes privées
+
+        /// <summary>The has columns specified. </summary>
+        /// <returns>The <see cref="bool" />. </returns>
+        private bool HasColumnsSpecified()
+        {
+            return this.selectColumns.Any();
+        }
+
+        #endregion
+
         #region Champs
 
         /// <summary>Gets the join. </summary>
@@ -39,8 +50,10 @@
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest" />.
+        /// </summary>
         /// <param name="nomTable">The nomTable.</param>
         internal SelectRequest(string nomTable)
             : this()
@@ -51,8 +64,10 @@
             this.joins = new Joins();
         }
 
-        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest" />.
+        /// </summary>
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
         internal SelectRequest(string nomTable, string alias)
@@ -61,8 +76,10 @@
             this.PrincipalTable = new Table(nomTable, alias);
         }
 
-        /// <summary>Prevents a default instance of the <see cref="SelectRequest"/> class from being created.  Empêche la création
-        ///     d'une instance par défaut de la classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>
+        ///     Prevents a default instance of the <see cref="SelectRequest" /> class from being created.  Empêche la création
+        ///     d'une instance par défaut de la classe <see cref="SelectRequest" />.
+        /// </summary>
         private SelectRequest()
         {
         }
@@ -83,13 +100,7 @@
 
         /// <summary>Gets the where clause.</summary>
         /// <value>The where clause.</value>
-        public IWhereClause WhereClause
-        {
-            get
-            {
-                return this.whereClause;
-            }
-        }
+        public IWhereClause WhereClause => this.whereClause;
 
         #endregion
 
@@ -109,7 +120,7 @@
         /// <param name="rootColumn">The root column.</param>
         public void AddJoin(TypeJoin typeJoin, string otherColumn, ITable tableJoin, string rootColumn)
         {
-            Join jointureT1 = new Join(typeJoin, tableJoin, new Column(this.PrincipalTable, otherColumn), new Column(tableJoin, rootColumn));
+            var jointureT1 = new Join(typeJoin, tableJoin, new Column(this.PrincipalTable, otherColumn), new Column(tableJoin, rootColumn));
             this.joins.Add(jointureT1);
         }
 
@@ -129,11 +140,11 @@
         }
 
         /// <summary>The to sql. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         [Pure]
         public string ToSql()
         {
-            StringBuilder sql = new StringBuilder();
+            var sql = new StringBuilder();
             sql.Append(Constantes.SQL.Keyword.SELECT);
             sql.Append(Constantes.Space);
             if (!this.HasColumnsSpecified())
@@ -167,21 +178,10 @@
         }
 
         /// <summary>The to string. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         public override string ToString()
         {
             return this.ToSql();
-        }
-
-        #endregion
-
-        #region Méthodes privées
-
-        /// <summary>The has columns specified. </summary>
-        /// <returns>The <see cref="bool"/>. </returns>
-        private bool HasColumnsSpecified()
-        {
-            return this.selectColumns.Any();
         }
 
         #endregion
