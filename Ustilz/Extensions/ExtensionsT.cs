@@ -12,14 +12,14 @@
 
     /// <summary>The extensions t. </summary>
     [PublicAPI]
-    public static class ExtensionsDump
+    public static class ExtensionsT
     {
         #region Méthodes statiques
 
         /// <summary>The dump. </summary>
         /// <param name="o">The o. </param>
         /// <typeparam name="T">The Type </typeparam>
-        /// <returns>The <see cref="T" />. </returns>
+        /// <returns>The <see cref="T"/>. </returns>
         public static T DumpConsole<T>(this T o)
         {
             var list = o as IEnumerable;
@@ -32,6 +32,17 @@
 
             Console.WriteLine(o);
             return o;
+        }
+
+        /// <summary>The between.</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="from">The from.</param>
+        /// <param name="to">The to.</param>
+        /// <typeparam name="T">Type à comparer</typeparam>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public static bool Between<T>(this T value, T from, T to) where T : IComparable<T>
+        {
+            return value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
         }
 
         #endregion
