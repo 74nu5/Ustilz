@@ -45,6 +45,15 @@
             return value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
         }
 
+        /// <summary>The is null.</summary>
+        /// <param name="source">The source.</param>
+        /// <typeparam name="T">Le type à tester</typeparam>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public static bool IsNull<T>(this T source) where T : class
+        {
+            return source == null;
+        }
+
         #endregion
     }
 }
