@@ -14,32 +14,29 @@
     [PublicAPI]
     internal sealed class Columns : List<IColumn>, IColumns
     {
-        #region Champs statiques
+        #region Champs et constantes statiques
 
         /// <summary>The ms g_ no m_ colonn e_ nulle. </summary>
         private const string MSG_NOM_COLONNE_NULLE = "Le nom de la colonne ne doit pas être nulle.";
 
         #endregion
 
-        #region Propriétés publiques, Indexeurs
-
-        /// <summary>Gets the owner table. </summary>
-        /// <value>The owner table.</value>
-        public ITable OwnerTable { get; private set; }
-
-        #endregion
-
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Columns" /> class. Initialise une nouvelle instance de la classe
-        ///     <see cref="Columns" />.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="Columns"/> class. Initialise une nouvelle instance de la classe<see cref="Columns"/>.</summary>
         /// <param name="ownerTable">The owner Table.</param>
         public Columns([NotNull] ITable ownerTable)
         {
             this.OwnerTable = ownerTable;
         }
+
+        #endregion
+
+        #region Propriétés et indexeurs
+
+        /// <summary>Gets the owner table. </summary>
+        /// <value>The owner table.</value>
+        public ITable OwnerTable { get; private set; }
 
         #endregion
 
@@ -72,7 +69,7 @@
         }
 
         /// <summary>The to string array. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         public string[] ToStringArray()
         {
             return this.Select(column => column.ToString()).ToArray();

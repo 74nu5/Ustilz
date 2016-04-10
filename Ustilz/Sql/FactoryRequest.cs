@@ -12,12 +12,12 @@
     [PublicAPI]
     public static class FactoryRequest
     {
-        #region Méthodes statiques
+        #region Méthodes publiques
 
         /// <summary>The get select request.</summary>
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
-        /// <returns>The <see cref="ISelectRequest" />.</returns>
+        /// <returns>The <see cref="ISelectRequest"/>.</returns>
         [NotNull]
         public static ISelectRequest GetSelectRequest([NotNull] string nomTable, [NotNull] string alias)
         {

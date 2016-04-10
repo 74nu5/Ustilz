@@ -17,17 +17,6 @@
     [PublicAPI]
     internal sealed class SelectRequest : ISelectRequest
     {
-        #region Méthodes privées
-
-        /// <summary>The has columns specified. </summary>
-        /// <returns>The <see cref="bool" />. </returns>
-        private bool HasColumnsSpecified()
-        {
-            return this.selectColumns.Any();
-        }
-
-        #endregion
-
         #region Champs
 
         /// <summary>Gets the join. </summary>
@@ -50,10 +39,8 @@
 
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest" />.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest"/>.</summary>
         /// <param name="nomTable">The nomTable.</param>
         internal SelectRequest(string nomTable)
             : this()
@@ -64,10 +51,8 @@
             this.joins = new Joins();
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest" />.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest"/>.</summary>
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
         internal SelectRequest(string nomTable, string alias)
@@ -76,17 +61,15 @@
             this.PrincipalTable = new Table(nomTable, alias);
         }
 
-        /// <summary>
-        ///     Prevents a default instance of the <see cref="SelectRequest" /> class from being created.  Empêche la création
-        ///     d'une instance par défaut de la classe <see cref="SelectRequest" />.
-        /// </summary>
+        /// <summary>Prevents a default instance of the <see cref="SelectRequest"/> class from being created.  Empêche la création
+        ///     d'une instance par défaut de la classe <see cref="SelectRequest"/>.</summary>
         private SelectRequest()
         {
         }
 
         #endregion
 
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets or sets a value indicating whether upper sql. </summary>
         /// TODO Mots clé en majuscule
@@ -140,7 +123,7 @@
         }
 
         /// <summary>The to sql. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         [Pure]
         public string ToSql()
         {
@@ -178,10 +161,21 @@
         }
 
         /// <summary>The to string. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         public override string ToString()
         {
             return this.ToSql();
+        }
+
+        #endregion
+
+        #region Méthodes privées
+
+        /// <summary>The has columns specified. </summary>
+        /// <returns>The <see cref="bool"/>. </returns>
+        private bool HasColumnsSpecified()
+        {
+            return this.selectColumns.Any();
         }
 
         #endregion

@@ -15,7 +15,7 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="ArgumentAttribute" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="ArgumentAttribute"/> class.</summary>
         /// <param name="key">The key.</param>
         /// <param name="isRequired">The is Required.</param>
         public ArgumentAttribute(string key, bool isRequired = false)
@@ -26,7 +26,7 @@
 
         #endregion
 
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the key.</summary>
         /// <value>The key.</value>

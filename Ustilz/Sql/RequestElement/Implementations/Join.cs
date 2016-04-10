@@ -14,10 +14,7 @@ namespace Ustilz.Sql.RequestElement.Implementations
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Join" /> class. Initialise une nouvelle instance de la classe
-        ///     <see cref="Join" />.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="Join"/> class. Initialise une nouvelle instance de la classe<see cref="Join"/>.</summary>
         /// <param name="type">The type.</param>
         /// <param name="joinTable">The join Table.</param>
         /// <param name="otherColumn">The other Column.</param>
@@ -32,10 +29,30 @@ namespace Ustilz.Sql.RequestElement.Implementations
 
         #endregion
 
+        #region Propriétés et indexeurs
+
+        /// <summary>Gets the join table. </summary>
+        /// <value>The join table.</value>
+        public ITable JoinTable { get; }
+
+        /// <summary>Gets the right column. </summary>
+        /// <value>The other column.</value>
+        public IColumn OtherColumn { get; }
+
+        /// <summary>Gets the left column. </summary>
+        /// <value>The root column.</value>
+        public IColumn RootColumn { get; }
+
+        /// <summary>Gets or sets the type. </summary>
+        /// <value>The type.</value>
+        public TypeJoin Type { get; }
+
+        #endregion
+
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
-        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
+        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
         public override string ToString()
         {
             var sql = new StringBuilder(Constantes.Space);
@@ -79,26 +96,6 @@ namespace Ustilz.Sql.RequestElement.Implementations
 
             return sql.ToString();
         }
-
-        #endregion
-
-        #region Propriétés publiques, Indexeurs
-
-        /// <summary>Gets the join table. </summary>
-        /// <value>The join table.</value>
-        public ITable JoinTable { get; }
-
-        /// <summary>Gets the right column. </summary>
-        /// <value>The other column.</value>
-        public IColumn OtherColumn { get; }
-
-        /// <summary>Gets the left column. </summary>
-        /// <value>The root column.</value>
-        public IColumn RootColumn { get; }
-
-        /// <summary>Gets or sets the type. </summary>
-        /// <value>The type.</value>
-        public TypeJoin Type { get; }
 
         #endregion
     }

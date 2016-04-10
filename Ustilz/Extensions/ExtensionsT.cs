@@ -14,7 +14,7 @@
     [PublicAPI]
     public static class ExtensionsT
     {
-        #region Méthodes statiques
+        #region Méthodes publiques
 
         /// <summary>The dump. </summary>
         /// <param name="o">The o. </param>

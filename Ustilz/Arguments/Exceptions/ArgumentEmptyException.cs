@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ArgumentEmptyException.cs" company="">
-//   
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Ustilz.Arguments.Exceptions
+﻿namespace Ustilz.Arguments.Exceptions
 {
     #region Usings
 
@@ -18,15 +12,21 @@ namespace Ustilz.Arguments.Exceptions
     [PublicAPI]
     public class ArgumentEmptyException : ArgumentException
     {
+        #region Champs et constantes statiques
+
         /// <summary>The nu l_ o u_ vide.</summary>
         private const string NUL_OU_VIDE = "L'argument est nul ou vide.";
+
+        #endregion
+
+        #region Constructeurs et destructeurs
 
         /// <summary>Initializes a new instance of the <see cref="ArgumentEmptyException"/> class.</summary>
         public ArgumentEmptyException()
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="ArgumentEmptyException"/> class. Initializes a new instance of the <see cref="ArgumentEmptyException"/> avec un message d'erreur
+        /// <summary>Initializes a new instance of the <see cref="ArgumentEmptyException"/> class. Initializes a new instance of the<see cref="ArgumentEmptyException"/> avec un message d'erreur
         ///     spécifié et une référence à l'exception interne ayant provoqué cette exception.</summary>
         /// <param name="innerException">Exception ayant provoqué l'exception actuelle.Si le paramètre<paramref name="innerException"/> n'est pas une
         ///     référence null, l'exception actuelle est levée dans un bloc catch
@@ -56,5 +56,7 @@ namespace Ustilz.Arguments.Exceptions
             : base(NUL_OU_VIDE, paramName)
         {
         }
+
+        #endregion
     }
 }

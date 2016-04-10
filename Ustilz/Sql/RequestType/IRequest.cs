@@ -13,12 +13,12 @@ namespace Ustilz.Sql.RequestType
         #region Méthodes publiques
 
         /// <summary>The to sql. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         [NotNull]
         string ToSql();
 
         /// <summary>The to string. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         [NotNull]
         string ToString();
 

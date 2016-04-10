@@ -12,10 +12,7 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Column" /> class. Initialise une nouvelle instance de la classe
-        ///     <see cref="Column" />.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="Column"/> class. Initialise une nouvelle instance de la classe<see cref="Column"/>.</summary>
         /// <param name="table">The table.</param>
         /// <param name="name">The name.</param>
         /// <param name="alias">The alias.</param>
@@ -28,7 +25,7 @@
 
         #endregion
 
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the alias. </summary>
         /// <value>The alias.</value>
@@ -50,15 +47,15 @@
 
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
-        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
+        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
         public override string ToString()
         {
             return this.HasAlias ? $"{this.Name} as {this.Alias}" : this.Name;
         }
 
         /// <summary>The to string condition. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         public string ToStringCondition()
         {
             return this.OwnerTable.HasAlias ? $"{this.OwnerTable.Alias}.{this.Name}" : this.Name;

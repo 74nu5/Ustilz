@@ -10,7 +10,7 @@
     [PublicAPI]
     public interface IWhereClause
     {
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the first condition.</summary>
         /// <value>The first condition.</value>

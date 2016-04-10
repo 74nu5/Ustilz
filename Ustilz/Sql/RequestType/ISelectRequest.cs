@@ -10,7 +10,7 @@
     /// <summary>The SelectRequest interface. </summary>
     public interface ISelectRequest : IRequest
     {
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the table. </summary>
         /// <value>The principal table.</value>

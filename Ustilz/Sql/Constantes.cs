@@ -3,12 +3,25 @@ namespace Ustilz.Sql
     /// <summary>The constantes. </summary>
     internal class Constantes
     {
+        #region Champs et constantes statiques
+
+        /// <summary>The egal. </summary>
+        internal const string Egal = " = ";
+
+        /// <summary>The space. </summary>
+        internal const string Space = " ";
+
+        /// <summary>The virgule space. </summary>
+        internal const string VirguleSpace = ", ";
+
+        #endregion
+
         #region Nested type: SQL
 
         /// <summary>The sql. </summary>
         internal class SQL
         {
-            #region Champs statiques
+            #region Champs et constantes statiques
 
             /// <summary>The al l_ columns. </summary>
             internal const string ALL_COLUMNS = "*";
@@ -20,12 +33,22 @@ namespace Ustilz.Sql
             /// <summary>The keyword. </summary>
             internal class Keyword
             {
+                #region Champs et constantes statiques
+
+                /// <summary>The from. </summary>
+                internal const string FROM = "from";
+
+                /// <summary>The select. </summary>
+                internal const string SELECT = "select";
+
+                #endregion
+
                 #region Nested type: Join
 
                 /// <summary>The join. </summary>
                 internal class Join
                 {
-                    #region Champs statiques
+                    #region Champs et constantes statiques
 
                     /// <summary>The cross. </summary>
                     internal const string CROSS = "cross";
@@ -70,7 +93,7 @@ namespace Ustilz.Sql
                 /// <summary>The where. </summary>
                 internal class Where
                 {
-                    #region Champs statiques
+                    #region Champs et constantes statiques
 
                     /// <summary>The and. </summary>
                     public const string AND = "and";
@@ -85,33 +108,10 @@ namespace Ustilz.Sql
                 }
 
                 #endregion
-
-                #region Champs statiques
-
-                /// <summary>The from. </summary>
-                internal const string FROM = "from";
-
-                /// <summary>The select. </summary>
-                internal const string SELECT = "select";
-
-                #endregion
             }
 
             #endregion
         }
-
-        #endregion
-
-        #region Champs statiques
-
-        /// <summary>The egal. </summary>
-        internal const string Egal = " = ";
-
-        /// <summary>The space. </summary>
-        internal const string Space = " ";
-
-        /// <summary>The virgule space. </summary>
-        internal const string VirguleSpace = ", ";
 
         #endregion
     }

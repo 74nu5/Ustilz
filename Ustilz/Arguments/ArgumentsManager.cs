@@ -15,12 +15,14 @@
     [PublicAPI]
     public static class ArgumentsManager
     {
-        #region Champs statiques
+        #region Champs et constantes statiques
 
         /// <summary>The no m_ method e_ parse. </summary>
         private const string NOM_METHODE_PARSE = "Parse";
 
         #endregion
+
+        #region Méthodes publiques
 
         /// <summary>The check.</summary>
         /// <param name="str">The str.</param>
@@ -29,8 +31,6 @@
         {
             return new Checker(str);
         }
-
-        #region Méthodes statiques
 
         /// <summary>The init. </summary>
         /// <typeparam name="T">The t </typeparam>

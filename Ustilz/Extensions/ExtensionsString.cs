@@ -3,6 +3,7 @@
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Security.Cryptography;
     using System.Text;
@@ -15,7 +16,10 @@
     [PublicAPI]
     public static class ExtensionsString
     {
+        #region HashType enum
+
         /// <summary>Supported hash algorithms</summary>
+        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
         public enum HashType
         {
             /// <summary>The hmac.</summary>
@@ -57,6 +61,10 @@
             /// <summary>The sh a 512.</summary>
             SHA512
         }
+
+        #endregion
+
+        #region Méthodes publiques
 
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
@@ -135,6 +143,10 @@
             }
         }
 
+        #endregion
+
+        #region Méthodes privées
+
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
@@ -188,5 +200,7 @@
                     return inputBytes;
             }
         }
+
+        #endregion
     }
 }

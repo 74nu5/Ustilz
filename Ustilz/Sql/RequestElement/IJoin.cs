@@ -11,15 +11,7 @@ namespace Ustilz.Sql.RequestElement
     [PublicAPI]
     public interface IJoin
     {
-        #region Méthodes publiques
-
-        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
-        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
-        string ToString();
-
-        #endregion
-
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the join table. </summary>
         /// <value>The join table.</value>
@@ -39,6 +31,14 @@ namespace Ustilz.Sql.RequestElement
         /// <summary>Gets or sets the type. </summary>
         /// <value>The type.</value>
         TypeJoin Type { get; }
+
+        #endregion
+
+        #region Méthodes publiques
+
+        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
+        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        string ToString();
 
         #endregion
     }

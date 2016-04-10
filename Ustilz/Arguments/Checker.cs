@@ -12,8 +12,14 @@
     /// <summary>The checker.</summary>
     public sealed class Checker
     {
+        #region Champs
+
         /// <summary>The param name.</summary>
         private readonly string paramName;
+
+        #endregion
+
+        #region Constructeurs et destructeurs
 
         /// <summary>Initializes a new instance of the <see cref="Checker"/> class.</summary>
         /// <param name="paramName">The param name.</param>
@@ -21,6 +27,10 @@
         {
             this.paramName = paramName;
         }
+
+        #endregion
+
+        #region Méthodes publiques
 
         /// <summary>The not null.</summary>
         /// <param name="o">The o.</param>
@@ -57,5 +67,7 @@
                 throw new ArgumentException($"Le parametre {this.paramName} est en dehors des valeurs requises.", this.paramName);
             }
         }
+
+        #endregion
     }
 }

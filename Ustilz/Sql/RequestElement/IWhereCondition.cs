@@ -10,7 +10,7 @@
     [PublicAPI]
     public interface IWhereCondition
     {
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the and condition. </summary>
         /// <value>The and condition.</value>

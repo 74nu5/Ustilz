@@ -12,7 +12,7 @@
     [PublicAPI]
     public interface IColumns : IList<IColumn>
     {
-        #region Propriétés publiques, Indexeurs
+        #region Propriétés et indexeurs
 
         /// <summary>Gets the owner table. </summary>
         /// <value>The owner table.</value>
@@ -34,7 +34,7 @@
         void Add([NotNull] string nomColumn, [CanBeNull] string alias);
 
         /// <summary>The to string array. </summary>
-        /// <returns>The <see cref="string" />. </returns>
+        /// <returns>The <see cref="string"/>. </returns>
         string[] ToStringArray();
 
         #endregion

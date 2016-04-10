@@ -75,7 +75,7 @@
     <Compile Include="Arguments\Checker.cs" />
     <Compile Include="Arguments\Exceptions\ArgumentEmptyException.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
-    <Compile Include="Extensions\ExtensionsDump.cs" />
+    <Compile Include="Extensions\ExtensionsT.cs" />
     <Compile Include="Extensions\ExtensionsIList.cs" />
     <Compile Include="Extensions\ExtensionsString.cs" />
     <Compile Include="Programs\Programme.cs" />

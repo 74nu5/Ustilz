@@ -11,25 +11,25 @@
     public enum TypeJoin
     {
         /// <summary>The inner join. </summary>
-        InnerJoin,
+        InnerJoin, 
 
         /// <summary>The cross join. </summary>
-        CrossJoin,
+        CrossJoin, 
 
         /// <summary>The left join. </summary>
-        LeftJoin,
+        LeftJoin, 
 
         /// <summary>The right join. </summary>
-        RightJoin,
+        RightJoin, 
 
         /// <summary>The full join. </summary>
-        FullJoin,
+        FullJoin, 
 
         /// <summary>The self join. </summary>
-        SelfJoin,
+        SelfJoin, 
 
         /// <summary>The natural join. </summary>
-        NaturalJoin,
+        NaturalJoin, 
 
         /// <summary>The union join. </summary>
         UnionJoin

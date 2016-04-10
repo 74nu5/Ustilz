@@ -14,7 +14,7 @@
     [PublicAPI]
     public static class Programme
     {
-        #region Méthodes statiques
+        #region Méthodes publiques
 
         /// <summary>The with choice.</summary>
         /// <param name="actions">The actions.</param>

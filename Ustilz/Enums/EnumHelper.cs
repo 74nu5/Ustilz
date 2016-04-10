@@ -16,6 +16,8 @@
     [PublicAPI]
     public static class EnumHelper<T>
     {
+        #region Méthodes publiques
+
         /// <summary>The get enum description.</summary>
         /// <param name="value">The value.</param>
         /// <returns>The <see cref="string"/>.</returns>
@@ -34,5 +36,7 @@
 
             return customAttribute != null ? customAttribute.Description : name;
         }
+
+        #endregion
     }
 }

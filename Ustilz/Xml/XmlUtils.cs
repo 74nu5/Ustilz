@@ -14,11 +14,11 @@
     [PublicAPI]
     public static class XmlUtils
     {
-        #region Méthodes statiques
+        #region Méthodes publiques
 
         /// <summary>The print xml.</summary>
         /// <param name="document">The document.</param>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         public static string PrintXml(XmlDocument document)
         {
             using (var str = new MemoryStream())
