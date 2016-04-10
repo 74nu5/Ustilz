@@ -15,6 +15,49 @@
     [PublicAPI]
     public static class ExtensionsString
     {
+        /// <summary>Supported hash algorithms</summary>
+        public enum HashType
+        {
+            /// <summary>The hmac.</summary>
+            HMAC, 
+
+            /// <summary>The hmacm d 5.</summary>
+            HMACMD5, 
+
+            /// <summary>The hmacsh a 1.</summary>
+            HMACSHA1, 
+
+            /// <summary>The hmacsh a 256.</summary>
+            HMACSHA256, 
+
+            /// <summary>The hmacsh a 384.</summary>
+            HMACSHA384, 
+
+            /// <summary>The hmacsh a 512.</summary>
+            HMACSHA512, 
+
+            /// <summary>The mac triple des.</summary>
+            MACTripleDES, 
+
+            /// <summary>The m d 5.</summary>
+            MD5, 
+
+            /// <summary>The ripem d 160.</summary>
+            RIPEMD160, 
+
+            /// <summary>The sh a 1.</summary>
+            SHA1, 
+
+            /// <summary>The sh a 256.</summary>
+            SHA256, 
+
+            /// <summary>The sh a 384.</summary>
+            SHA384, 
+
+            /// <summary>The sh a 512.</summary>
+            SHA512
+        }
+
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
@@ -57,6 +100,93 @@
             var bytes = rsa.Decrypt(decryptByteArray, true);
 
             return Encoding.UTF8.GetString(bytes);
+        }
+
+        /// <summary>Converts string to enum object</summary>
+        /// <typeparam name="T">Type of enum</typeparam>
+        /// <param name="value">String value to convert</param>
+        /// <returns>Returns enum object</returns>
+        public static T ToEnum<T>(this string value) where T : struct
+        {
+            return (T)Enum.Parse(typeof(T), value, true);
+        }
+
+        /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
+        /// <param name="input">The string to hash</param>
+        /// <param name="hashType">The hash algorithm to use</param>
+        /// <returns>The resulting hash or an empty string on error</returns>
+        public static string ComputeHash(this string input, HashType hashType)
+        {
+            try
+            {
+                var hash = GetHash(input, hashType);
+                var ret = new StringBuilder();
+
+                foreach (var t in hash)
+                {
+                    ret.Append(t.ToString("x2"));
+                }
+
+                return ret.ToString();
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>The get hash.</summary>
+        /// <param name="input">The input.</param>
+        /// <param name="hash">The hash.</param>
+        /// <returns>The <see cref="byte[]"/>.</returns>
+        private static byte[] GetHash(string input, HashType hash)
+        {
+            var inputBytes = Encoding.ASCII.GetBytes(input);
+
+            switch (hash)
+            {
+                case HashType.HMAC:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.HMACMD5:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.HMACSHA1:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.HMACSHA256:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.HMACSHA384:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.HMACSHA512:
+                    return HMAC.Create().ComputeHash(inputBytes);
+
+                case HashType.MACTripleDES:
+                    return KeyedHashAlgorithm.Create().ComputeHash(inputBytes);
+
+                case HashType.MD5:
+                    return MD5.Create().ComputeHash(inputBytes);
+
+                case HashType.RIPEMD160:
+                    return RIPEMD160.Create().ComputeHash(inputBytes);
+
+                case HashType.SHA1:
+                    return SHA1.Create().ComputeHash(inputBytes);
+
+                case HashType.SHA256:
+                    return SHA256.Create().ComputeHash(inputBytes);
+
+                case HashType.SHA384:
+                    return SHA384.Create().ComputeHash(inputBytes);
+
+                case HashType.SHA512:
+                    return SHA512.Create().ComputeHash(inputBytes);
+
+                default:
+                    return inputBytes;
+            }
         }
     }
 }
