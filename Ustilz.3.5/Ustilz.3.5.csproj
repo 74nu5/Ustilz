@@ -42,13 +42,19 @@
       <Link>Annotations\Annotations.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentAttribute.cs">
-      <Link>Arguments\Console\ArgumentAttribute.cs</Link>
+      <Link>Arguments\ArgumentAttribute.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentMissingException.cs">
-      <Link>Arguments\Console\ArgumentMissingException.cs</Link>
+      <Link>Arguments\ArgumentMissingException.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentsManager.cs">
-      <Link>Arguments\Console\ArgumentsManager.cs</Link>
+      <Link>Arguments\ArgumentsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\Checker.cs">
+      <Link>Arguments\Checker.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\Exceptions\ArgumentEmptyException.cs">
+      <Link>Arguments\Exceptions\ArgumentEmptyException.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Extensions\ExtensionsDump.cs">
       <Link>Extensions\ExtensionsDump.cs</Link>
@@ -133,6 +139,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
