@@ -1,4 +1,10 @@
-﻿namespace Ustilz.Arguments
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ArgumentsManager.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Ustilz.Arguments
 {
     #region Usings
 
@@ -22,12 +28,20 @@
 
         #endregion
 
+        /// <summary>The check.</summary>
+        /// <param name="str">The str.</param>
+        /// <returns>The <see cref="Checker"/>.</returns>
+        public static Checker Check(string str)
+        {
+            return new Checker(str);
+        }
+
         #region Méthodes statiques
 
         /// <summary>The init. </summary>
         /// <typeparam name="T">The t </typeparam>
         /// <param name="args">The args. </param>
-        /// <returns>The <see cref="T" />. </returns>
+        /// <returns>The <see cref="T"/>. </returns>
         public static T Init<T>(string[] args) where T : new()
         {
             return Init<T>(args, false);
@@ -37,7 +51,7 @@
         /// <typeparam name="T">The t </typeparam>
         /// <param name="args">The args. </param>
         /// <param name="afficherResume">The afficher Resume. </param>
-        /// <returns>The <see cref="T" />. </returns>
+        /// <returns>The <see cref="T"/>. </returns>
         public static T Init<T>(string[] args, bool afficherResume) where T : new()
         {
             var retour = new T();

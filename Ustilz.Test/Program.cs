@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
 
+    using Ustilz.Arguments;
     using Ustilz.Extensions;
     using Ustilz.Programs;
     using Ustilz.Sql;
@@ -19,7 +20,7 @@
         /// <param name="args">The args.</param>
         private static void Main(string[] args)
         {
-            Programme.WithChoice(true, TestDump, TestSqlMaker);
+            Programme.WithChoice(true, TestDump, TestSqlMaker, TestMethod);
         }
 
         /// <summary>The test sql maker.</summary>
@@ -69,6 +70,20 @@
 
             var vv = new List<Version> { new Version("8.8.9.8"), new Version("9.0.7.6") };
             vv.DumpConsole();
+        }
+
+        private static void TestMethod()
+        {
+            GetValue(null, 10, "");
+        }
+
+        private static void GetValue(object toto, int i, string s)
+        {
+            var listeElement = new List<string>(9);
+
+            ArgumentsManager.Check(nameof(s)).NotNullOrEmpty(s);
+            ArgumentsManager.Check(nameof(i)).LessThan(i, listeElement.Count);
+            ArgumentsManager.Check(nameof(toto)).NotNull(toto);
         }
     }
 }

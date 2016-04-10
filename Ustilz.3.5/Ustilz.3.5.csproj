@@ -42,13 +42,13 @@
       <Link>Annotations\Annotations.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentAttribute.cs">
-      <Link>Arguments\ArgumentAttribute.cs</Link>
+      <Link>Arguments\Console\ArgumentAttribute.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentMissingException.cs">
-      <Link>Arguments\ArgumentMissingException.cs</Link>
+      <Link>Arguments\Console\ArgumentMissingException.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Arguments\ArgumentsManager.cs">
-      <Link>Arguments\ArgumentsManager.cs</Link>
+      <Link>Arguments\Console\ArgumentsManager.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Extensions\ExtensionsDump.cs">
       <Link>Extensions\ExtensionsDump.cs</Link>

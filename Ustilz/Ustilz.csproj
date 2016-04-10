@@ -72,6 +72,8 @@
     <Compile Include="Arguments\ArgumentAttribute.cs" />
     <Compile Include="Arguments\ArgumentMissingException.cs" />
     <Compile Include="Arguments\ArgumentsManager.cs" />
+    <Compile Include="Arguments\Checker.cs" />
+    <Compile Include="Arguments\Exceptions\ArgumentEmptyException.cs" />
     <Compile Include="Extensions\ExtensionsDump.cs" />
     <Compile Include="Extensions\ExtensionsIList.cs" />
     <Compile Include="Programs\Programme.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Sql\RequestType\Implementations\SelectRequest.cs" />
     <Compile Include="Sql\RequestType\IRequest.cs" />
     <Compile Include="Sql\RequestType\ISelectRequest.cs" />
+    <Compile Include="Time\Horloge.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +110,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Arguments\Console\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
