@@ -5,6 +5,8 @@
     using System.IO;
     using System.Text;
     using System.Xml;
+    using System.Xml.Linq;
+    using System.Xml.Serialization;
 
     using Ustilz.Annotations;
 
@@ -19,7 +21,7 @@
         /// <summary>The print xml.</summary>
         /// <param name="document">The document.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        public static string PrintXml(XmlDocument document)
+        public static string PrintXml(this XmlDocument document)
         {
             using (var str = new MemoryStream())
             {
@@ -43,6 +45,36 @@
                 {
                     return reader.ReadToEnd();
                 }
+            }
+        }
+
+        /// <summary>The serialize to xml.</summary>
+        /// <param name="obj">The obj.</param>
+        /// <typeparam name="T">Type a sérialiser</typeparam>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string SerializeToXml<T>(this T obj)
+        {
+            var doc = new XDocument();
+            using (var xmlWriter = doc.CreateWriter())
+            {
+                var xmlSerializer = new XmlSerializer(typeof(T));
+                xmlSerializer.Serialize(xmlWriter, obj);
+                xmlWriter.Close();
+            }
+
+            return doc.ToString();
+        }
+
+        /// <summary>The deserialize.</summary>
+        /// <param name="xmlDocument">The xml document.</param>
+        /// <typeparam name="T">Le type vers lequel désérialiser</typeparam>
+        /// <returns>The <see cref="T"/>.</returns>
+        public static T Deserialize<T>(this XDocument xmlDocument)
+        {
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            using (var reader = xmlDocument.CreateReader())
+            {
+                return (T)xmlSerializer.Deserialize(reader);
             }
         }
 
