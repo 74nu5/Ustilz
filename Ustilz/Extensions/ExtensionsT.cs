@@ -54,6 +54,16 @@
             return source == null;
         }
 
+        /// <summary>The in.</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="list">The list.</param>
+        /// <typeparam name="T">Type de la liste</typeparam>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public static bool In<T>(this T value, params T[] list)
+        {
+            return list.Contains(value);
+        }
+
         #endregion
     }
 }
