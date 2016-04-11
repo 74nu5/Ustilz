@@ -3,6 +3,7 @@
     #region Usings
 
     using System;
+    using System.Data.Entity.Design.PluralizationServices;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Security.Cryptography;
@@ -141,6 +142,16 @@
             {
                 return string.Empty;
             }
+        }
+
+        /// <summary>Returns the plural form of the specified word.</summary>
+        /// <param name="chaine">The this.</param>
+        /// <param name="count">How many of the specified word there are. A count equal to 1 will not pluralize the specified word.</param>
+        /// <param name="culture">The culture.</param>
+        /// <returns>A string that is the plural form of the input parameter.</returns>
+        public static string Pluralize(this string chaine, int count = 0, string culture = "fr-FR")
+        {
+            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo(culture)).Pluralize(chaine);
         }
 
         #endregion
