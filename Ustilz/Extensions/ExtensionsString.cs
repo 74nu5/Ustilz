@@ -5,11 +5,14 @@
     using System;
     using System.Data.Entity.Design.PluralizationServices;
     using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.Security.Cryptography;
     using System.Text;
 
     using Ustilz.Annotations;
+
+    using Contracts = System.Diagnostics.Contracts;
 
     #endregion
 
@@ -71,6 +74,7 @@
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string"/>.</returns>
+        [Contracts.Pure]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToEncrypt))
@@ -83,6 +87,8 @@
                 throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
             }
 
+            Contract.EndContractBlock();
+
             var cspp = new CspParameters { KeyContainerName = key };
             var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
             var bytes = rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true);
@@ -94,12 +100,15 @@
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string"/>.</returns>
+        [Contracts.Pure]
         public static string Decrypt(this string stringToDecrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
             {
                 throw new ArgumentException("Empty input or key are not allowed.");
             }
+
+            Contract.EndContractBlock();
 
             var cspp = new CspParameters { KeyContainerName = key };
             var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
@@ -115,6 +124,7 @@
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">String value to convert</param>
         /// <returns>Returns enum object</returns>
+        [Contracts.Pure]
         public static T ToEnum<T>(this string value) where T : struct
         {
             return (T)Enum.Parse(typeof(T), value, true);
@@ -147,11 +157,10 @@
         /// <summary>Returns the plural form of the specified word.</summary>
         /// <param name="chaine">The this.</param>
         /// <param name="count">How many of the specified word there are. A count equal to 1 will not pluralize the specified word.</param>
-        /// <param name="culture">The culture.</param>
         /// <returns>A string that is the plural form of the input parameter.</returns>
-        public static string Pluralize(this string chaine, int count = 0, string culture = "fr-FR")
+        public static string Pluralize(this string chaine, int count = 0)
         {
-            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo(culture)).Pluralize(chaine);
+            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo("en-US")).Pluralize(chaine);
         }
 
         #endregion
