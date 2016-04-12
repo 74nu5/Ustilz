@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -56,11 +57,17 @@
     <Compile Include="..\Ustilz\Arguments\Exceptions\ArgumentEmptyException.cs">
       <Link>Arguments\Exceptions\ArgumentEmptyException.cs</Link>
     </Compile>
-    <Compile Include="..\Ustilz\Extensions\ExtensionsDump.cs">
-      <Link>Extensions\ExtensionsDump.cs</Link>
+    <Compile Include="..\Ustilz\Extensions\ExtensionsException.cs">
+      <Link>Extensions\ExtensionsException.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Extensions\ExtensionsFunc.cs">
+      <Link>Extensions\ExtensionsFunc.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Extensions\ExtensionsIList.cs">
       <Link>Extensions\ExtensionsIList.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Extensions\ExtensionsT.cs">
+      <Link>Extensions\ExtensionsT.cs</Link>
     </Compile>
     <Compile Include="..\Ustilz\Programs\Programme.cs">
       <Link>Programs\Programme.cs</Link>
