@@ -39,7 +39,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -76,6 +76,7 @@
     <Compile Include="Arguments\Checker.cs" />
     <Compile Include="Arguments\Exceptions\ArgumentEmptyException.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
+    <Compile Include="Extensions\ExtensionsException.cs" />
     <Compile Include="Extensions\ExtensionsFunc.cs" />
     <Compile Include="Extensions\ExtensionsT.cs" />
     <Compile Include="Extensions\ExtensionsIList.cs" />
