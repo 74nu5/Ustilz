@@ -12,8 +12,6 @@
 
     using Ustilz.Annotations;
 
-    using Contracts = System.Diagnostics.Contracts;
-
     #endregion
 
     /// <summary>The extensions string.</summary>
@@ -74,7 +72,7 @@
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        [Contracts.Pure]
+        [System.Diagnostics.Contracts.Pure]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToEncrypt))
@@ -96,11 +94,20 @@
             return BitConverter.ToString(bytes);
         }
 
+        /// <summary>The to string format.</summary>
+        /// <param name="stringFormat">The string format.</param>
+        /// <param name="stringParams">The string params.</param>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string Format(this string stringFormat, params string[] stringParams)
+        {
+            return string.Format(stringFormat, stringParams);
+        }
+
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        [Contracts.Pure]
+        [System.Diagnostics.Contracts.Pure]
         public static string Decrypt(this string stringToDecrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
@@ -124,7 +131,7 @@
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">String value to convert</param>
         /// <returns>Returns enum object</returns>
-        [Contracts.Pure]
+        [System.Diagnostics.Contracts.Pure]
         public static T ToEnum<T>(this string value) where T : struct
         {
             return (T)Enum.Parse(typeof(T), value, true);
