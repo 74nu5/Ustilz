@@ -103,6 +103,15 @@
             return string.Format(stringFormat, stringParams);
         }
 
+        /// <summary>The to exception.</summary>
+        /// <param name="message">The message.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <exception cref="T"></exception>
+        public static void ToException<T>(this string message) where T : Exception, new()
+        {
+            throw (T)Activator.CreateInstance(typeof(T), message);
+        }
+
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
