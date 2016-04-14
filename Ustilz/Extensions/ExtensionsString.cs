@@ -9,6 +9,7 @@
     using System.Globalization;
     using System.Security.Cryptography;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     using Ustilz.Annotations;
 
@@ -103,6 +104,16 @@
             return string.Format(stringFormat, stringParams);
         }
 
+        /// <summary>The format.</summary>
+        /// <param name="template">The template.</param>
+        /// <param name="data">The data.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string Format<T>(this string template, T data)
+        {
+            return Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
+        }
+
         /// <summary>The to exception.</summary>
         /// <param name="message">The message.</param>
         /// <typeparam name="T">Type de l'exception</typeparam>
@@ -182,10 +193,31 @@
 
         #region Méthodes privées
 
+        /// <summary>The get value.</summary>
+        /// <param name="match">The match.</param>
+        /// <param name="data">The data.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The <see cref="string"/>.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static string GetValue<T>(Match match, T data)
+        {
+            var paraName = match.Groups[1].Value;
+            try
+            {
+                var proper = typeof(T).GetProperty(paraName);
+                return proper.GetValue(data).ToString();
+            }
+            catch (Exception)
+            {
+                var errMsg = $"Not find '{paraName}'";
+                throw new ArgumentException(errMsg);
+            }
+        }
+
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
-        /// <returns>The <see cref="byte[]"/>.</returns>
+        /// <returns>The <see cref="byte"/>.</returns>
         private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
