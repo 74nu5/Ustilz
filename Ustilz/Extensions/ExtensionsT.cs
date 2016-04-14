@@ -4,6 +4,7 @@
 
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Ustilz.Annotations;
@@ -63,6 +64,18 @@
         {
             return list.Contains(value);
         }
+
+#if NET4_6
+        /// <summary>The join.</summary>
+        /// <param name="tab">The tab.</param>
+        /// <param name="separateur">The separateur.</param>
+        /// <typeparam name="T">The type</typeparam>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string Join<T>(this IEnumerable<T> tab, string separateur)
+        {
+            return string.Join(separateur, tab);
+        }
+#endif
 
         #endregion
     }
