@@ -78,6 +78,7 @@
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Extensions\ExtensionsException.cs" />
     <Compile Include="Extensions\ExtensionsFunc.cs" />
+    <Compile Include="Extensions\ExtensionsInt32.cs" />
     <Compile Include="Extensions\ExtensionsT.cs" />
     <Compile Include="Extensions\ExtensionsIList.cs" />
     <Compile Include="Extensions\ExtensionsString.cs" />
