@@ -105,8 +105,7 @@
 
         /// <summary>The to exception.</summary>
         /// <param name="message">The message.</param>
-        /// <typeparam name="T"></typeparam>
-        /// <exception cref="T"></exception>
+        /// <typeparam name="T">Type de l'exception</typeparam>
         public static void ToException<T>(this string message) where T : Exception, new()
         {
             throw (T)Activator.CreateInstance(typeof(T), message);
