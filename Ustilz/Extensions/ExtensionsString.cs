@@ -189,6 +189,15 @@
             return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo("en-US")).Pluralize(chaine);
         }
 
+        /// <summary>The join.</summary>
+        /// <param name="strs">The strs.</param>
+        /// <param name="separator">The separator.</param>
+        /// <returns>The <see cref="string"/>.</returns>
+        public static string Join(this string[] strs, string separator)
+        {
+            return string.Join(separator, strs);
+        }
+
         #endregion
 
         #region Méthodes privées
