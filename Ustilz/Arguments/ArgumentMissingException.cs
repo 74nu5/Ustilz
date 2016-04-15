@@ -9,6 +9,7 @@
     #endregion
 
     /// <summary>The argument missing exception. </summary>
+    [Serializable]
     [PublicAPI]
     public sealed class ArgumentMissingException : Exception
     {

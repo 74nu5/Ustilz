@@ -9,6 +9,7 @@
     #endregion
 
     /// <summary>The argument empty exception.</summary>
+    [Serializable]
     [PublicAPI]
     public class ArgumentEmptyException : ArgumentException
     {
