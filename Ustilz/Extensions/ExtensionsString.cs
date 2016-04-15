@@ -122,6 +122,14 @@
             throw (T)Activator.CreateInstance(typeof(T), message);
         }
 
+        /// <summary>The is null or empty.</summary>
+        /// <param name="str">The str.</param>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public static bool IsNullOrEmpty(this string str)
+        {
+            return string.IsNullOrEmpty(str);
+        }
+
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
