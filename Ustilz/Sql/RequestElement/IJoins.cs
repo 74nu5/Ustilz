@@ -14,13 +14,13 @@ namespace Ustilz.Sql.RequestElement
     {
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
-        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
-        string ToString();
-
         /// <summary>The add.</summary>
         /// <param name="item">The item.</param>
         new void Add(IJoin item);
+
+        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
+        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        string ToString();
 
         #endregion
     }

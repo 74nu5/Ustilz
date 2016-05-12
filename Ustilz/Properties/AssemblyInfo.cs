@@ -1,6 +1,9 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿#region Usings
+
+using System.Reflection;
 using System.Runtime.InteropServices;
+
+#endregion
 
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
@@ -23,12 +26,10 @@ using System.Runtime.InteropServices;
 [assembly: Guid("0fe7b8a1-b454-4a41-9206-0350d4af8b16")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
-//
 //      Version principale
 //      Version secondaire 
 //      Numéro de build
 //      Révision
-//
 // Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
 // en utilisant '*', comme indiqué ci-dessous :
 // [assembly: AssemblyVersion("1.0.*")]

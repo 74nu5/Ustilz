@@ -12,6 +12,13 @@ namespace Ustilz.Sql.RequestElement.Implementations
     {
         #region Méthodes publiques
 
+        /// <summary>The add.</summary>
+        /// <param name="item">The item.</param>
+        public new void Add(IJoin item)
+        {
+            base.Add(item);
+        }
+
         /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
         /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
         public override string ToString()
@@ -23,13 +30,6 @@ namespace Ustilz.Sql.RequestElement.Implementations
             }
 
             return sql.ToString();
-        }
-
-        /// <summary>The add.</summary>
-        /// <param name="item">The item.</param>
-        public new void Add(IJoin item)
-        {
-            base.Add(item);
         }
 
         #endregion

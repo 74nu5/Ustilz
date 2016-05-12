@@ -14,16 +14,6 @@
     {
         #region Méthodes publiques
 
-        /// <summary>The create table.</summary>
-        /// <param name="nom">The nom.</param>
-        /// <param name="alias">The alias.</param>
-        /// <returns>The <see cref="ITable"/>.</returns>
-        [NotNull]
-        public static ITable CreateTable(string nom, string alias)
-        {
-            return new Table(nom, alias);
-        }
-
         /// <summary>The create column.</summary>
         /// <param name="table">The nom.</param>
         /// <param name="alias">The alias.</param>
@@ -32,6 +22,16 @@
         public static IColumn CreateColumn(ITable table, string alias)
         {
             return new Column(table, alias);
+        }
+
+        /// <summary>The create table.</summary>
+        /// <param name="nom">The nom.</param>
+        /// <param name="alias">The alias.</param>
+        /// <returns>The <see cref="ITable"/>.</returns>
+        [NotNull]
+        public static ITable CreateTable(string nom, string alias)
+        {
+            return new Table(nom, alias);
         }
 
         #endregion

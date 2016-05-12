@@ -17,6 +17,17 @@
     {
         #region Méthodes publiques
 
+        /// <summary>The between.</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="from">The from.</param>
+        /// <param name="to">The to.</param>
+        /// <typeparam name="T">Type à comparer</typeparam>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public static bool Between<T>(this T value, T from, T to) where T : IComparable<T>
+        {
+            return value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
+        }
+
         /// <summary>The dump. </summary>
         /// <param name="o">The o. </param>
         /// <typeparam name="T">The Type </typeparam>
@@ -35,15 +46,14 @@
             return o;
         }
 
-        /// <summary>The between.</summary>
+        /// <summary>The in.</summary>
         /// <param name="value">The value.</param>
-        /// <param name="from">The from.</param>
-        /// <param name="to">The to.</param>
-        /// <typeparam name="T">Type à comparer</typeparam>
+        /// <param name="list">The list.</param>
+        /// <typeparam name="T">Type de la liste</typeparam>
         /// <returns>The <see cref="bool"/>.</returns>
-        public static bool Between<T>(this T value, T from, T to) where T : IComparable<T>
+        public static bool In<T>(this T value, params T[] list)
         {
-            return value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
+            return list.Contains(value);
         }
 
         /// <summary>The is null.</summary>
@@ -55,17 +65,8 @@
             return source == null;
         }
 
-        /// <summary>The in.</summary>
-        /// <param name="value">The value.</param>
-        /// <param name="list">The list.</param>
-        /// <typeparam name="T">Type de la liste</typeparam>
-        /// <returns>The <see cref="bool"/>.</returns>
-        public static bool In<T>(this T value, params T[] list)
-        {
-            return list.Contains(value);
-        }
-
 #if NET4_6
+
         /// <summary>The join.</summary>
         /// <param name="tab">The tab.</param>
         /// <param name="separateur">The separateur.</param>
@@ -75,6 +76,7 @@
         {
             return string.Join(separateur, tab);
         }
+
 #endif
 
         #endregion

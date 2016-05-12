@@ -18,6 +18,19 @@
     {
         #region Méthodes publiques
 
+        /// <summary>The deserialize.</summary>
+        /// <param name="xmlDocument">The xml document.</param>
+        /// <typeparam name="T">Le type vers lequel désérialiser</typeparam>
+        /// <returns>The <see cref="T"/>.</returns>
+        public static T Deserialize<T>(this XDocument xmlDocument)
+        {
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            using (var reader = xmlDocument.CreateReader())
+            {
+                return (T)xmlSerializer.Deserialize(reader);
+            }
+        }
+
         /// <summary>The print xml.</summary>
         /// <param name="document">The document.</param>
         /// <returns>The <see cref="string"/>.</returns>
@@ -63,19 +76,6 @@
             }
 
             return doc.ToString();
-        }
-
-        /// <summary>The deserialize.</summary>
-        /// <param name="xmlDocument">The xml document.</param>
-        /// <typeparam name="T">Le type vers lequel désérialiser</typeparam>
-        /// <returns>The <see cref="T"/>.</returns>
-        public static T Deserialize<T>(this XDocument xmlDocument)
-        {
-            var xmlSerializer = new XmlSerializer(typeof(T));
-            using (var reader = xmlDocument.CreateReader())
-            {
-                return (T)xmlSerializer.Deserialize(reader);
-            }
         }
 
         #endregion

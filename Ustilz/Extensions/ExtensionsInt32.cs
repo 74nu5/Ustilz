@@ -11,31 +11,13 @@
     {
         #region Méthodes publiques
 
-        /// <summary>The janvier.</summary>
+        /// <summary>The août.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Janvier(this int day, int year)
+        public static DateTime Août(this int day, int year)
         {
-            return new DateTime(year, 1, day);
-        }
-
-        /// <summary>The février.</summary>
-        /// <param name="day">The day.</param>
-        /// <param name="year">The year.</param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Février(this int day, int year)
-        {
-            return new DateTime(year, 2, day);
-        }
-
-        /// <summary>The mars.</summary>
-        /// <param name="day">The day.</param>
-        /// <param name="year">The year.</param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Mars(this int day, int year)
-        {
-            return new DateTime(year, 3, day);
+            return new DateTime(year, 8, day);
         }
 
         /// <summary>The avril.</summary>
@@ -47,22 +29,31 @@
             return new DateTime(year, 4, day);
         }
 
-        /// <summary>The mai.</summary>
+        /// <summary>The décembre.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Mai(this int day, int year)
+        public static DateTime Décembre(this int day, int year)
         {
-            return new DateTime(year, 5, day);
+            return new DateTime(year, 12, day);
         }
 
-        /// <summary>The juin.</summary>
+        /// <summary>The février.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Juin(this int day, int year)
+        public static DateTime Février(this int day, int year)
         {
-            return new DateTime(year, 6, day);
+            return new DateTime(year, 2, day);
+        }
+
+        /// <summary>The janvier.</summary>
+        /// <param name="day">The day.</param>
+        /// <param name="year">The year.</param>
+        /// <returns>The <see cref="DateTime"/>.</returns>
+        public static DateTime Janvier(this int day, int year)
+        {
+            return new DateTime(year, 1, day);
         }
 
         /// <summary>The juillet.</summary>
@@ -74,31 +65,31 @@
             return new DateTime(year, 7, day);
         }
 
-        /// <summary>The août.</summary>
+        /// <summary>The juin.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Août(this int day, int year)
+        public static DateTime Juin(this int day, int year)
         {
-            return new DateTime(year, 8, day);
+            return new DateTime(year, 6, day);
         }
 
-        /// <summary>The septembre.</summary>
+        /// <summary>The mai.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Septembre(this int day, int year)
+        public static DateTime Mai(this int day, int year)
         {
-            return new DateTime(year, 9, day);
+            return new DateTime(year, 5, day);
         }
 
-        /// <summary>The octobre.</summary>
+        /// <summary>The mars.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Octobre(this int day, int year)
+        public static DateTime Mars(this int day, int year)
         {
-            return new DateTime(year, 10, day);
+            return new DateTime(year, 3, day);
         }
 
         /// <summary>The novembre.</summary>
@@ -110,13 +101,22 @@
             return new DateTime(year, 11, day);
         }
 
-        /// <summary>The décembre.</summary>
+        /// <summary>The octobre.</summary>
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>The <see cref="DateTime"/>.</returns>
-        public static DateTime Décembre(this int day, int year)
+        public static DateTime Octobre(this int day, int year)
         {
-            return new DateTime(year, 12, day);
+            return new DateTime(year, 10, day);
+        }
+
+        /// <summary>The septembre.</summary>
+        /// <param name="day">The day.</param>
+        /// <param name="year">The year.</param>
+        /// <returns>The <see cref="DateTime"/>.</returns>
+        public static DateTime Septembre(this int day, int year)
+        {
+            return new DateTime(year, 9, day);
         }
 
         #endregion

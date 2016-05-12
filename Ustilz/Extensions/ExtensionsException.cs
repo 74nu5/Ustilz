@@ -12,6 +12,8 @@
     [PublicAPI]
     public static class ExtensionsException
     {
+        #region Méthodes publiques
+
         /// <summary>The get messages from entire exception chain.</summary>
         /// <param name="e">The e.</param>
         /// <returns>The <see cref="string"/>.</returns>
@@ -30,5 +32,7 @@
 
             return message;
         }
+
+        #endregion
     }
 }

@@ -69,6 +69,54 @@
 
         #region Méthodes publiques
 
+        /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
+        /// <param name="input">The string to hash</param>
+        /// <param name="hashType">The hash algorithm to use</param>
+        /// <returns>The resulting hash or an empty string on error</returns>
+        public static string ComputeHash(this string input, HashType hashType)
+        {
+            try
+            {
+                var hash = GetHash(input, hashType);
+                var ret = new StringBuilder();
+
+                foreach (var t in hash)
+                {
+                    ret.Append(t.ToString("x2"));
+                }
+
+                return ret.ToString();
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>The decrypt.</summary>
+        /// <param name="stringToDecrypt">The string to decrypt.</param>
+        /// <param name="key">The key.</param>
+        /// <returns>The <see cref="string"/>.</returns>
+        [System.Diagnostics.Contracts.Pure]
+        public static string Decrypt(this string stringToDecrypt, string key)
+        {
+            if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentException("Empty input or key are not allowed.");
+            }
+
+            Contract.EndContractBlock();
+
+            var cspp = new CspParameters { KeyContainerName = key };
+            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+
+            var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
+            var decryptByteArray = Array.ConvertAll(decryptArray, s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber)));
+            var bytes = rsa.Decrypt(decryptByteArray, true);
+
+            return Encoding.UTF8.GetString(bytes);
+        }
+
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
@@ -114,14 +162,6 @@
             return Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
         }
 
-        /// <summary>The to exception.</summary>
-        /// <param name="message">The message.</param>
-        /// <typeparam name="T">Type de l'exception</typeparam>
-        public static void ToException<T>(this string message) where T : Exception, new()
-        {
-            throw (T)Activator.CreateInstance(typeof(T), message);
-        }
-
         /// <summary>The is null or empty.</summary>
         /// <param name="str">The str.</param>
         /// <returns>The <see cref="bool"/>.</returns>
@@ -130,28 +170,22 @@
             return string.IsNullOrEmpty(str);
         }
 
-        /// <summary>The decrypt.</summary>
-        /// <param name="stringToDecrypt">The string to decrypt.</param>
-        /// <param name="key">The key.</param>
+        /// <summary>The join.</summary>
+        /// <param name="strs">The strs.</param>
+        /// <param name="separator">The separator.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        [System.Diagnostics.Contracts.Pure]
-        public static string Decrypt(this string stringToDecrypt, string key)
+        public static string Join(this string[] strs, string separator)
         {
-            if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentException("Empty input or key are not allowed.");
-            }
+            return string.Join(separator, strs);
+        }
 
-            Contract.EndContractBlock();
-
-            var cspp = new CspParameters { KeyContainerName = key };
-            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
-
-            var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
-            var decryptByteArray = Array.ConvertAll(decryptArray, s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber)));
-            var bytes = rsa.Decrypt(decryptByteArray, true);
-
-            return Encoding.UTF8.GetString(bytes);
+        /// <summary>Returns the plural form of the specified word.</summary>
+        /// <param name="chaine">The this.</param>
+        /// <param name="count">How many of the specified word there are. A count equal to 1 will not pluralize the specified word.</param>
+        /// <returns>A string that is the plural form of the input parameter.</returns>
+        public static string Pluralize(this string chaine, int count = 0)
+        {
+            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo("en-US")).Pluralize(chaine);
         }
 
         /// <summary>Converts string to enum object</summary>
@@ -164,72 +198,17 @@
             return (T)Enum.Parse(typeof(T), value, true);
         }
 
-        /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
-        /// <param name="input">The string to hash</param>
-        /// <param name="hashType">The hash algorithm to use</param>
-        /// <returns>The resulting hash or an empty string on error</returns>
-        public static string ComputeHash(this string input, HashType hashType)
+        /// <summary>The to exception.</summary>
+        /// <param name="message">The message.</param>
+        /// <typeparam name="T">Type de l'exception</typeparam>
+        public static void ToException<T>(this string message) where T : Exception, new()
         {
-            try
-            {
-                var hash = GetHash(input, hashType);
-                var ret = new StringBuilder();
-
-                foreach (var t in hash)
-                {
-                    ret.Append(t.ToString("x2"));
-                }
-
-                return ret.ToString();
-            }
-            catch
-            {
-                return string.Empty;
-            }
-        }
-
-        /// <summary>Returns the plural form of the specified word.</summary>
-        /// <param name="chaine">The this.</param>
-        /// <param name="count">How many of the specified word there are. A count equal to 1 will not pluralize the specified word.</param>
-        /// <returns>A string that is the plural form of the input parameter.</returns>
-        public static string Pluralize(this string chaine, int count = 0)
-        {
-            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo("en-US")).Pluralize(chaine);
-        }
-
-        /// <summary>The join.</summary>
-        /// <param name="strs">The strs.</param>
-        /// <param name="separator">The separator.</param>
-        /// <returns>The <see cref="string"/>.</returns>
-        public static string Join(this string[] strs, string separator)
-        {
-            return string.Join(separator, strs);
+            throw (T)Activator.CreateInstance(typeof(T), message);
         }
 
         #endregion
 
         #region Méthodes privées
-
-        /// <summary>The get value.</summary>
-        /// <param name="match">The match.</param>
-        /// <param name="data">The data.</param>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>The <see cref="string"/>.</returns>
-        /// <exception cref="ArgumentException"></exception>
-        private static string GetValue<T>(Match match, T data)
-        {
-            var paraName = match.Groups[1].Value;
-            try
-            {
-                var proper = typeof(T).GetProperty(paraName);
-                return proper.GetValue(data).ToString();
-            }
-            catch (Exception)
-            {
-                var errMsg = $"Not find '{paraName}'";
-                throw new ArgumentException(errMsg);
-            }
-        }
 
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
@@ -282,6 +261,27 @@
 
                 default:
                     return inputBytes;
+            }
+        }
+
+        /// <summary>The get value.</summary>
+        /// <param name="match">The match.</param>
+        /// <param name="data">The data.</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The <see cref="string"/>.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        private static string GetValue<T>(Match match, T data)
+        {
+            var paraName = match.Groups[1].Value;
+            try
+            {
+                var proper = typeof(T).GetProperty(paraName);
+                return proper.GetValue(data).ToString();
+            }
+            catch (Exception)
+            {
+                var errMsg = $"Not find '{paraName}'";
+                throw new ArgumentException(errMsg);
             }
         }
 
