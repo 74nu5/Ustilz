@@ -41,7 +41,7 @@ namespace Ustilz.Annotations
     AttributeTargets.Method | AttributeTargets.Parameter |
     AttributeTargets.Property | AttributeTargets.Delegate |
     AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-  internal sealed class NotNullAttribute : Attribute { }
+  public sealed class NotNullAttribute : Attribute { }
 
   /// <summary>
   /// Indicates that the marked method builds string by format pattern and (optional) arguments.

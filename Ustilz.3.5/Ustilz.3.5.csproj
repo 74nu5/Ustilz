@@ -57,6 +57,21 @@
     <Compile Include="..\Ustilz\Arguments\Exceptions\ArgumentEmptyException.cs">
       <Link>Arguments\Exceptions\ArgumentEmptyException.cs</Link>
     </Compile>
+    <Compile Include="..\Ustilz\Arguments\IArguments.cs">
+      <Link>Arguments\IArguments.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\TestAttributes\ArgumentTestable.cs">
+      <Link>Arguments\TestAttributes\ArgumentTestable.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\TestAttributes\BetweenIntAttribute.cs">
+      <Link>Arguments\TestAttributes\BetweenIntAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\TestAttributes\ITestAttribute.cs">
+      <Link>Arguments\TestAttributes\ITestAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Ustilz\Arguments\TestAttributes\NotNullAttribute.cs">
+      <Link>Arguments\TestAttributes\NotNullAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Ustilz\Extensions\ExtensionsException.cs">
       <Link>Extensions\ExtensionsException.cs</Link>
     </Compile>

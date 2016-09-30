@@ -7,6 +7,7 @@
     using System.Text;
 
     using Ustilz.Annotations;
+    using Ustilz.Arguments.TestAttributes;
     using Ustilz.Extensions;
 
     #endregion
@@ -36,7 +37,7 @@
         /// <typeparam name="T">The t </typeparam>
         /// <param name="args">The args. </param>
         /// <returns>The <see cref="T"/>. </returns>
-        public static T Init<T>(string[] args) where T : new()
+        public static T Init<T>(string[] args) where T : ArgumentTestable, new()
         {
             return Init<T>(args, false);
         }
@@ -46,7 +47,7 @@
         /// <param name="args">The args. </param>
         /// <param name="afficherResume">The afficher Resume. </param>
         /// <returns>The <see cref="T"/>. </returns>
-        public static T Init<T>(string[] args, bool afficherResume) where T : new()
+        public static T Init<T>(string[] args, bool afficherResume) where T : ArgumentTestable, new()
         {
             var retour = new T();
             var atts =

@@ -75,6 +75,12 @@
     <Compile Include="Arguments\ArgumentsManager.cs" />
     <Compile Include="Arguments\Checker.cs" />
     <Compile Include="Arguments\Exceptions\ArgumentEmptyException.cs" />
+    <Compile Include="Arguments\IArguments.cs" />
+    <Compile Include="Arguments\TestAttributes\ArgumentTestable.cs" />
+    <Compile Include="Arguments\TestAttributes\BetweenIntAttribute.cs" />
+    <Compile Include="Arguments\TestAttributes\FileExists.cs" />
+    <Compile Include="Arguments\TestAttributes\ITestAttribute.cs" />
+    <Compile Include="Arguments\TestAttributes\NotNullAttribute.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Extensions\ExtensionsException.cs" />
     <Compile Include="Extensions\ExtensionsFunc.cs" />

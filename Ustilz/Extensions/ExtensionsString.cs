@@ -147,7 +147,7 @@
         /// <param name="stringFormat">The string format.</param>
         /// <param name="stringParams">The string params.</param>
         /// <returns>The <see cref="string"/>.</returns>
-        public static string Format(this string stringFormat, params string[] stringParams)
+        public static string F(this string stringFormat, params string[] stringParams)
         {
             return string.Format(stringFormat, stringParams);
         }
@@ -157,7 +157,7 @@
         /// <param name="data">The data.</param>
         /// <typeparam name="T"></typeparam>
         /// <returns>The <see cref="string"/>.</returns>
-        public static string Format<T>(this string template, T data)
+        public static string Fs<T>(this string template, T data)
         {
             return Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
         }
