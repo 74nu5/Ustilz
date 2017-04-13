@@ -3,15 +3,15 @@
     #region Usings
 
     using System;
-    using System.Data.Entity.Design.PluralizationServices;
     using System.Diagnostics.CodeAnalysis;
     using System.Diagnostics.Contracts;
     using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
     using System.Security.Cryptography;
     using System.Text;
     using System.Text.RegularExpressions;
-
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -19,54 +19,6 @@
     [PublicAPI]
     public static class ExtensionsString
     {
-        #region HashType enum
-
-        /// <summary>Supported hash algorithms</summary>
-        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
-        public enum HashType
-        {
-            /// <summary>The hmac.</summary>
-            HMAC, 
-
-            /// <summary>The hmacm d 5.</summary>
-            HMACMD5, 
-
-            /// <summary>The hmacsh a 1.</summary>
-            HMACSHA1, 
-
-            /// <summary>The hmacsh a 256.</summary>
-            HMACSHA256, 
-
-            /// <summary>The hmacsh a 384.</summary>
-            HMACSHA384, 
-
-            /// <summary>The hmacsh a 512.</summary>
-            HMACSHA512, 
-
-            /// <summary>The mac triple des.</summary>
-            MACTripleDES, 
-
-            /// <summary>The m d 5.</summary>
-            MD5, 
-
-            /// <summary>The ripem d 160.</summary>
-            RIPEMD160, 
-
-            /// <summary>The sh a 1.</summary>
-            SHA1, 
-
-            /// <summary>The sh a 256.</summary>
-            SHA256, 
-
-            /// <summary>The sh a 384.</summary>
-            SHA384, 
-
-            /// <summary>The sh a 512.</summary>
-            SHA512
-        }
-
-        #endregion
-
         #region Méthodes publiques
 
         /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
@@ -96,7 +48,7 @@
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         [System.Diagnostics.Contracts.Pure]
         public static string Decrypt(this string stringToDecrypt, string key)
         {
@@ -107,11 +59,12 @@
 
             Contract.EndContractBlock();
 
-            var cspp = new CspParameters { KeyContainerName = key };
-            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+            var cspp = new CspParameters {KeyContainerName = key};
+            var rsa = new RSACryptoServiceProvider(cspp) {PersistKeyInCsp = true};
 
-            var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
-            var decryptByteArray = Array.ConvertAll(decryptArray, s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber)));
+            var decryptArray = stringToDecrypt.Split(new[] {"-"}, StringSplitOptions.None);
+            var decryptByteArray = decryptArray.Select(s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber)))
+                                               .ToArray();
             var bytes = rsa.Decrypt(decryptByteArray, true);
 
             return Encoding.UTF8.GetString(bytes);
@@ -120,7 +73,7 @@
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         [System.Diagnostics.Contracts.Pure]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
@@ -136,8 +89,8 @@
 
             Contract.EndContractBlock();
 
-            var cspp = new CspParameters { KeyContainerName = key };
-            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+            var cspp = new CspParameters {KeyContainerName = key};
+            var rsa = new RSACryptoServiceProvider(cspp) {PersistKeyInCsp = true};
             var bytes = rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true);
 
             return BitConverter.ToString(bytes);
@@ -146,65 +99,40 @@
         /// <summary>The to string format.</summary>
         /// <param name="stringFormat">The string format.</param>
         /// <param name="stringParams">The string params.</param>
-        /// <returns>The <see cref="string"/>.</returns>
-        public static string F(this string stringFormat, params string[] stringParams)
-        {
-            return string.Format(stringFormat, stringParams);
-        }
+        /// <returns>The <see cref="string" />.</returns>
+        public static string F(this string stringFormat, params object[] stringParams) => string.Format(stringFormat, stringParams);
 
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
         /// <typeparam name="T"></typeparam>
-        /// <returns>The <see cref="string"/>.</returns>
-        public static string Fs<T>(this string template, T data)
-        {
-            return Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
-        }
+        /// <returns>The <see cref="string" />.</returns>
+        public static string Fs<T>(this string template, T data) => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data))
+                        .Replace("{{", "{")
+                        .Replace("}}", "}");
 
         /// <summary>The is null or empty.</summary>
         /// <param name="str">The str.</param>
-        /// <returns>The <see cref="bool"/>.</returns>
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
-        }
+        /// <returns>The <see cref="bool" />.</returns>
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>The join.</summary>
         /// <param name="strs">The strs.</param>
         /// <param name="separator">The separator.</param>
-        /// <returns>The <see cref="string"/>.</returns>
-        public static string Join(this string[] strs, string separator)
-        {
-            return string.Join(separator, strs);
-        }
-
-        /// <summary>Returns the plural form of the specified word.</summary>
-        /// <param name="chaine">The this.</param>
-        /// <param name="count">How many of the specified word there are. A count equal to 1 will not pluralize the specified word.</param>
-        /// <returns>A string that is the plural form of the input parameter.</returns>
-        public static string Pluralize(this string chaine, int count = 0)
-        {
-            return count == 1 ? chaine : PluralizationService.CreateService(new CultureInfo("en-US")).Pluralize(chaine);
-        }
+        /// <returns>The <see cref="string" />.</returns>
+        public static string Join(this string[] strs, string separator) => string.Join(separator, strs);
 
         /// <summary>Converts string to enum object</summary>
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">String value to convert</param>
         /// <returns>Returns enum object</returns>
         [System.Diagnostics.Contracts.Pure]
-        public static T ToEnum<T>(this string value) where T : struct
-        {
-            return (T)Enum.Parse(typeof(T), value, true);
-        }
+        public static T ToEnum<T>(this string value) where T : struct => (T) Enum.Parse(typeof(T), value, true);
 
         /// <summary>The to exception.</summary>
         /// <param name="message">The message.</param>
         /// <typeparam name="T">Type de l'exception</typeparam>
-        public static void ToException<T>(this string message) where T : Exception, new()
-        {
-            throw (T)Activator.CreateInstance(typeof(T), message);
-        }
+        public static void ToException<T>(this string message) where T : Exception, new() => throw (T)Activator.CreateInstance(typeof(T), message);
 
         #endregion
 
@@ -213,39 +141,15 @@
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
-        /// <returns>The <see cref="byte"/>.</returns>
+        /// <returns>The <see cref="byte" />.</returns>
         private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
 
             switch (hash)
             {
-                case HashType.HMAC:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.HMACMD5:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.HMACSHA1:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.HMACSHA256:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.HMACSHA384:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.HMACSHA512:
-                    return HMAC.Create().ComputeHash(inputBytes);
-
-                case HashType.MACTripleDES:
-                    return KeyedHashAlgorithm.Create().ComputeHash(inputBytes);
-
                 case HashType.MD5:
                     return MD5.Create().ComputeHash(inputBytes);
-
-                case HashType.RIPEMD160:
-                    return RIPEMD160.Create().ComputeHash(inputBytes);
 
                 case HashType.SHA1:
                     return SHA1.Create().ComputeHash(inputBytes);
@@ -268,14 +172,19 @@
         /// <param name="match">The match.</param>
         /// <param name="data">The data.</param>
         /// <typeparam name="T"></typeparam>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="ArgumentException"></exception>
         private static string GetValue<T>(Match match, T data)
         {
             var paraName = match.Groups[1].Value;
             try
             {
+#if NETSTANDARD1_6
+                var proper = typeof(T).GetTypeInfo().GetProperty(paraName);
+#else
                 var proper = typeof(T).GetProperty(paraName);
+#endif
+
                 return proper.GetValue(data).ToString();
             }
             catch (Exception)
@@ -283,6 +192,54 @@
                 var errMsg = $"Not find '{paraName}'";
                 throw new ArgumentException(errMsg);
             }
+        }
+
+        #endregion
+
+        #region HashType enum
+
+        /// <summary>Supported hash algorithms</summary>
+        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
+        public enum HashType
+        {
+            /// <summary>The hmac.</summary>
+            HMAC,
+
+            /// <summary>The hmacm d 5.</summary>
+            HMACMD5,
+
+            /// <summary>The hmacsh a 1.</summary>
+            HMACSHA1,
+
+            /// <summary>The hmacsh a 256.</summary>
+            HMACSHA256,
+
+            /// <summary>The hmacsh a 384.</summary>
+            HMACSHA384,
+
+            /// <summary>The hmacsh a 512.</summary>
+            HMACSHA512,
+
+            /// <summary>The mac triple des.</summary>
+            MACTripleDES,
+
+            /// <summary>The m d 5.</summary>
+            MD5,
+
+            /// <summary>The ripem d 160.</summary>
+            RIPEMD160,
+
+            /// <summary>The sh a 1.</summary>
+            SHA1,
+
+            /// <summary>The sh a 256.</summary>
+            SHA256,
+
+            /// <summary>The sh a 384.</summary>
+            SHA384,
+
+            /// <summary>The sh a 512.</summary>
+            SHA512
         }
 
         #endregion

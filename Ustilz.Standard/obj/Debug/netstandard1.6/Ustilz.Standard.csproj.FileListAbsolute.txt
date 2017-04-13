@@ -1,0 +1,7 @@
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\bin\Debug\netstandard1.6\Ustilz.Standard.deps.json
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.6\Ustilz.Standard.AssemblyInfo.cs
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\bin\Debug\netstandard1.6\Ustilz.Standard.dll
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\bin\Debug\netstandard1.6\Ustilz.Standard.pdb
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.6\Ustilz.Standard.dll
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.6\Ustilz.Standard.pdb
+C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.6\Ustilz.Standard.csprojResolveAssemblyReference.cache

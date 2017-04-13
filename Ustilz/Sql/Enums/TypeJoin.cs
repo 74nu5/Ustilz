@@ -2,7 +2,7 @@
 {
     #region Usings
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 

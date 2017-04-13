@@ -2,7 +2,7 @@
 {
     #region Usings
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
     using Ustilz.Sql.RequestElement;
     using Ustilz.Sql.RequestElement.Implementations;
 

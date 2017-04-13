@@ -5,8 +5,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Ustilz.Annotations;
+    using System.Reflection;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -34,7 +34,11 @@
                 var i = 1;
                 foreach (var action in actions)
                 {
+#if NETSTANDARD1_6
+                    Console.WriteLine("{0}) {1}", i++, action.GetMethodInfo().Name);
+#else
                     Console.WriteLine("{0}) {1}", i++, action.Method.Name);
+#endif
                 }
 
                 if (withExit)
@@ -60,6 +64,6 @@
             while (true);
         }
 
-        #endregion
+#endregion
     }
 }

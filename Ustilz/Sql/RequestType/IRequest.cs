@@ -2,7 +2,7 @@ namespace Ustilz.Sql.RequestType
 {
     #region Usings
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 

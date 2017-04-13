@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Text;
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
     using Ustilz.Arguments.TestAttributes;
     using Ustilz.Extensions;
 

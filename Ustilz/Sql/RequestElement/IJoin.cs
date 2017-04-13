@@ -2,7 +2,7 @@ namespace Ustilz.Sql.RequestElement
 {
     #region Usings
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
     using Ustilz.Sql.Enums;
 
     #endregion

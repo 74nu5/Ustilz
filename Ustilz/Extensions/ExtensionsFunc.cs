@@ -5,8 +5,8 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-
-    using Ustilz.Annotations;
+    using System.Reflection;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -25,18 +25,41 @@
         {
             var t = new Dictionary<T, TResult>();
             return n =>
-                       {
-                           if (t.ContainsKey(n))
-                           {
-                               return t[n];
-                           }
+            {
+                if (t.ContainsKey(n))
+                {
+                    return t[n];
+                }
 
-                           var result = func(n);
-                           t.Add(n, result);
-                           return result;
-                       };
+                var result = func(n);
+                t.Add(n, result);
+                return result;
+            };
         }
 
+#if NETSTANDARD1_6
+
+        /// <summary> The memoize. </summary>
+        /// <param name="func"> The func. </param>
+        /// <typeparam name="TResult"> Type de retour </typeparam>
+        /// <returns> The <see cref="Func{TResult}" />. </returns>
+        public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
+        {
+            var t = new Dictionary<string, TResult>();
+            return () =>
+            {
+                if (t.ContainsKey(func.GetMethodInfo().Name))
+                {
+                    return t[func.GetMethodInfo().Name];
+                }
+
+                var result = func();
+                t.Add(func.GetMethodInfo().Name, result);
+                return result;
+            };
+        }
+
+#else
         /// <summary> The memoize. </summary>
         /// <param name="func"> The func. </param>
         /// <typeparam name="TResult"> Type de retour </typeparam>
@@ -56,6 +79,7 @@
                            return result;
                        };
         }
+#endif
 
         /// <summary> Tests the perf. </summary>
         /// <typeparam name="TResult"> The type of the result. </typeparam>

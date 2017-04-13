@@ -3,8 +3,7 @@
     #region Usings
 
     using System;
-
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -15,17 +14,7 @@
         #region Champs et constantes statiques
 
         /// <summary>The fonction.</summary>
-        private static Func<DateTime> fonction;
-
-        #endregion
-
-        #region Constructeurs et destructeurs
-
-        /// <summary>Initializes static members of the <see cref="Horloge"/> class.</summary>
-        static Horloge()
-        {
-            fonction = () => DateTime.Now;
-        }
+        private static Func<DateTime> _fonction = () => DateTime.Now;
 
         #endregion
 
@@ -33,16 +22,13 @@
 
         /// <summary>Gets the maintenant.</summary>
         /// <value>The maintenant.</value>
-        public static DateTime Maintenant => fonction();
+        public static DateTime Maintenant => _fonction();
 
         /// <summary>Sets the fonction maintenant.</summary>
         /// <value>The fonction maintenant.</value>
         public static Func<DateTime> FonctionMaintenant
         {
-            set
-            {
-                fonction = value ?? (() => DateTime.Now);
-            }
+            set => _fonction = value ?? (() => DateTime.Now);
         }
 
         #endregion
@@ -50,10 +36,7 @@
         #region Méthodes publiques
 
         /// <summary>The reset.</summary>
-        public static void Reset()
-        {
-            FonctionMaintenant = null;
-        }
+        public static void Reset() => FonctionMaintenant = null;
 
         #endregion
     }

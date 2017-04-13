@@ -1,10 +1,9 @@
 ﻿namespace Ustilz.Arguments
 {
+    using JetBrains.Annotations;
     #region Usings
 
     using System;
-
-    using Ustilz.Annotations;
 
     #endregion
 

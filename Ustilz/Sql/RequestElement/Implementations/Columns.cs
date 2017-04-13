@@ -6,7 +6,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 

@@ -3,8 +3,7 @@
     #region Usings
 
     using System;
-
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -16,7 +15,7 @@
 
         /// <summary>The get messages from entire exception chain.</summary>
         /// <param name="e">The e.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         public static string GetMessagesFromEntireExceptionChain(this Exception e)
         {
             // get the full error message list from the inner exceptions

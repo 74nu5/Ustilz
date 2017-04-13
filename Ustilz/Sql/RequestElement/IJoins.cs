@@ -4,7 +4,7 @@ namespace Ustilz.Sql.RequestElement
 
     using System.Collections.Generic;
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 

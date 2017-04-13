@@ -4,7 +4,7 @@
 
     using System;
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 

@@ -8,7 +8,7 @@
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
-    using Ustilz.Annotations;
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -38,9 +38,21 @@
         {
             using (var str = new MemoryStream())
             {
+#if NETSTANDARD1_6
+                using (var writer = XmlWriter.Create(str))
+#else
                 using (var writer = new XmlTextWriter(str, Encoding.Unicode))
+#endif
                 {
+#if NETSTANDARD1_6
+                    writer.Settings.Encoding = Encoding.Unicode;
+                    writer.Settings.Indent = true;
+
+#else
                     writer.Formatting = Formatting.Indented;
+#endif
+
+
 
                     // Write the XML into a formatting XmlTextWriter
                     document.WriteContentTo(writer);
@@ -72,12 +84,11 @@
             {
                 var xmlSerializer = new XmlSerializer(typeof(T));
                 xmlSerializer.Serialize(xmlWriter, obj);
-                xmlWriter.Close();
             }
 
             return doc.ToString();
         }
 
-        #endregion
+#endregion
     }
 }
