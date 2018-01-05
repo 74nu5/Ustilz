@@ -7,6 +7,7 @@
     using System.Text;
 
     using JetBrains.Annotations;
+
     using Ustilz.Sql.Enums;
     using Ustilz.Sql.RequestElement;
     using Ustilz.Sql.RequestElement.Implementations;
@@ -56,13 +57,10 @@
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
         internal SelectRequest(string nomTable, string alias)
-            : this(nomTable)
-        {
+            : this(nomTable) =>
             this.PrincipalTable = new Table(nomTable, alias);
-        }
 
-        /// <summary>Prevents a default instance of the <see cref="SelectRequest"/> class from being created.  Empêche la création
-        ///     d'une instance par défaut de la classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>Prevents a default instance of the <see cref="SelectRequest"/> class from being created.</summary>
         private SelectRequest()
         {
         }
@@ -162,10 +160,7 @@
 
         /// <summary>The to string. </summary>
         /// <returns>The <see cref="string"/>. </returns>
-        public override string ToString()
-        {
-            return this.ToSql();
-        }
+        public override string ToString() => this.ToSql();
 
         #endregion
 
@@ -173,10 +168,7 @@
 
         /// <summary>The has columns specified. </summary>
         /// <returns>The <see cref="bool"/>. </returns>
-        private bool HasColumnsSpecified()
-        {
-            return this.selectColumns.Any();
-        }
+        private bool HasColumnsSpecified() => this.selectColumns.Any();
 
         #endregion
     }
