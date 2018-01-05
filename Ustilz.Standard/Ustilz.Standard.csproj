@@ -1,32 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Ustilz</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\Ustilz\Enums\EnumHelper.cs" Link="Enums\EnumHelper.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsException.cs" Link="Extensions\ExtensionsException.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsFunc.cs" Link="Extensions\ExtensionsFunc.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsIList.cs" Link="Extensions\ExtensionsIList.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsInt32.cs" Link="Extensions\ExtensionsInt32.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsString.cs" Link="Extensions\ExtensionsString.cs" />
-    <Compile Include="..\Ustilz\Extensions\ExtensionsT.cs" Link="Extensions\ExtensionsT.cs" />
-    <Compile Include="..\Ustilz\Programs\Programme.cs" Link="Programs\Programme.cs" />
-    <Compile Include="..\Ustilz\Time\Horloge.cs" Link="Time\Horloge.cs" />
-    <Compile Include="..\Ustilz\Xml\XmlUtils.cs" Link="Xml\XmlUtils.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Enums\" />
     <Folder Include="Programs\" />
+    <Folder Include="Properties\" />
     <Folder Include="Time\" />
     <Folder Include="Xml\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="10.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
     <PackageReference Include="System.Diagnostics.Contracts" Version="4.3.0" />
     <PackageReference Include="System.Security.Cryptography.Csp" Version="4.3.0" />

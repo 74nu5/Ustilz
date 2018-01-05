@@ -1,17 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz", "Ustilz\Ustilz.csproj", "{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Test", "Ustilz.Test\Ustilz.Test.csproj", "{2E51410B-DF95-4AB3-88F3-07D17D7AA160}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net 4.6", ".Net 4.6", "{D23253EA-B33A-4723-823F-B9E542759F32}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standard", "Standard", "{B1A89D25-A936-42F6-B9D1-7D0240D4AB5F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Standard", "Ustilz.Standard\Ustilz.Standard.csproj", "{BF07B756-5331-4D8A-9245-B46A0FBEA84F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Standard", "Ustilz.Standard\Ustilz.Standard.csproj", "{BF07B756-5331-4D8A-9245-B46A0FBEA84F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E51410B-DF95-4AB3-88F3-07D17D7AA160}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,8 +25,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{53A39BF8-26A1-40DF-B870-1BD2F60CD74E} = {D23253EA-B33A-4723-823F-B9E542759F32}
-		{BF07B756-5331-4D8A-9245-B46A0FBEA84F} = {B1A89D25-A936-42F6-B9D1-7D0240D4AB5F}
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36107DC6-4F59-40D1-8C7A-E9E8D69268D2}
 	EndGlobalSection
 EndGlobal
