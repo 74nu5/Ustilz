@@ -1,3 +1,0 @@
-C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\bin\Debug\netstandard1.4\Ustilz.Standard.deps.json
-C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.4\Ustilz.Standard.csprojResolveAssemblyReference.cache
-C:\Users\ravonde\Documents\Projets\C#\Repos Git\Ustilz\Ustilz.Standard\obj\Debug\netstandard1.4\Ustilz.Standard.AssemblyInfo.cs
