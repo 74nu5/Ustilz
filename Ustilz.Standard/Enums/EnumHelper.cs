@@ -27,15 +27,10 @@
             var type = typeof(T);
             if (type.GetTypeInfo().BaseType != typeof(Enum))
             {
-                throw new ArgumentException("Le type fournit n'est pas une enumération.");
+                throw new ArgumentException("Le type fournit n'est pas une enumération.", nameof(value));
             }
 
-            var name = Enum.GetNames(type).Where(f => string.Equals(f, value.ToString(), StringComparison.CurrentCultureIgnoreCase)).Select(d => d).FirstOrDefault();
-
-            if (name == null)
-            {
-                return string.Empty;
-            }
+            var name = Enum.GetNames(type).FirstOrDefault(f => string.Equals(f, value.ToString(), StringComparison.CurrentCultureIgnoreCase));
 
             var field = type.GetTypeInfo().GetField(name);
 
@@ -49,7 +44,7 @@
             var type = typeof(T);
             if (type.GetTypeInfo().BaseType != typeof(Enum))
             {
-                throw new ArgumentException("Le type fournit n'est pas une enumération.");
+                throw new ArgumentException("Le type fournit n'est pas une enumération.", nameof(T));
             }
 
             var names = Enum.GetNames(type);

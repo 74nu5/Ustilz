@@ -2,10 +2,9 @@
 {
     #region Usings
 
+    using System;
     using System.ComponentModel.DataAnnotations;
-
     using Ustilz.Enums;
-
     using Xunit;
 
     #endregion
@@ -19,8 +18,7 @@
         private enum TestEnum
         {
             /// <summary>The valeur 1.</summary>
-            [Display]
-            Valeur1,
+            [Display] Valeur1,
 
             /// <summary>The valeur 2.</summary>
             Valeur2,
@@ -58,6 +56,13 @@
             Assert.Equal("Troisième valeur", descriptionValeur3);
         }
 
+        [Fact]
+        public void TestGetEnumDescriptionNotEnum()
+        {
+            var classe = new TestClasse();
+            Assert.Throws<ArgumentException>("value", () => EnumHelper<TestClasse>.GetEnumDescription(classe));
+        }
+
         /// <summary>The test to description dictionary nominal.</summary>
         [Fact]
         public void TestToDescriptionDictionaryNominal()
@@ -68,6 +73,17 @@
             Assert.Equal(string.Empty, descriptionDictionary["Valeur1"]);
             Assert.Null(descriptionDictionary["Valeur2"]);
             Assert.Equal("Troisième valeur", descriptionDictionary["Valeur3"]);
+        }
+
+        [Fact]
+        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("T", () => EnumHelper<TestClasse>.ToDescriptionDictionary());
+
+        #endregion
+
+        #region Nested type: TestClasse
+
+        private class TestClasse
+        {
         }
 
         #endregion
