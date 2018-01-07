@@ -27,7 +27,7 @@
         /// <summary>The generer couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>
         [NotNull]
-        public static string GenererCouleurs() => $"{Random.Next(0x1000000):X6}";
+        public static string GenererCouleur() => $"{Random.Next(0x1000000):X6}";
 
         /// <summary>The get color from nom.</summary>
         /// <param name="nom">The nom.</param>
