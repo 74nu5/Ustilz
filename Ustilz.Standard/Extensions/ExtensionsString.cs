@@ -32,6 +32,30 @@
 
         #endregion
 
+        #region HashType enum
+
+        /// <summary>Supported hash algorithms</summary>
+        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
+        public enum HashType
+        {
+            /// <summary>The m d 5.</summary>
+            MD5,
+
+            /// <summary>The sh a 1.</summary>
+            SHA1,
+
+            /// <summary>The sh a 256.</summary>
+            SHA256,
+
+            /// <summary>The sh a 384.</summary>
+            SHA384,
+
+            /// <summary>The sh a 512.</summary>
+            SHA512
+        }
+
+        #endregion
+
         #region Méthodes publiques
 
         /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
@@ -61,7 +85,7 @@
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         [System.Diagnostics.Contracts.Pure]
         public static string Decrypt([NotNull] this string stringToDecrypt, string key)
         {
@@ -85,7 +109,7 @@
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         [System.Diagnostics.Contracts.Pure]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
@@ -111,14 +135,14 @@
         /// <summary>The to string format.</summary>
         /// <param name="stringFormat">The string format.</param>
         /// <param name="stringParams">The string params.</param>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         public static string F(this string stringFormat, params object[] stringParams) => string.Format(stringFormat, stringParams);
 
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
         /// <typeparam name="T">Type à formatter</typeparam>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         public static string Fs<T>(this string template, T data) => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
 
         /// <summary>Generate random hash value to store against password</summary>
@@ -145,9 +169,7 @@
             }
         }
 
-        /// <summary>
-        ///     Generate random string to be used as passwords and salts
-        /// </summary>
+        /// <summary>Generate random string to be used as passwords and salts</summary>
         /// <returns>Base 64 random string</returns>
         public static string GeneratePassword()
         {
@@ -194,13 +216,13 @@
 
         /// <summary>The is null or empty.</summary>
         /// <param name="str">The str.</param>
-        /// <returns>The <see cref="bool" />.</returns>
+        /// <returns>The <see cref="bool"/>.</returns>
         public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>The join.</summary>
         /// <param name="strs">The strs.</param>
         /// <param name="separator">The separator.</param>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         public static string Join(this string[] strs, string separator) => string.Join(separator, strs);
 
         /// <summary>Converts string to enum object</summary>
@@ -255,7 +277,7 @@
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
-        /// <returns>The <see cref="byte" />.</returns>
+        /// <returns>The <see cref="byte"/>.</returns>
         private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
@@ -280,7 +302,7 @@
         /// <param name="match">The match.</param>
         /// <param name="data">The data.</param>
         /// <typeparam name="T">Type à inspecter</typeparam>
-        /// <returns>The <see cref="string" />.</returns>
+        /// <returns>The <see cref="string"/>.</returns>
         /// <exception cref="ArgumentException">Lève une exception lorsque la propriété et/ou la valeur n'est pas trouvé</exception>
         private static string GetValue<T>([NotNull] Match match, T data)
         {
@@ -295,30 +317,6 @@
                 var errMsg = $"Not find '{paraName}'";
                 throw new ArgumentException(errMsg);
             }
-        }
-
-        #endregion
-
-        #region HashType enum
-
-        /// <summary>Supported hash algorithms</summary>
-        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
-        public enum HashType
-        {
-            /// <summary>The m d 5.</summary>
-            MD5,
-
-            /// <summary>The sh a 1.</summary>
-            SHA1,
-
-            /// <summary>The sh a 256.</summary>
-            SHA256,
-
-            /// <summary>The sh a 384.</summary>
-            SHA384,
-
-            /// <summary>The sh a 512.</summary>
-            SHA512
         }
 
         #endregion

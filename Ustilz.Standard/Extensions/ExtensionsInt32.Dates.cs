@@ -10,7 +10,7 @@
 
     /// <summary>The extensions int 32.</summary>
     [PublicAPI]
-    public static class ExtensionsInt32
+    public static partial class ExtensionsInt32
     {
         #region Méthodes publiques
 

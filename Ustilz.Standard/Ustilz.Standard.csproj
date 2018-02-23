@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
     <Folder Include="Enums\" />
     <Folder Include="Programs\" />
     <Folder Include="Properties\" />
