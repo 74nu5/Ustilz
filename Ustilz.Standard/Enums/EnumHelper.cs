@@ -45,7 +45,7 @@
             var type = typeof(T);
             if (type.GetTypeInfo().BaseType != typeof(Enum))
             {
-                throw new TypeAccessException("Le type fournit n'est pas une enumération.");
+                throw new ArgumentException(nameof(T), "Le type fournit n'est pas une enumération.");
             }
 
             var names = Enum.GetNames(type);

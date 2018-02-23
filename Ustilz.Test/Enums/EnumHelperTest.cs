@@ -81,7 +81,7 @@
 
         /// <summary>The test to description dictionary not enum.</summary>
         [Fact]
-        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("T", () => EnumHelper.GetDescriptionDictionary<TestClasse>());
+        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("Le type fournit n'est pas une enumération.", () => EnumHelper.GetDescriptionDictionary<TestClasse>());
 
         #endregion
 
