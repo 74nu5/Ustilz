@@ -4,7 +4,9 @@
 
     using System;
     using System.ComponentModel.DataAnnotations;
+
     using Ustilz.Enums;
+
     using Xunit;
 
     #endregion
@@ -18,7 +20,8 @@
         private enum TestEnum
         {
             /// <summary>The valeur 1.</summary>
-            [Display] Valeur1,
+            [Display]
+            Valeur1,
 
             /// <summary>The valeur 2.</summary>
             Valeur2,
@@ -36,7 +39,7 @@
         [Fact]
         public void TestGetEnumDescriptionEmpty()
         {
-            var descriptionValeur1 = EnumHelper<TestEnum>.GetEnumDescription(TestEnum.Valeur1);
+            var descriptionValeur1 = EnumHelper.GetEnumDescription(TestEnum.Valeur1);
             Assert.Equal(string.Empty, descriptionValeur1);
         }
 
@@ -44,7 +47,7 @@
         [Fact]
         public void TestGetEnumDescriptionWithoutDisplay()
         {
-            var descriptionValeur2 = EnumHelper<TestEnum>.GetEnumDescription(TestEnum.Valeur2);
+            var descriptionValeur2 = EnumHelper.GetEnumDescription(TestEnum.Valeur2);
             Assert.Equal("Valeur2", descriptionValeur2);
         }
 
@@ -52,22 +55,23 @@
         [Fact]
         public void TestGetEnumDescriptionNominal()
         {
-            var descriptionValeur3 = EnumHelper<TestEnum>.GetEnumDescription(TestEnum.Valeur3);
+            var descriptionValeur3 = EnumHelper.GetEnumDescription(TestEnum.Valeur3);
             Assert.Equal("Troisième valeur", descriptionValeur3);
         }
 
+        /// <summary>The test get enum description not enum.</summary>
         [Fact]
         public void TestGetEnumDescriptionNotEnum()
         {
             var classe = new TestClasse();
-            Assert.Throws<ArgumentException>("value", () => EnumHelper<TestClasse>.GetEnumDescription(classe));
+            Assert.Throws<ArgumentException>("value", () => EnumHelper.GetEnumDescription(classe));
         }
 
         /// <summary>The test to description dictionary nominal.</summary>
         [Fact]
         public void TestToDescriptionDictionaryNominal()
         {
-            var descriptionDictionary = EnumHelper<TestEnum>.ToDescriptionDictionary();
+            var descriptionDictionary = EnumHelper.GetDescriptionDictionary<TestEnum>();
             Assert.NotEmpty(descriptionDictionary);
             Assert.Equal(3, descriptionDictionary.Count);
             Assert.Equal(string.Empty, descriptionDictionary["Valeur1"]);
@@ -75,13 +79,15 @@
             Assert.Equal("Troisième valeur", descriptionDictionary["Valeur3"]);
         }
 
+        /// <summary>The test to description dictionary not enum.</summary>
         [Fact]
-        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("T", () => EnumHelper<TestClasse>.ToDescriptionDictionary());
+        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("T", () => EnumHelper.GetDescriptionDictionary<TestClasse>());
 
         #endregion
 
         #region Nested type: TestClasse
 
+        /// <summary>The test classe.</summary>
         private class TestClasse
         {
         }

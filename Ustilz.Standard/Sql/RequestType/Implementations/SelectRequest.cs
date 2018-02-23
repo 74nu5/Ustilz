@@ -126,11 +126,11 @@
         public string ToSql()
         {
             var sql = new StringBuilder();
-            sql.Append(Constantes.SQL.Keyword.SELECT);
+            sql.Append(Constantes.SQL.Keyword.Select);
             sql.Append(Constantes.Space);
             if (!this.HasColumnsSpecified())
             {
-                sql.Append(Constantes.SQL.ALL_COLUMNS);
+                sql.Append(Constantes.SQL.AllColumns);
                 sql.Append(Constantes.Space);
             }
             else
@@ -140,7 +140,7 @@
             }
 
             sql.Append(Constantes.Space);
-            sql.Append(Constantes.SQL.Keyword.FROM);
+            sql.Append(Constantes.SQL.Keyword.From);
 
             sql.Append(Constantes.Space);
             sql.Append(this.PrincipalTable);

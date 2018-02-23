@@ -1,7 +1,9 @@
 namespace Ustilz.Sql
 {
+    using JetBrains.Annotations;
+
     /// <summary>The constantes. </summary>
-    internal class Constantes
+    internal static class Constantes
     {
         #region Champs et constantes statiques
 
@@ -19,69 +21,69 @@ namespace Ustilz.Sql
         #region Nested type: SQL
 
         /// <summary>The sql. </summary>
-        internal class SQL
+        internal static class SQL
         {
             #region Champs et constantes statiques
 
             /// <summary>The al l_ columns. </summary>
-            internal const string ALL_COLUMNS = "*";
+            internal const string AllColumns = "*";
 
             #endregion
 
             #region Nested type: Keyword
 
             /// <summary>The keyword. </summary>
-            internal class Keyword
+            internal static class Keyword
             {
                 #region Champs et constantes statiques
 
                 /// <summary>The from. </summary>
-                internal const string FROM = "from";
+                internal const string From = "from";
 
                 /// <summary>The select. </summary>
-                internal const string SELECT = "select";
+                internal const string Select = "select";
 
                 #endregion
 
                 #region Nested type: Join
 
                 /// <summary>The join. </summary>
-                internal class Join
+                internal static class Joinning
                 {
                     #region Champs et constantes statiques
 
                     /// <summary>The cross. </summary>
-                    internal const string CROSS = "cross";
+                    internal const string Cross = "cross";
 
                     /// <summary>The full. </summary>
-                    internal const string FULL = "full";
+                    internal const string Full = "full";
 
                     /// <summary>The inner. </summary>
-                    internal const string INNER = "inner";
+                    internal const string Inner = "inner";
 
                     /// <summary>The join. </summary>
-                    internal const string JOIN = "join";
+                    internal const string Join = "join";
 
                     /// <summary>The left. </summary>
-                    internal const string LEFT = "left";
+                    internal const string Left = "left";
 
                     /// <summary>The natural. </summary>
-                    internal const string NATURAL = "natural";
+                    internal const string Natural = "natural";
 
                     /// <summary>The on. </summary>
-                    internal const string ON = " on ";
+                    internal const string On = " on ";
 
                     /// <summary>The outer. </summary>
-                    internal const string OUTER = "outer";
+                    internal const string Outer = "outer";
 
                     /// <summary>The right. </summary>
-                    internal const string RIGHT = "right";
+                    internal const string Right = "right";
 
                     /// <summary>The self. </summary>
-                    internal const string SELF = "self";
+                    internal const string Self = "self";
 
                     /// <summary>The union. </summary>
-                    internal const string UNION = "union";
+                    internal const string Union = "union";
 
                     #endregion
                 }
@@ -91,18 +93,18 @@ namespace Ustilz.Sql
                 #region Nested type: Where
 
                 /// <summary>The where. </summary>
-                internal class Where
+                internal static class Conditions
                 {
                     #region Champs et constantes statiques
 
                     /// <summary>The and. </summary>
-                    public const string AND = "and";
+                    public const string And = "and";
 
                     /// <summary>The or. </summary>
-                    public const string OR = "or";
+                    public const string Or = "or";
 
                     /// <summary>The where. </summary>
-                    internal const string WHERE = "where";
+                    internal const string Where = "where";
 
                     #endregion
                 }

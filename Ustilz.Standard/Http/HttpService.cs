@@ -17,7 +17,7 @@
 
     /// <summary>The http service.</summary>
     [PublicAPI]
-    public sealed class HttpService
+    public static class HttpService
     {
         #region Méthodes publiques
 
@@ -66,7 +66,7 @@
 
                     var errorText = reader.ReadToEnd();
 
-                    throw new Exception(errorText);
+                    throw new WebException(errorText);
                 }
             }
         }

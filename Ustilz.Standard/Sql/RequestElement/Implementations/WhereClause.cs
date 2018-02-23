@@ -46,7 +46,7 @@
         public override string ToString()
         {
             var whereBuilder = new StringBuilder(Constantes.Space);
-            whereBuilder.Append(Constantes.SQL.Keyword.Where.WHERE);
+            whereBuilder.Append(Constantes.SQL.Keyword.Conditions.Where);
             whereBuilder.Append(this.FirstCondition);
             return whereBuilder.ToString();
         }

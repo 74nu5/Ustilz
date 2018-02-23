@@ -62,13 +62,13 @@
 
             if (this.AndCondition != null)
             {
-                whereConditionBuilder.Append(Constantes.SQL.Keyword.Where.AND);
+                whereConditionBuilder.Append(Constantes.SQL.Keyword.Conditions.And);
                 whereConditionBuilder.Append(this.AndCondition);
             }
 
             if (this.OrCondition != null)
             {
-                whereConditionBuilder.Append(Constantes.SQL.Keyword.Where.OR);
+                whereConditionBuilder.Append(Constantes.SQL.Keyword.Conditions.Or);
                 whereConditionBuilder.Append(this.OrCondition);
             }
 

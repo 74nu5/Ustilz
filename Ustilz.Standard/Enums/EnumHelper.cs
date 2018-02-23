@@ -13,16 +13,16 @@
     #endregion
 
     /// <summary>The enum helper. </summary>
-    /// <typeparam name="T">The T </typeparam>
     [PublicAPI]
-    public static class EnumHelper<T>
+    public static class EnumHelper
     {
         #region Méthodes publiques
 
         /// <summary>Méthode d'obtention de la description d'une valeur d'une énumération.</summary>
+        /// <typeparam name="T">Type de l'énumération</typeparam>
         /// <param name="value">The value. </param>
         /// <returns>The <see cref="string"/>. </returns>
-        public static string GetEnumDescription(T value)
+        public static string GetEnumDescription<T>(T value)
         {
             var type = typeof(T);
             if (type.GetTypeInfo().BaseType != typeof(Enum))
@@ -38,13 +38,14 @@
         }
 
         /// <summary>To the description dictionary.</summary>
+        /// <typeparam name="T">Type de l'énumération</typeparam>
         /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum</returns>
-        public static Dictionary<string, string> ToDescriptionDictionary()
+        public static Dictionary<string, string> GetDescriptionDictionary<T>()
         {
             var type = typeof(T);
             if (type.GetTypeInfo().BaseType != typeof(Enum))
             {
-                throw new ArgumentException("Le type fournit n'est pas une enumération.", nameof(T));
+                throw new TypeAccessException("Le type fournit n'est pas une enumération.");
             }
 
             var names = Enum.GetNames(type);

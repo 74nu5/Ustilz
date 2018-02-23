@@ -19,9 +19,12 @@
 
         #endregion
 
-        /// <summary>Initializes a new instance of the <see cref="T:System.Object"></see> class.</summary>
+        #region Constructeurs et destructeurs
+
+        /// <summary>Initializes static members of the <see cref="Horloge"/> class. Initializes a new instance of the<see cref="T:System.Object"></see> class.</summary>
         static Horloge() => fonction = () => DateTime.Now;
-        
+
+        #endregion
 
         #region Propriétés et indexeurs
 
@@ -31,7 +34,7 @@
 
         /// <summary>Sets the fonction maintenant.</summary>
         /// <value>The fonction maintenant.</value>
-        public static Func<DateTime> FonctionMaintenant
+        public static Func<DateTime> SetFonctionMaintenant
         {
             set => fonction = value ?? (() => DateTime.Now);
         }
@@ -41,7 +44,7 @@
         #region Méthodes publiques
 
         /// <summary>The reset.</summary>
-        public static void Reset() => FonctionMaintenant = null;
+        public static void Reset() => SetFonctionMaintenant = null;
 
         #endregion
     }

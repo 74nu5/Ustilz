@@ -26,7 +26,7 @@ namespace Ustilz.Test.Time
         [Fact]
         public void FonctionMaintenantTest()
         {
-            Horloge.FonctionMaintenant = () => new DateTime(2018, 1, 07);
+            Horloge.SetFonctionMaintenant = () => new DateTime(2018, 1, 07);
             var maintenant = Horloge.Maintenant;
 
             Assert.Equal(7, maintenant.Day);
@@ -36,7 +36,7 @@ namespace Ustilz.Test.Time
             Assert.Equal(2018, maintenant.Year);
             Assert.Equal(0, maintenant.Second);
 
-            Horloge.FonctionMaintenant = null;
+            Horloge.SetFonctionMaintenant = null;
 
             var now = DateTime.Now;
             maintenant = Horloge.Maintenant;
@@ -52,7 +52,7 @@ namespace Ustilz.Test.Time
         [Fact]
         public void ResetTest()
         {
-            Horloge.FonctionMaintenant = () => new DateTime(2018, 1, 07);
+            Horloge.SetFonctionMaintenant = () => new DateTime(2018, 1, 07);
             var maintenant = Horloge.Maintenant;
 
             Assert.Equal(7, maintenant.Day);

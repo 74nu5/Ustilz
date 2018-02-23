@@ -58,12 +58,7 @@
             }
 
             var color = $"#{(long)bii:X6}";
-            if (color.Length != 7)
-            {
-                throw new IndexOutOfRangeException();
-            }
-
-            return color;
+            return color.Length != 7 ? "#000000" : color;
         }
 
         #endregion
