@@ -5,6 +5,7 @@
     using System;
 
     using JetBrains.Annotations;
+    using Ustilz.Time;
 
     #endregion
 
@@ -26,7 +27,7 @@
             const int Day = 24 * Hour;
             const int Month = 30 * Day;
 
-            var ts = new TimeSpan(DateTime.UtcNow.Ticks - currentDate.Ticks);
+            var ts = new TimeSpan(Horloge.Maintenant.Ticks - currentDate.Ticks);
             var delta = Math.Abs(ts.TotalSeconds);
 
             if (delta < 1 * Minute)
