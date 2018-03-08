@@ -65,6 +65,14 @@ namespace Ustilz.Extensions
         public static bool IsNull<T>([CanBeNull] this T source)
             where T : class => source == null;
 
+        /// <summary>The if null.</summary>
+        /// <param name="source">The source.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <typeparam name="T">Type de l'objet</typeparam>
+        /// <returns>The <see cref="T"/>.</returns>
+        public static T IfNull<T>([CanBeNull] this T source, T defaultValue)
+            where T : class => source ?? defaultValue;
+
         /// <summary>The join. </summary>
         /// <param name="tab">The tab. </param>
         /// <param name="separateur">The separateur. </param>
