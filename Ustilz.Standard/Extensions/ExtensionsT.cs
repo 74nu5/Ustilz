@@ -49,7 +49,7 @@ namespace Ustilz.Extensions
         /// <param name="list">The list. </param>
         /// <typeparam name="T">Type de la liste </typeparam>
         /// <returns>The <see cref="bool"/>. </returns>
-        public static bool In<T>(this T value, params T[] list) => list.Contains(value);
+        public static bool IsIn<T>(this T value, params T[] list) => list.Contains(value);
 
         /// <summary>Determines whether [is not null].</summary>
         /// <typeparam name="T">Type de l'objet</typeparam>
