@@ -6,6 +6,7 @@
     using Ustilz.Extensions;
     using Ustilz.Time;
     using Xunit;
+    using Xunit.Abstractions;
 
     #endregion
 
@@ -15,12 +16,15 @@
         #region Constructeurs et destructeurs
 
         /// <summary>Initializes a new instance of the <see cref="ExtensionsDateTimeTest"/> class.</summary>
-        public ExtensionsDateTimeTest()
+        /// <param name="output">The output.</param>
+        public ExtensionsDateTimeTest(ITestOutputHelper output)
         {
+            var now = DateTime.Now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
+            output.WriteLine($"Maintenant : {now}");
             if (DateTime.Now.Month < 5)
             {
                 // Pour éviter le mois de février.
-                Horloge.SetFonctionMaintenant = () => DateTime.Now.AddMonths(5);
+                Horloge.SetFonctionMaintenant = () => now;
             }
         }
 
