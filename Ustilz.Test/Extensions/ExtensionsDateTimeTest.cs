@@ -97,7 +97,8 @@
         {
             // Test 1 minute
             var subtract = Horloge.Maintenant.Subtract(TimeSpan.FromDays(1));
-            this.output.WriteLine($"Sub : {subtract}");
+            this.output.WriteLine($"[ReadableTimeStampForYesterdayTest] Maintenant : {Horloge.Maintenant}");
+            this.output.WriteLine($"[ReadableTimeStampForYesterdayTest] Sub : {subtract}");
             var readable = subtract.ReadableTimeStamp();
             Assert.Equal("yesterday", readable);
         }
