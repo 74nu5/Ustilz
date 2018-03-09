@@ -55,13 +55,13 @@
             Assert.Equal("a minute ago", readable);
         }
 
-        /// <summary>The readable time stamp for 40 minutes test.</summary>
+        /// <summary>The readable time stamp for 30 minutes test.</summary>
         [Fact]
-        public void ReadableTimeStampFor40MinutesTest()
+        public void ReadableTimeStampFor30MinutesTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromMinutes(40)).ReadableTimeStamp();
-            Assert.Equal("40 minutes ago", readable);
+            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromMinutes(30)).ReadableTimeStamp();
+            Assert.Equal("30 minutes ago", readable);
         }
 
         /// <summary>The readable time stamp for 1 hours test.</summary>
