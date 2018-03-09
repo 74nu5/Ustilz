@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ustilz.Test.Time
+﻿namespace Ustilz.Test.Time
 {
+    #region Usings
+
+    using System;
     using Ustilz.Time;
     using Xunit;
 
-    public class HorlogeTest
+    #endregion
+
+    /// <inheritdoc />
+    /// <summary>The horloge test.</summary>
+    public class HorlogeTest : IDisposable
     {
+        #region Méthodes publiques
+
+        /// <summary>The maintenant test.</summary>
         [Fact]
         public void MaintenantTest()
         {
@@ -23,6 +29,7 @@ namespace Ustilz.Test.Time
             Assert.Equal(now.Second, maintenant.Second);
         }
 
+        /// <summary>The fonction maintenant test.</summary>
         [Fact]
         public void FonctionMaintenantTest()
         {
@@ -49,6 +56,7 @@ namespace Ustilz.Test.Time
             Assert.Equal(now.Second, maintenant.Second);
         }
 
+        /// <summary>The reset test.</summary>
         [Fact]
         public void ResetTest()
         {
@@ -74,5 +82,11 @@ namespace Ustilz.Test.Time
             Assert.Equal(now.Year, maintenant.Year);
             Assert.Equal(now.Second, maintenant.Second);
         }
+
+        /// <inheritdoc />
+        /// <summary>The dispose.</summary>
+        public void Dispose() => Horloge.Reset();
+
+        #endregion
     }
 }

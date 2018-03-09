@@ -10,8 +10,9 @@
 
     #endregion
 
+    /// <inheritdoc />
     /// <summary>The extensions date time test.</summary>
-    public class ExtensionsDateTimeTest
+    public class ExtensionsDateTimeTest : IDisposable
     {
         #region Constructeurs et destructeurs
 
@@ -139,6 +140,10 @@
             var readable = Horloge.Maintenant.AddYears(-10).ReadableTimeStamp();
             Assert.Equal("10 years ago", readable);
         }
+
+        /// <inheritdoc />
+        /// <summary>The dispose.</summary>
+        public void Dispose() => Horloge.Reset();
 
         #endregion
     }
