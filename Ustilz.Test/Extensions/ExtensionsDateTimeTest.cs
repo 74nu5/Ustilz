@@ -20,11 +20,12 @@
         /// <param name="output">The output.</param>
         public ExtensionsDateTimeTest(ITestOutputHelper output)
         {
-            var now = DateTime.Now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
-            output.WriteLine($"Maintenant : {now}");
+            var now = DateTime.Now;
+            var date = now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
+            output.WriteLine($"Maintenant : {date}");
 
             // Pour éviter le mois de février.
-            Horloge.SetFonctionMaintenant = () => now;
+            Horloge.SetFonctionMaintenant = () => date;
 
         }
 
