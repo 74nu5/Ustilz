@@ -196,12 +196,12 @@
 	<s:String x:Key="/Default/Environment/ContinuousTesting/TriggerMode/@EntryValue">OnSave</s:String>
 	<s:Boolean x:Key="/Default/Environment/ContinuousTestingSessionDescriptor/AutoScrollOutput/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/ContinuousTestingSessionDescriptor/ShowTime/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/Environment/ContinuousTestingSessionDescriptor/TrackActiveElement/@EntryValue">True</s:Boolean>
+	
 	
 	
 	
 	
 	<s:Int64 x:Key="/Default/Environment/SearchAndNavigation/DefaultOccurrencesGroupingIndex/@EntryValue">3</s:Int64>
 	<s:Boolean x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade_002EAlwaysTreatStructAsNotReorderableMigration/@EntryIndexedValue">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">01/12/2018 10:21:35</s:String>
+	<s:String x:Key="/Default/Environment/UpdatesManger/LastUpdateCheck/@EntryValue">03/09/2018 15:35:02</s:String>
 	<s:String x:Key="/Default/Housekeeping/Layout/DialogWindows/OptionsDialog/SelectedPageId/@EntryValue">CommonFormatter</s:String></wpf:ResourceDictionary>

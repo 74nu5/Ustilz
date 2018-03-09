@@ -22,11 +22,10 @@
         {
             var now = DateTime.Now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
             output.WriteLine($"Maintenant : {now}");
-            if (DateTime.Now.Month < 5)
-            {
-                // Pour éviter le mois de février.
-                Horloge.SetFonctionMaintenant = () => now;
-            }
+
+            // Pour éviter le mois de février.
+            Horloge.SetFonctionMaintenant = () => now;
+
         }
 
         #endregion
