@@ -10,7 +10,7 @@
 
     /// <summary>The extensions enum.</summary>
     [PublicAPI]
-    public static class ExtensionsEnumTest
+    public class ExtensionsEnumTest
     {
         #region Champs et constantes statiques
 
@@ -40,15 +40,15 @@
 
         /// <summary>The in test.</summary>
         [Fact]
-        public static void InVideTest() => Assert.False(Item.In());
+        public void InVideTest() => Assert.False(Item.In());
 
         /// <summary>The in true test.</summary>
         [Fact]
-        public static void InTrueTest() => Assert.True(Item.In(Test.Item1, Test.Item2, Test.Item3));
+        public void InTrueTest() => Assert.True(Item.In(Test.Item1, Test.Item2, Test.Item3));
 
         /// <summary>The in false test.</summary>
         [Fact]
-        public static void InFalseTest() => Assert.False(Item.In(Test.Item2, Test.Item3));
+        public void InFalseTest() => Assert.False(Item.In(Test.Item2, Test.Item3));
 
         #endregion
     }
