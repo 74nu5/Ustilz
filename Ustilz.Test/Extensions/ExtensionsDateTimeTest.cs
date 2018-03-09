@@ -14,12 +14,16 @@
     /// <summary>The extensions date time test.</summary>
     public class ExtensionsDateTimeTest : IDisposable
     {
+        private readonly ITestOutputHelper output;
+
         #region Constructeurs et destructeurs
 
         /// <summary>Initializes a new instance of the <see cref="ExtensionsDateTimeTest"/> class.</summary>
         /// <param name="output">The output.</param>
         public ExtensionsDateTimeTest(ITestOutputHelper output)
         {
+            Horloge.Reset();
+            this.output = output;
             var now = DateTime.Now;
             var date = now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
             output.WriteLine($"Maintenant : {date}");
@@ -92,7 +96,9 @@
         public void ReadableTimeStampForYesterdayTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromDays(1)).ReadableTimeStamp();
+            var subtract = Horloge.Maintenant.Subtract(TimeSpan.FromDays(1));
+            this.output.WriteLine($"Sub : {subtract}");
+            var readable = subtract.ReadableTimeStamp();
             Assert.Equal("yesterday", readable);
         }
 

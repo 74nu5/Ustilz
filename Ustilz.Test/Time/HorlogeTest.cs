@@ -12,6 +12,13 @@
     /// <summary>The horloge test.</summary>
     public class HorlogeTest : IDisposable
     {
+        #region Constructeurs et destructeurs
+
+        /// <summary>Initializes a new instance of the <see cref="HorlogeTest"/> class.</summary>
+        public HorlogeTest() => Horloge.Reset();
+
+        #endregion
+
         #region Méthodes publiques
 
         /// <summary>The maintenant test.</summary>
