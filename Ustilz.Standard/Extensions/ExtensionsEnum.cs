@@ -21,7 +21,7 @@
         /// <param name="value">Value to match</param>
         /// <param name="values">Values to match against</param>
         /// <returns>Return true if matched</returns>
-        public static bool In(this Enum value, params Enum[] values) => values.Any(v => ReferenceEquals(v, value));
+        public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
 
         #endregion
     }

@@ -19,6 +19,7 @@
         {
             if (DateTime.Now.Month < 5)
             {
+                // Pour éviter le mois de février.
                 Horloge.SetFonctionMaintenant = () => DateTime.Now.AddMonths(5);
             }
         }
