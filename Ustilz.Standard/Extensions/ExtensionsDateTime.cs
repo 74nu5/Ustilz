@@ -59,9 +59,13 @@
             {
                 return "yesterday";
             }
-
+            
             if (delta < 30 * Day)
             {
+                if (Horloge.Maintenant.Month == 3 && delta > 27 * Day)
+                {
+                    return "one month ago";
+                }
                 return $"{ts.Days} days ago";
             }
 

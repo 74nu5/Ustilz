@@ -25,11 +25,10 @@
             Horloge.Reset();
             this.output = output;
             var now = DateTime.Now;
-            var date = now.Month < 5 ? DateTime.Now.AddMonths(5) : DateTime.Now;
-            output.WriteLine($"Maintenant : {date}");
+            output.WriteLine($"Maintenant : {now}");
 
             // Pour éviter le mois de février.
-            Horloge.SetFonctionMaintenant = () => date;
+            Horloge.SetFonctionMaintenant = () => now;
 
         }
 
