@@ -9,7 +9,7 @@
     #endregion
 
     /// <summary>The extensions int 32.</summary>
-    public class ExtensionsInt32Test
+    public partial class ExtensionsInt32Test
     {
         #region Méthodes publiques
 
