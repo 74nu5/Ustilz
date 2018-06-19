@@ -7,6 +7,8 @@
     using System.Collections.ObjectModel;
     using JetBrains.Annotations;
     using Ustilz.Extensions;
+    using Ustilz.Extensions.Enumerables;
+
     using Xunit;
 
     #endregion
