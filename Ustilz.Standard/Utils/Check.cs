@@ -70,7 +70,7 @@ namespace Ustilz.Utils
         public static string NotEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
             Exception e = null;
-            if (ReferenceEquals(value, null))
+            if (value is null)
             {
                 e = new ArgumentNullException(parameterName);
             }
@@ -98,7 +98,7 @@ namespace Ustilz.Utils
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            if (!ReferenceEquals(value, null))
+            if (value != null)
             {
                 return value;
             }
@@ -118,7 +118,7 @@ namespace Ustilz.Utils
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName, [NotNull] string propertyName)
         {
-            if (!ReferenceEquals(value, null))
+            if (value != null)
             {
                 return value;
             }
@@ -136,7 +136,7 @@ namespace Ustilz.Utils
         [CanBeNull]
         public static string NullButNotEmpty([CanBeNull] string value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            if (ReferenceEquals(value, null) || value.Length != 0)
+            if (value is null || value.Length != 0)
             {
                 return value;
             }
