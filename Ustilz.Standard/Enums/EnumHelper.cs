@@ -19,17 +19,14 @@
         #region Méthodes publiques
 
         /// <summary>Méthode d'obtention de la description d'une valeur d'une énumération.</summary>
-        /// <typeparam name="T">Type de l'énumération</typeparam>
         /// <param name="value">The value. </param>
+        /// <typeparam name="T">Type de l'énumération</typeparam>
         /// <returns>The <see cref="string"/>. </returns>
-        public static string GetEnumDescription<T>(T value)
+        public static string GetEnumDescription<T>(
+            this T value)
+            where T : Enum
         {
             var type = typeof(T);
-            if (type.GetTypeInfo().BaseType != typeof(Enum))
-            {
-                throw new ArgumentException("Le type fournit n'est pas une enumération.", nameof(value));
-            }
-
             var name = Enum.GetNames(type).FirstOrDefault(f => string.Equals(f, value.ToString(), StringComparison.CurrentCultureIgnoreCase));
 
             var field = type.GetTypeInfo().GetField(name);
@@ -41,16 +38,13 @@
         /// <typeparam name="T">Type de l'énumération</typeparam>
         /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum</returns>
         public static Dictionary<string, string> GetDescriptionDictionary<T>()
+            where T : Enum
         {
             var type = typeof(T);
-            if (type.GetTypeInfo().BaseType != typeof(Enum))
-            {
-                throw new ArgumentException(nameof(T), "Le type fournit n'est pas une enumération.");
-            }
-
             var names = Enum.GetNames(type);
 
-            string Selector(string name)
+            string Selector(
+                string name)
             {
                 if (!(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute))
                 {

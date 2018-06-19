@@ -39,7 +39,7 @@
         [Fact]
         public void TestGetEnumDescriptionEmpty()
         {
-            var descriptionValeur1 = EnumHelper.GetEnumDescription(TestEnum.Valeur1);
+            var descriptionValeur1 = TestEnum.Valeur1.GetEnumDescription();
             Assert.Equal(string.Empty, descriptionValeur1);
         }
 
@@ -47,7 +47,7 @@
         [Fact]
         public void TestGetEnumDescriptionWithoutDisplay()
         {
-            var descriptionValeur2 = EnumHelper.GetEnumDescription(TestEnum.Valeur2);
+            var descriptionValeur2 = TestEnum.Valeur2.GetEnumDescription();
             Assert.Equal("Valeur2", descriptionValeur2);
         }
 
@@ -55,16 +55,8 @@
         [Fact]
         public void TestGetEnumDescriptionNominal()
         {
-            var descriptionValeur3 = EnumHelper.GetEnumDescription(TestEnum.Valeur3);
+            var descriptionValeur3 = TestEnum.Valeur3.GetEnumDescription();
             Assert.Equal("Troisième valeur", descriptionValeur3);
-        }
-
-        /// <summary>The test get enum description not enum.</summary>
-        [Fact]
-        public void TestGetEnumDescriptionNotEnum()
-        {
-            var classe = new TestClasse();
-            Assert.Throws<ArgumentException>("value", () => EnumHelper.GetEnumDescription(classe));
         }
 
         /// <summary>The test to description dictionary nominal.</summary>
@@ -77,19 +69,6 @@
             Assert.Equal(string.Empty, descriptionDictionary["Valeur1"]);
             Assert.Null(descriptionDictionary["Valeur2"]);
             Assert.Equal("Troisième valeur", descriptionDictionary["Valeur3"]);
-        }
-
-        /// <summary>The test to description dictionary not enum.</summary>
-        [Fact]
-        public void TestToDescriptionDictionaryNotEnum() => Assert.Throws<ArgumentException>("Le type fournit n'est pas une enumération.", () => EnumHelper.GetDescriptionDictionary<TestClasse>());
-
-        #endregion
-
-        #region Nested type: TestClasse
-
-        /// <summary>The test classe.</summary>
-        private class TestClasse
-        {
         }
 
         #endregion
