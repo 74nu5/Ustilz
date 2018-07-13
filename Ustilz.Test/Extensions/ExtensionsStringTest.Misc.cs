@@ -3,6 +3,7 @@
     #region Usings
 
     using Ustilz.Extensions;
+    using Ustilz.Extensions.String;
 
     using Xunit;
 

@@ -3,7 +3,9 @@
     #region Usings
 
     using System;
-    using Ustilz.Extensions;
+    using Ustilz.Extensions.Date;
+    using Ustilz.Extensions.Int32;
+
     using Xunit;
 
     #endregion

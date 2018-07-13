@@ -4,6 +4,8 @@
 
     using System;
     using Ustilz.Extensions;
+    using Ustilz.Extensions.Int32;
+
     using Xunit;
 
     #endregion

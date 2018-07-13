@@ -3,6 +3,8 @@
     #region Usings
 
     using Ustilz.Extensions;
+    using Ustilz.Extensions.Int32;
+
     using Xunit;
 
     #endregion
