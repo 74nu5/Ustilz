@@ -1,44 +1,54 @@
 ﻿namespace Ustilz.Extensions.Date
 {
+    #region Usings
+
     using System;
 
     using JetBrains.Annotations;
+
+    #endregion
 
     public static partial class ExtensionsDateTime
     {
         #region Méthodes publiques
 
         /// <summary>Calculates the difference between the year of the current and the given date time.</summary>
-        /// <remarks><paramref name="now"/> can be smaller than <paramref name="dateTime"/>, which results in negative results.
-        ///     Source from: http://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-in-c</remarks>
-        /// <param name="dateTime">The date time value.</param>
-        /// <param name="now">The 'current' date used to calculate the age, or null to use <see cref="DateTime.Now"/>.</param>
+        /// <param name="bday">Date from age is calculate.</param>
+        /// <param name="day">Date to age is calculate.</param>
         /// <returns>The difference between the year of the current and the given date time.</returns>
         [Pure]
         [PublicAPI]
-        public static int Age(this DateTime dateTime, [CanBeNull] DateTime? now = null)
+        public static (int yearAge, int monthAge, int dayAge) Age(this DateTime bday, DateTime? day = null)
         {
-            var currentDate = now ?? DateTime.Now;
-            if (dateTime.Year == currentDate.Year)
+            var cday = day ?? DateTime.Now;
+            if (cday.Year - bday.Year <= 0 && (cday.Year - bday.Year != 0 || bday.Month >= cday.Month && (bday.Month != cday.Month || bday.Day > cday.Day)))
             {
-                return 0;
+                throw new ArgumentException("Birthday date must be earlier than current date");
             }
 
-            var a = (currentDate.Year * 100 + currentDate.Month) * 100 + currentDate.Day;
-            var b = (dateTime.Year * 100 + dateTime.Month) * 100 + dateTime.Day;
+            var daysInBdayMonth = DateTime.DaysInMonth(bday.Year, bday.Month);
+            var daysRemain = cday.Day + (daysInBdayMonth - bday.Day);
 
-            return (a - b) / 10000;
+            return cday.Month > bday.Month
+                ? (cday.Year - bday.Year, cday.Month - (bday.Month + 1) + Math.Abs(daysRemain / daysInBdayMonth),
+                    (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth)
+                : (cday.Month == bday.Month
+                    ? (cday.Day >= bday.Day
+                        ? (cday.Year - bday.Year, 0, cday.Day - bday.Day)
+                        : (cday.Year - 1 - bday.Year, 11, DateTime.DaysInMonth(bday.Year, bday.Month) - (bday.Day - cday.Day)))
+                    : (cday.Year - 1 - bday.Year, cday.Month + (11 - bday.Month) + Math.Abs(daysRemain / daysInBdayMonth),
+                        (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth));
         }
 
         /// <summary>Returns a DateTime with its value set to Now minus the provided TimeSpan value.</summary>
         /// <param name="value"></param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
+        /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime Ago(this TimeSpan value)
             => DateTime.Now.Subtract(value);
 
         /// <summary>Returns a DateTime with its value set to Now minus the provided TimeSpan value.</summary>
         /// <param name="value"></param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
+        /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime AgoUtc(this TimeSpan value)
             => DateTime.UtcNow.Subtract(value);
 
@@ -52,13 +62,13 @@
 
         /// <summary>Returns a DateTime with its value set to Now plus the provided TimeSpan value.</summary>
         /// <param name="value"></param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
+        /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime FromNow(this TimeSpan value)
             => DateTime.Now.Add(value);
 
         /// <summary>Returns a DateTime with its value set to Now plus the provided TimeSpan value.</summary>
         /// <param name="value"></param>
-        /// <returns>The <see cref="DateTime"/>.</returns>
+        /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime FromNowUtc(this TimeSpan value)
             => DateTime.UtcNow.Add(value);
 
