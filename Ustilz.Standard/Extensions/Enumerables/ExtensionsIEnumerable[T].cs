@@ -29,31 +29,29 @@
             }
         }
 
-        /// <summary>Read only collection of any enumeration</summary>
-        /// <typeparam name="T">Type of enumeration</typeparam>
-        /// <param name="collection">Enumerable collection</param>
-        /// <returns>ReadOnlyCollection of the collection</returns>
-        public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection) => new List<T>(collection).AsReadOnly();
+        /// <summary>The join. </summary>
+        /// <param name="tab">The tab. </param>
+        /// <param name="separateur">The separateur. </param>
+        /// <typeparam name="T">The type </typeparam>
+        /// <returns>The <see cref="string"/>. </returns>
+        public static string Join<T>(this IEnumerable<T> tab, string separateur)
+            => string.Join(separateur, tab);
 
-        /// <summary>
-        ///     Determines whether the given IEnumerable contains no items, or not.
-        /// </summary>
+        /// <summary>Determines whether the given IEnumerable contains no items, or not.</summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable to check.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
+        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
         {
             enumerable.ThrowIfNull(nameof(enumerable));
 
             return !enumerable.Any();
         }
 
-        /// <summary>
-        ///     Determines whether the given IEnumerable contains no items matching the given predicate, or not.
-        /// </summary>
+        /// <summary>Determines whether the given IEnumerable contains no items matching the given predicate, or not.</summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
         /// <param name="enumerable">The IEnumerable to check.</param>
@@ -62,13 +60,20 @@
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate)
+        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate)
         {
             enumerable.ThrowIfNull(nameof(enumerable));
             predicate.ThrowIfNull(nameof(predicate));
 
             return !enumerable.Any(predicate);
         }
+
+        /// <summary>Read only collection of any enumeration</summary>
+        /// <typeparam name="T">Type of enumeration</typeparam>
+        /// <param name="collection">Enumerable collection</param>
+        /// <returns>ReadOnlyCollection of the collection</returns>
+        public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection)
+            => new List<T>(collection).AsReadOnly();
 
         #endregion
     }
