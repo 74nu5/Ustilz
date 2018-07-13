@@ -8,6 +8,7 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using System.Threading.Tasks;
 
     using JetBrains.Annotations;
 
@@ -33,7 +34,7 @@
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Type de la réponse</typeparam>
         /// <returns>The <see cref="TResponse" />.</returns>
-        public static TResponse Get<TResponse>(string url, string authentification)
+        public static async Task<TResponse> GetAsync<TResponse>(string url, string authentification)
         {
             var handler = new HttpClientHandler();
 
@@ -48,8 +49,8 @@
 
             try
             {
-                var response = client.GetStringAsync(url);
-                return response.Result.FromJson<TResponse>();
+                var response = await client.GetStringAsync(url);
+                return response.FromJson<TResponse>();
             }
             catch (WebException ex)
             {
