@@ -10,7 +10,7 @@
 
     #endregion
 
-    /// <summary>Class containing some extension methods for <see cref="Action"/>.</summary>
+    /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
         #region Méthodes publiques
@@ -54,7 +54,8 @@
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
         public static bool SafeExecute<TException1, TException2>([NotNull] this Action action)
-            where TException1 : Exception where TException2 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
             => action.SafeExecute(typeof(TException1), typeof(TException2));
 
         /// <summary>Executes the given action inside of a try catch block. Catches exceptions of the given types.</summary>
@@ -66,7 +67,9 @@
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
         public static bool SafeExecute<TException1, TException2, TException3>([NotNull] this Action action)
-            where TException1 : Exception where TException2 : Exception where TException3 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
             => action.SafeExecute(typeof(TException1), typeof(TException2), typeof(TException3));
 
         /// <summary>Executes the given action inside of a try catch block. Catches exceptions of the given types.</summary>
@@ -79,11 +82,16 @@
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
         public static bool SafeExecute<TException1, TException2, TException3, TException4>([NotNull] this Action action)
-            where TException1 : Exception where TException2 : Exception where TException3 : Exception where TException4 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
+            where TException4 : Exception
             => action.SafeExecute(typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4));
 
-        /// <summary>Executes the given action inside of a try catch block. Catches all exception types contained in the given list of
-        ///     exception types.</summary>
+        /// <summary>
+        ///     Executes the given action inside of a try catch block. Catches all exception types contained in the given list of
+        ///     exception types.
+        /// </summary>
         /// <exception cref="ArgumentNullException">Action can not be null.</exception>
         /// <exception cref="ArgumentNullException">ExceptionsToCatch can not be null.</exception>
         /// <param name="action">The action to execute.</param>

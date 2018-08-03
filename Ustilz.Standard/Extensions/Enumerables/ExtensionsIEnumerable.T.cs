@@ -13,7 +13,7 @@
 
     /// <summary>The extensions i enumerable.</summary>
     [PublicAPI]
-    public static class ExtensionsIEnumerableT
+    public static partial class ExtensionsIEnumerable
     {
         #region Méthodes publiques
 
@@ -33,7 +33,7 @@
         /// <param name="tab">The tab. </param>
         /// <param name="separateur">The separateur. </param>
         /// <typeparam name="T">The type </typeparam>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         public static string Join<T>(this IEnumerable<T> tab, string separateur)
             => string.Join(separateur, tab);
 

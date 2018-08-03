@@ -9,13 +9,15 @@
 
     #endregion
 
-    /// <summary>Class containing some extension methods for <see cref="Action"/>.</summary>
+    /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
         #region Méthodes publiques
 
-        /// <summary>Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
@@ -37,8 +39,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
@@ -66,8 +70,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -98,8 +104,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -133,8 +141,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>

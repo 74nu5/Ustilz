@@ -23,11 +23,11 @@
     {
         #region Champs et constantes statiques
 
-        /// <summary>The random.</summary>
-        private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
-
         /// <summary>The hash providers.</summary>
         private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new Dictionary<HashType, HashAlgorithm>();
+
+        /// <summary>The random.</summary>
+        private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
 
         #endregion
 
@@ -61,9 +61,7 @@
         /// <param name="input">The string to hash</param>
         /// <param name="hashType">The hash algorithm to use</param>
         /// <returns>The resulting hash or an empty string on error</returns>
-        public static string ComputeHash(
-            this string input,
-            HashType hashType)
+        public static string ComputeHash(this string input, HashType hashType)
         {
             try
             {
@@ -86,11 +84,9 @@
         /// <summary>The decrypt.</summary>
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         [System.Diagnostics.Contracts.Pure]
-        public static string Decrypt(
-            [NotNull] this string stringToDecrypt,
-            string key)
+        public static string Decrypt([NotNull] this string stringToDecrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
             {
@@ -112,11 +108,9 @@
         /// <summary>The encrypt.</summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         [System.Diagnostics.Contracts.Pure]
-        public static string Encrypt(
-            this string stringToEncrypt,
-            string key)
+        public static string Encrypt(this string stringToEncrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToEncrypt))
             {
@@ -141,13 +135,10 @@
         /// <param name="password">The password.</param>
         /// <param name="salt">The salt.</param>
         /// <param name="provider">The provider.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown</exception>
         [NotNull]
-        public static string GenerateHash(
-            [NotNull] string password,
-            string salt = null,
-            HashType provider = HashType.MD5)
+        public static string GenerateHash([NotNull] string password, string salt = null, HashType provider = HashType.MD5)
         {
             Check.NotEmpty(password, nameof(password));
 
@@ -176,16 +167,14 @@
         /// <summary>Random salt to comsume in hash generation</summary>
         /// <param name="length">Length of salt value should be even, hex string will be twice of the length</param>
         /// <returns>Hex string representation of salt value</returns>
-        public static string GenerateSalt(
-            int length = 4)
+        public static string GenerateSalt(int length = 4)
             => GenerateSaltBytes(length).ToHexString();
 
         /// <summary>Random salt to comsume in hash generation</summary>
         /// <param name="length">Length of salt value should be even, hex string will be twice of the length</param>
         /// <returns>Bytes representation of salt value</returns>
         [NotNull]
-        public static byte[] GenerateSaltBytes(
-            int length = 16)
+        public static byte[] GenerateSaltBytes(int length = 16)
         {
             var salt = new byte[length];
             Random.NextBytes(salt);
@@ -197,9 +186,7 @@
         /// <param name="hashValue">Computed hash value of actual password 'MD5$Salt$Hash'</param>
         /// <param name="password">Password to validate against hash value</param>
         /// <returns>True if password is equal to the hash value</returns>
-        public static bool Validate(
-            [NotNull] string hashValue,
-            [NotNull] string password)
+        public static bool Validate([NotNull] string hashValue, [NotNull] string password)
         {
             Check.NotEmpty(hashValue, nameof(hashValue));
 
@@ -224,7 +211,7 @@
 
             return hashValue == GenerateHash(password, salt, provider);
         }
-
+        
         #endregion
 
         #region Méthodes privées
@@ -232,10 +219,8 @@
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
-        /// <returns>The <see cref="byte"/>.</returns>
-        private static byte[] GetHash(
-            string input,
-            HashType hash)
+        /// <returns>The <see cref="byte" />.</returns>
+        private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
 

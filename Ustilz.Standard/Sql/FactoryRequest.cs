@@ -3,6 +3,7 @@
     #region Usings
 
     using JetBrains.Annotations;
+
     using Ustilz.Sql.RequestType;
     using Ustilz.Sql.RequestType.Implementations;
 
@@ -17,12 +18,9 @@
         /// <summary>The get select request.</summary>
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
-        /// <returns>The <see cref="ISelectRequest"/>.</returns>
+        /// <returns>The <see cref="ISelectRequest" />.</returns>
         [NotNull]
-        public static ISelectRequest GetSelectRequest([NotNull] string nomTable, [NotNull] string alias)
-        {
-            return new SelectRequest(nomTable, alias);
-        }
+        public static ISelectRequest GetSelectRequest([NotNull] string nomTable, [NotNull] string alias) => new SelectRequest(nomTable, alias);
 
         #endregion
     }

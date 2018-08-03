@@ -13,8 +13,10 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="WhereCondition"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="WhereCondition"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WhereCondition" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="WhereCondition" />.
+        /// </summary>
         /// <param name="condition">The condition.</param>
         /// <param name="andCondition">The and Condition.</param>
         /// <param name="orCondition">The or Condition.</param>
@@ -52,8 +54,8 @@
 
         #region Méthodes publiques
 
-        /// <summary>Retourne un <see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel. </summary>
-        /// <returns><see cref="T:System.String"/> qui représente le <see cref="T:System.Object"/> actuel.</returns>
+        /// <summary>Retourne un <see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel. </summary>
+        /// <returns><see cref="T:System.String" /> qui représente le <see cref="T:System.Object" /> actuel.</returns>
         public override string ToString()
         {
             var whereConditionBuilder = new StringBuilder(Constantes.Space);

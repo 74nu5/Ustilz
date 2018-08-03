@@ -12,7 +12,7 @@
     #endregion
 
     /// <summary>The extensions i enumerable string.</summary>
-    public static class ExtensionsIEnumerableString
+    public static partial class ExtensionsIEnumerable
     {
         #region Méthodes publiques
 

@@ -11,8 +11,6 @@ namespace Ustilz.Extensions
 
     using JetBrains.Annotations;
 
-    using Ustilz.Models;
-
     #endregion
 
     /// <summary>The extensions t. </summary>
@@ -21,12 +19,55 @@ namespace Ustilz.Extensions
     {
         #region Méthodes publiques
 
+        /// <summary>
+        ///     Méthode de "transformation" d'objet en boolean.
+        /// </summary>
+        /// <typeparam name="T">Type à "tranformer".</typeparam>
+        /// <param name="obj">Objet à "tranformer".</param>
+        /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
+        public static bool AsBool<T>(this T obj)
+        {
+            switch (obj)
+            {
+                case int n:
+                    return n > 0;
+                case string s:
+                {
+                    if (bool.TryParse(s, out var b))
+                    {
+                        return b;
+                    }
+
+                    if (int.TryParse(s, out var i))
+                    {
+                        return i.AsBool();
+                    }
+
+                    return s != string.Empty;
+                }
+                case object o when o is string s:
+                {
+                    return s.AsBool();
+                }
+                case object o when o is int i:
+                {
+                    return i.AsBool();
+                }
+                case object _:
+                {
+                    return false;
+                }
+                default:
+                    return false;
+            }
+        }
+
         /// <summary>The between. </summary>
         /// <param name="value">The value. </param>
         /// <param name="from">The from. </param>
         /// <param name="to">The to. </param>
         /// <typeparam name="T">Type à comparer </typeparam>
-        /// <returns>The <see cref="bool"/>. </returns>
+        /// <returns>The <see cref="bool" />. </returns>
         public static bool Between<T>([NotNull] this T value, T from, T to)
             where T : IComparable<T>
             => value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
@@ -51,7 +92,7 @@ namespace Ustilz.Extensions
         /// <summary>The dump. </summary>
         /// <param name="o">The o. </param>
         /// <typeparam name="T">The Type </typeparam>
-        /// <returns>The <see cref="T"/>. </returns>
+        /// <returns>The <see cref="T" />. </returns>
         public static T Dump<T>(this T o)
         {
             if (o is IEnumerable list)
@@ -65,65 +106,12 @@ namespace Ustilz.Extensions
             return o;
         }
 
-        /// <summary>Executes the given action with the value as parameter and handles any exceptions during the execution.</summary>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <param name="value">The value.</param>
-        /// <param name="action">The action.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static IExecutionResult<T> ExecuteSafe<T>([CanBeNull] this T value, [NotNull] Action<T> action)
-        {
-            action.ThrowIfNull(nameof(action));
-
-            var result = new ExecutionResult<T>();
-            try
-            {
-                action(value);
-                result.Result = value;
-            }
-            catch (Exception ex)
-            {
-                result.Exception = ex;
-            }
-
-            return result;
-        }
-
-        /// <summary>Executes the given function with the value as parameter and handles any exceptions during the execution.</summary>
-        /// <exception cref="ArgumentNullException">The func can not be null.</exception>
-        /// <param name="value">The value.</param>
-        /// <param name="func">The function.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([CanBeNull] this T value, [NotNull] Func<T, TResult> func)
-        {
-            func.ThrowIfNull(nameof(func));
-
-            var result = new ExecutionResult<TResult>();
-            try
-            {
-                result.Result = func(value);
-            }
-            catch (Exception ex)
-            {
-                result.Exception = ex;
-            }
-
-            return result;
-        }
 
         /// <summary>The if null.</summary>
         /// <param name="source">The source.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <typeparam name="T">Type de l'objet</typeparam>
-        /// <returns>The <see cref="T"/>.</returns>
+        /// <returns>The <see cref="T" />.</returns>
         public static T IfNull<T>([CanBeNull] this T source, T defaultValue)
             where T : class
             => source ?? defaultValue;
@@ -133,7 +121,7 @@ namespace Ustilz.Extensions
         /// <param name="value">The value to search for.</param>
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>&gt;Returns true if the value is present in the array.</returns>
+        /// <returns>Returns true if the value is present in the array.</returns>
         [Pure]
         [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
@@ -148,7 +136,7 @@ namespace Ustilz.Extensions
         /// <param name="value">The value to search for.</param>
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>&gt;Returns true if the value is present in the IEnumerable.</returns>
+        /// <returns>Returns true if the value is present in the IEnumerable.</returns>
         [Pure]
         [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
@@ -183,7 +171,8 @@ namespace Ustilz.Extensions
         /// <summary>Determines whether [is not null].</summary>
         /// <typeparam name="T">Type de l'objet</typeparam>
         /// <param name="source">The source.</param>
-        /// <returns>The <see cref="bool"/>.</returns>
+        /// <returns>The <see cref="bool" />.</returns>
+        [DebuggerStepThrough]
         public static bool IsNotNull<T>([CanBeNull] this T source)
             where T : class
             => source != null;
@@ -191,34 +180,11 @@ namespace Ustilz.Extensions
         /// <summary>The is null. </summary>
         /// <param name="source">The source. </param>
         /// <typeparam name="T">Le type à tester </typeparam>
-        /// <returns>The <see cref="bool"/>. </returns>
+        /// <returns>The <see cref="bool" />. </returns>
+        [DebuggerStepThrough]
         public static bool IsNull<T>([CanBeNull] this T source)
             where T : class
             => source == null;
-
-        /// <summary>The join. </summary>
-        /// <param name="tab">The tab. </param>
-        /// <param name="separateur">The separateur. </param>
-        /// <typeparam name="T">The type </typeparam>
-        /// <returns>The <see cref="string"/>. </returns>
-        public static string Join<T>(this IEnumerable<T> tab, string separateur)
-            => string.Join(separateur, tab);
-
-        /// <summary>Returns characters from left of specified length</summary>
-        /// <param name="value">String value</param>
-        /// <param name="length">Max number of charaters to return</param>
-        /// <returns>Returns string from left</returns>
-        [CanBeNull]
-        public static string Left([CanBeNull] this string value, int length)
-            => value != null && value.Length > length ? value.Substring(0, length) : value;
-
-        /// <summary>Returns characters from right of specified length</summary>
-        /// <param name="value">String value</param>
-        /// <param name="length">Max number of charaters to return</param>
-        /// <returns>Returns string from right</returns>
-        [CanBeNull]
-        public static string Right([CanBeNull] this string value, int length)
-            => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
 
         /// <summary>Swaps the given values.</summary>
         /// <typeparam name="T">The type of the values.</typeparam>
@@ -233,13 +199,15 @@ namespace Ustilz.Extensions
             value1 = temp;
         }
 
-        /// <summary>Throws a <see cref="ArgumentNullException"/> exception if <paramref name="obj"/> is null.</summary>
-        /// <remarks>If <paramref name="errorMessage"/> is null, this method will use the following default message:
-        ///     "{object name} can not be null."</remarks>
-        /// <typeparam name="TObject">The type <paramref name="obj"/>.</typeparam>
+        /// <summary>Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj" /> is null.</summary>
+        /// <remarks>
+        ///     If <paramref name="errorMessage" /> is null, this method will use the following default message:
+        ///     "{object name} can not be null."
+        /// </remarks>
+        /// <typeparam name="TObject">The type <paramref name="obj" />.</typeparam>
         /// <param name="obj">The object to check.</param>
-        /// <param name="parameterName">The name of <paramref name="obj"/>.</param>
-        /// <param name="errorMessage">The text used as exception message if <paramref name="obj"/> is null.</param>
+        /// <param name="parameterName">The name of <paramref name="obj" />.</param>
+        /// <param name="errorMessage">The text used as exception message if <paramref name="obj" /> is null.</param>
         [PublicAPI]
         [DebuggerStepThrough]
         public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj, [NotNull] string parameterName, [CanBeNull] string errorMessage = null)
@@ -255,7 +223,7 @@ namespace Ustilz.Extensions
         /// <summary>The to.</summary>
         /// <param name="value">The value.</param>
         /// <typeparam name="T">Type to convert</typeparam>
-        /// <returns>The <see cref="T"/>.</returns>
+        /// <returns>The <see cref="T" />.</returns>
         public static T To<T>([CanBeNull] this IConvertible value)
         {
             try
@@ -290,7 +258,7 @@ namespace Ustilz.Extensions
         /// <param name="value">The value.</param>
         /// <param name="ifError">The if error.</param>
         /// <typeparam name="T">Type to convert</typeparam>
-        /// <returns>The <see cref="T"/>.</returns>
+        /// <returns>The <see cref="T" />.</returns>
         public static T To<T>([CanBeNull] this IConvertible value, IConvertible ifError)
         {
             try

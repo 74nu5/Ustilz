@@ -34,7 +34,7 @@
         void Add([NotNull] string nomColumn, [CanBeNull] string alias);
 
         /// <summary>The to string array. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         string[] ToStringArray();
 
         #endregion

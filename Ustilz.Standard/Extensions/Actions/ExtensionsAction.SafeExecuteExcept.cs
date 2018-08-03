@@ -9,7 +9,7 @@
 
     #endregion
 
-    /// <summary>Class containing some extension methods for <see cref="Action"/>.</summary>
+    /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
         #region Méthodes publiques
@@ -31,7 +31,8 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static bool SafeExecuteExcept<TException1, TException2>(this Action action)
-            where TException1 : Exception where TException2 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
             => action.SafeExecuteExcept(typeof(TException1), typeof(TException2));
 
         /// <summary>Executes the given action inside of a try catch block and catches all exception expect the specified types.</summary>
@@ -42,7 +43,9 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static bool SafeExecuteExcept<TException1, TException2, TException3>(this Action action)
-            where TException1 : Exception where TException2 : Exception where TException3 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
             => action.SafeExecuteExcept(typeof(TException1), typeof(TException2), typeof(TException3));
 
         /// <summary>Executes the given action inside of a try catch block and catches all exception expect the specified types.</summary>
@@ -54,7 +57,10 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static bool SafeExecuteExcept<TException1, TException2, TException3, TException4>(this Action action)
-            where TException1 : Exception where TException2 : Exception where TException3 : Exception where TException4 : Exception
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
+            where TException4 : Exception
             => action.SafeExecuteExcept(typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4));
 
         /// <summary>Executes the given action inside of a try catch block and catches all exception expect the given ones.</summary>

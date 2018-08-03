@@ -1,7 +1,5 @@
 namespace Ustilz.Sql
 {
-    using JetBrains.Annotations;
-
     /// <summary>The constantes. </summary>
     internal static class Constantes
     {
@@ -45,7 +43,28 @@ namespace Ustilz.Sql
 
                 #endregion
 
-                #region Nested type: Join
+                #region Nested type: Conditions
+
+                /// <summary>The where. </summary>
+                internal static class Conditions
+                {
+                    #region Champs et constantes statiques
+
+                    /// <summary>The and. </summary>
+                    public const string And = "and";
+
+                    /// <summary>The or. </summary>
+                    public const string Or = "or";
+
+                    /// <summary>The where. </summary>
+                    internal const string Where = "where";
+
+                    #endregion
+                }
+
+                #endregion
+
+                #region Nested type: Joinning
 
                 /// <summary>The join. </summary>
                 internal static class Joinning
@@ -84,27 +103,6 @@ namespace Ustilz.Sql
 
                     /// <summary>The union. </summary>
                     internal const string Union = "union";
-
-                    #endregion
-                }
-
-                #endregion
-
-                #region Nested type: Where
-
-                /// <summary>The where. </summary>
-                internal static class Conditions
-                {
-                    #region Champs et constantes statiques
-
-                    /// <summary>The and. </summary>
-                    public const string And = "and";
-
-                    /// <summary>The or. </summary>
-                    public const string Or = "or";
-
-                    /// <summary>The where. </summary>
-                    internal const string Where = "where";
 
                     #endregion
                 }

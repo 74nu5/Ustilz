@@ -15,8 +15,10 @@
     {
         #region Méthodes publiques
 
-        /// <summary>Executes the specified action if the given Boolean values are false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if the given Boolean values are false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <param name="falseAction">The action to execute if the given values are false.</param>
@@ -38,8 +40,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if the given Boolean values are false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if the given Boolean values are false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
@@ -48,7 +52,8 @@
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse<T>([NotNull] this Action<T> falseAction, [CanBeNull] T parameter, [CanBeNull] Action<T> trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse<T>(
+            [NotNull] this Action<T> falseAction, [CanBeNull] T parameter, [CanBeNull] Action<T> trueAction = null, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
@@ -63,8 +68,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if the given Boolean values are false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if the given Boolean values are false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -95,8 +102,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if the given Boolean values are false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if the given Boolean values are false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -130,8 +139,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if the given Boolean values are false,
-        ///     otherwise it executes the specified true action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if the given Boolean values are false,
+        ///     otherwise it executes the specified true action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -218,7 +229,8 @@
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse<T1, T2>([NotNull] this Action<T1, T2> falseAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse<T1, T2>(
+            [NotNull] this Action<T1, T2> falseAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));

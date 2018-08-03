@@ -6,7 +6,9 @@
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Text;
+
     using JetBrains.Annotations;
+
     using Ustilz.Utils;
 
     #endregion
@@ -20,7 +22,7 @@
         /// <summary>The ctor.</summary>
         /// <param name="type">The type.</param>
         /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="Func{TResult}"/>.</returns>
+        /// <returns>The <see cref="Func{TResult}" />.</returns>
         public static Func<TResult> Ctor<TResult>(this Type type)
         {
             var ci = GetConstructor(type, Type.EmptyTypes);
@@ -31,7 +33,7 @@
         /// <param name="type">The type.</param>
         /// <typeparam name="TArg1">Type du premier argument</typeparam>
         /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="Func{T,TResult}"/>.</returns>
+        /// <returns>The <see cref="Func{T,TResult}" />.</returns>
         public static Func<TArg1, TResult> Ctor<TArg1, TResult>(this Type type)
         {
             var ci = GetConstructor(type, typeof(TArg1));
@@ -46,7 +48,7 @@
         /// <typeparam name="TArg1">Type du premier argument</typeparam>
         /// <typeparam name="TArg2">Type du deuxième argument</typeparam>
         /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="Func{T1,T2,TResult}"/>.</returns>
+        /// <returns>The <see cref="Func{T1,T2,TResult}" />.</returns>
         public static Func<TArg1, TArg2, TResult> Ctor<TArg1, TArg2, TResult>(this Type type)
         {
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2));
@@ -63,7 +65,7 @@
         /// <typeparam name="TArg2">Type du deuxième argument</typeparam>
         /// <typeparam name="TArg3">Type du troisième argument</typeparam>
         /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="Func{T1,T2,T3,TResult}"/>.</returns>
+        /// <returns>The <see cref="Func{T1,T2,T3,TResult}" />.</returns>
         public static Func<TArg1, TArg2, TArg3, TResult> Ctor<TArg1, TArg2, TArg3, TResult>(this Type type)
         {
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3));
@@ -82,7 +84,7 @@
         /// <typeparam name="TArg3">Type du troisième argument</typeparam>
         /// <typeparam name="TArg4">Type du quatrième argument</typeparam>
         /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="Func{T1,T2,T3,T4,TResult}"/>.</returns>
+        /// <returns>The <see cref="Func{T1,T2,T3,T4,TResult}" />.</returns>
         public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Ctor<TArg1, TArg2, TArg3, TArg4, TResult>(this Type type)
         {
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3), typeof(TArg4));
@@ -102,7 +104,7 @@
         /// <summary>The get constructor.</summary>
         /// <param name="type">The type.</param>
         /// <param name="argumentTypes">The argument types.</param>
-        /// <returns>The <see cref="ConstructorInfo"/>.</returns>
+        /// <returns>The <see cref="ConstructorInfo" />.</returns>
         /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas</exception>
         private static ConstructorInfo GetConstructor(Type type, params Type[] argumentTypes)
         {

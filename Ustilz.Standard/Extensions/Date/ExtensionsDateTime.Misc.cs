@@ -8,6 +8,9 @@
 
     #endregion
 
+    /// <summary>
+    /// Classe d'extension du type DateTime
+    /// </summary>
     public static partial class ExtensionsDateTime
     {
         #region Méthodes publiques
@@ -21,7 +24,7 @@
         public static (int yearAge, int monthAge, int dayAge) Age(this DateTime bday, DateTime? day = null)
         {
             var cday = day ?? DateTime.Now;
-            if (cday.Year - bday.Year <= 0 && (cday.Year - bday.Year != 0 || bday.Month >= cday.Month && (bday.Month != cday.Month || bday.Day > cday.Day)))
+            if (cday.Year - bday.Year <= 0 && (cday.Year - bday.Year != 0 || (bday.Month >= cday.Month && (bday.Month != cday.Month || bday.Day > cday.Day))))
             {
                 throw new ArgumentException("Birthday date must be earlier than current date");
             }
@@ -31,13 +34,13 @@
 
             return cday.Month > bday.Month
                 ? (cday.Year - bday.Year, cday.Month - (bday.Month + 1) + Math.Abs(daysRemain / daysInBdayMonth),
-                    (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth)
+                    ((daysRemain % daysInBdayMonth) + daysInBdayMonth) % daysInBdayMonth)
                 : (cday.Month == bday.Month
                     ? (cday.Day >= bday.Day
                         ? (cday.Year - bday.Year, 0, cday.Day - bday.Day)
                         : (cday.Year - 1 - bday.Year, 11, DateTime.DaysInMonth(bday.Year, bday.Month) - (bday.Day - cday.Day)))
                     : (cday.Year - 1 - bday.Year, cday.Month + (11 - bday.Month) + Math.Abs(daysRemain / daysInBdayMonth),
-                        (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth));
+                        ((daysRemain % daysInBdayMonth) + daysInBdayMonth) % daysInBdayMonth));
         }
 
         /// <summary>Returns a DateTime with its value set to Now minus the provided TimeSpan value.</summary>

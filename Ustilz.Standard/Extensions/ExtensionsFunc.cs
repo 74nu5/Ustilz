@@ -9,13 +9,69 @@
 
     using JetBrains.Annotations;
 
+    using Ustilz.Models;
+
     #endregion
 
-    /// <summary> The extensions func. </summary>
+    /// <summary>The extensions func. </summary>
     [PublicAPI]
     public static class ExtensionsFunc
     {
         #region Méthodes publiques
+
+        /// <summary>Executes the given action with the value as parameter and handles any exceptions during the execution.</summary>
+        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
+        /// <param name="action">The action.</param>
+        /// <param name="value">The value.</param>
+        /// <typeparam name="T">The type of the value.</typeparam>
+        /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [CanBeNull] T value)
+        {
+            action.ThrowIfNull(nameof(action));
+
+            var result = new ExecutionResult<T>();
+            try
+            {
+                action(value);
+                result.Result = value;
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>Executes the given function with the value as parameter and handles any exceptions during the execution.</summary>
+        /// <exception cref="ArgumentNullException">The func can not be null.</exception>
+        /// <param name="func">The function.</param>
+        /// <param name="value">The value.</param>
+        /// <typeparam name="T">The type of the value.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [CanBeNull] T value)
+        {
+            func.ThrowIfNull(nameof(func));
+
+            var result = new ExecutionResult<TResult>();
+            try
+            {
+                result.Result = func(value);
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex;
+            }
+
+            return result;
+        }
 
         /// <summary>The memoize. </summary>
         /// <param name="func">The func. </param>
@@ -27,16 +83,16 @@
         {
             var t = new Dictionary<T, TResult>();
             return n =>
+            {
+                if (t.ContainsKey(n))
                 {
-                    if (t.ContainsKey(n))
-                    {
-                        return t[n];
-                    }
+                    return t[n];
+                }
 
-                    var result = func(n);
-                    t.Add(n, result);
-                    return result;
-                };
+                var result = func(n);
+                t.Add(n, result);
+                return result;
+            };
         }
 
         /// <summary>The memoize. </summary>
@@ -48,16 +104,16 @@
         {
             var t = new Dictionary<string, TResult>();
             return () =>
+            {
+                if (t.ContainsKey(func.GetMethodInfo().Name))
                 {
-                    if (t.ContainsKey(func.GetMethodInfo().Name))
-                    {
-                        return t[func.GetMethodInfo().Name];
-                    }
+                    return t[func.GetMethodInfo().Name];
+                }
 
-                    var result = func();
-                    t.Add(func.GetMethodInfo().Name, result);
-                    return result;
-                };
+                var result = func();
+                t.Add(func.GetMethodInfo().Name, result);
+                return result;
+            };
         }
 
         /// <summary>Tests the perf. </summary>

@@ -21,27 +21,25 @@
         #region Champs
 
         /// <summary>Gets the join. </summary>
-        [NotNull]
-        private readonly Joins joins;
+        [NotNull] private readonly Joins joins;
 
         /// <summary>The liste columns. </summary>
-        [NotNull]
-        private readonly List<string> listeColumns;
+        [NotNull] private readonly List<string> listeColumns;
 
         /// <summary>The liste columns. </summary>
-        [NotNull]
-        private readonly IColumns selectColumns;
+        [NotNull] private readonly IColumns selectColumns;
 
         /// <summary>The where clause. </summary>
-        [CanBeNull]
-        private WhereClause whereClause;
+        [CanBeNull] private WhereClause whereClause;
 
         #endregion
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest" />.
+        /// </summary>
         /// <param name="nomTable">The nomTable.</param>
         internal SelectRequest(string nomTable)
             : this()
@@ -52,15 +50,17 @@
             this.joins = new Joins();
         }
 
-        /// <summary>Initializes a new instance of the <see cref="SelectRequest"/> class. Initialise une nouvelle instance de la
-        ///     classe <see cref="SelectRequest"/>.</summary>
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SelectRequest" /> class. Initialise une nouvelle instance de la
+        ///     classe <see cref="SelectRequest" />.
+        /// </summary>
         /// <param name="nomTable">The nom table.</param>
         /// <param name="alias">The alias.</param>
         internal SelectRequest(string nomTable, string alias)
             : this(nomTable) =>
             this.PrincipalTable = new Table(nomTable, alias);
 
-        /// <summary>Prevents a default instance of the <see cref="SelectRequest"/> class from being created.</summary>
+        /// <summary>Prevents a default instance of the <see cref="SelectRequest" /> class from being created.</summary>
         private SelectRequest()
         {
         }
@@ -69,15 +69,15 @@
 
         #region Propriétés et indexeurs
 
-        /// <summary>Gets or sets a value indicating whether upper sql. </summary>
-        /// TODO Mots clé en majuscule
-        /// <value>The upper sql.</value>
-        public bool UpperSQL { get; set; }
-
         /// <summary>Gets the principal table.</summary>
         /// <value>The principal table.</value>
         [NotNull]
         public ITable PrincipalTable { get; private set; }
+
+        /// <summary>Gets or sets a value indicating whether upper sql. </summary>
+        /// TODO Mots clé en majuscule
+        /// <value>The upper sql.</value>
+        public bool UpperSQL { get; set; }
 
         /// <summary>Gets the where clause.</summary>
         /// <value>The where clause.</value>
@@ -121,7 +121,7 @@
         }
 
         /// <summary>The to sql. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         [Pure]
         public string ToSql()
         {
@@ -159,7 +159,7 @@
         }
 
         /// <summary>The to string. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         public override string ToString() => this.ToSql();
 
         #endregion
@@ -167,7 +167,7 @@
         #region Méthodes privées
 
         /// <summary>The has columns specified. </summary>
-        /// <returns>The <see cref="bool"/>. </returns>
+        /// <returns>The <see cref="bool" />. </returns>
         private bool HasColumnsSpecified() => this.selectColumns.Any();
 
         #endregion

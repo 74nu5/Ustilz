@@ -31,7 +31,7 @@
         #region Méthodes publiques
 
         /// <summary>The to string.</summary>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         string ToString();
 
         #endregion

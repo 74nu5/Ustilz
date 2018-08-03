@@ -5,13 +5,12 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using JetBrains.Annotations;
+    using Ustilz.Extensions.String;
 
     #endregion
 
     /// <summary>The extensions i enumerable.</summary>
-    [PublicAPI]
-    public static class ExtensionsIEnumerable
+    public static partial class ExtensionsIEnumerable
     {
         #region Méthodes publiques
 

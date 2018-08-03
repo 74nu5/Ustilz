@@ -19,7 +19,7 @@
 
         /// <summary>The readable time stamp.</summary>
         /// <param name="currentDate">The current date.</param>
-        /// <returns>The <see cref="string"/>.</returns>
+        /// <returns>The <see cref="string" />.</returns>
         [NotNull]
         [ExcludeFromCodeCoverage]
         public static string ReadableTimeStamp(this DateTime currentDate)

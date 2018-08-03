@@ -21,7 +21,7 @@
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes static members of the <see cref="Horloge"/> class. Initializes a new instance of the<see cref="T:System.Object"></see> class.</summary>
+        /// <summary>Initializes static members of the <see cref="Horloge" /> class. Initializes a new instance of the<see cref="T:System.Object"></see> class.</summary>
         static Horloge() => fonction = () => DateTime.Now;
 
         #endregion

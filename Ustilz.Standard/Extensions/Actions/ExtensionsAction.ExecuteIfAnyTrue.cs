@@ -9,13 +9,15 @@
 
     #endregion
 
-    /// <summary>Class containing some extension methods for <see cref="Action"/>.</summary>
+    /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
         #region Méthodes publiques
 
-        /// <summary>Executes the specified action if one of the given Boolean values is true,
-        ///     otherwise it executes the specified false action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is true,
+        ///     otherwise it executes the specified false action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">TrueAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
@@ -37,8 +39,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is true,
-        ///     otherwise it executes the specified false action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is true,
+        ///     otherwise it executes the specified false action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
@@ -65,8 +69,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is true,
-        ///     otherwise it executes the specified false action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is true,
+        ///     otherwise it executes the specified false action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -96,8 +102,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is true,
-        ///     otherwise it executes the specified false action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is true,
+        ///     otherwise it executes the specified false action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -130,8 +138,10 @@
             }
         }
 
-        /// <summary>Executes the specified action if one of the given Boolean values is true,
-        ///     otherwise it executes the specified false action, if one is specified.</summary>
+        /// <summary>
+        ///     Executes the specified action if one of the given Boolean values is true,
+        ///     otherwise it executes the specified false action, if one is specified.
+        /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -214,7 +224,8 @@
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue<T1, T2>([NotNull] this Action<T1, T2> trueAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyTrue<T1, T2>(
+            [NotNull] this Action<T1, T2> trueAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2, [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
             values.ThrowIfNull(nameof(values));

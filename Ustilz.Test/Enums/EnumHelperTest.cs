@@ -5,7 +5,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Ustilz.Enums;
+    using Ustilz.Extensions;
 
     using Xunit;
 
@@ -63,7 +63,7 @@
         [Fact]
         public void TestToDescriptionDictionaryNominal()
         {
-            var descriptionDictionary = EnumHelper.GetDescriptionDictionary<TestEnum>();
+            var descriptionDictionary = ExtensionsEnum.GetDescriptionDictionary<TestEnum>();
             Assert.NotEmpty(descriptionDictionary);
             Assert.Equal(3, descriptionDictionary.Count);
             Assert.Equal(string.Empty, descriptionDictionary["Valeur1"]);

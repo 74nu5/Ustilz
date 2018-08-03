@@ -17,18 +17,15 @@
         #region Champs et constantes statiques
 
         /// <summary>The ms g_ no m_ colonn e_ nulle. </summary>
-        private const string MSG_NOM_COLONNE_NULLE = "Le nom de la colonne ne doit pas être nulle.";
+        private const string MsgNomColonneNulle = "Le nom de la colonne ne doit pas être nulle.";
 
         #endregion
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="Columns"/> class. Initialise une nouvelle instance de la classe<see cref="Columns"/>.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Columns" /> class. Initialise une nouvelle instance de la classe<see cref="Columns" />.</summary>
         /// <param name="ownerTable">The owner Table.</param>
-        public Columns([NotNull] ITable ownerTable)
-        {
-            this.OwnerTable = ownerTable;
-        }
+        public Columns([NotNull] ITable ownerTable) => this.OwnerTable = ownerTable;
 
         #endregion
 
@@ -49,7 +46,7 @@
         {
             if (string.IsNullOrEmpty(nomColumn))
             {
-                throw new ArgumentNullException(nameof(nomColumn), MSG_NOM_COLONNE_NULLE);
+                throw new ArgumentNullException(nameof(nomColumn), MsgNomColonneNulle);
             }
 
             this.Add(new Column(this.OwnerTable, nomColumn));
@@ -62,14 +59,14 @@
         {
             if (string.IsNullOrEmpty(nomColumn))
             {
-                throw new ArgumentNullException(nameof(nomColumn), MSG_NOM_COLONNE_NULLE);
+                throw new ArgumentNullException(nameof(nomColumn), MsgNomColonneNulle);
             }
 
             this.Add(new Column(this.OwnerTable, nomColumn, alias));
         }
 
         /// <summary>The to string array. </summary>
-        /// <returns>The <see cref="string"/>. </returns>
+        /// <returns>The <see cref="string" />. </returns>
         public string[] ToStringArray()
         {
             return this.Select(column => column.ToString()).ToArray();

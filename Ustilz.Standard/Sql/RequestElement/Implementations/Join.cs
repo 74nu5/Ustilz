@@ -14,7 +14,7 @@ namespace Ustilz.Sql.RequestElement.Implementations
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="Join"/> class. Initialise une nouvelle instance de la classe<see cref="Join"/>.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Join" /> class. Initialise une nouvelle instance de la classe<see cref="Join" />.</summary>
         /// <param name="type">The type.</param>
         /// <param name="joinTable">The join Table.</param>
         /// <param name="otherColumn">The other Column.</param>
