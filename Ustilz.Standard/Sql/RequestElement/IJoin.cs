@@ -29,7 +29,7 @@ namespace Ustilz.Sql.RequestElement
         [NotNull]
         IColumn RootColumn { get; }
 
-        /// <summary>Gets or sets the type. </summary>
+        /// <summary>Gets the type. </summary>
         /// <value>The type.</value>
         TypeJoin Type { get; }
 

@@ -13,8 +13,9 @@
 
     #endregion
 
-
     /// <summary>The prog builder.</summary>
+    /// <typeparam name="TBuilder">Type du builder.</typeparam>
+    /// <typeparam name="TProg">Type de programme.</typeparam>
     [PublicAPI]
     public abstract class ProgBuilder<TBuilder, TProg>
     {
@@ -26,134 +27,155 @@
         /// <summary>Gets the logger factory.</summary>
         private readonly ILoggerFactory loggerFactory;
 
-        /// <summary>Gets the services.</summary>
-        protected readonly ServiceCollection services;
-
-
         /// <summary>Gets or sets the configuration.</summary>
         private IConfigurationRoot configuration;
-
-
-        protected Action<string>[] logAction;
 
         #endregion
 
         #region Constructeurs et destructeurs
 
+        /// <summary>Initializes a new instance of the <see cref="ProgBuilder{TBuilder,TProg}"/> class.</summary>
         internal ProgBuilder()
         {
             this.configurationBuilder = new ConfigurationBuilder();
-            this.services = new ServiceCollection();
+            this.Services = new ServiceCollection();
             this.loggerFactory = new LoggerFactory();
             this.configurationBuilder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
         }
 
         #endregion
 
+        #region Propriétés et indexeurs
+
+        /// <summary>Gets or sets the log action.</summary>
+        /// <value>The log action.</value>
+        protected Action<string>[] LogAction { get; set; }
+
+        /// <summary>Gets the services.</summary>
+        /// <value>The services.</value>
+        protected ServiceCollection Services { get; }
+
+        #endregion
+
         #region Méthodes publiques
 
+        /// <summary>The add scoped.</summary>
+        /// <typeparam name="T">Type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddScoped<T>()
             where T : class
         {
-            this.services.AddScoped<T>();
+            this.Services.AddScoped<T>();
             return this;
         }
 
+        /// <summary>The add scoped.</summary>
+        /// <typeparam name="TType">Type à ajouter.</typeparam>
+        /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
         public ProgBuilder<TBuilder, TProg> AddScoped<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
         {
-            this.services.AddScoped<TType, TImplementation>();
+            this.Services.AddScoped<TType, TImplementation>();
             return this;
         }
 
-
+        /// <summary>The add singleton.</summary>
+        /// <typeparam name="T">Type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddSingleton<T>()
             where T : class
         {
-            this.services.AddSingleton<T>();
+            this.Services.AddSingleton<T>();
             return this;
         }
 
+        /// <summary>The add singleton.</summary>
+        /// <typeparam name="TType">Type à ajouter.</typeparam>
+        /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
         public ProgBuilder<TBuilder, TProg> AddSingleton<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
         {
-            this.services.AddSingleton<TType, TImplementation>();
+            this.Services.AddSingleton<TType, TImplementation>();
             return this;
         }
 
+        /// <summary>The add transient.</summary>
+        /// <typeparam name="T">Type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddTransient<T>()
             where T : class
         {
-            this.services.AddTransient<T>();
+            this.Services.AddTransient<T>();
             return this;
         }
 
+        /// <summary>The add transient.</summary>
+        /// <typeparam name="TType">Type à ajouter.</typeparam>
+        /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
         public ProgBuilder<TBuilder, TProg> AddTransient<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
         {
-            this.services.AddTransient<TType, TImplementation>();
+            this.Services.AddTransient<TType, TImplementation>();
             return this;
         }
 
         /// <summary>The build.</summary>
-        /// <returns>The <see cref="Prog" />.</returns>
-        /// <typeparam name="T">Type de programme.</typeparam>
+        /// <returns>The <see cref="TProg" />.</returns>
         public abstract TProg Build();
 
         /// <summary>The use app settings json.</summary>
-        /// <typeparam name="TOptions">Type d'options</typeparam>
-        /// <returns>The <see cref="Prog" />.</returns>
-        /// <exception cref="ArgumentNullException">
-        ///     Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.
-        /// </exception>
+        /// <typeparam name="TOptions">Type d'options.</typeparam>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <exception cref="ArgumentNullException">Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.</exception>
         public ProgBuilder<TBuilder, TProg> UseAppSettingsJson<TOptions>()
             where TOptions : class
         {
-            this.services.AddOptions();
+            this.Services.AddOptions();
 
             // Set up configuration sources.
             this.configurationBuilder.AddJsonFile("appsettings.json", true);
             this.configurationBuilder.AddJsonFile(
-                Path.Combine(AppContext.BaseDirectory, string.Format("..{0}..{0}..{0}", Path.DirectorySeparatorChar), "appsettings.Development.json"), true);
+                Path.Combine(AppContext.BaseDirectory, string.Format("..{0}..{0}..{0}", Path.DirectorySeparatorChar), "appsettings.Development.json"),
+                true);
 
-            this.services.Configure<TOptions>(this.configuration);
+            this.Services.Configure<TOptions>(this.configuration);
 
             return this;
         }
 
-        /// <summary>
-        ///     Méthode pour ajouter une action basique de log.
-        /// </summary>
+        /// <summary>Méthode pour ajouter une action basique de log.</summary>
         /// <param name="logMessageActions">Actions de log.</param>
         /// <returns>Retourne le builder.</returns>
         public ProgBuilder<TBuilder, TProg> UseBasicLogger(params Action<string>[] logMessageActions)
         {
-            this.logAction = logMessageActions;
+            this.LogAction = logMessageActions;
             return this;
         }
 
         /// <summary>The use config.</summary>
         /// <param name="action">The action.</param>
-        /// <returns>The <see cref="ProgBuilder" />.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
         public ProgBuilder<TBuilder, TProg> UseConfig(Action<IConfigurationBuilder> action)
         {
-            this.services.AddOptions();
+            this.Services.AddOptions();
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
             action(builder);
             this.configuration = this.configurationBuilder.Build();
-            this.services.AddSingleton<IConfiguration>(this.configuration);
+            this.Services.AddSingleton<IConfiguration>(this.configuration);
 
             return this;
         }
 
-
         /// <summary>The use logger.</summary>
         /// <param name="action">The func.</param>
-        /// <returns>The <see cref="Prog" />.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
         public ProgBuilder<TBuilder, TProg> UseLogger(Action<ILoggerFactory, IConfigurationRoot> action)
         {
             action(this.loggerFactory, this.configuration);

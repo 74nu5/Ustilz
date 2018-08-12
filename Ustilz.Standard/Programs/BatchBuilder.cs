@@ -12,7 +12,7 @@
 
         /// <summary>The build.</summary>
         /// <returns>The <see cref="Prog" />.</returns>
-        public override Batch Build() => new Batch(this.services.BuildServiceProvider(), this.logAction);
+        public override Batch Build() => new Batch(this.Services.BuildServiceProvider(), this.LogAction);
 
         #endregion
     }

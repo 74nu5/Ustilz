@@ -36,7 +36,7 @@
         /// <returns>The <see cref="Prog" />.</returns>
         /// <typeparam name="T">Type de programme.</typeparam>
         public override Cons Build()
-            => new Cons(this.actionsToLaunch, this.hasExit, this.services.BuildServiceProvider(), this.logAction);
+            => new Cons(this.actionsToLaunch, this.hasExit, this.Services.BuildServiceProvider(), this.LogAction);
 
         /// <summary>The ut f 8.</summary>
         /// <returns>The <see cref="Prog" />.</returns>
