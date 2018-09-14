@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Test", "Ustilz.Test\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9CF5-471B-94DB-C106BE6E2B08}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
@@ -22,21 +23,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Json", "Ustilz.Json\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Xml", "Ustilz.Xml\Ustilz.Xml.csproj", "{A7D8EA74-7595-422E-A70A-08EECFC58DEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Utils", "Ustilz.Utils\Ustilz.Utils.csproj", "{26E33E78-E287-4B93-B35A-7E57478C0196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Utils", "Ustilz.Utils\Ustilz.Utils.csproj", "{26E33E78-E287-4B93-B35A-7E57478C0196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Extensions", "Ustilz.Extensions\Ustilz.Extensions.csproj", "{D013CF45-5F3D-456C-A170-FF0B55F59566}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Extensions", "Ustilz.Extensions\Ustilz.Extensions.csproj", "{D013CF45-5F3D-456C-A170-FF0B55F59566}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Programs", "Ustilz.Programs\Ustilz.Programs.csproj", "{370478CC-773C-47B5-AA45-DC9C76A7F578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Programs", "Ustilz.Programs\Ustilz.Programs.csproj", "{370478CC-773C-47B5-AA45-DC9C76A7F578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Time", "Ustilz.Time\Ustilz.Time.csproj", "{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Time", "Ustilz.Time\Ustilz.Time.csproj", "{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Sql", "Ustilz.Sql\Ustilz.Sql.csproj", "{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Sql", "Ustilz.Sql\Ustilz.Sql.csproj", "{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.UI", "Ustilz.UI\Ustilz.UI.csproj", "{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.UI", "Ustilz.UI\Ustilz.UI.csproj", "{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Logging", "Ustilz.Logging\Ustilz.Logging.csproj", "{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Logging", "Ustilz.Logging\Ustilz.Logging.csproj", "{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE7C873F-C383-4F3F-A59A-EEE155C05696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Attributes", "Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +95,10 @@ Global
 		{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
