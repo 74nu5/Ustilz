@@ -7,15 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
     <PackageReference Include="JetBrains.DotMemoryUnit" Version="3.0.20171219.105559" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ustilz.Standard\Ustilz.Standard.csproj" />
+    <ProjectReference Include="..\Ustilz.Extensions\Ustilz.Extensions.csproj" />
+    <ProjectReference Include="..\Ustilz.Programs\Ustilz.Programs.csproj" />
+    <ProjectReference Include="..\Ustilz.Time\Ustilz.Time.csproj" />
+    <ProjectReference Include="..\Ustilz.UI\Ustilz.UI.csproj" />
   </ItemGroup>
 
 </Project>
