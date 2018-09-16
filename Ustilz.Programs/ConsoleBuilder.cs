@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Programs
+namespace Ustilz.Programs
 {
     #region Usings
 
@@ -9,7 +9,10 @@
 
     #endregion
 
-    public class ConsoleBuilder : ProgBuilder<ConsoleBuilder, Cons>
+    /// <summary>
+    ///     Classe de builder de l'objet <see cref="Cons" />.
+    /// </summary>
+    public sealed class ConsoleBuilder : ProgBuilder<ConsoleBuilder, Cons>
     {
         #region Champs
 
@@ -25,7 +28,7 @@
 
         /// <summary>The actions.</summary>
         /// <param name="actions">Les méthodes à lancer.</param>
-        /// <returns>The <see cref="Prog" />.</returns>
+        /// <returns>The <see cref="ConsoleBuilder" />.</returns>
         public ConsoleBuilder Actions(params Action[] actions)
         {
             this.actionsToLaunch = actions;
@@ -33,13 +36,12 @@
         }
 
         /// <summary>The build.</summary>
-        /// <returns>The <see cref="Prog" />.</returns>
-        /// <typeparam name="T">Type de programme.</typeparam>
+        /// <returns>The <see cref="Cons" />.</returns>
         public override Cons Build()
             => new Cons(this.actionsToLaunch, this.hasExit, this.Services.BuildServiceProvider(), this.LogAction);
 
         /// <summary>The ut f 8.</summary>
-        /// <returns>The <see cref="Prog" />.</returns>
+        /// <returns>The <see cref="Cons" />.</returns>
         public ConsoleBuilder UTF8()
         {
             Console.InputEncoding = Encoding.UTF8;
@@ -48,7 +50,7 @@
         }
 
         /// <summary>The with exit.</summary>
-        /// <returns>The <see cref="Prog" />.</returns>
+        /// <returns>The <see cref="Cons" />.</returns>
         public ConsoleBuilder WithExit()
         {
             this.hasExit = true;

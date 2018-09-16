@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Programs
+namespace Ustilz.Programs
 {
     #region Usings
 
@@ -6,12 +6,15 @@
 
     #endregion
 
-    public class BatchBuilder : ProgBuilder<BatchBuilder, Batch>
+    /// <summary>
+    /// Classe de builder de l'objet <see cref="Batch"/>.
+    /// </summary>
+    public sealed class BatchBuilder : ProgBuilder<BatchBuilder, Batch>
     {
         #region Méthodes publiques
 
-        /// <summary>The build.</summary>
-        /// <returns>The <see cref="Prog" />.</returns>
+        /// <summary>Méthode de build.</summary>
+        /// <returns>Retourne l'objet <see cref="Batch" />.</returns>
         public override Batch Build() => new Batch(this.Services.BuildServiceProvider(), this.LogAction);
 
         #endregion

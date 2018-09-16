@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Programs
+namespace Ustilz.Programs
 {
     #region Usings
 
@@ -8,11 +8,16 @@
 
     #endregion
 
-    public class Batch : Prog<BatchBuilder>
+    /// <summary>
+    /// Classe représentant l'objet Batch, permettant de configurer une application de type batch.
+    /// </summary>
+    public sealed class Batch : Prog<BatchBuilder>
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="Batch" /> class.</summary>
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="Batch"/>.
+        /// </summary>
         /// <param name="provider">The provider.</param>
         /// <param name="logAction">The logs actions.</param>
         public Batch(ServiceProvider provider, Action<string>[] logAction)

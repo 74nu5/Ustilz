@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Programs
+namespace Ustilz.Programs
 {
     #region Usings
 
@@ -34,7 +34,9 @@
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="ProgBuilder{TBuilder,TProg}"/> class.</summary>
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="ProgBuilder{TBuilder, TProg}"/>.
+        /// </summary>
         internal ProgBuilder()
         {
             this.configurationBuilder = new ConfigurationBuilder();
@@ -47,12 +49,10 @@
 
         #region Propriétés et indexeurs
 
-        /// <summary>Gets or sets the log action.</summary>
-        /// <value>The log action.</value>
+        /// <summary>Obtient ou définit l'action du log.</summary>
         protected Action<string>[] LogAction { get; set; }
 
-        /// <summary>Gets the services.</summary>
-        /// <value>The services.</value>
+        /// <summary>Obtient les services.</summary>
         protected ServiceCollection Services { get; }
 
         #endregion
@@ -125,8 +125,8 @@
             return this;
         }
 
-        /// <summary>The build.</summary>
-        /// <returns>The <see cref="TProg" />.</returns>
+        /// <summary>Méthode de build.</summary>
+        /// <returns>Retourne le programme builder.</returns>
         public abstract TProg Build();
 
         /// <summary>The use app settings json.</summary>

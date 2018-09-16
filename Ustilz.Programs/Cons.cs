@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Programs
+namespace Ustilz.Programs
 {
     #region Usings
 
@@ -11,26 +11,29 @@
 
     #endregion
 
-    public class Cons : Prog<ConsoleBuilder>
+    /// <summary>
+    /// Classe représentant l'objet Cons, permettant de configurer une application console.
+    /// </summary>
+    public sealed class Cons : Prog<ConsoleBuilder>
     {
         #region Champs
 
-        /// <summary>Gets the actions to launch.</summary>
         private readonly Action[] actionsToLaunch;
 
-        /// <summary>Gets a value indicating whether has exit.</summary>
         private readonly bool hasExit;
 
         #endregion
 
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="Prog" /> class.</summary>
-        /// <param name="actions">The actions.</param>
-        /// <param name="hasExit">The has exit.</param>
-        /// <param name="provider">The provider.</param>
-        /// <param name="logAction">The logs actions</param>
-        public Cons(Action[] actions, bool hasExit, ServiceProvider provider, Action<string>[] logAction)
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="Cons"/>.
+        /// </summary>
+        /// <param name="actions">Les actions à effectuer dans l'application console.</param>
+        /// <param name="hasExit">True si un choix de sortie doit être ajouter au menu, False sinon.</param>
+        /// <param name="provider">Fournisseur de services.</param>
+        /// <param name="logAction">Liste d'action à effectuer lors du log.</param>
+        internal Cons(Action[] actions, bool hasExit, ServiceProvider provider, Action<string>[] logAction)
             : base(provider, logAction)
         {
             this.actionsToLaunch = actions;
@@ -83,9 +86,9 @@
 
                 foreach (var entry in entries.Split(' '))
                 {
-                    var isChoixNumerique = int.TryParse(entry, out var choix);
+                    var isChoixNumérique = int.TryParse(entry, out var choix);
 
-                    if (!isChoixNumerique || (choix <= enumerable.Count && choix > 0))
+                    if (!isChoixNumérique || (choix <= enumerable.Count && choix > 0))
                     {
                         enumerable[choix - 1].Invoke();
                     }
