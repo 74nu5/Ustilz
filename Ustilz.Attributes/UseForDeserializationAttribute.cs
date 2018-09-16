@@ -14,20 +14,24 @@ namespace Ustilz.Attributes
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="UseForDeserializationAttribute" /> class.</summary>
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.
+        /// </summary>
         public UseForDeserializationAttribute()
             : this(ImplicitUseKindFlags.Default)
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="UseForDeserializationAttribute" /> class.</summary>
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.</summary>
         /// <param name="targetFlags">The target flags.</param>
         public UseForDeserializationAttribute(ImplicitUseTargetFlags targetFlags)
             : this(ImplicitUseKindFlags.Default, targetFlags)
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="UseForDeserializationAttribute" /> class.</summary>
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.</summary>
         /// <param name="useKindFlags">The use kind flags.</param>
         /// <param name="targetFlags">The target flags.</param>
         public UseForDeserializationAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags = ImplicitUseTargetFlags.Default)
@@ -40,12 +44,12 @@ namespace Ustilz.Attributes
 
         #region Propriétés et indexeurs
 
-        /// <summary>Gets the target flags.</summary>
+        /// <summary>Obtient the target flags.</summary>
         /// <value>The target flags.</value>
         [UsedImplicitly]
         public ImplicitUseTargetFlags TargetFlags { get; private set; }
 
-        /// <summary>Gets the use kind flags.</summary>
+        /// <summary>Obtient the use kind flags.</summary>
         /// <value>The use kind flags.</value>
         [UsedImplicitly]
         public ImplicitUseKindFlags UseKindFlags { get; private set; }
