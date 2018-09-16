@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Logging.LoggerEvent
+namespace Ustilz.Logging.LoggerAction
 {
     #region Usings
 
@@ -8,7 +8,10 @@
 
     #endregion
 
-    public class LoggerActionProvider : ILoggerProvider
+    /// <summary>
+    ///     Classe du provider du logger d'action.
+    /// </summary>
+    internal sealed class LoggerActionProvider : ILoggerProvider
     {
         #region Champs
 
@@ -20,23 +23,31 @@
 
         #region Constructeurs et destructeurs
 
+        /// <summary>
+        ///     Initialise une nouvelle instance de la classe <see cref="LoggerActionProvider" />.
+        /// </summary>
+        /// <param name="action">Action à effectuer lors du log.</param>
         public LoggerActionProvider(LoggerAction.LogDelegate action) => this.action = action;
 
         #endregion
 
         #region Méthodes publiques
 
-        public ILogger CreateLogger(string categoryName) => this.loggers.GetOrAdd(categoryName, this.CompilLoggerFactory);
+        /// <summary>
+        ///     Méthode de création du logger.
+        /// </summary>
+        /// <param name="categoryName">Nom de la catégorie du logger.</param>
+        /// <returns>Retourne le logger.</returns>
+        public ILogger CreateLogger(string categoryName) => this.loggers.GetOrAdd(categoryName, this.LoggerActionFactory);
 
-        public void Dispose()
-        {
-        }
+        /// <inheritdoc />
+        public void Dispose() => this.loggers.Clear();
 
         #endregion
 
         #region Méthodes privées
 
-        private LoggerAction CompilLoggerFactory(string categoryName) => new LoggerAction(categoryName, this.action);
+        private LoggerAction LoggerActionFactory(string categoryName) => new LoggerAction(categoryName, this.action);
 
         #endregion
     }
