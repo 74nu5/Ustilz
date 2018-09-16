@@ -9,8 +9,4 @@
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Ustilz.Sql\Ustilz.Sql.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -17,7 +17,7 @@
         [Fact]
         public void GenererCouleursTest()
         {
-            var couleur = ColorUtils.GenererCouleur();
+            var couleur = ColorUtils.GenerateColor();
             Assert.Equal(6, couleur.Length);
         }
 

@@ -31,15 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Programs", "Ustilz.P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Time", "Ustilz.Time\Ustilz.Time.csproj", "{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Sql", "Ustilz.Sql\Ustilz.Sql.csproj", "{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.UI", "Ustilz.UI\Ustilz.UI.csproj", "{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Logging", "Ustilz.Logging\Ustilz.Logging.csproj", "{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE7C873F-C383-4F3F-A59A-EEE155C05696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Attributes", "Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Attributes", "Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,10 +81,6 @@ Global
 		{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF59E9A6-1FA8-4E8E-B737-49C357DAD9DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU

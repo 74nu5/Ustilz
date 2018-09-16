@@ -1,10 +1,8 @@
-﻿namespace Ustilz.TestExe
+namespace Ustilz.TestExe
 {
     #region Usings
 
     using System;
-
-    using Ustilz.Sql;
 
     #endregion
 
