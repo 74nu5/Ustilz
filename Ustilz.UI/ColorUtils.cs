@@ -1,4 +1,4 @@
-﻿namespace Ustilz.UI
+namespace Ustilz.UI
 {
     #region Usings
 
@@ -24,10 +24,10 @@
 
         #region Méthodes publiques
 
-        /// <summary>The generer couleurs.</summary>
+        /// <summary>Méthode de génération de couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>
         [NotNull]
-        public static string GenererCouleur() => $"{Random.Next(0x1000000):X6}";
+        public static string GenerateColor() => $"{Random.Next(0x1000000):X6}";
 
         /// <summary>The get color from nom.</summary>
         /// <param name="nom">The nom.</param>
@@ -37,10 +37,10 @@
 
         /// <summary>The get color from nom.</summary>
         /// <param name="nom">The nom.</param>
-        /// <param name="eclaircir"> Booléen pour éclaircir la couleur</param>
+        /// <param name="éclaircir"> Booléen pour éclaircir la couleur.</param>
         /// <returns>The <see cref="string" />.</returns>
         [NotNull]
-        public static string GetColorFromNom([NotNull] string nom, bool eclaircir)
+        public static string GetColorFromNom([NotNull] string nom, bool éclaircir)
         {
             if (nom.Length == 3)
             {
@@ -52,7 +52,7 @@
             var bii = bi % 0xFFFFFF;
 
             // On force des couleurs plus claire pour pouvoir l'utiliser comme fond
-            if (eclaircir)
+            if (éclaircir)
             {
                 bii |= 0xA0A0A0;
             }
