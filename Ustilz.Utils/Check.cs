@@ -17,25 +17,25 @@ namespace Ustilz.Utils
     [PublicAPI]
     public static class Check
     {
-        #region M�thodes publiques
+        #region Méthodes publiques
 
         /// <summary>The has no nulls.</summary>
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
-        /// <typeparam name="T">Type de la valeur � tester</typeparam>
+        /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>The IReadOnlyList.</returns>
         [NotNull]
         public static IReadOnlyList<T> HasNoNulls<T>([NotNull] IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
             where T : class
         {
-            NotNull(value, parameterName);
+            Check.NotNull(value, parameterName);
 
             if (value.All(e => e != null))
             {
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(parameterName);
         }
@@ -43,20 +43,20 @@ namespace Ustilz.Utils
         /// <summary>The not empty.</summary>
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
-        /// <typeparam name="T">Type de la valeur � tester</typeparam>
+        /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>The IReadOnlyList.</returns>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static IReadOnlyList<T> NotEmpty<T>(IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            NotNull(value, parameterName);
+            Check.NotNull(value, parameterName);
 
             if (value.Count != 0)
             {
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.CollectionArgumentIsEmpty(parameterName));
         }
@@ -84,16 +84,16 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw e;
         }
 
-        /// <summary>The not null.</summary>
-        /// <param name="value">The value.</param>
-        /// <param name="parameterName">The parameter name.</param>
-        /// <typeparam name="T">Type de la valeur � tester</typeparam>
-        /// <returns>The <see cref="T" />.</returns>
+        /// <summary>Méthode de vérification de la nullité de l'objet passé en paramètre.</summary>
+        /// <param name="value">L'objet à vérifier.</param>
+        /// <param name="parameterName">Nom du paramètre.</param>
+        /// <typeparam name="T">Type de la valeur à tester.</typeparam>
+        /// <returns>Retourne l'objet en entrée.</returns>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName)
@@ -103,17 +103,17 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentNullException(parameterName);
         }
 
-        /// <summary>The not null.</summary>
-        /// <param name="value">The value.</param>
-        /// <param name="parameterName">The parameter name.</param>
-        /// <param name="propertyName">The property name.</param>
-        /// <typeparam name="T">Type de la valeur � tester</typeparam>
-        /// <returns>The <see cref="T" />.</returns>
+        /// <summary>Méthode de vérification de la nullité de l'objet passé en paramètre.</summary>
+        /// <param name="value">L'objet à vérifier.</param>
+        /// <param name="parameterName">Nom du paramètre.</param>
+        /// <param name="propertyName">Nom de la propriété.</param>
+        /// <typeparam name="T">Type de la valeur à tester.</typeparam>
+        /// <returns>Retourne l'objet en entrée.</returns>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName, [NotNull] string propertyName)
@@ -123,8 +123,8 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
-            NotEmpty(propertyName, nameof(propertyName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(propertyName, nameof(propertyName));
 
             throw new ArgumentException(Strings.ArgumentPropertyNull(propertyName, parameterName));
         }
@@ -136,12 +136,12 @@ namespace Ustilz.Utils
         [CanBeNull]
         public static string NullButNotEmpty([CanBeNull] string value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            if (value is null || value.Length != 0)
+            if (value is null || (value.Length != 0))
             {
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
         }
@@ -157,7 +157,7 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            NotEmpty(parameterName, nameof(parameterName));
+            Check.NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.InvalidEntityType(value, parameterName));
         }
