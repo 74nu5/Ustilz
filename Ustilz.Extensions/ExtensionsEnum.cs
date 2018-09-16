@@ -19,8 +19,8 @@
         #region Méthodes publiques
 
         /// <summary>To the description dictionary.</summary>
-        /// <typeparam name="T">Type de l'énumération</typeparam>
-        /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum</returns>
+        /// <typeparam name="T">Type de l'énumération.</typeparam>
+        /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum.</returns>
         public static Dictionary<string, string> GetDescriptionDictionary<T>()
             where T : Enum
         {
@@ -42,7 +42,7 @@
 
         /// <summary>Méthode d'obtention de la description d'une valeur d'une énumération.</summary>
         /// <param name="value">The value. </param>
-        /// <typeparam name="T">Type de l'énumération</typeparam>
+        /// <typeparam name="T">Type de l'énumération.</typeparam>
         /// <returns>The <see cref="string" />. </returns>
         public static string GetEnumDescription<T>(this T value)
             where T : Enum
@@ -56,11 +56,11 @@
         }
 
         /// <summary>
-        ///     Returns true if enum matches any of the given values
+        ///     Returns true if enum matches any of the given values.
         /// </summary>
-        /// <param name="value">Value to match</param>
-        /// <param name="values">Values to match against</param>
-        /// <returns>Return true if matched</returns>
+        /// <param name="value">Value to match.</param>
+        /// <param name="values">Values to match against.</param>
+        /// <returns>Return true if matched.</returns>
         public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
 
         #endregion

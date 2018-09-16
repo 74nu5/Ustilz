@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
     #region Usings
 
@@ -228,7 +228,9 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2>(
-            [NotNull] this Action<T1, T2> trueAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2,
+            [NotNull] this Action<T1, T2> trueAction,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));

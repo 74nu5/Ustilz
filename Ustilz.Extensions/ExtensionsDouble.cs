@@ -8,7 +8,7 @@
 
     #endregion
 
-    /// <summary>Extensions pour le type double</summary>
+    /// <summary>Extensions pour le type double.</summary>
     [PublicAPI]
     public static class ExtensionsDouble
     {
@@ -21,7 +21,7 @@
 
         #region Méthodes publiques
 
-        /// <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près</summary>
+        /// <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
         /// <param name="valeur1">The valeur1.</param>
         /// <param name="valeur2">The valeur2.</param>
         /// <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>

@@ -1,4 +1,4 @@
-﻿#pragma warning disable 1570
+#pragma warning disable 1570
 namespace Ustilz.Extensions
 {
     #region Usings
@@ -22,8 +22,8 @@ namespace Ustilz.Extensions
         /// <summary>
         ///     Méthode de "transformation" d'objet en boolean.
         /// </summary>
-        /// <typeparam name="T">Type à "tranformer".</typeparam>
-        /// <param name="obj">Objet à "tranformer".</param>
+        /// <typeparam name="T">Type à "transformer".</typeparam>
+        /// <param name="obj">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
         public static bool AsBool<T>(this T obj)
         {
@@ -45,18 +45,22 @@ namespace Ustilz.Extensions
 
                     return s != string.Empty;
                 }
+
                 case object o when o is string s:
                 {
                     return s.AsBool();
                 }
+
                 case object o when o is int i:
                 {
                     return i.AsBool();
                 }
+
                 case object _:
                 {
                     return false;
                 }
+
                 default:
                     return false;
             }
@@ -66,11 +70,11 @@ namespace Ustilz.Extensions
         /// <param name="value">The value. </param>
         /// <param name="from">The from. </param>
         /// <param name="to">The to. </param>
-        /// <typeparam name="T">Type à comparer </typeparam>
+        /// <typeparam name="T">Type à comparer. </typeparam>
         /// <returns>The <see cref="bool" />. </returns>
         public static bool Between<T>([NotNull] this T value, T from, T to)
             where T : IComparable<T>
-            => value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
+            => (value.CompareTo(from) >= 0) && (value.CompareTo(to) <= 0);
 
         /// <summary>Executes the action specified, which the given object as parameter.</summary>
         /// <remarks>Use this method to chain method calls on the same object.</remarks>
@@ -89,10 +93,10 @@ namespace Ustilz.Extensions
             return obj;
         }
 
-        /// <summary>The dump. </summary>
-        /// <param name="o">The o. </param>
-        /// <typeparam name="T">The Type </typeparam>
-        /// <returns>The <see cref="T" />. </returns>
+        /// <summary>Méthode d'affichage d'un objet. </summary>
+        /// <param name="o">L'objet à afficher. </param>
+        /// <typeparam name="T">Type de l'objet. </typeparam>
+        /// <returns>Retourne l'objet. </returns>
         public static T Dump<T>(this T o)
         {
             if (o is IEnumerable list)
@@ -106,22 +110,21 @@ namespace Ustilz.Extensions
             return o;
         }
 
-
-        /// <summary>The if null.</summary>
-        /// <param name="source">The source.</param>
-        /// <param name="defaultValue">The default value.</param>
-        /// <typeparam name="T">Type de l'objet</typeparam>
-        /// <returns>The <see cref="T" />.</returns>
+        /// <summary>Méthode de test du nullité d'une valeur, si la valeur est nulle la méthode renvoie la valeur par défaut renseignée.</summary>
+        /// <param name="source">La valeur à tester.</param>
+        /// <param name="defaultValue">La valeur par défaut.</param>
+        /// <typeparam name="T">Type de l'objet.</typeparam>
+        /// <returns>Retourne l'objet passé en entrée, la valeur par défaut si celle-ci est nulle.</returns>
         public static T IfNull<T>([CanBeNull] this T source, T defaultValue)
             where T : class
             => source ?? defaultValue;
 
-        /// <summary>Checks if the value is present in the given array.</summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>Returns true if the value is present in the array.</returns>
+        /// <summary>Vérifie si la valeur est présente dans le tableau donné.</summary>
+        /// <param name="value">La valeur à rechercher.</param>
+        /// <param name="values">Un tableau contenant les valeurs.</param>
+        /// <typeparam name="T">Le type de la valeur.</typeparam>
+        /// <returns>Renvoie true si la valeur est présente dans le tableau, false sinon.</returns>
+        /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
         [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
@@ -131,12 +134,12 @@ namespace Ustilz.Extensions
             return values.Contains(value);
         }
 
-        /// <summary>Checks if the value is present in the given IEnumerable.</summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>Returns true if the value is present in the IEnumerable.</returns>
+        /// <summary>Vérifie si la valeur est présente dans le IEnumerable donné.</summary>
+        /// <param name="value">La valeur à rechercher.</param>
+        /// <param name="values">Un IEnumerable contenant les valeurs.</param>
+        /// <typeparam name="T">Le type de la valeur.</typeparam>
+        /// <returns>Retourne true si la valeur est présente dans le IEnumerable, false sinon.</returns>
+        /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
         [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
@@ -146,51 +149,51 @@ namespace Ustilz.Extensions
             return values.Contains(value);
         }
 
-        /// <summary>Checks if the value is not present in the given array.</summary>
-        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>&gt;Returns true if the value is not present in the array.</returns>
+        /// <summary>Vérifie si la valeur n'est pas présente dans le tableau donné.</summary>
+        /// <param name="value">La valeur à rechercher.</param>
+        /// <param name="values">Un tableau contenant les valeurs.</param>
+        /// <typeparam name="T">Le type de la valeur.</typeparam>
+        /// <returns>Renvoie true si la valeur n'est pas présente dans le tableau, false sinon.</returns>
+        /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
         [PublicAPI]
         public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
-            => !IsIn(value, values);
+            => !value.IsIn(values);
 
-        /// <summary>Checks if the value is not present in the given IEnumerable.</summary>
-        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
-        /// <param name="value">The value to search for.</param>
-        /// <param name="values">A IEnumerable containing the values.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>&gt;Returns true if the value is not present in the IEnumerable.</returns>
+        /// <summary>Vérifie si la valeur n'est pas présente dans le IEnumerable donné.</summary>
+        /// <param name="value">La valeur à rechercher.</param>
+        /// <param name="values">Un IEnumerable contenant les valeurs.</param>
+        /// <typeparam name="T">Le type de la valeur.</typeparam>
+        /// <returns>Retourne true si la valeur n'est pas présente dans le IEnumerable, false sinon.</returns>
+        /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
         [PublicAPI]
         public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
-            => !IsIn(value, values);
+            => !value.IsIn(values);
 
-        /// <summary>Determines whether [is not null].</summary>
-        /// <typeparam name="T">Type de l'objet</typeparam>
-        /// <param name="source">The source.</param>
-        /// <returns>The <see cref="bool" />.</returns>
+        /// <summary>Détermine si l'objet n'est pas nul.</summary>
+        /// <param name="source">L'objet à tester.</param>
+        /// <typeparam name="T">Type de l'objet.</typeparam>
+        /// <returns>Retourne true si l'objet n'est pas null, false sinon.</returns>
         [DebuggerStepThrough]
         public static bool IsNotNull<T>([CanBeNull] this T source)
             where T : class
             => source != null;
 
-        /// <summary>The is null. </summary>
-        /// <param name="source">The source. </param>
-        /// <typeparam name="T">Le type à tester </typeparam>
-        /// <returns>The <see cref="bool" />. </returns>
+        /// <summary>Détermine si l'objet est nul.</summary>
+        /// <param name="source">L'objet à tester.</param>
+        /// <typeparam name="T">Type de l'objet.</typeparam>
+        /// <returns>Retourne true si l'objet est null, false sinon.</returns>
         [DebuggerStepThrough]
         public static bool IsNull<T>([CanBeNull] this T source)
             where T : class
             => source == null;
 
-        /// <summary>Swaps the given values.</summary>
-        /// <typeparam name="T">The type of the values.</typeparam>
-        /// <param name="obj">An object to cal the extension method on, can be null.</param>
-        /// <param name="value0">The first value.</param>
-        /// <param name="value1">The second value.</param>
+        /// <summary>Permute les valeurs données.</summary>
+        /// <param name="obj">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
+        /// <param name="value0">La première valeur.</param>
+        /// <param name="value1">La deuxième valeur.</param>
+        /// <typeparam name="T">Le type des valeurs.</typeparam>
         [PublicAPI]
         public static void Swap<T>([CanBeNull] this object obj, ref T value0, ref T value1)
         {
@@ -199,15 +202,15 @@ namespace Ustilz.Extensions
             value1 = temp;
         }
 
-        /// <summary>Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj" /> is null.</summary>
+        /// <summary>Lève une exception <see cref="ArgumentNullException" /> si <paramref name="obj"/> est null.</summary>
         /// <remarks>
-        ///     If <paramref name="errorMessage" /> is null, this method will use the following default message:
-        ///     "{object name} can not be null."
+        ///     Si <paramref name="errorMessage" /> est null, cette méthode utilisera le message par défaut suivant:
+        ///             "{nom d'objet} ne peut pas être nul".
         /// </remarks>
-        /// <typeparam name="TObject">The type <paramref name="obj" />.</typeparam>
         /// <param name="obj">The object to check.</param>
-        /// <param name="parameterName">The name of <paramref name="obj" />.</param>
-        /// <param name="errorMessage">The text used as exception message if <paramref name="obj" /> is null.</param>
+        /// <param name="parameterName">Le nom du paramètre <paramref name="obj"/>.</param>
+        /// <param name="errorMessage">Le texte utilisé comme message d'exception si <paramref name="obj" /> est nul.</param>
+        /// <typeparam name="TObject">Le type de l'objet <paramref name="obj"/>.</typeparam>
         [PublicAPI]
         [DebuggerStepThrough]
         public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj, [NotNull] string parameterName, [CanBeNull] string errorMessage = null)
@@ -220,10 +223,10 @@ namespace Ustilz.Extensions
             throw new ArgumentNullException(parameterName, errorMessage ?? $"{parameterName} can not be null.");
         }
 
-        /// <summary>The to.</summary>
-        /// <param name="value">The value.</param>
-        /// <typeparam name="T">Type to convert</typeparam>
-        /// <returns>The <see cref="T" />.</returns>
+        /// <summary>Méthode de conversion.</summary>
+        /// <param name="value">Valeur à convertir.</param>
+        /// <typeparam name="T">Type vers lequel convertir.</typeparam>
+        /// <returns>Retourne l'objet convertit.</returns>
         public static T To<T>([CanBeNull] this IConvertible value)
         {
             try
@@ -233,7 +236,7 @@ namespace Ustilz.Extensions
 
                 if (u != null)
                 {
-                    if (value == null || value.Equals(string.Empty))
+                    if ((value == null) || value.Equals(string.Empty))
                     {
                         return default;
                     }
@@ -241,7 +244,7 @@ namespace Ustilz.Extensions
                     return (T)Convert.ChangeType(value, u);
                 }
 
-                if (value == null || value.Equals(string.Empty))
+                if ((value == null) || value.Equals(string.Empty))
                 {
                     return default;
                 }
@@ -254,11 +257,11 @@ namespace Ustilz.Extensions
             }
         }
 
-        /// <summary>The to.</summary>
-        /// <param name="value">The value.</param>
-        /// <param name="ifError">The if error.</param>
-        /// <typeparam name="T">Type to convert</typeparam>
-        /// <returns>The <see cref="T" />.</returns>
+        /// <summary>Méthode de conversion.</summary>
+        /// <param name="value">Valeur à convertir.</param>
+        /// <param name="ifError">Valeur à renvoyer si la conversion échoue.</param>
+        /// <typeparam name="T">Type vers lequel convertir.</typeparam>
+        /// <returns>Retourne l'objet convertit.</returns>
         public static T To<T>([CanBeNull] this IConvertible value, IConvertible ifError)
         {
             try
@@ -268,7 +271,7 @@ namespace Ustilz.Extensions
 
                 if (u != null)
                 {
-                    if (value == null || value.Equals(string.Empty))
+                    if ((value == null) || value.Equals(string.Empty))
                     {
                         return (T)ifError;
                     }
@@ -276,7 +279,7 @@ namespace Ustilz.Extensions
                     return (T)Convert.ChangeType(value, u);
                 }
 
-                if (value == null || value.Equals(string.Empty))
+                if ((value == null) || value.Equals(string.Empty))
                 {
                     return ifError.To<T>();
                 }

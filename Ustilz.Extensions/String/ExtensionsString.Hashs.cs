@@ -33,7 +33,7 @@
 
         #region HashType enum
 
-        /// <summary>Supported hash algorithms</summary>
+        /// <summary>Supported hash algorithms.</summary>
         [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
         public enum HashType
         {
@@ -57,10 +57,10 @@
 
         #region Méthodes publiques
 
-        /// <summary>Computes the hash of the string using a specified hash algorithm</summary>
-        /// <param name="input">The string to hash</param>
-        /// <param name="hashType">The hash algorithm to use</param>
-        /// <returns>The resulting hash or an empty string on error</returns>
+        /// <summary>Computes the hash of the string using a specified hash algorithm.</summary>
+        /// <param name="input">The string to hash.</param>
+        /// <param name="hashType">The hash algorithm to use.</param>
+        /// <returns>The resulting hash or an empty string on error.</returns>
         public static string ComputeHash(this string input, HashType hashType)
         {
             try
@@ -136,7 +136,7 @@
         /// <param name="salt">The salt.</param>
         /// <param name="provider">The provider.</param>
         /// <returns>The <see cref="string" />.</returns>
-        /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown</exception>
+        /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown.</exception>
         [NotNull]
         public static string GenerateHash([NotNull] string password, string salt = null, HashType provider = HashType.MD5)
         {
@@ -156,23 +156,23 @@
             }
         }
 
-        /// <summary>Generate random string to be used as passwords and salts</summary>
-        /// <returns>Base 64 random string</returns>
+        /// <summary>Generate random string to be used as passwords and salts.</summary>
+        /// <returns>Base 64 random string.</returns>
         public static string GeneratePassword()
         {
             var randomNumber = Random.Next(5000, int.MaxValue);
             return Convert.ToBase64String(Encoding.Unicode.GetBytes(randomNumber.ToString()));
         }
 
-        /// <summary>Random salt to comsume in hash generation</summary>
-        /// <param name="length">Length of salt value should be even, hex string will be twice of the length</param>
-        /// <returns>Hex string representation of salt value</returns>
+        /// <summary>Random salt to comsume in hash generation.</summary>
+        /// <param name="length">Length of salt value should be even, hex string will be twice of the length.</param>
+        /// <returns>Hex string representation of salt value.</returns>
         public static string GenerateSalt(int length = 4)
             => GenerateSaltBytes(length).ToHexString();
 
-        /// <summary>Random salt to comsume in hash generation</summary>
-        /// <param name="length">Length of salt value should be even, hex string will be twice of the length</param>
-        /// <returns>Bytes representation of salt value</returns>
+        /// <summary>Random salt to comsume in hash generation.</summary>
+        /// <param name="length">Length of salt value should be even, hex string will be twice of the length.</param>
+        /// <returns>Bytes representation of salt value.</returns>
         [NotNull]
         public static byte[] GenerateSaltBytes(int length = 16)
         {
@@ -182,10 +182,10 @@
             return salt;
         }
 
-        /// <summary>Validate password is equal to hashValue(Generated from Compute hash)</summary>
-        /// <param name="hashValue">Computed hash value of actual password 'MD5$Salt$Hash'</param>
-        /// <param name="password">Password to validate against hash value</param>
-        /// <returns>True if password is equal to the hash value</returns>
+        /// <summary>Validate password is equal to hashValue(Generated from Compute hash).</summary>
+        /// <param name="hashValue">Computed hash value of actual password 'MD5$Salt$Hash'.</param>
+        /// <param name="password">Password to validate against hash value.</param>
+        /// <returns>True if password is equal to the hash value.</returns>
         public static bool Validate([NotNull] string hashValue, [NotNull] string password)
         {
             Check.NotEmpty(hashValue, nameof(hashValue));

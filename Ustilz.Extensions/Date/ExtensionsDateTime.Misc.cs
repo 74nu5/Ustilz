@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Date
+namespace Ustilz.Extensions.Date
 {
     #region Usings
 
@@ -9,68 +9,69 @@
     #endregion
 
     /// <summary>
-    ///     Classe d'extension du type DateTime
+    ///     Classe d'extension du type DateTime.
     /// </summary>
     public static partial class ExtensionsDateTime
     {
         #region Méthodes publiques
 
-        /// <summary>Calculates the difference between the year of the current and the given date time.</summary>
-        /// <param name="bday">Date from age is calculate.</param>
-        /// <param name="day">Date to age is calculate.</param>
-        /// <returns>The difference between the year of the current and the given date time.</returns>
+        /// <summary>
+        /// Calcule la différence entre l'année de la date et l'heure actuelles.</summary>
+        /// <param name="startDay">Date à laquelle l'age est calculé.</param>
+        /// <param name="day">Date depuis l'age est calculé.</param>
+        /// <returns>La différence entre l'année de la date courante et celle de la date.</returns>
         [Pure]
         [PublicAPI]
-        public static (int yearAge, int monthAge, int dayAge) Age(this DateTime bday, DateTime? day = null)
+        public static (int yearAge, int monthAge, int dayAge) Age(this DateTime startDay, DateTime? day = null)
         {
-            var cday = day ?? DateTime.Now;
-            if (cday.Year - bday.Year <= 0 && (cday.Year - bday.Year != 0 || bday.Month >= cday.Month && (bday.Month != cday.Month || bday.Day > cday.Day)))
+            var toDay = day ?? DateTime.Now;
+            if ((toDay.Year - startDay.Year <= 0) && ((toDay.Year - startDay.Year != 0) || ((startDay.Month >= toDay.Month) && ((startDay.Month != toDay.Month) || (startDay.Day > toDay.Day)))))
             {
                 throw new ArgumentException("Birthday date must be earlier than current date");
             }
 
-            var daysInBdayMonth = DateTime.DaysInMonth(bday.Year, bday.Month);
-            var daysRemain = cday.Day + (daysInBdayMonth - bday.Day);
+            var daysInStartDayMonth = DateTime.DaysInMonth(startDay.Year, startDay.Month);
+            var daysRemain = toDay.Day + (daysInStartDayMonth - startDay.Day);
 
-            return cday.Month > bday.Month
-                ? (cday.Year - bday.Year, cday.Month - (bday.Month + 1) + Math.Abs(daysRemain / daysInBdayMonth),
-                    (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth)
-                : (cday.Month == bday.Month
-                    ? (cday.Day >= bday.Day
-                        ? (cday.Year - bday.Year, 0, cday.Day - bday.Day)
-                        : (cday.Year - 1 - bday.Year, 11, DateTime.DaysInMonth(bday.Year, bday.Month) - (bday.Day - cday.Day)))
-                    : (cday.Year - 1 - bday.Year, cday.Month + (11 - bday.Month) + Math.Abs(daysRemain / daysInBdayMonth),
-                        (daysRemain % daysInBdayMonth + daysInBdayMonth) % daysInBdayMonth));
+            return toDay.Month > startDay.Month
+                ? (toDay.Year - startDay.Year, (toDay.Month - (startDay.Month + 1)) + Math.Abs(daysRemain / daysInStartDayMonth),
+                    ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth)
+                : toDay.Month == startDay.Month
+                    ? toDay.Day >= startDay.Day
+                        ? (toDay.Year - startDay.Year, 0, toDay.Day - startDay.Day)
+                        : (toDay.Year - 1 - startDay.Year, 11, DateTime.DaysInMonth(startDay.Year, startDay.Month) - (startDay.Day - toDay.Day))
+                    : (toDay.Year - 1 - startDay.Year, toDay.Month + (11 - startDay.Month) + Math.Abs(daysRemain / daysInStartDayMonth),
+                        ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth);
         }
 
-        /// <summary>Returns a DateTime with its value set to Now minus the provided TimeSpan value.</summary>
-        /// <param name="value"></param>
+        /// <summary>Renvoie un DateTime dont la valeur est définie sur Now moins la valeur TimeSpan fournie.</summary>
+        /// <param name="value">Durée fournie.</param>
         /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime Ago(this TimeSpan value)
             => DateTime.Now.Subtract(value);
 
-        /// <summary>Returns a DateTime with its value set to Now minus the provided TimeSpan value.</summary>
-        /// <param name="value"></param>
+        /// <summary>Renvoie un DateTime dont la valeur est définie sur Now moins la valeur TimeSpan fournie.</summary>
+        /// <param name="value">Durée fournie.</param>
         /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime AgoUtc(this TimeSpan value)
             => DateTime.UtcNow.Subtract(value);
 
-        /// <summary>Calculates the elapsed time between the given date time value and DateTime.Now.</summary>
-        /// <param name="dateTime">The date time value.</param>
-        /// <returns>Returns the elapsed time between the given date time value and DateTime.Now.</returns>
+        /// <summary>Calcule le temps écoulé entre la valeur d'heure de date donnée et DateTime.Now.</summary>
+        /// <param name="dateTime">La date fournie.</param>
+        /// <returns>Retourne le temps écoulé entre la valeur d'heure de date donnée et DateTime.Now.</returns>
         [Pure]
         [PublicAPI]
         public static TimeSpan Elapsed(this DateTime dateTime)
             => DateTime.Now - dateTime;
 
-        /// <summary>Returns a DateTime with its value set to Now plus the provided TimeSpan value.</summary>
-        /// <param name="value"></param>
+        /// <summary>Retourne un DateTime avec sa valeur définie sur Now plus la valeur TimeSpan fournie.</summary>
+        /// <param name="value">Durée fournie.</param>
         /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime FromNow(this TimeSpan value)
             => DateTime.Now.Add(value);
 
-        /// <summary>Returns a DateTime with its value set to Now plus the provided TimeSpan value.</summary>
-        /// <param name="value"></param>
+        /// <summary>Retourne un DateTime avec sa valeur définie sur Now plus la valeur TimeSpan fournie.</summary>
+        /// <param name="value">Durée fournie.</param>
         /// <returns>The <see cref="DateTime" />.</returns>
         public static DateTime FromNowUtc(this TimeSpan value)
             => DateTime.UtcNow.Add(value);

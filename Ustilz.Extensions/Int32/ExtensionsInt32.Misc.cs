@@ -55,7 +55,7 @@
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
+        /// <returns>Returns the specified percentage of the number.</returns>
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, int percent)
@@ -64,7 +64,7 @@
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
+        /// <returns>Returns the specified percentage of the number.</returns>
         [Pure]
         [PublicAPI]
         public static decimal PercentageOf(this int number, decimal percent)
@@ -73,7 +73,7 @@
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
+        /// <returns>Returns the specified percentage of the number.</returns>
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, double percent)
@@ -82,7 +82,7 @@
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
-        /// <returns>Returns the specified percentage of the number</returns>
+        /// <returns>Returns the specified percentage of the number.</returns>
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, long percent)

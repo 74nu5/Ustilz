@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions
+namespace Ustilz.Extensions
 {
     #region Usings
 
@@ -19,24 +19,24 @@
     {
         #region Méthodes publiques
 
-        /// <summary>Executes the given action with the value as parameter and handles any exceptions during the execution.</summary>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <param name="action">The action.</param>
-        /// <param name="value">The value.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
+        /// <summary>Exécute l'action donnée avec la valeur comme paramètre et gère toutes les exceptions pendant l'exécution.</summary>
+        /// <param name="action">L'action à exécuter.</param>
+        /// <param name="parameter">Paramètre de l'action, celui-ci est retourné après l'exécution dans la propriété <see cref="ExecutionResult{T}.Result" />.</param>
+        /// <typeparam name="T">Le type du paramètre.</typeparam>
+        /// <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
+        /// <exception cref="ArgumentNullException">L'action ne peut pas être nulle.</exception>
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [CanBeNull] T value)
+        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [CanBeNull] T parameter)
         {
             action.ThrowIfNull(nameof(action));
 
             var result = new ExecutionResult<T>();
             try
             {
-                action(value);
-                result.Result = value;
+                action(parameter);
+                result.Result = parameter;
             }
             catch (Exception ex)
             {
@@ -46,24 +46,24 @@
             return result;
         }
 
-        /// <summary>Executes the given function with the value as parameter and handles any exceptions during the execution.</summary>
-        /// <exception cref="ArgumentNullException">The func can not be null.</exception>
-        /// <param name="func">The function.</param>
-        /// <param name="value">The value.</param>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
+        /// <summary>Exécute la fonction donnée avec la valeur comme paramètre et gère toutes les exceptions pendant l'exécution.</summary>
+        /// <param name="func">La fonction à exécuter.</param>
+        /// <param name="parameter">Le paramètre de la fonction.</param>
+        /// <typeparam name="T">Le type du paramètre.</typeparam>
+        /// <typeparam name="TResult">Le type du résultat.</typeparam>
+        /// <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
+        /// <exception cref="ArgumentNullException">La fonction ne peut pas être nulle.</exception>
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [CanBeNull] T value)
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [CanBeNull] T parameter)
         {
             func.ThrowIfNull(nameof(func));
 
             var result = new ExecutionResult<TResult>();
             try
             {
-                result.Result = func(value);
+                result.Result = func(parameter);
             }
             catch (Exception ex)
             {
@@ -73,11 +73,11 @@
             return result;
         }
 
-        /// <summary>The memoize. </summary>
-        /// <param name="func">The func. </param>
-        /// <typeparam name="T">Type du paramètres d'entrée </typeparam>
-        /// <typeparam name="TResult">Type du paramètres de retour </typeparam>
-        /// <returns>The <see cref="Func{T,TResult}" />. </returns>
+        /// <summary>Méthode de mémoïsation d'une fonction. </summary>
+        /// <param name="func">Fonction à mémoïser. </param>
+        /// <typeparam name="T">Type du paramètres d'entrée. </typeparam>
+        /// <typeparam name="TResult">Type du retour. </typeparam>
+        /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
         [NotNull]
         public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
         {
@@ -95,10 +95,10 @@
             };
         }
 
-        /// <summary>The memoize. </summary>
-        /// <param name="func">The func. </param>
-        /// <typeparam name="TResult">Type de retour </typeparam>
-        /// <returns>The <see cref="Func{TResult}" />. </returns>
+        /// <summary>Méthode de mémoïsation d'une fonction. </summary>
+        /// <param name="func">Fonction à mémoïser. </param>
+        /// <typeparam name="TResult">Type du retour. </typeparam>
+        /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
         [NotNull]
         public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
         {
@@ -116,116 +116,122 @@
             };
         }
 
-        /// <summary>Tests the perf. </summary>
-        /// <typeparam name="TResult">The type of the result. </typeparam>
-        /// <param name="action">The action. </param>
-        /// <param name="timestamp">Retourne le temps d'exévution de la méthode en millisecondes. </param>
-        /// <returns>La valeur de retour</returns>
-        public static TResult TestPerf<TResult>([NotNull] this Func<TResult> action, out long timestamp)
+        /// <summary>Méthode de test de performance.</summary>
+        /// <param name="function">La fonction à exécuter.</param>
+        /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+        /// <typeparam name="TResult">Le type du résultat. </typeparam>
+        /// <returns>La valeur de retour.</returns>
+        public static TResult TestPerf<TResult>([NotNull] this Func<TResult> function, out long timestamp)
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var result = action.Invoke();
+            var result = function.Invoke();
 
             stopWatch.Stop();
             timestamp = stopWatch.ElapsedMilliseconds;
             return result;
         }
 
-        /// <summary>Tests the perf. </summary>
-        /// <typeparam name="T">The type T </typeparam>
-        /// <typeparam name="TResult">The type of the result. </typeparam>
-        /// <param name="action">The action. </param>
-        /// <param name="timestamp">Retourne le temps d'exévution de la méthode en millisecondes. </param>
-        /// <param name="param">The parameter. </param>
-        /// <returns>La valeur de retour</returns>
-        public static TResult TestPerf<T, TResult>([NotNull] this Func<T, TResult> action, out long timestamp, T param)
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="function">La fonction à exécuter.</param>
+        /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+        /// <param name="param">Le paramètre de la fonction. </param>
+        /// <typeparam name="T">Le type du paramètre. </typeparam>
+        /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+        /// <returns>La valeur de retour.</returns>
+        public static TResult TestPerf<T, TResult>([NotNull] this Func<T, TResult> function, out long timestamp, T param)
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var result = action.Invoke(param);
+            var result = function.Invoke(param);
 
             stopWatch.Stop();
             timestamp = stopWatch.ElapsedMilliseconds;
             return result;
         }
 
-        /// <summary>The test perf.</summary>
-        /// <param name="action">The action.</param>
-        /// <param name="timestamp">The timestamp.</param>
-        /// <param name="param1">The param 1.</param>
-        /// <param name="param2">The param 2.</param>
-        /// <typeparam name="T1">Type du premier paramètre</typeparam>
-        /// <typeparam name="T2">Type du deuxième paramètre</typeparam>
-        /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="TResult" />.</returns>
-        public static TResult TestPerf<T1, T2, TResult>([NotNull] this Func<T1, T2, TResult> action, out long timestamp, T1 param1, T2 param2)
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="function">La fonction à exécuter.</param>
+        /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+        /// <param name="param1">Le premier paramètre de la fonction.</param>
+        /// <param name="param2">Le second paramètre de la fonction.</param>
+        /// <typeparam name="T1">Le type du premier paramètre. </typeparam>
+        /// <typeparam name="T2">Le type du second paramètre. </typeparam>
+        /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+        /// <returns>La valeur de retour.</returns>
+        public static TResult TestPerf<T1, T2, TResult>([NotNull] this Func<T1, T2, TResult> function, out long timestamp, T1 param1, T2 param2)
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var result = action.Invoke(param1, param2);
+            var result = function.Invoke(param1, param2);
 
             stopWatch.Stop();
             timestamp = stopWatch.ElapsedMilliseconds;
             return result;
         }
 
-        /// <summary>The test perf.</summary>
-        /// <param name="action">The action.</param>
-        /// <param name="timestamp">The timestamp.</param>
-        /// <param name="param1">The param 1.</param>
-        /// <param name="param2">The param 2.</param>
-        /// <param name="param3">The param 3.</param>
-        /// <typeparam name="T1">Type du premier paramètre</typeparam>
-        /// <typeparam name="T2">Type du deuxième paramètre</typeparam>
-        /// <typeparam name="T3">Type du troisième paramètre</typeparam>
-        /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="TResult" />.</returns>
-        public static TResult TestPerf<T1, T2, T3, TResult>([NotNull] this Func<T1, T2, T3, TResult> action, out long timestamp, T1 param1, T2 param2, T3 param3)
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="function">La fonction à exécuter.</param>
+        /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+        /// <param name="param1">Le premier paramètre de la fonction.</param>
+        /// <param name="param2">Le second paramètre de la fonction.</param>
+        /// <param name="param3">Le troisième paramètre de la fonction.</param>
+        /// <typeparam name="T1">Le type du premier paramètre. </typeparam>
+        /// <typeparam name="T2">Le type du second paramètre. </typeparam>
+        /// <typeparam name="T3">Le type du troisième paramètre.</typeparam>
+        /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+        /// <returns>La valeur de retour.</returns>
+        public static TResult TestPerf<T1, T2, T3, TResult>([NotNull] this Func<T1, T2, T3, TResult> function, out long timestamp, T1 param1, T2 param2, T3 param3)
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var result = action.Invoke(param1, param2, param3);
+            var result = function.Invoke(param1, param2, param3);
 
             stopWatch.Stop();
             timestamp = stopWatch.ElapsedMilliseconds;
             return result;
         }
 
-        /// <summary>The test perf.</summary>
-        /// <param name="action">The action.</param>
-        /// <param name="timestamp">The timestamp.</param>
-        /// <param name="param1">The param 1.</param>
-        /// <param name="param2">The param 2.</param>
-        /// <param name="param3">The param 3.</param>
-        /// <param name="param4">The param 4.</param>
-        /// <typeparam name="T1">Type du premier paramètre</typeparam>
-        /// <typeparam name="T2">Type du deuxième paramètre</typeparam>
-        /// <typeparam name="T3">Type du troisième paramètre</typeparam>
-        /// <typeparam name="T4">Type du quatrième paramètre</typeparam>
-        /// <typeparam name="TResult">Type du résultat</typeparam>
-        /// <returns>The <see cref="TResult" />.</returns>
-        public static TResult TestPerf<T1, T2, T3, T4, TResult>([NotNull] this Func<T1, T2, T3, T4, TResult> action, out long timestamp, T1 param1, T2 param2, T3 param3, T4 param4)
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="function">La fonction à exécuter.</param>
+        /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+        /// <param name="param1">Le premier paramètre de la fonction.</param>
+        /// <param name="param2">Le second paramètre de la fonction.</param>
+        /// <param name="param3">Le troisième paramètre de la fonction.</param>
+        /// <param name="param4">Le quatrième paramètre de la fonction.</param>
+        /// <typeparam name="T1">Le type du premier paramètre. </typeparam>
+        /// <typeparam name="T2">Le type du second paramètre. </typeparam>
+        /// <typeparam name="T3">Le type du troisième paramètre.</typeparam>
+        /// <typeparam name="T4">Le type du quatrième paramètre.</typeparam>
+        /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+        /// <returns>La valeur de retour.</returns>
+        public static TResult TestPerf<T1, T2, T3, T4, TResult>(
+            [NotNull] this Func<T1, T2, T3, T4, TResult> function,
+            out long timestamp,
+            T1 param1,
+            T2 param2,
+            T3 param3,
+            T4 param4)
         {
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            var result = action.Invoke(param1, param2, param3, param4);
+            var result = function.Invoke(param1, param2, param3, param4);
 
             stopWatch.Stop();
             timestamp = stopWatch.ElapsedMilliseconds;
             return result;
         }
 
-        /// <summary>Tests the perf. </summary>
-        /// <typeparam name="T">The type T </typeparam>
-        /// <param name="action">The action. </param>
-        /// <param name="param">The parameter. </param>
-        /// <returns>Retourne le temps d'exévution de la méthode en millisecondes</returns>
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="action">L'action à exécuter. </param>
+        /// <param name="param">Le paramètre de l'action. </param>
+        /// <typeparam name="T">Le type du paramètre. </typeparam>
+        /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
         public static long TestPerf<T>([NotNull] this Action<T> action, T param)
         {
             var stopWatch = new Stopwatch();
@@ -237,9 +243,9 @@
             return stopWatch.ElapsedMilliseconds;
         }
 
-        /// <summary>Tests the perf. </summary>
-        /// <param name="action">The action. </param>
-        /// <returns>Retourne le temps d'exévution de la méthode en millisecondes</returns>
+        /// <summary>Méthode de test de performance. </summary>
+        /// <param name="action">L'action à exécuter. </param>
+        /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
         public static long TestPerf([NotNull] this Action action)
         {
             var stopWatch = new Stopwatch();

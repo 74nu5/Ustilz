@@ -17,10 +17,10 @@
     {
         #region Méthodes publiques
 
-        /// <summary>Enumerate each element in the enumeration and execute specified action</summary>
-        /// <typeparam name="T">Type of enumeration</typeparam>
-        /// <param name="enumerable">Enumerable collection</param>
-        /// <param name="action">Action to perform</param>
+        /// <summary>Enumerate each element in the enumeration and execute specified action.</summary>
+        /// <typeparam name="T">Type of enumeration.</typeparam>
+        /// <param name="enumerable">Enumerable collection.</param>
+        /// <param name="action">Action to perform.</param>
         public static void ForEach<T>([NotNull] this IEnumerable<T> enumerable, Action<T> action)
         {
             foreach (var item in enumerable)
@@ -32,7 +32,7 @@
         /// <summary>The join. </summary>
         /// <param name="tab">The tab. </param>
         /// <param name="separateur">The separateur. </param>
-        /// <typeparam name="T">The type </typeparam>
+        /// <typeparam name="T">The type. </typeparam>
         /// <returns>The <see cref="string" />. </returns>
         public static string Join<T>(this IEnumerable<T> tab, string separateur)
             => string.Join(separateur, tab);
@@ -68,10 +68,10 @@
             return !enumerable.Any(predicate);
         }
 
-        /// <summary>Read only collection of any enumeration</summary>
-        /// <typeparam name="T">Type of enumeration</typeparam>
-        /// <param name="collection">Enumerable collection</param>
-        /// <returns>ReadOnlyCollection of the collection</returns>
+        /// <summary>Read only collection of any enumeration.</summary>
+        /// <typeparam name="T">Type of enumeration.</typeparam>
+        /// <param name="collection">Enumerable collection.</param>
+        /// <returns>ReadOnlyCollection of the collection.</returns>
         public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection)
             => new List<T>(collection).AsReadOnly();
 
