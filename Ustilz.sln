@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE7C873F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Attributes", "Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Data", "Ustilz.Data\Ustilz.Data.csproj", "{194F8C30-E848-46FF-A1CD-01C1F293FA41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{194F8C30-E848-46FF-A1CD-01C1F293FA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{194F8C30-E848-46FF-A1CD-01C1F293FA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{194F8C30-E848-46FF-A1CD-01C1F293FA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{194F8C30-E848-46FF-A1CD-01C1F293FA41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
