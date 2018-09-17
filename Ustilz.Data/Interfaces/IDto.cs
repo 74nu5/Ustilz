@@ -10,12 +10,13 @@ namespace Ustilz.Data.Interfaces
     ///     Interface de définition de d'un Dto.
     /// </summary>
     /// <typeparam name="TIdentity">Type de l'identifiant.</typeparam>
-    public interface IDto<TIdentity> where TIdentity : IComparable<TIdentity>
+    public interface IDto<TIdentity>
+        where TIdentity : IComparable<TIdentity>
     {
         #region Propriétés et indexeurs
 
         /// <summary>
-        ///     Identifiant technique.
+        ///     Obtient ou définit l'identifiant technique.
         /// </summary>
         TIdentity Id { get; set; }
 

@@ -14,8 +14,9 @@ namespace Ustilz.Data.Interfaces
     /// </summary>
     /// <typeparam name="TModel">Modèle de la DAL.</typeparam>
     /// <typeparam name="TIdentity">Type de la clé primaire.</typeparam>
-    public interface IBaseDAL<TModel, in TIdentity> where TModel : class, IDto<TIdentity>
-                                                    where TIdentity : IComparable<TIdentity>
+    public interface IBaseDAL<TModel, in TIdentity>
+        where TModel : class, IDto<TIdentity>
+        where TIdentity : IComparable<TIdentity>
     {
         #region Méthodes publiques
 
@@ -27,7 +28,7 @@ namespace Ustilz.Data.Interfaces
         /// <summary>
         ///     Méthode d'ajout d'une liste d'éléments.
         /// </summary>
-        /// <param name="models">La liste d'éléments à ajouter</param>
+        /// <param name="models">La liste d'éléments à ajouter.</param>
         /// <returns>Retourne le nombre de ligne impactées.</returns>
         Task<int> AddRange(IEnumerable<TModel> models);
 

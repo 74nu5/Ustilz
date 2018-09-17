@@ -18,14 +18,15 @@ namespace Ustilz.Data
     #endregion
 
     /// <summary>The totem dao.</summary>
-    /// <typeparam name="TContext">Type du contexte</typeparam>
-    /// <typeparam name="TModel">Type du model</typeparam>
-    /// <typeparam name="TIdentity">Type de la clé primaire du model</typeparam>
+    /// <typeparam name="TContext">Type du contexte.</typeparam>
+    /// <typeparam name="TModel">Type du model.</typeparam>
+    /// <typeparam name="TIdentity">Type de la clé primaire du model.</typeparam>
     [PublicAPI]
     internal abstract class BaseDAL<TContext, TModel, TIdentity>
-        : IBaseDAL<TModel, TIdentity> where TModel : class, IDto<TIdentity>
-                                      where TIdentity : IComparable<TIdentity>
-                                      where TContext : DbContext
+        : IBaseDAL<TModel, TIdentity>
+            where TModel : class, IDto<TIdentity>
+            where TIdentity : IComparable<TIdentity>
+            where TContext : DbContext
     {
         #region Constructeurs et destructeurs
 
@@ -75,11 +76,12 @@ namespace Ustilz.Data
         public async Task<List<TModel>> GetAll(params Expression<Func<TModel, object>>[] includes)
         {
             var set = this.Context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(null,
-                                                                                                                        (current, include)
-                                                                                                                            => current == null
-                                                                                                                                   ? set.Include(include)
-                                                                                                                                   : current.Include(include));
+            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+                null,
+                (current, include) =>
+                    current == null
+                    ? set.Include(include)
+                    : current.Include(include));
             return includeSet == null ? await set.ToListAsync() : await includeSet.ToListAsync();
         }
 
@@ -94,11 +96,12 @@ namespace Ustilz.Data
         public async Task<TModel> GetDetails(TIdentity id, params Expression<Func<TModel, object>>[] includes)
         {
             var set = this.Context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(null,
-                                                                                                                        (current, include)
-                                                                                                                            => current == null
-                                                                                                                                   ? set.Include(include)
-                                                                                                                                   : current.Include(include));
+            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+                null,
+                (current, include)
+                => current == null
+                    ? set.Include(include)
+                    : current.Include(include));
             return includeSet == null
                        ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0)
                        : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
