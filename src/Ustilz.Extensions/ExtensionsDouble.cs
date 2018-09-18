@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions
+namespace Ustilz.Extensions
 {
     #region Usings
 
@@ -15,7 +15,7 @@
         #region Champs et constantes statiques
 
         /// <summary>The tolerance two decimal.</summary>
-        private const double ToleranceTwoDecimal = 0.01;
+        private const double TOLERANCE_TWO_DECIMAL = 0.01;
 
         #endregion
 
@@ -26,7 +26,7 @@
         /// <param name="valeur2">The valeur2.</param>
         /// <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
         public static bool IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2)
-            => Math.Abs(valeur1 - valeur2) < ToleranceTwoDecimal;
+            => Math.Abs(valeur1 - valeur2) < TOLERANCE_TWO_DECIMAL;
 
         #endregion
     }

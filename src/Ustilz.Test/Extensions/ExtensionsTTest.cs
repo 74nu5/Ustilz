@@ -90,16 +90,6 @@
             Assert.True(10.IsNotIn(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsEnumerable()));
         }
 
-        [Fact]
-        public void JoinTest()
-        {
-            Assert.False(1.IsNotIn(1, 2, 3, 4, 5, 6, 7, 8, 9));
-            Assert.True(10.IsNotIn(1, 2, 3, 4, 5, 6, 7, 8, 9));
-
-            Assert.False(1.IsNotIn(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsEnumerable()));
-            Assert.True(10.IsNotIn(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsEnumerable()));
-        }
-
         /// <summary>The if null test.</summary>
         [Fact]
         public void IsNullTest()
@@ -118,6 +108,16 @@
             Assert.True(s.IsNotNull());
             Assert.False(s.IsNullOrEmpty());
             Assert.False(s.IsNull());
+        }
+
+        [Fact]
+        public void JoinTest()
+        {
+            Assert.False(1.IsNotIn(1, 2, 3, 4, 5, 6, 7, 8, 9));
+            Assert.True(10.IsNotIn(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
+            Assert.False(1.IsNotIn(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsEnumerable()));
+            Assert.True(10.IsNotIn(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsEnumerable()));
         }
 
         /// <summary>The swap test.</summary>

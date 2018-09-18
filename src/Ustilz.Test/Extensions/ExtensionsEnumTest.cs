@@ -1,9 +1,11 @@
-﻿namespace Ustilz.Test.Extensions
+namespace Ustilz.Test.Extensions
 {
     #region Usings
 
     using JetBrains.Annotations;
+
     using Ustilz.Extensions;
+
     using Xunit;
 
     #endregion
@@ -15,7 +17,7 @@
         #region Champs et constantes statiques
 
         /// <summary>The item.</summary>
-        private const Test Item = Test.Item1;
+        private const Test ITEM = Test.Item1;
 
         #endregion
 
@@ -38,17 +40,17 @@
 
         #region Méthodes publiques
 
-        /// <summary>The in test.</summary>
+        /// <summary>The in false test.</summary>
         [Fact]
-        public void InVideTest() => Assert.False(Item.In());
+        public void InFalseTest() => Assert.False(ITEM.In(Test.Item2, Test.Item3));
 
         /// <summary>The in true test.</summary>
         [Fact]
-        public void InTrueTest() => Assert.True(Item.In(Test.Item1, Test.Item2, Test.Item3));
+        public void InTrueTest() => Assert.True(ITEM.In(Test.Item1, Test.Item2, Test.Item3));
 
-        /// <summary>The in false test.</summary>
+        /// <summary>The in test.</summary>
         [Fact]
-        public void InFalseTest() => Assert.False(Item.In(Test.Item2, Test.Item3));
+        public void InVideTest() => Assert.False(ITEM.In());
 
         #endregion
     }

@@ -3,7 +3,9 @@
     #region Usings
 
     using System;
+
     using Ustilz.Time;
+
     using Xunit;
 
     #endregion
@@ -14,27 +16,16 @@
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="HorlogeTest"/> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="HorlogeTest" /> class.</summary>
         public HorlogeTest() => Horloge.Reset();
 
         #endregion
 
         #region Méthodes publiques
 
-        /// <summary>The maintenant test.</summary>
-        [Fact]
-        public void MaintenantTest()
-        {
-            var now = DateTime.Now;
-            var maintenant = Horloge.Maintenant;
-
-            Assert.Equal(now.Day, maintenant.Day);
-            Assert.Equal(now.Hour, maintenant.Hour);
-            Assert.Equal(now.Month, maintenant.Month);
-            Assert.Equal(now.Minute, maintenant.Minute);
-            Assert.Equal(now.Year, maintenant.Year);
-            Assert.Equal(now.Second, maintenant.Second);
-        }
+        /// <inheritdoc />
+        /// <summary>The dispose.</summary>
+        public void Dispose() => Horloge.Reset();
 
         /// <summary>The fonction maintenant test.</summary>
         [Fact]
@@ -54,6 +45,21 @@
 
             var now = DateTime.Now;
             maintenant = Horloge.Maintenant;
+
+            Assert.Equal(now.Day, maintenant.Day);
+            Assert.Equal(now.Hour, maintenant.Hour);
+            Assert.Equal(now.Month, maintenant.Month);
+            Assert.Equal(now.Minute, maintenant.Minute);
+            Assert.Equal(now.Year, maintenant.Year);
+            Assert.Equal(now.Second, maintenant.Second);
+        }
+
+        /// <summary>The maintenant test.</summary>
+        [Fact]
+        public void MaintenantTest()
+        {
+            var now = DateTime.Now;
+            var maintenant = Horloge.Maintenant;
 
             Assert.Equal(now.Day, maintenant.Day);
             Assert.Equal(now.Hour, maintenant.Hour);
@@ -89,10 +95,6 @@
             Assert.Equal(now.Year, maintenant.Year);
             Assert.Equal(now.Second, maintenant.Second);
         }
-
-        /// <inheritdoc />
-        /// <summary>The dispose.</summary>
-        public void Dispose() => Horloge.Reset();
 
         #endregion
     }

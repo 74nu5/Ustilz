@@ -2,7 +2,6 @@
 {
     #region Usings
 
-    using Ustilz.Extensions;
     using Ustilz.Extensions.String;
 
     using Xunit;
@@ -14,6 +13,12 @@
     {
         #region Méthodes publiques
 
+        /// <summary>The fs test.</summary>
+        [Fact]
+        public void FsTest()
+        {
+        }
+
         /// <summary>The f test.</summary>
         [Fact]
         public void FTest()
@@ -21,12 +26,6 @@
             const string Expected = "Bonjour le monde";
             const string Pattern = "Bonjour {0}";
             Assert.Equal(Expected, Pattern.F("le monde"));
-        }
-
-        /// <summary>The fs test.</summary>
-        [Fact]
-        public void FsTest()
-        {
         }
 
 

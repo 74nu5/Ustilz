@@ -42,15 +42,15 @@
         {
         }
 
-        /// <summary>The generate salt test.</summary>
-        [Fact]
-        public void GenerateSaltTest()
-        {
-        }
-
         /// <summary>The generate salt bytes test.</summary>
         [Fact]
         public void GenerateSaltBytesTest()
+        {
+        }
+
+        /// <summary>The generate salt test.</summary>
+        [Fact]
+        public void GenerateSaltTest()
         {
         }
 

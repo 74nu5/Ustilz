@@ -28,8 +28,7 @@
         [InlineData("1234")]
         [InlineData("FFDGZZ")]
         [InlineData("dfDFe")]
-        public void GetColorFromNomTestNominal(
-            string nom)
+        public void GetColorFromNomTestNominal(string nom)
         {
             var colorFromNom = ColorUtils.GetColorFromNom(nom);
             Assert.Equal(7, colorFromNom.Length);

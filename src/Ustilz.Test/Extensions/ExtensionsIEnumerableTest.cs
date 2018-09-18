@@ -2,11 +2,11 @@
 {
     #region Usings
 
-    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+
     using JetBrains.Annotations;
-    using Ustilz.Extensions;
+
     using Ustilz.Extensions.Enumerables;
 
     using Xunit;
@@ -34,7 +34,7 @@
         [Fact]
         public void ToHexStringTest()
         {
-            byte[] tab = { (byte)255, (byte)255, (byte)255 };
+            byte[] tab = { 255, 255, 255 };
             Assert.Equal("FFFFFF", tab.ToHexString());
         }
 
