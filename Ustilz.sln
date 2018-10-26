@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Test", "Ustilz.Test\Ustilz.Test.csproj", "{9E97EA5B-B23D-49B8-A826-E21685B737EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Test", "src\Ustilz.Test\Ustilz.Test.csproj", "{9E97EA5B-B23D-49B8-A826-E21685B737EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9CF5-471B-94DB-C106BE6E2B08}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,31 +15,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.TestExe", "Ustilz.TestExe\Ustilz.TestExe.csproj", "{CB74BCA7-76C8-4410-903D-9093FAEA0642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.TestExe", "src\Ustilz.TestExe\Ustilz.TestExe.csproj", "{CB74BCA7-76C8-4410-903D-9093FAEA0642}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Http", "Ustilz.Http\Ustilz.Http.csproj", "{56DAC945-A08D-4961-A7C1-CC37BDEA8340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Http", "src\Ustilz.Http\Ustilz.Http.csproj", "{56DAC945-A08D-4961-A7C1-CC37BDEA8340}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Json", "Ustilz.Json\Ustilz.Json.csproj", "{F0D1C669-C937-4790-BFDE-744A2CFA39DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Json", "src\Ustilz.Json\Ustilz.Json.csproj", "{F0D1C669-C937-4790-BFDE-744A2CFA39DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Xml", "Ustilz.Xml\Ustilz.Xml.csproj", "{A7D8EA74-7595-422E-A70A-08EECFC58DEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Xml", "src\Ustilz.Xml\Ustilz.Xml.csproj", "{A7D8EA74-7595-422E-A70A-08EECFC58DEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Utils", "Ustilz.Utils\Ustilz.Utils.csproj", "{26E33E78-E287-4B93-B35A-7E57478C0196}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Utils", "src\Ustilz.Utils\Ustilz.Utils.csproj", "{26E33E78-E287-4B93-B35A-7E57478C0196}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Extensions", "Ustilz.Extensions\Ustilz.Extensions.csproj", "{D013CF45-5F3D-456C-A170-FF0B55F59566}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Extensions", "src\Ustilz.Extensions\Ustilz.Extensions.csproj", "{D013CF45-5F3D-456C-A170-FF0B55F59566}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Programs", "Ustilz.Programs\Ustilz.Programs.csproj", "{370478CC-773C-47B5-AA45-DC9C76A7F578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Programs", "src\Ustilz.Programs\Ustilz.Programs.csproj", "{370478CC-773C-47B5-AA45-DC9C76A7F578}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Time", "Ustilz.Time\Ustilz.Time.csproj", "{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Time", "src\Ustilz.Time\Ustilz.Time.csproj", "{9F04B2FB-4D09-440E-9930-C4EBB5743CBD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.UI", "Ustilz.UI\Ustilz.UI.csproj", "{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.UI", "src\Ustilz.UI\Ustilz.UI.csproj", "{6D3F435A-25A6-4BB5-A263-0D159C39FCDC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Logging", "Ustilz.Logging\Ustilz.Logging.csproj", "{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Logging", "src\Ustilz.Logging\Ustilz.Logging.csproj", "{E0AA38BF-ACE0-492A-AEFF-E304873C7AD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE7C873F-C383-4F3F-A59A-EEE155C05696}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Attributes", "Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Attributes", "src\Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Data", "Ustilz.Data\Ustilz.Data.csproj", "{194F8C30-E848-46FF-A1CD-01C1F293FA41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Data", "src\Ustilz.Data\Ustilz.Data.csproj", "{194F8C30-E848-46FF-A1CD-01C1F293FA41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
