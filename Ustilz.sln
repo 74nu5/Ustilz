@@ -12,7 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
 		GlobalSuppressions.cs = GlobalSuppressions.cs
-		Settings.StyleCop = Settings.StyleCop
+		src\Settings.StyleCop = src\Settings.StyleCop
+		src\stylecop.json = src\stylecop.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.TestExe", "src\Ustilz.TestExe\Ustilz.TestExe.csproj", "{CB74BCA7-76C8-4410-903D-9093FAEA0642}"
@@ -39,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE7C873F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Attributes", "src\Ustilz.Attributes\Ustilz.Attributes.csproj", "{F74EA1C1-1735-477C-8E9B-B08F7519CDCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Data", "src\Ustilz.Data\Ustilz.Data.csproj", "{194F8C30-E848-46FF-A1CD-01C1F293FA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Data", "src\Ustilz.Data\Ustilz.Data.csproj", "{194F8C30-E848-46FF-A1CD-01C1F293FA41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

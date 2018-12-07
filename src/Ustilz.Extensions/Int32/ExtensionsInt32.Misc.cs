@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Int32
+namespace Ustilz.Extensions.Int32
 {
     #region Usings
 
@@ -133,7 +133,7 @@
         {
             if (startValue > endValue)
             {
-                throw new ArgumentException("The start value can not be greater than the end value.", nameof(startValue));
+                throw new ArgumentException(Strings.RangeTo_ValueException, nameof(startValue));
             }
 
             return Enumerable.Range(startValue, endValue - startValue);

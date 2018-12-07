@@ -18,7 +18,7 @@ namespace Ustilz.Data.Interfaces
         /// <summary>
         ///     Obtient ou définit l'identifiant technique.
         /// </summary>
-        TIdentity Id { get; set; }
+        TIdentity Id { get; }
 
         #endregion
     }

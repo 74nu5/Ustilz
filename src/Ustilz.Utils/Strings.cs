@@ -26,7 +26,7 @@ namespace Ustilz.Utils
         /// <summary>
         ///     Initialise les membres statiques de la classe <see cref="Strings" />.
         /// </summary>
-        static Strings() => Strings.ResourceManager = new ResourceManager("Ustilz.Utils.Properties.Strings", typeof(Strings).GetTypeInfo().Assembly);
+        static Strings() => ResourceManager = new ResourceManager("Ustilz.Utils.Properties.Strings", typeof(Strings).GetTypeInfo().Assembly);
 
         #endregion
 
@@ -36,20 +36,20 @@ namespace Ustilz.Utils
         /// <param name="argumentName">The argument Name.</param>
         /// <returns>The <see cref="string" />.</returns>
         public static string ArgumentIsEmpty([CanBeNull] object argumentName)
-            => string.Format(CultureInfo.CurrentCulture, Strings.GetString("ArgumentIsEmpty", "argumentName"), new[] { argumentName });
+            => string.Format(CultureInfo.CurrentCulture, GetString("ArgumentIsEmpty", "argumentName"), new[] { argumentName });
 
         /// <summary>The property '{property}' of the argument '{argument}' cannot be null.</summary>
         /// <param name="property">The property.</param>
         /// <param name="argument">The argument.</param>
         /// <returns>The <see cref="string" />.</returns>
         public static string ArgumentPropertyNull([CanBeNull] object property, [CanBeNull] object argument)
-            => string.Format(CultureInfo.CurrentCulture, Strings.GetString("ArgumentPropertyNull", "property", "argument"), property, argument);
+            => string.Format(CultureInfo.CurrentCulture, GetString("ArgumentPropertyNull", "property", "argument"), property, argument);
 
         /// <summary>The collection argument '{argumentName}' must contain at least one element.</summary>
         /// <param name="argumentName">The argument Name.</param>
         /// <returns>The <see cref="string" />.</returns>
         public static string CollectionArgumentIsEmpty([CanBeNull] object argumentName)
-            => string.Format(CultureInfo.CurrentCulture, Strings.GetString("CollectionArgumentIsEmpty", "argumentName"), new[] { argumentName });
+            => string.Format(CultureInfo.CurrentCulture, GetString("CollectionArgumentIsEmpty", "argumentName"), new[] { argumentName });
 
         /// <summary>Méthode de génération des initiales.</summary>
         /// <param name="nom">The nom.</param>
@@ -63,7 +63,7 @@ namespace Ustilz.Utils
         /// <returns>The <see cref="string" />.</returns>
         public static string InvalidEntityType([CanBeNull] object type, [CanBeNull] object argumentName) => string.Format(
             CultureInfo.CurrentCulture,
-            Strings.GetString("InvalidEntityType", "type", "argumentName"),
+            GetString("InvalidEntityType", "type", "argumentName"),
             new[] { type, argumentName });
 
         #endregion
@@ -76,7 +76,7 @@ namespace Ustilz.Utils
         /// <returns>The <see cref="string" />.</returns>
         private static string GetString(string name, params string[] formatterNames)
         {
-            var str = Strings.ResourceManager.GetString(name);
+            var str = ResourceManager.GetString(name);
             if (formatterNames == null)
             {
                 return str;

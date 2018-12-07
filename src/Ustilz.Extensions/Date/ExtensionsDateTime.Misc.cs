@@ -48,7 +48,6 @@ namespace Ustilz.Extensions.Date
                        : (toDay.Year - 1 - startDay.Year, 11, DateTime.DaysInMonth(startDay.Year, startDay.Month) - (startDay.Day - toDay.Day));
         }
 
-
         /// <summary>Défini une heure pour une date donnée.</summary>
         /// <param name="date">Date à modifier.</param>
         /// <param name="hours">Heure à définir.</param>

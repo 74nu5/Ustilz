@@ -102,7 +102,7 @@ namespace Ustilz.Extensions
             if (o is IEnumerable list)
             {
                 var enumerable = list as object[] ?? list.Cast<object>().ToArray();
-                Console.WriteLine("[{0}]", string.Join(", ", enumerable.Select(t => t.Dump()).ToArray()));
+                Console.WriteLine(@"[{0}]", string.Join(", ", enumerable.Select(t => t.Dump()).ToArray()));
                 return o;
             }
 

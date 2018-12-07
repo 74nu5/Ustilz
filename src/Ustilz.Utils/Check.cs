@@ -28,14 +28,14 @@ namespace Ustilz.Utils
         public static IReadOnlyList<T> HasNoNulls<T>([NotNull] IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
             where T : class
         {
-            Check.NotNull(value, parameterName);
+            NotNull(value, parameterName);
 
             if (value.All(e => e != null))
             {
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(parameterName);
         }
@@ -49,14 +49,14 @@ namespace Ustilz.Utils
         [ContractAnnotation("value:null => halt")]
         public static IReadOnlyList<T> NotEmpty<T>(IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            Check.NotNull(value, parameterName);
+            NotNull(value, parameterName);
 
             if (value.Count != 0)
             {
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.CollectionArgumentIsEmpty(parameterName));
         }
@@ -84,7 +84,7 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw e;
         }
@@ -103,7 +103,7 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentNullException(parameterName);
         }
@@ -123,8 +123,8 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
-            Check.NotEmpty(propertyName, nameof(propertyName));
+            NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(propertyName, nameof(propertyName));
 
             throw new ArgumentException(Strings.ArgumentPropertyNull(propertyName, parameterName));
         }
@@ -141,7 +141,7 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
         }
@@ -157,7 +157,7 @@ namespace Ustilz.Utils
                 return value;
             }
 
-            Check.NotEmpty(parameterName, nameof(parameterName));
+            NotEmpty(parameterName, nameof(parameterName));
 
             throw new ArgumentException(Strings.InvalidEntityType(value, parameterName));
         }

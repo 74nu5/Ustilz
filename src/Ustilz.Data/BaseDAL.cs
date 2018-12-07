@@ -24,13 +24,13 @@ namespace Ustilz.Data
     [PublicAPI]
     internal abstract class BaseDAL<TContext, TModel, TIdentity>
         : IBaseDAL<TModel, TIdentity>
-            where TModel : class, IDto<TIdentity>
-            where TIdentity : IComparable<TIdentity>
-            where TContext : DbContext
+        where TModel : class, IDto<TIdentity>
+        where TIdentity : IComparable<TIdentity>
+        where TContext : DbContext
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>Initializes a new instance of the <see cref="BaseDAL{TContext,TModel,TIdentity}" /> class.</summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{TContext, TModel, TIdentity}" />.</summary>
         /// <param name="context">The context.</param>
         protected BaseDAL(TContext context) => this.Context = context;
 
@@ -38,8 +38,8 @@ namespace Ustilz.Data
 
         #region Propriétés et indexeurs
 
-        /// <summary>Gets or sets the context.</summary>
-        protected TContext Context { get; set; }
+        /// <summary>Obtient le contexte de la base de données.</summary>
+        protected TContext Context { get; }
 
         #endregion
 
@@ -54,9 +54,7 @@ namespace Ustilz.Data
             return await this.Context.SaveChangesAsync();
         }
 
-        /// <summary>
-        ///     Méthode d'ajout d'une liste d'éléments.
-        /// </summary>
+        /// <summary>Méthode d'ajout d'une liste d'éléments.</summary>
         /// <param name="models">La liste d'éléments à ajouter.</param>
         /// <returns>Retourne le nombre de ligne impactées.</returns>
         public async Task<int> AddRange(IEnumerable<TModel> models)
@@ -80,8 +78,8 @@ namespace Ustilz.Data
                 null,
                 (current, include) =>
                     current == null
-                    ? set.Include(include)
-                    : current.Include(include));
+                        ? set.Include(include)
+                        : current.Include(include));
             return includeSet == null ? await set.ToListAsync() : await includeSet.ToListAsync();
         }
 
@@ -99,9 +97,9 @@ namespace Ustilz.Data
             var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
                 null,
                 (current, include)
-                => current == null
-                    ? set.Include(include)
-                    : current.Include(include));
+                    => current == null
+                           ? set.Include(include)
+                           : current.Include(include));
             return includeSet == null
                        ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0)
                        : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
@@ -121,9 +119,7 @@ namespace Ustilz.Data
             return await this.Context.SaveChangesAsync();
         }
 
-        /// <summary>
-        ///     Méthode suppression des données de la table.
-        /// </summary>
+        /// <summary>Méthode suppression des données de la table.</summary>
         /// <returns>Retourne le nombre de ligné impactées.</returns>
         public async Task<int> RemoveAll()
         {
