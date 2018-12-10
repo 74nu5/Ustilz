@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions
+namespace Ustilz.Extensions
 {
     #region Usings
 
@@ -55,13 +55,16 @@
             return field.GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute customAttribute ? customAttribute.Description ?? string.Empty : name;
         }
 
-        /// <summary>
-        ///     Returns true if enum matches any of the given values.
-        /// </summary>
+        /// <summary>Returns true if enum matches any of the given values.</summary>
         /// <param name="value">Value to match.</param>
         /// <param name="values">Values to match against.</param>
         /// <returns>Return true if matched.</returns>
         public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
+
+        /// <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>
+        /// <param name="enumValue">Valeur de l'énumération.</param>
+        /// <returns>Retourne la valeur entière de l'énumération.</returns>
+        public static int ToInt(this Enum enumValue) => Convert.ToInt32(enumValue);
 
         #endregion
     }
