@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    <Compile Include="..\..\src\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+    <AdditionalFiles Include="..\..\src\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,14 +27,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\src\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ustilz.Extensions\Ustilz.Extensions.csproj" />
-    <ProjectReference Include="..\Ustilz.Programs\Ustilz.Programs.csproj" />
-    <ProjectReference Include="..\Ustilz.Time\Ustilz.Time.csproj" />
-    <ProjectReference Include="..\Ustilz.UI\Ustilz.UI.csproj" />
+    <ProjectReference Include="..\..\src\Ustilz.Extensions\Ustilz.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\Ustilz.Programs\Ustilz.Programs.csproj" />
+    <ProjectReference Include="..\..\src\Ustilz.Time\Ustilz.Time.csproj" />
+    <ProjectReference Include="..\..\src\Ustilz.UI\Ustilz.UI.csproj" />
   </ItemGroup>
 
 </Project>
