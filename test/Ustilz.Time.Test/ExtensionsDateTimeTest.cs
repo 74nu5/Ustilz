@@ -1,11 +1,10 @@
-namespace Ustilz.Test.Extensions
+namespace Ustilz.Time.Test
 {
     #region Usings
 
     using System;
 
-    using Ustilz.Extensions.Date;
-    using Ustilz.Time;
+    using Ustilz.Time.Date;
 
     using Xunit;
     using Xunit.Abstractions;
@@ -14,7 +13,7 @@ namespace Ustilz.Test.Extensions
 
     /// <inheritdoc />
     /// <summary>The extensions date time test.</summary>
-    public class ExtensionsDateTimeTest : IDisposable
+    public sealed class ExtensionsDateTimeTest : IDisposable
     {
         #region Constructeurs et destructeurs
 

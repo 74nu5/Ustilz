@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Test.Time
+﻿namespace Ustilz.Time.Test
 {
     #region Usings
 

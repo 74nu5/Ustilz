@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Test.Extensions
+﻿namespace Ustilz.Extensions.Test.Int32
 {
     #region Usings
 
@@ -9,7 +9,7 @@
     #endregion
 
     /// <summary>The extensions int 32.</summary>
-    public partial class ExtensionsInt32Test
+    public sealed partial class ExtensionsInt32Test
     {
         #region Méthodes privées
 

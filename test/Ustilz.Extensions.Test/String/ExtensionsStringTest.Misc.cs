@@ -1,33 +1,43 @@
-﻿namespace Ustilz.Test.Extensions
+﻿namespace Ustilz.Extensions.Test.String
 {
     #region Usings
 
     using Ustilz.Extensions.String;
+    using Ustilz.Test.Models;
 
     using Xunit;
 
     #endregion
 
     /// <summary>The extensions string.</summary>
-    public partial class ExtensionsStringTest
+    public sealed partial class ExtensionsStringTest
     {
         #region Méthodes publiques
 
         /// <summary>The fs test.</summary>
         [Fact]
-        public void FsTest()
+        public void FsDtoTest()
         {
+            const string Expected = "Bonjour John Smith";
+            const string Pattern = "Bonjour @{Prenom} @{Nom}";
+
+            var p = new Personne { Prenom = "John", Nom = "Smith" };
+
+            var result = Pattern.Fs(p);
+
+            Assert.Equal(Expected, result);
         }
 
-        /// <summary>The f test.</summary>
         [Fact]
-        public void FTest()
+        public void FsAnoTest()
         {
-            const string Expected = "Bonjour le monde";
-            const string Pattern = "Bonjour {0}";
-            Assert.Equal(Expected, Pattern.F("le monde"));
-        }
+            const string Expected = "Bonjour John Smith";
+            const string Pattern = "Bonjour @{Prenom} @{Nom}";
 
+            var result = Pattern.Fs(new { Prenom = "John", Nom = "Smith" });
+
+            Assert.Equal(Expected, result);
+        }
 
         /// <summary>The hex to bytes test.</summary>
         [Fact]

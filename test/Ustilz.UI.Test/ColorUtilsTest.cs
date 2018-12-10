@@ -1,15 +1,13 @@
-﻿namespace Ustilz.Test.UI
+﻿namespace Ustilz.UI.Test
 {
     #region Usings
-
-    using Ustilz.UI;
 
     using Xunit;
 
     #endregion
 
     /// <summary>The color utils test.</summary>
-    public class ColorUtilsTest
+    public sealed class ColorUtilsTest
     {
         #region Méthodes publiques
 
@@ -28,10 +26,24 @@
         [InlineData("1234")]
         [InlineData("FFDGZZ")]
         [InlineData("dfDFe")]
-        public void GetColorFromNomTestNominal(string nom)
+        public void GetColorFromNomNominalTest(string nom)
         {
             var colorFromNom = ColorUtils.GetColorFromNom(nom);
             Assert.Equal(7, colorFromNom.Length);
+        }
+
+        [Fact]
+        public void GetColorFromNomTest()
+        {
+            var colorFromNom = ColorUtils.GetColorFromNom("Test");
+            Assert.Equal("#6573C8", colorFromNom);
+        }
+
+        [Fact]
+        public void GetColorFromNomClairTest()
+        {
+            var colorFromNom = ColorUtils.GetColorFromNom("Test", true);
+            Assert.Equal("#E5F3E8", colorFromNom);
         }
 
         #endregion
