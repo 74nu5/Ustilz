@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Date
+﻿namespace Ustilz.Time.Date
 {
     #region Usings
 
