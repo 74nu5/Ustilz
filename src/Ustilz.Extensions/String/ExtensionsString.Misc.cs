@@ -1,9 +1,10 @@
-﻿namespace Ustilz.Extensions.String
+namespace Ustilz.Extensions.String
 {
     #region Usings
 
     using System;
     using System.Globalization;
+    using System.Security;
     using System.Text.RegularExpressions;
 
     using JetBrains.Annotations;
@@ -20,8 +21,7 @@
         /// <param name="stringFormat">The string format.</param>
         /// <param name="stringParams">The string params.</param>
         /// <returns>The <see cref="string" />.</returns>
-        public static string F(this string stringFormat, params object[] stringParams)
-            => string.Format(stringFormat, stringParams);
+        public static string F(this string stringFormat, params object[] stringParams) => string.Format(stringFormat, stringParams);
 
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
@@ -54,31 +54,27 @@
         /// <summary>The is null or empty.</summary>
         /// <param name="str">The str.</param>
         /// <returns>The <see cref="bool" />.</returns>
-        public static bool IsNullOrEmpty(this string str)
-            => string.IsNullOrEmpty(str);
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>The join.</summary>
         /// <param name="strs">The strs.</param>
         /// <param name="separator">The separator.</param>
         /// <returns>The <see cref="string" />.</returns>
-        public static string Join(this string[] strs, string separator)
-            => string.Join(separator, strs);
+        public static string Join(this string[] strs, string separator) => string.Join(separator, strs);
 
         /// <summary>Returns characters from left of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from left.</returns>
         [CanBeNull]
-        public static string Left([CanBeNull] this string value, int length)
-            => value != null && value.Length > length ? value.Substring(0, length) : value;
+        public static string Left([CanBeNull] this string value, int length) => value != null && value.Length > length ? value.Substring(0, length) : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
         [CanBeNull]
-        public static string Right([CanBeNull] this string value, int length)
-            => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
+        public static string Right([CanBeNull] this string value, int length) => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>
@@ -86,15 +82,39 @@
         /// <returns>Returns enum object.</returns>
         [System.Diagnostics.Contracts.Pure]
         public static T ToEnum<T>(this string value)
-            where T : struct
-            => (T)Enum.Parse(typeof(T), value, true);
+            where T : struct => (T)Enum.Parse(typeof(T), value, true);
 
         /// <summary>The to exception.</summary>
         /// <param name="message">The message.</param>
         /// <typeparam name="T">Type de l'exception.</typeparam>
         public static void ToException<T>(this string message)
-            where T : Exception, new()
-            => throw (T)Activator.CreateInstance(typeof(T), message);
+            where T : Exception, new() =>
+            throw (T)Activator.CreateInstance(typeof(T), message);
+
+        /// <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString.</summary>
+        /// <param name="str">Chaine de caractère à transformer.</param>
+        /// <param name="markReadOnly">Indique si la chaine sécurisée est marquée comme étant en lecture seule.</param>
+        /// <returns>Retourne un objet SecureString correspondant à la chaine passée en paramètre.</returns>
+        public static SecureString ToSecureString(this string str, bool markReadOnly = false)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return new SecureString();
+            }
+
+            var ss = new SecureString();
+            foreach (var @char in str)
+            {
+                ss.AppendChar(@char);
+            }
+
+            if (markReadOnly)
+            {
+                ss.MakeReadOnly();
+            }
+
+            return ss;
+        }
 
         #endregion
 
