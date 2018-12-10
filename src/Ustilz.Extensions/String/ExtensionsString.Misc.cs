@@ -17,12 +17,6 @@ namespace Ustilz.Extensions.String
     {
         #region Méthodes publiques
 
-        /// <summary>The to string format.</summary>
-        /// <param name="stringFormat">The string format.</param>
-        /// <param name="stringParams">The string params.</param>
-        /// <returns>The <see cref="string" />.</returns>
-        public static string F(this string stringFormat, params object[] stringParams) => string.Format(stringFormat, stringParams);
-
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
