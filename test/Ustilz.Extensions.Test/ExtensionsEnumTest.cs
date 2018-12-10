@@ -1,37 +1,39 @@
-namespace Ustilz.Test.Enums
+namespace Ustilz.Extensions.Test
 {
     #region Usings
 
     using System.ComponentModel.DataAnnotations;
 
-    using Ustilz.Extensions;
+    using JetBrains.Annotations;
 
     using Xunit;
 
     #endregion
 
-    /// <summary>The enum helper.</summary>
-    public sealed class EnumHelperTest
+    /// <summary>The extensions enum.</summary>
+    [PublicAPI]
+    public sealed class ExtensionsEnumTest
     {
-        #region TestEnum enum
+        #region Champs et constantes statiques
 
-        /// <summary>The test enum.</summary>
-        private enum TestEnum
-        {
-            /// <summary>The valeur 1.</summary>
-            [Display] Valeur1,
-
-            /// <summary>The valeur 2.</summary>
-            Valeur2,
-
-            /// <summary>The valeur 3.</summary>
-            [Display(Description = "Troisième valeur")]
-            Valeur3
-        }
+        /// <summary>The item.</summary>
+        private const Test ITEM = Test.Item1;
 
         #endregion
 
         #region Méthodes publiques
+
+        /// <summary>The in false test.</summary>
+        [Fact]
+        public void InFalseTest() => Assert.False(ExtensionsEnumTest.ITEM.In(Test.Item2, Test.Item3));
+
+        /// <summary>The in true test.</summary>
+        [Fact]
+        public void InTrueTest() => Assert.True(ExtensionsEnumTest.ITEM.In(Test.Item1, Test.Item2, Test.Item3));
+
+        /// <summary>The in test.</summary>
+        [Fact]
+        public void InVideTest() => Assert.False(ExtensionsEnumTest.ITEM.In());
 
         /// <summary>The test get enum description.</summary>
         [Fact]
@@ -70,5 +72,32 @@ namespace Ustilz.Test.Enums
         }
 
         #endregion
+
+        /// <summary>The test.</summary>
+        private enum Test
+        {
+            /// <summary>The item 1.</summary>
+            Item1,
+
+            /// <summary>The item 2.</summary>
+            Item2,
+
+            /// <summary>The item 3.</summary>
+            Item3
+        }
+
+        /// <summary>The test enum.</summary>
+        private enum TestEnum
+        {
+            /// <summary>The valeur 1.</summary>
+            [Display] Valeur1,
+
+            /// <summary>The valeur 2.</summary>
+            Valeur2,
+
+            /// <summary>The valeur 3.</summary>
+            [Display(Description = "Troisième valeur")]
+            Valeur3
+        }
     }
 }

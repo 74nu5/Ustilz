@@ -24,7 +24,13 @@ namespace Ustilz.Json
         /// <param name="obj">L'objet à sérialiser.</param>
         /// <typeparam name="T">Type à partir duquel sérialiser.</typeparam>
         /// <returns>Retourne une chaine de caractères représentant l'objet en paramètre.</returns>
-        public static string ToJson<T>([NotNull] this T obj) => JsonConvert.SerializeObject(obj, obj.GetType(), Formatting.Indented, null);
+        public static string ToJson<T>([NotNull] this T obj) => JsonConvert.SerializeObject(obj, obj.GetType(), Formatting.None, null);
+
+        /// <summary>Méthode de sérialisation d'un objet en Json formatté.</summary>
+        /// <param name="obj">L'objet à sérialiser.</param>
+        /// <typeparam name="T">Type à partir duquel sérialiser.</typeparam>
+        /// <returns>Retourne une chaine de caractères représentant l'objet en paramètre.</returns>
+        public static string ToJsonFormatted<T>([NotNull] this T obj) => JsonConvert.SerializeObject(obj, obj.GetType(), Formatting.Indented, null);
 
         #endregion
     }

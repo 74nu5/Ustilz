@@ -37,4 +37,8 @@
     <ProjectReference Include="..\..\src\Ustilz.UI\Ustilz.UI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
+
 </Project>

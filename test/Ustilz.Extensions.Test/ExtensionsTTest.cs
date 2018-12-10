@@ -1,11 +1,10 @@
-﻿namespace Ustilz.Test.Extensions
+﻿namespace Ustilz.Extensions.Test
 {
     #region Usings
 
     using System;
     using System.Linq;
 
-    using Ustilz.Extensions;
     using Ustilz.Extensions.String;
 
     using Xunit;
@@ -13,7 +12,7 @@
     #endregion
 
     /// <summary>The extensions t test.</summary>
-    public class ExtensionsTTest
+    public sealed class ExtensionsTTest
     {
         #region Méthodes publiques
 

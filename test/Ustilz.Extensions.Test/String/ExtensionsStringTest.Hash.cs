@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Test.Extensions
+﻿namespace Ustilz.Extensions.Test.String
 {
     #region Usings
 
@@ -7,7 +7,7 @@
     #endregion
 
     /// <summary>The extensions string.</summary>
-    public partial class ExtensionsStringTest
+    public sealed partial class ExtensionsStringTest
     {
         #region Méthodes publiques
 
