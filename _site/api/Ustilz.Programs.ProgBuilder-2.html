@@ -1,0 +1,805 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ProgBuilder&lt;TBuilder, TProg&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ProgBuilder&lt;TBuilder, TProg&gt;
+   ">
+    <meta name="generator" content="docfx 2.40.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Ustilz.Programs.ProgBuilder`2">
+  
+  
+  <h1 id="Ustilz_Programs_ProgBuilder_2" data-uid="Ustilz.Programs.ProgBuilder`2" class="text-break">Class ProgBuilder&lt;TBuilder, TProg&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>The prog builder.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ProgBuilder&lt;TBuilder, TProg&gt;</span></div>
+      <div class="level2"><a class="xref" href="Ustilz.Programs.BatchBuilder.html">BatchBuilder</a></div>
+      <div class="level2"><a class="xref" href="Ustilz.Programs.ConsoleBuilder.html">ConsoleBuilder</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Ustilz.Programs.html">Ustilz.Programs</a></h6>
+  <h6><strong>Assembly</strong>: Ustilz.Programs.dll</h6>
+  <h5 id="Ustilz_Programs_ProgBuilder_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PublicAPI]
+public abstract class ProgBuilder&lt;TBuilder, TProg&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TBuilder</span></td>
+        <td><p>Type du builder.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TProg</span></td>
+        <td><p>Type de programme.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=53">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_LogAction_" data-uid="Ustilz.Programs.ProgBuilder`2.LogAction*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_LogAction" data-uid="Ustilz.Programs.ProgBuilder`2.LogAction">LogAction</h4>
+  <div class="markdown level1 summary"><p>Obtient ou définit l'action du log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Action&lt;string&gt;[] LogAction { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.String</span>&gt;[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=56">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_Services_" data-uid="Ustilz.Programs.ProgBuilder`2.Services*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_Services" data-uid="Ustilz.Programs.ProgBuilder`2.Services">Services</h4>
+  <div class="markdown level1 summary"><p>Obtient les services.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ServiceCollection Services { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.DependencyInjection.ServiceCollection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=65">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddScoped_" data-uid="Ustilz.Programs.ProgBuilder`2.AddScoped*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddScoped__1" data-uid="Ustilz.Programs.ProgBuilder`2.AddScoped``1">AddScoped&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add scoped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddScoped&lt;T&gt;()
+    where T : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=76">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddScoped_" data-uid="Ustilz.Programs.ProgBuilder`2.AddScoped*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddScoped__2" data-uid="Ustilz.Programs.ProgBuilder`2.AddScoped``2">AddScoped&lt;TType, TImplementation&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add scoped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddScoped&lt;TType, TImplementation&gt;()
+    where TType : class where TImplementation : class, TType</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TType</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TImplementation</span></td>
+        <td><p>Implémentation du type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=87">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddSingleton_" data-uid="Ustilz.Programs.ProgBuilder`2.AddSingleton*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddSingleton__1" data-uid="Ustilz.Programs.ProgBuilder`2.AddSingleton``1">AddSingleton&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add singleton.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddSingleton&lt;T&gt;()
+    where T : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=98">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddSingleton_" data-uid="Ustilz.Programs.ProgBuilder`2.AddSingleton*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddSingleton__2" data-uid="Ustilz.Programs.ProgBuilder`2.AddSingleton``2">AddSingleton&lt;TType, TImplementation&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add singleton.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddSingleton&lt;TType, TImplementation&gt;()
+    where TType : class where TImplementation : class, TType</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TType</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TImplementation</span></td>
+        <td><p>Implémentation du type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=109">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddTransient_" data-uid="Ustilz.Programs.ProgBuilder`2.AddTransient*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddTransient__1" data-uid="Ustilz.Programs.ProgBuilder`2.AddTransient``1">AddTransient&lt;T&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add transient.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddTransient&lt;T&gt;()
+    where T : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=120">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_AddTransient_" data-uid="Ustilz.Programs.ProgBuilder`2.AddTransient*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_AddTransient__2" data-uid="Ustilz.Programs.ProgBuilder`2.AddTransient``2">AddTransient&lt;TType, TImplementation&gt;()</h4>
+  <div class="markdown level1 summary"><p>The add transient.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; AddTransient&lt;TType, TImplementation&gt;()
+    where TType : class where TImplementation : class, TType</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TType</span></td>
+        <td><p>Type à ajouter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TImplementation</span></td>
+        <td><p>Implémentation du type à ajouter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=130">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_Build_" data-uid="Ustilz.Programs.ProgBuilder`2.Build*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_Build" data-uid="Ustilz.Programs.ProgBuilder`2.Build">Build()</h4>
+  <div class="markdown level1 summary"><p>Méthode de build.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract TProg Build()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TProg</span></td>
+        <td><p>Retourne le programme builder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=136">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_UseAppSettingsJson_" data-uid="Ustilz.Programs.ProgBuilder`2.UseAppSettingsJson*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_UseAppSettingsJson__1" data-uid="Ustilz.Programs.ProgBuilder`2.UseAppSettingsJson``1">UseAppSettingsJson&lt;TOptions&gt;()</h4>
+  <div class="markdown level1 summary"><p>The use app settings json.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; UseAppSettingsJson&lt;TOptions&gt;()
+    where TOptions : class</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TOptions</span></td>
+        <td><p>Type d'options.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=155">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_UseBasicLogger_" data-uid="Ustilz.Programs.ProgBuilder`2.UseBasicLogger*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_UseBasicLogger_System_Action_System_String____" data-uid="Ustilz.Programs.ProgBuilder`2.UseBasicLogger(System.Action{System.String}[])">UseBasicLogger(Action&lt;String&gt;[])</h4>
+  <div class="markdown level1 summary"><p>Méthode pour ajouter une action basique de log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; UseBasicLogger(params Action&lt;string&gt;[] logMessageActions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.String</span>&gt;[]</td>
+        <td><span class="parametername">logMessageActions</span></td>
+        <td><p>Actions de log.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>Retourne le builder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=164">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_UseConfig_" data-uid="Ustilz.Programs.ProgBuilder`2.UseConfig*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_UseConfig_System_Action_Microsoft_Extensions_Configuration_IConfigurationBuilder__" data-uid="Ustilz.Programs.ProgBuilder`2.UseConfig(System.Action{Microsoft.Extensions.Configuration.IConfigurationBuilder})">UseConfig(Action&lt;IConfigurationBuilder&gt;)</h4>
+  <div class="markdown level1 summary"><p>The use config.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; UseConfig(Action&lt;IConfigurationBuilder&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">Microsoft.Extensions.Configuration.IConfigurationBuilder</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The action.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <span class="small pull-right mobile-hide">
+    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=179">View Source</a>
+  </span>
+  <a id="Ustilz_Programs_ProgBuilder_2_UseLogger_" data-uid="Ustilz.Programs.ProgBuilder`2.UseLogger*"></a>
+  <h4 id="Ustilz_Programs_ProgBuilder_2_UseLogger_System_Action_Microsoft_Extensions_Logging_ILoggerFactory_Microsoft_Extensions_Configuration_IConfigurationRoot__" data-uid="Ustilz.Programs.ProgBuilder`2.UseLogger(System.Action{Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Configuration.IConfigurationRoot})">UseLogger(Action&lt;ILoggerFactory, IConfigurationRoot&gt;)</h4>
+  <div class="markdown level1 summary"><p>The use logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProgBuilder&lt;TBuilder, TProg&gt; UseLogger(Action&lt;ILoggerFactory, IConfigurationRoot&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">Microsoft.Extensions.Logging.ILoggerFactory</span>, <span class="xref">Microsoft.Extensions.Configuration.IConfigurationRoot</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The func.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder</a>&lt;TBuilder, TProg&gt;</td>
+        <td><p>The <a class="xref" href="Ustilz.Programs.ProgBuilder-2.html">ProgBuilder&lt;TBuilder, TProg&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Ustilz.Xml.XmlExtensions.html#Ustilz_Xml_XmlExtensions_ToXml__1___0_">XmlExtensions.ToXml&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_AsBool__1___0_">ExtensionsT.AsBool&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_Chain__1___0_System_Action___0__">ExtensionsT.Chain&lt;T&gt;(T, Action&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_Dump__1___0_">ExtensionsT.Dump&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IfNull__1___0___0_">ExtensionsT.IfNull&lt;T&gt;(T, T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsIn__1___0___0___">ExtensionsT.IsIn&lt;T&gt;(T, T[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsIn__1___0_System_Collections_Generic_IEnumerable___0__">ExtensionsT.IsIn&lt;T&gt;(T, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsNotIn__1___0___0___">ExtensionsT.IsNotIn&lt;T&gt;(T, T[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsNotIn__1___0_System_Collections_Generic_IEnumerable___0__">ExtensionsT.IsNotIn&lt;T&gt;(T, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsNotNull__1___0_">ExtensionsT.IsNotNull&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_IsNull__1___0_">ExtensionsT.IsNull&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_Swap__1_System_Object___0____0__">ExtensionsT.Swap&lt;T&gt;(Object, ref T, ref T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Extensions.ExtensionsT.html#Ustilz_Extensions_ExtensionsT_ThrowIfNull__1___0_System_String_System_String_">ExtensionsT.ThrowIfNull&lt;TObject&gt;(TObject, String, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Json.JsonExtensions.html#Ustilz_Json_JsonExtensions_ToJson__1___0_">JsonExtensions.ToJson&lt;T&gt;(T)</a>
+  </div>
+  <div>
+      <a class="xref" href="Ustilz.Json.JsonExtensions.html#Ustilz_Json_JsonExtensions_ToJsonFormatted__1___0_">JsonExtensions.ToJsonFormatted&lt;T&gt;(T)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://tanusland.visualstudio.com/DefaultCollection/Ustilz/_git/Ustilz?path=src/Ustilz.Programs/ProgBuilder.cs&amp;version=GBdevelop&amp;line=19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

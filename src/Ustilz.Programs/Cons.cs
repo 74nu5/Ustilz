@@ -88,7 +88,7 @@ namespace Ustilz.Programs
                 {
                     var isChoixNumérique = int.TryParse(entry, out var choix);
 
-                    if (!isChoixNumérique || (choix <= enumerable.Count && choix > 0))
+                    if (!isChoixNumérique || ((choix <= enumerable.Count) && (choix > 0)))
                     {
                         enumerable[choix - 1].Invoke();
                     }

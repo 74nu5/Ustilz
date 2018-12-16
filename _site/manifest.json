@@ -1,0 +1,1016 @@
+{
+  "homepages": [],
+  "source_base_path": "O:/Projets/DepotGitPerso/Ustilz",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "vHdT1In4Hm1IFsnq/9AZJQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Attributes.UseForDeserializationAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Attributes.UseForDeserializationAttribute.html",
+          "hash": "xpQFMx3EXuv0mNaDZR55xg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Attributes.UsedByInjectionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Attributes.UsedByInjectionAttribute.html",
+          "hash": "8tpCKwZdS59w6TYDuOBWKw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Attributes.html",
+          "hash": "WZLEB0zDBAix9/N76T45Ng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Data.Interfaces.IBaseDAL-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Data.Interfaces.IBaseDAL-2.html",
+          "hash": "bkIt7/pOS3MyDLK5n2k18Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Data.Interfaces.IDto-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Data.Interfaces.IDto-1.html",
+          "hash": "sKwLd7qRfQ3xu5iRE1RQHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Data.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Data.Interfaces.html",
+          "hash": "TLq4aCAoZ4/1oON50O/Thg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Actions.ExtensionsAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Actions.ExtensionsAction.html",
+          "hash": "LmNpmdUQkMsgaD2nYrRaQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Actions.html",
+          "hash": "hhiK8T0KI2AbFV90662e8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.html",
+          "hash": "jljgDiQfkDL1f2Wwaz5dGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Enumerables.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Enumerables.html",
+          "hash": "eENJ935Cgr3aiyOTEUH8nQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsBool.html",
+          "hash": "iEYrMz+aDOuBs3XGl11A/Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsConfigurationBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsConfigurationBuilder.html",
+          "hash": "O8KbiYwXzcaPLqNCdCkn0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsDictionary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsDictionary.html",
+          "hash": "UvstdLzHqn3XgSINvBjSSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsDouble.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsDouble.html",
+          "hash": "CWFdh+wi/hGbkc1gWjqVUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsEnum.html",
+          "hash": "qWuk0nG9Cw8+3xhiJt2kRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsException.html",
+          "hash": "rJuV9151eh+lKRT6XvyBww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsFunc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsFunc.html",
+          "hash": "Fq++ZhDQinfY4JXgQnFFNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsLong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsLong.html",
+          "hash": "Z74AZfwDh7NV+TX+9y7sQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsNameValueCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsNameValueCollection.html",
+          "hash": "TqQtVl/UiXU9excaFg6RZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsT.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsT.html",
+          "hash": "qFBILyx3v/UTNZ+iKUvhTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsTimeSpan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsTimeSpan.html",
+          "hash": "qNrxU7Bnf+Kuy//rnNvUKg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.ExtensionsType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.ExtensionsType.html",
+          "hash": "uEnj3LSe0Ph2o413Al5FNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Int32.ExtensionsInt32.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Int32.ExtensionsInt32.html",
+          "hash": "r/EfH+5+KawcdHltA4V6zg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Int32.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Int32.html",
+          "hash": "AmkDXjuEXor03dWtOuprtw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Models.IExecutionResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Models.IExecutionResult-1.html",
+          "hash": "/bZK7X5cp++Ku45coYGA2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.Models.html",
+          "hash": "tY0vQowvKwTBoGth9RuJ6w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.String.ExtensionsString.HashType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.String.ExtensionsString.HashType.html",
+          "hash": "vPmqHRIkOk910OJxn5zrKw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.String.ExtensionsString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.String.ExtensionsString.html",
+          "hash": "rz/QMrklfcbDW2pJW7eOwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.String.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.String.html",
+          "hash": "9kTUEzUZGfGWEzQ58HdhuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Extensions.html",
+          "hash": "2SdnhYcAc1MamA3uzUOz6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Http.HttpExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Http.HttpExtensions.html",
+          "hash": "7mywxo5BJB2vy610/6HziA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Http.HttpService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Http.HttpService.html",
+          "hash": "IHi3gVaoxavyCJacZwD2Hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Http.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Http.html",
+          "hash": "jfaRK/px6ZATP7D9aEkYvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Json.JsonExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Json.JsonExtensions.html",
+          "hash": "9NmybdAY1T04Ft1B1afuZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Json.html",
+          "hash": "YdkgR16LPu6EbbO2zXP3HQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Logging.LoggerAction.LoggerAction.LogDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Logging.LoggerAction.LoggerAction.LogDelegate.html",
+          "hash": "RHCGH2elbewJA2vXShG6hQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Logging.LoggerAction.LoggerAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Logging.LoggerAction.LoggerAction.html",
+          "hash": "6iBdnGeo+8muxEYJ2pZMNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Logging.LoggerAction.LoggerActionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Logging.LoggerAction.LoggerActionExtensions.html",
+          "hash": "cIEBMpeFyyzKwraIGVB84g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Logging.LoggerAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Logging.LoggerAction.html",
+          "hash": "fklouSnL9T1CMj2v8dkWmA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.Batch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.Batch.html",
+          "hash": "RiY1FOKL273jUkdQ+uyAFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.BatchBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.BatchBuilder.html",
+          "hash": "Hr30RoPXBn/CTsCafymECg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.Cons.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.Cons.html",
+          "hash": "CA5CAVKltjzUwhtFYvDKtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.ConsoleBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.ConsoleBuilder.html",
+          "hash": "OPDBCvCd55sL+rR9IQ2ULQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.Prog-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.Prog-1.html",
+          "hash": "SPTuw8hUjZes/8g3H+8fgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.ProgBuilder-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.ProgBuilder-2.html",
+          "hash": "vXK8nc8URJKlMyoMuJ914w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Programs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Programs.html",
+          "hash": "MN5QenX91a90Eyy+5OHvHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.Enums.TypeJoin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.Enums.TypeJoin.html",
+          "hash": "bkE59pfSeTz820flHStsBg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.Enums.html",
+          "hash": "LqfrxWr13EJHE85ryEp/lg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.FactoryRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.FactoryRequest.html",
+          "hash": "MQ1k3b6HPMsH//XdHeLXtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.FactoryRequestElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.FactoryRequestElement.html",
+          "hash": "/jeUeMYim7y7cjo9Z1RRqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IColumn.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IColumn.html",
+          "hash": "M6CIyNzen79PvJP9EioYPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IColumns.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IColumns.html",
+          "hash": "g6NM48P3GY1UyxViIC06kA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.ICondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.ICondition.html",
+          "hash": "WqAcr5Q0YE8HltJ57oGqEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IJoin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IJoin.html",
+          "hash": "ZZAx9B741kEhOp5g3jm1ng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IJoins.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IJoins.html",
+          "hash": "30y35OluphF4SC5CteM+Ag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.ITable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.ITable.html",
+          "hash": "BrfgbvVha4R9egAawFxsQg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IWhereClause.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IWhereClause.html",
+          "hash": "kMWzUkSAwE0j1YGtu3YRNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.IWhereCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.IWhereCondition.html",
+          "hash": "zuW+VF868iCQsHbE+Tpl6w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestElement.html",
+          "hash": "hxZGs7SCIp/MiVxWTEtSaQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestType.IRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestType.IRequest.html",
+          "hash": "ktR2Rs7T9gNYI3WJCXmCGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestType.ISelectRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestType.ISelectRequest.html",
+          "hash": "v5V/cFuDV3l0QQgTFKLCcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.RequestType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.RequestType.html",
+          "hash": "2eq7zDfgy9RVG53OB7fcww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Sql.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Sql.html",
+          "hash": "OzMxTe4Pp7Gs8rgbfD5Dig=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Time.Date.ExtensionsDateTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Time.Date.ExtensionsDateTime.html",
+          "hash": "D5bCSO3Byn+QAk7LaP/KSg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Time.Date.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Time.Date.html",
+          "hash": "G7Z48xpvSMh5HI5rW56rvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Time.Horloge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Time.Horloge.html",
+          "hash": "3GRdUzK/fMdIVPkY6nnnBA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Time.html",
+          "hash": "4mN+V/Q770aG5TbfxMPKmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.UI.ColorUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.UI.ColorUtils.html",
+          "hash": "i02eIqjep+/+aQgroydQng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.UI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.UI.html",
+          "hash": "QHKImQMfpqEvnXohUMbuYQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Utils.Check.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Utils.Check.html",
+          "hash": "uPR9/OPsD2Yu+PvZ7Estaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Utils.Strings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Utils.Strings.html",
+          "hash": "fKGWrrkALlXzW+MNCx/JaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Utils.html",
+          "hash": "kZHN/8gmzRqJXEIpGe8weg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Xml.XmlExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Xml.XmlExtensions.html",
+          "hash": "qBG9X46TgeEC+qJnJsQlhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Ustilz.Xml.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Ustilz.Xml.html",
+          "hash": "VDVg3AqIQwAk/eGCTKGiDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "Uqupf/GVTJ2iIPhTdy49dg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "mZOsRM/V3/xF0ELjFf8e5Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "ASGeSDqPCN9trBcjzoI3ZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "9XY0ZRDLIiFkNa9Ce6E7lA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "k+/dkjFuwAVS32HduMpmBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

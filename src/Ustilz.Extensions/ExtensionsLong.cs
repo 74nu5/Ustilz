@@ -4,11 +4,14 @@ namespace Ustilz.Extensions
 
     using System;
 
+    using JetBrains.Annotations;
+
     #endregion
 
     /// <summary>
     /// Classe d'extension du type long.
     /// </summary>
+    [PublicAPI]
     public static class ExtensionsLong
     {
         #region Méthodes privées
@@ -18,7 +21,7 @@ namespace Ustilz.Extensions
         /// </summary>
         /// <param name="number">Nombre à convertir.</param>
         /// <returns>Retourne la représentation en lettre du nombre passé en paramètres.</returns>
-        private static string ConvertIntoWords(this long number)
+        public static string ConvertIntoWords(this long number)
         {
             if (number == 0)
             {

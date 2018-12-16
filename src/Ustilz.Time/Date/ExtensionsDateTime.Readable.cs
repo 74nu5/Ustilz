@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Time.Date
+namespace Ustilz.Time.Date
 {
     #region Usings
 
@@ -6,8 +6,6 @@
     using System.Diagnostics.CodeAnalysis;
 
     using JetBrains.Annotations;
-
-    using Ustilz.Time;
 
     #endregion
 
