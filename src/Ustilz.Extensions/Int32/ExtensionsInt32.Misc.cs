@@ -42,7 +42,7 @@ namespace Ustilz.Extensions.Int32
         [PublicAPI]
         [Pure]
         public static bool IsMultipleOf(this int value, int factor)
-            => value != 0 && value % factor == 0;
+            => (value != 0) && (value % factor == 0);
 
         /// <summary>Checks if the Int32 is odd.</summary>
         /// <param name="value">The Int32 to check.</param>
@@ -59,7 +59,7 @@ namespace Ustilz.Extensions.Int32
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, int percent)
-            => (double)number * percent / 100;
+            => ((double)number * percent) / 100;
 
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
@@ -68,7 +68,7 @@ namespace Ustilz.Extensions.Int32
         [Pure]
         [PublicAPI]
         public static decimal PercentageOf(this int number, decimal percent)
-            => number * percent / 100;
+            => (number * percent) / 100;
 
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
@@ -77,7 +77,7 @@ namespace Ustilz.Extensions.Int32
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, double percent)
-            => number * percent / 100;
+            => (number * percent) / 100;
 
         /// <summary>Gets the specified percentage of the number.</summary>
         /// <param name="number">The number.</param>
@@ -86,7 +86,7 @@ namespace Ustilz.Extensions.Int32
         [Pure]
         [PublicAPI]
         public static double PercentageOf(this int number, long percent)
-            => (double)number * percent / 100;
+            => ((double)number * percent) / 100;
 
         /// <summary>Gets the percentage of the number.</summary>
         /// <exception cref="DivideByZeroException">The number must be greater than zero.</exception>
@@ -102,7 +102,7 @@ namespace Ustilz.Extensions.Int32
                 throw new DivideByZeroException("The number must be greater than zero.");
             }
 
-            return total / (double)number * 100;
+            return (total / (double)number) * 100;
         }
 
         /// <summary>Gets the percentage of the number.</summary>
@@ -119,7 +119,7 @@ namespace Ustilz.Extensions.Int32
                 throw new DivideByZeroException("The number must be greater than zero.");
             }
 
-            return total / number * 100;
+            return (total / number) * 100;
         }
 
         /// <summary>Returns a list containing all values of the given range.</summary>

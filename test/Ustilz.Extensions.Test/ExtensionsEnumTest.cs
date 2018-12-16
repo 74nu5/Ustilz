@@ -17,7 +17,7 @@ namespace Ustilz.Extensions.Test
         #region Champs et constantes statiques
 
         /// <summary>The item.</summary>
-        private const Test ITEM = Test.Item1;
+        private const Test Item = Test.Item1;
 
         #endregion
 
@@ -25,15 +25,15 @@ namespace Ustilz.Extensions.Test
 
         /// <summary>The in false test.</summary>
         [Fact]
-        public void InFalseTest() => Assert.False(ExtensionsEnumTest.ITEM.In(Test.Item2, Test.Item3));
+        public void InFalseTest() => Assert.False(ExtensionsEnumTest.Item.In(Test.Item2, Test.Item3));
 
         /// <summary>The in true test.</summary>
         [Fact]
-        public void InTrueTest() => Assert.True(ExtensionsEnumTest.ITEM.In(Test.Item1, Test.Item2, Test.Item3));
+        public void InTrueTest() => Assert.True(ExtensionsEnumTest.Item.In(Test.Item1, Test.Item2, Test.Item3));
 
         /// <summary>The in test.</summary>
         [Fact]
-        public void InVideTest() => Assert.False(ExtensionsEnumTest.ITEM.In());
+        public void InVideTest() => Assert.False(ExtensionsEnumTest.Item.In());
 
         /// <summary>The test get enum description.</summary>
         [Fact]
