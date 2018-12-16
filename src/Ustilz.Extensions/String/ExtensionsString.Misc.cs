@@ -61,14 +61,14 @@ namespace Ustilz.Extensions.String
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from left.</returns>
         [CanBeNull]
-        public static string Left([CanBeNull] this string value, int length) => value != null && value.Length > length ? value.Substring(0, length) : value;
+        public static string Left([CanBeNull] this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(0, length) : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
         [CanBeNull]
-        public static string Right([CanBeNull] this string value, int length) => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
+        public static string Right([CanBeNull] this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(value.Length - length) : value;
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>

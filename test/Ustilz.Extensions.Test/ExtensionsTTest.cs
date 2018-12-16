@@ -154,7 +154,7 @@
         #region Nested type: A
 
         /// <summary>The a.</summary>
-        private class A
+        private sealed class A
         {
             #region Propriétés et indexeurs
 
