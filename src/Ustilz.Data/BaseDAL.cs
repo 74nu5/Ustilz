@@ -22,7 +22,7 @@ namespace Ustilz.Data
     /// <typeparam name="TModel">Type du model.</typeparam>
     /// <typeparam name="TIdentity">Type de la clé primaire du model.</typeparam>
     [PublicAPI]
-    internal abstract class BaseDAL<TContext, TModel, TIdentity>
+    public abstract class BaseDAL<TContext, TModel, TIdentity>
         : IBaseDAL<TModel, TIdentity>
         where TModel : class, IDto<TIdentity>
         where TIdentity : IComparable<TIdentity>
