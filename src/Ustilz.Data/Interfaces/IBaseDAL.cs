@@ -43,8 +43,10 @@ namespace Ustilz.Data.Interfaces
         Task<List<TModel>> GetAll(params Expression<Func<TModel, object>>[] includes);
 
         /// <summary>The get all.</summary>
+        /// <param name="skip">The skip.</param>
+        /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        Task<List<TModel>> GetAll();
+        Task<List<TModel>> GetAll(int skip = 0, int take = 0);
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>

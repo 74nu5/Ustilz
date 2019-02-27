@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Enumerables
+namespace Ustilz.Extensions.Enumerables
 {
     #region Usings
 
@@ -74,6 +74,24 @@
         /// <returns>ReadOnlyCollection of the collection.</returns>
         public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection)
             => new List<T>(collection).AsReadOnly();
+
+        /// <summary>
+        /// Gets a subset of IEnumerable by passing the page number.
+        /// </summary>
+        /// <typeparam name="T">Type of enumerable.</typeparam>
+        /// <param name="source">Enumerable source.</param>
+        /// <param name="page">Page number.</param>
+        /// <param name="pageSize">Page size.</param>
+        /// <returns>Return a subset of IEnumerable by passing the page number.</returns>
+        public static IEnumerable<T> Page<T>(this IEnumerable<T> source, int page, int pageSize)
+        {
+            if (page < 1 || pageSize < 1)
+            {
+                throw new ArgumentException(Strings.MustBeOneOrGreater, page < 1 ? "page" : "pageSize");
+            }
+
+            return source.Skip(--page * pageSize).Take(pageSize);
+        }
 
         #endregion
     }
