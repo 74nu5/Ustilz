@@ -25,7 +25,6 @@ namespace Ustilz.Extensions
             where T : Enum
         {
             var type = typeof(T);
-            var names = Enum.GetNames(type);
 
             string Selector(string name)
             {
@@ -37,7 +36,7 @@ namespace Ustilz.Extensions
                 return attribute.Description ?? string.Empty;
             }
 
-            return names.ToDictionary(name => name, Selector);
+            return Enum.GetNames(type).ToDictionary(name => name, Selector);
         }
 
         /// <summary>Méthode d'obtention de la description d'une valeur d'une énumération.</summary>
