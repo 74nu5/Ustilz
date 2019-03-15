@@ -1,8 +1,9 @@
-﻿namespace Ustilz.Extensions
+namespace Ustilz.Extensions
 {
     #region Usings
 
     using System;
+    using System.Text;
 
     using JetBrains.Annotations;
 
@@ -20,17 +21,17 @@
         public static string GetMessagesFromEntireExceptionChain([NotNull] this Exception e)
         {
             // get the full error message list from the inner exceptions
-            var message = e.Message;
+            var message = new StringBuilder(e.Message);
             var count = 0;
             for (var inner = e.InnerException; inner != null; inner = inner.InnerException)
             {
                 count++;
                 var indent = string.Empty.PadLeft(count, '\t');
-                message += Environment.NewLine + indent;
-                message += inner.Message;
+                message.Append($"{Environment.NewLine}{indent}");
+                message.Append(inner.Message);
             }
 
-            return message;
+            return message.ToString();
         }
 
         #endregion
