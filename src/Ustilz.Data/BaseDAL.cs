@@ -84,8 +84,20 @@ namespace Ustilz.Data
         }
 
         /// <summary>The get all.</summary>
+        /// <param name="skip">The skip.</param>
+        /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        public async Task<List<TModel>> GetAll() => await this.Context.Set<TModel>().ToListAsync();
+        public async Task<List<TModel>> GetAll(int skip = 0, int take = 0)
+        {
+            var queryable = this.Context.Set<TModel>().Skip(skip);
+
+            if (take < 0)
+            {
+                queryable = queryable.Take(take);
+            }
+
+            return await queryable.ToListAsync();
+        }
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>

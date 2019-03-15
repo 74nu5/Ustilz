@@ -101,4 +101,7 @@
   <data name="RangeTo_ValueException" xml:space="preserve">
     <value>The start value can not be greater than the end value.</value>
   </data>
+	<data name="MustBeOneOrGreater" xml:space="preserve">
+		<value>Must be 1 or greater</value>
+	</data>
 </root>
