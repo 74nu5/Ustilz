@@ -84,19 +84,24 @@ namespace Ustilz.Data
         }
 
         /// <summary>The get all.</summary>
+        /// <returns>Return all elements.</returns>
+        public IEnumerable<TModel> GetAll()
+            => this.GetAll(0, 0);
+
+        /// <summary>The get all with pagination.</summary>
         /// <param name="skip">The skip.</param>
         /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        public async Task<List<TModel>> GetAll(int skip = 0, int take = 0)
+        public IEnumerable<TModel> GetAll(int skip, int take)
         {
             var queryable = this.Context.Set<TModel>().Skip(skip);
 
-            if (take < 0)
+            if (take > 0)
             {
                 queryable = queryable.Take(take);
             }
 
-            return await queryable.ToListAsync();
+            return queryable.AsEnumerable();
         }
 
         /// <summary>The get details.</summary>

@@ -9,9 +9,7 @@ namespace Ustilz.Data.Interfaces
 
     #endregion
 
-    /// <summary>
-    ///     Interface de définition des méthodes de base des DAL.
-    /// </summary>
+    /// <summary>Interface de définition des méthodes de base des DAL.</summary>
     /// <typeparam name="TModel">Modèle de la DAL.</typeparam>
     /// <typeparam name="TIdentity">Type de la clé primaire.</typeparam>
     public interface IBaseDAL<TModel, in TIdentity>
@@ -25,9 +23,7 @@ namespace Ustilz.Data.Interfaces
         /// <returns>The <see cref="Task" />.</returns>
         Task<int> Add(TModel model);
 
-        /// <summary>
-        ///     Méthode d'ajout d'une liste d'éléments.
-        /// </summary>
+        /// <summary>Méthode d'ajout d'une liste d'éléments.</summary>
         /// <param name="models">La liste d'éléments à ajouter.</param>
         /// <returns>Retourne le nombre de ligne impactées.</returns>
         Task<int> AddRange(IEnumerable<TModel> models);
@@ -46,7 +42,11 @@ namespace Ustilz.Data.Interfaces
         /// <param name="skip">The skip.</param>
         /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        Task<List<TModel>> GetAll(int skip = 0, int take = 0);
+        IEnumerable<TModel> GetAll(int skip = 0, int take = 0);
+
+        /// <summary>The get all.</summary>
+        /// <returns>Return all elements.</returns>
+        IEnumerable<TModel> GetAll();
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>
@@ -64,9 +64,7 @@ namespace Ustilz.Data.Interfaces
         /// <returns>The <see cref="Task" />.</returns>
         Task<int> Remove(TModel model);
 
-        /// <summary>
-        ///     Méthode suppression des données de la table.
-        /// </summary>
+        /// <summary>Méthode suppression des données de la table.</summary>
         /// <returns>Retourne le nombre de ligné impactées.</returns>
         Task<int> RemoveAll();
 
