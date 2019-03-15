@@ -38,7 +38,7 @@ namespace Ustilz.Xml
         public static T FromXml<T>([NotNull] this string xmlStr)
         {
             var xmlSerializer = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(xmlStr ?? throw new NullReferenceException("La chaine de caractères ne peut pas être nulle.")))
+            using (var reader = new StringReader(xmlStr ?? throw new ArgumentNullException(nameof(xmlStr), "La chaine de caractères ne peut pas être nulle.")))
             {
                 return (T)xmlSerializer.Deserialize(reader);
             }
