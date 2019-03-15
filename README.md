@@ -1,4 +1,4 @@
-# Utilz
+# Utilz [![Build Status](https://dev.azure.com/tanusland/Ustilz/_apis/build/status/Ustilz-.NET%20Core-CI?branchName=develop)](https://dev.azure.com/tanusland/Ustilz/_build/latest?definitionId=4&branchName=develop)
 
 Librairie d'utilitaires.
 
