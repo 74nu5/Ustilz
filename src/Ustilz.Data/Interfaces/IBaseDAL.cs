@@ -42,11 +42,11 @@ namespace Ustilz.Data.Interfaces
         /// <param name="skip">The skip.</param>
         /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        IEnumerable<TModel> GetAll(int skip = 0, int take = 0);
+        IAsyncEnumerable<TModel> GetAll(int skip, int take);
 
         /// <summary>The get all.</summary>
         /// <returns>Return all elements.</returns>
-        IEnumerable<TModel> GetAll();
+        IAsyncEnumerable<TModel> GetAll();
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>
