@@ -85,14 +85,14 @@ namespace Ustilz.Data
 
         /// <summary>The get all.</summary>
         /// <returns>Return all elements.</returns>
-        public IEnumerable<TModel> GetAll()
+        public IAsyncEnumerable<TModel> GetAll()
             => this.GetAll(0, 0);
 
         /// <summary>The get all with pagination.</summary>
         /// <param name="skip">The skip.</param>
         /// <param name="take">The take.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        public IEnumerable<TModel> GetAll(int skip, int take)
+        public IAsyncEnumerable<TModel> GetAll(int skip, int take)
         {
             var queryable = this.Context.Set<TModel>().Skip(skip);
 
@@ -101,7 +101,7 @@ namespace Ustilz.Data
                 queryable = queryable.Take(take);
             }
 
-            return queryable.AsEnumerable();
+            return queryable.ToAsyncEnumerable();
         }
 
         /// <summary>The get details.</summary>
@@ -140,7 +140,7 @@ namespace Ustilz.Data
         /// <returns>Retourne le nombre de ligné impactées.</returns>
         public async Task<int> RemoveAll()
         {
-            this.Context.Set<TModel>().RemoveRange(await this.GetAll());
+            this.Context.Set<TModel>().RemoveRange(this.GetAll().ToEnumerable());
             return await this.Context.SaveChangesAsync();
         }
 
