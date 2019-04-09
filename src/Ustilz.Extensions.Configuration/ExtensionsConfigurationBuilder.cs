@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions
+﻿namespace Ustilz.Extensions.Configuration
 {
     #region Usings
 

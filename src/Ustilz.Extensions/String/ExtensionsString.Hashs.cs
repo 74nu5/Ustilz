@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.String
+namespace Ustilz.Extensions.String
 {
     #region Usings
 
@@ -142,7 +142,7 @@
         {
             Check.NotEmpty(password, nameof(password));
 
-            salt = salt ?? GenerateSalt();
+            salt ??= GenerateSalt();
 
             var bytes = Encoding.Unicode.GetBytes(salt + password);
             try

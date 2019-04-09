@@ -25,46 +25,16 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type à "transformer".</typeparam>
         /// <param name="obj">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
-        public static bool AsBool<T>(this T obj)
+        public static bool AsBool<T>(this T obj) => obj switch
         {
-            switch (obj)
-            {
-                case int n:
-                    return n > 0;
-                case string s:
-                {
-                    if (bool.TryParse(s, out var b))
-                    {
-                        return b;
-                    }
-
-                    if (int.TryParse(s, out var i))
-                    {
-                        return i.AsBool();
-                    }
-
-                    return s != string.Empty;
-                }
-
-                case object o when o is string s:
-                {
-                    return s.AsBool();
-                }
-
-                case object o when o is int i:
-                {
-                    return i.AsBool();
-                }
-
-                case object _:
-                {
-                    return false;
-                }
-
-                default:
-                    return false;
-            }
-        }
+            int n => n > 0,
+            string s when bool.TryParse(s, out var b) => b,
+            string s when int.TryParse(s, out var i) => i.AsBool(),
+            string s => s != string.Empty,
+            object o when o is string s => s.AsBool(),
+            object o when o is int i => i.AsBool(),
+            _ => false
+        };
 
         /// <summary>The between. </summary>
         /// <param name="value">The value. </param>
@@ -88,7 +58,6 @@ namespace Ustilz.Extensions
         public static T Chain<T>([CanBeNull] this T obj, [NotNull] Action<T> action)
         {
             action.ThrowIfNull(nameof(action));
-
             action(obj);
             return obj;
         }
@@ -130,7 +99,6 @@ namespace Ustilz.Extensions
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
         {
             values.ThrowIfNull(nameof(values));
-
             return values.Contains(value);
         }
 
@@ -145,7 +113,6 @@ namespace Ustilz.Extensions
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
         {
             values.ThrowIfNull(nameof(values));
-
             return values.Contains(value);
         }
 
@@ -231,22 +198,17 @@ namespace Ustilz.Extensions
         {
             try
             {
+                if ((value == null) || value.Equals(string.Empty))
+                {
+                    return default;
+                }
+
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
                 if (u != null)
                 {
-                    if ((value == null) || value.Equals(string.Empty))
-                    {
-                        return default;
-                    }
-
                     return (T)Convert.ChangeType(value, u);
-                }
-
-                if ((value == null) || value.Equals(string.Empty))
-                {
-                    return default;
                 }
 
                 return (T)Convert.ChangeType(value, t);
@@ -266,22 +228,17 @@ namespace Ustilz.Extensions
         {
             try
             {
+                if ((value == null) || value.Equals(string.Empty))
+                {
+                    return (T)ifError;
+                }
+
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
                 if (u != null)
                 {
-                    if ((value == null) || value.Equals(string.Empty))
-                    {
-                        return (T)ifError;
-                    }
-
                     return (T)Convert.ChangeType(value, u);
-                }
-
-                if ((value == null) || value.Equals(string.Empty))
-                {
-                    return ifError.To<T>();
                 }
 
                 return (T)Convert.ChangeType(value, t);
