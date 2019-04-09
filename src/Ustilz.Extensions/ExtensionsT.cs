@@ -1,4 +1,3 @@
-#pragma warning disable 1570
 namespace Ustilz.Extensions
 {
     #region Usings
@@ -252,4 +251,3 @@ namespace Ustilz.Extensions
         #endregion
     }
 }
-#pragma warning restore 1570

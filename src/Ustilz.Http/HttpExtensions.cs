@@ -51,7 +51,7 @@ namespace Ustilz.Http
         /// <summary>The process web exception.</summary>
         /// <param name="exception">The exception.</param>
         /// <returns>The <see cref="System.Exception" />.</returns>
-        public static Exception ProcessWebException(this WebException exception)
+        public static WebException ProcessWebException(this WebException exception)
         {
             var errorResponse = exception.Response;
 
@@ -66,7 +66,7 @@ namespace Ustilz.Http
 
                 var errorText = reader.ReadToEnd();
 
-                throw new Exception(errorText);
+                throw new WebException(errorText);
             }
         }
 
