@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Http
+namespace Ustilz.Http
 {
     #region Usings
 
@@ -55,6 +55,7 @@
             string url,
             Dictionary<string, IEnumerable<string>> headers,
             string authentification)
+            where TResponse : new()
         {
             var result =
                 await new Func<string, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, TResponse)>>(
@@ -101,7 +102,7 @@
             var result = await new Func<string, Dictionary<string, IEnumerable<string>>, string, Task<string>>(this.GetStringAsyncInternal).TestPerf(
                 out var timestamp,
                 url,
-                null,
+                new Dictionary<string, IEnumerable<string>>(),
                 authentification);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
@@ -134,7 +135,7 @@
             var result = await new Func<string, Dictionary<string, IEnumerable<string>>, string, string, Task<TResponse>>(this.PostAsyncInternal<TResponse>).TestPerf(
                 out var time,
                 url,
-                null,
+                new Dictionary<string, IEnumerable<string>>(),
                 content,
                 authentification);
             Debug.WriteLine($"GET {url} : {time} ms");
@@ -151,7 +152,7 @@
             var result = await new Func<string, Dictionary<string, IEnumerable<string>>, string, string, Task<string>>(this.PostAsyncInternal).TestPerf(
                 out var time,
                 url,
-                null,
+                new Dictionary<string, IEnumerable<string>>(),
                 content,
                 authentification);
             Debug.WriteLine($"GET {url} : {time} ms");
@@ -205,10 +206,11 @@
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Type de la réponse.</typeparam>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, TResponse)> GetHttpResponseAsyncInternal<TResponse>(
+        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, TResponse Response)> GetHttpResponseAsyncInternal<TResponse>(
             string url,
             Dictionary<string, IEnumerable<string>> headers,
             string authentification)
+            where TResponse : new()
         {
             var client = new HttpClient(this.handler);
 
@@ -220,7 +222,7 @@
                 var response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
                 {
-                    return (response.StatusCode, response.ReasonPhrase, null, default);
+                    return (response.StatusCode, response.ReasonPhrase, new Dictionary<string, IEnumerable<string>>(), new TResponse());
                 }
 
                 var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -237,7 +239,7 @@
         /// <param name="headers">The headers.</param>
         /// <param name="authentification">The authentification.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)> GetHttpResponseAsyncInternal(
+        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> GetHttpResponseAsyncInternal(
             string url,
             Dictionary<string, IEnumerable<string>> headers,
             string authentification)
@@ -252,7 +254,7 @@
                 var response = await client.GetAsync(url);
                 if (!response.IsSuccessStatusCode)
                 {
-                    return (response.StatusCode, response.ReasonPhrase, null, null);
+                    return (response.StatusCode, response.ReasonPhrase, new Dictionary<string, IEnumerable<string>>(), string.Empty);
                 }
 
                 var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -381,7 +383,7 @@
         /// <param name="body">The body.</param>
         /// <param name="authentification">The authentification.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)> PostHttpResponseAsyncInternal(
+        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> PostHttpResponseAsyncInternal(
             string url,
             Dictionary<string, IEnumerable<string>> headers,
             string body,
@@ -399,7 +401,7 @@
                 var response = await client.PostAsync(url, content);
                 if (!response.IsSuccessStatusCode)
                 {
-                    return (response.StatusCode, response.ReasonPhrase, null, null);
+                    return (response.StatusCode, response.ReasonPhrase, new Dictionary<string, IEnumerable<string>>(), string.Empty);
                 }
 
                 var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);

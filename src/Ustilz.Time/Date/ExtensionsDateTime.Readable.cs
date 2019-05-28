@@ -63,12 +63,7 @@ namespace Ustilz.Time.Date
 
             if (delta < 30 * Day)
             {
-                if (Horloge.Maintenant.Month == 3 && delta > 27 * Day)
-                {
-                    return "one month ago";
-                }
-
-                return $"{ts.Days} days ago";
+                return Horloge.Maintenant.Month == 3 && delta > 27 * Day ? "one month ago" : $"{ts.Days} days ago";
             }
 
             if (delta < 12 * Month)

@@ -32,7 +32,7 @@ namespace Ustilz.Extensions
             string s => s != string.Empty,
             object o when o is string s => s.AsBool(),
             object o when o is int i => i.AsBool(),
-            _ => false
+            var _ => false
         };
 
         /// <summary>The between. </summary>
@@ -179,7 +179,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="TObject">Le type de l'objet <paramref name="obj"/>.</typeparam>
         [PublicAPI]
         [DebuggerStepThrough]
-        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj, [NotNull] string parameterName, [CanBeNull] string errorMessage = null)
+        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj, [NotNull] string parameterName, string? errorMessage = null)
         {
             if (obj != null)
             {
@@ -193,28 +193,24 @@ namespace Ustilz.Extensions
         /// <param name="value">Valeur à convertir.</param>
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
-        public static T To<T>([CanBeNull] this IConvertible value)
+        public static T To<T>([NotNull] this IConvertible value)
+            where T : new()
         {
             try
             {
-                if ((value == null) || value.Equals(string.Empty))
+                if (value.Equals(string.Empty))
                 {
-                    return default;
+                    return new T();
                 }
 
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
-                if (u != null)
-                {
-                    return (T)Convert.ChangeType(value, u);
-                }
-
-                return (T)Convert.ChangeType(value, t);
+                return u != null ? (T)Convert.ChangeType(value, u) : (T)Convert.ChangeType(value, t);
             }
             catch
             {
-                return default;
+                return new T();
             }
         }
 
@@ -235,12 +231,7 @@ namespace Ustilz.Extensions
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
-                if (u != null)
-                {
-                    return (T)Convert.ChangeType(value, u);
-                }
-
-                return (T)Convert.ChangeType(value, t);
+                return u != null ? (T)Convert.ChangeType(value, u) : (T)Convert.ChangeType(value, t);
             }
             catch
             {

@@ -24,7 +24,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue([NotNull] this Action trueAction, [CanBeNull] Action falseAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue([NotNull] this Action trueAction, Action? falseAction = null, [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
             values.ThrowIfNull(nameof(values));
@@ -51,7 +51,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue<T>([NotNull] this Action<T> trueAction, [CanBeNull] T parameter, [CanBeNull] Action<T> falseAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue<T>([NotNull] this Action<T> trueAction, [CanBeNull] T parameter, Action<T>? falseAction = null, [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
             values.ThrowIfNull(nameof(values));
@@ -84,7 +84,7 @@ namespace Ustilz.Extensions.Actions
             [NotNull] this Action<T1, T2> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
-            [CanBeNull] Action<T1, T2> falseAction,
+            Action<T1, T2>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
@@ -121,7 +121,7 @@ namespace Ustilz.Extensions.Actions
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
-            [CanBeNull] Action<T1, T2, T3> falseAction,
+            Action<T1, T2, T3>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
@@ -161,7 +161,7 @@ namespace Ustilz.Extensions.Actions
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
             [CanBeNull] T4 parameter4,
-            [CanBeNull] Action<T1, T2, T3, T4> falseAction,
+            Action<T1, T2, T3, T4>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));

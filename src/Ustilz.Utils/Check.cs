@@ -69,24 +69,19 @@ namespace Ustilz.Utils
         [ContractAnnotation("value:null => halt")]
         public static string NotEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            Exception e = null;
             if (value is null)
             {
-                e = new ArgumentNullException(parameterName);
-            }
-            else if (value.Trim().Length == 0)
-            {
-                e = new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
+                NotEmpty(parameterName, nameof(parameterName));
+                throw new ArgumentNullException(parameterName);
             }
 
-            if (e == null)
+            if (value.Trim().Length != 0)
             {
                 return value;
             }
 
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw e;
+            throw new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
         }
 
         /// <summary>Méthode de vérification de la nullité de l'objet passé en paramètre.</summary>
@@ -133,10 +128,9 @@ namespace Ustilz.Utils
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
         /// <returns>The <see cref="string" />.</returns>
-        [CanBeNull]
-        public static string NullButNotEmpty([CanBeNull] string value, [InvokerParameterName] [NotNull] string parameterName)
+        public static string? NullButNotEmpty(string? value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            if (value is null || (value.Length != 0))
+            if (value is null || value.Length != 0)
             {
                 return value;
             }

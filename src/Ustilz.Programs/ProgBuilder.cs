@@ -43,6 +43,8 @@ namespace Ustilz.Programs
             this.Services = new ServiceCollection();
             this.loggerFactory = new LoggerFactory();
             this.configurationBuilder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
+            this.LogAction = new Action<string>[0];
+            this.configuration = this.configurationBuilder.Build();
         }
 
         #endregion

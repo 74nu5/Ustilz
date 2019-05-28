@@ -95,18 +95,40 @@
         {
             string s = null;
             Assert.True(s.IsNull());
-            Assert.True(s.IsNullOrEmpty());
+
+            s = string.Empty;
+            Assert.False(s.IsNull());
+
+            s = "Test";
+            Assert.False(s.IsNull());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNotNullTest()
+        {
+            string s = null;
             Assert.False(s.IsNotNull());
 
             s = string.Empty;
             Assert.True(s.IsNotNull());
-            Assert.True(s.IsNullOrEmpty());
-            Assert.False(s.IsNull());
 
             s = "Test";
             Assert.True(s.IsNotNull());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNullOrEmptyTest()
+        {
+            string s = null;
+            Assert.True(string.IsNullOrEmpty(s));
+
+            s = string.Empty;
+            Assert.True(s.IsNullOrEmpty());
+
+            s = "Test";
             Assert.False(s.IsNullOrEmpty());
-            Assert.False(s.IsNull());
         }
 
         [Fact]

@@ -26,15 +26,10 @@ namespace Ustilz.Extensions
         {
             var type = typeof(T);
 
-            string Selector(string name)
-            {
-                if (!(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute))
-                {
-                    return null;
-                }
-
-                return attribute.Description ?? string.Empty;
-            }
+            string? Selector(string name)
+                => !(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute)
+                       ? null
+                       : attribute.Description ?? string.Empty;
 
             return Enum.GetNames(type).ToDictionary(name => name, Selector);
         }

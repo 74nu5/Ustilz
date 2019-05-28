@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
     #region Usings
 
@@ -24,7 +24,7 @@
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue([NotNull] this Action trueAction, [CanBeNull] Action falseAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyTrue([NotNull] this Action trueAction, Action? falseAction = null, [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
             values.ThrowIfNull(nameof(values));
@@ -53,7 +53,7 @@
         public static void ExecuteIfAnyTrue<T>(
             [NotNull] this Action<T> trueAction,
             [CanBeNull] T parameter,
-            [CanBeNull] Action<T> falseAction = null,
+            Action<T>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
@@ -86,7 +86,7 @@
             [NotNull] this Action<T1, T2> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
-            [CanBeNull] Action<T1, T2> falseAction = null,
+            Action<T1, T2>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
@@ -122,7 +122,7 @@
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
-            [CanBeNull] Action<T1, T2, T3> falseAction = null,
+            Action<T1, T2, T3>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));
@@ -161,7 +161,7 @@
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
             [CanBeNull] T4 parameter4,
-            [CanBeNull] Action<T1, T2, T3, T4> falseAction = null,
+            Action<T1, T2, T3, T4>? falseAction = null,
             [NotNull] params Func<bool>[] values)
         {
             trueAction.ThrowIfNull(nameof(trueAction));

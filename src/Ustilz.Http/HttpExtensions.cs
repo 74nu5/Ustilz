@@ -2,7 +2,6 @@ namespace Ustilz.Http
 {
     #region Usings
 
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -29,23 +28,20 @@ namespace Ustilz.Http
         /// <returns>The <see cref="Task" />.</returns>
         public static async Task<byte[]> GetRawBodyBytesAsync(this HttpRequest request)
         {
-            using (var ms = new MemoryStream(2048))
-            {
-                await request.Body.CopyToAsync(ms);
-                return ms.ToArray();
-            }
+            await using var ms = new MemoryStream(2048);
+            await request.Body.CopyToAsync(ms);
+            return ms.ToArray();
         }
 
         /// <summary>Retrieve the raw body as a string from the Request.Body stream.</summary>
         /// <param name="request">Request instance to apply to.</param>
         /// <param name="encoding">Optional - Encoding, defaults to UTF8.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        public static async Task<string> GetRawBodyStringAsync(this HttpRequest request, Encoding encoding = null)
+        public static async Task<string> GetRawBodyStringAsync(this HttpRequest request, Encoding? encoding = null)
         {
-            using (var reader = new StreamReader(request.Body, encoding ?? Encoding.UTF8))
-            {
-                return await reader.ReadToEndAsync();
-            }
+            encoding ??= Encoding.UTF8;
+            using var reader = new StreamReader(request.Body, encoding ?? Encoding.UTF8);
+            return await reader.ReadToEndAsync();
         }
 
         /// <summary>The process web exception.</summary>
@@ -55,19 +51,17 @@ namespace Ustilz.Http
         {
             var errorResponse = exception.Response;
 
-            using (var responseStream = errorResponse.GetResponseStream())
+            using var responseStream = errorResponse.GetResponseStream();
+            if (responseStream == null)
             {
-                if (responseStream == null)
-                {
-                    throw exception;
-                }
-
-                var reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-
-                var errorText = reader.ReadToEnd();
-
-                throw new WebException(errorText);
+                throw exception;
             }
+
+            var reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
+
+            var errorText = reader.ReadToEnd();
+
+            throw new WebException(errorText);
         }
 
         /// <summary>The set authentication.</summary>

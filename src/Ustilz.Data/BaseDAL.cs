@@ -6,6 +6,7 @@ namespace Ustilz.Data
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using System.Threading;
     using System.Threading.Tasks;
 
     using JetBrains.Annotations;
@@ -28,129 +29,213 @@ namespace Ustilz.Data
         where TIdentity : IComparable<TIdentity>
         where TContext : DbContext
     {
+        #region Champs
+
+        private readonly TContext context;
+
+        #endregion
+
         #region Constructeurs et destructeurs
 
-        /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{TContext, TModel, TIdentity}" />.</summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{Tcontext, TModel, TIdentity}" />.</summary>
         /// <param name="context">The context.</param>
-        protected BaseDAL(TContext context) => this.Context = context;
+        protected BaseDAL(TContext context)
+        {
+            this.context = context;
+            this.Queryable = this.context.Set<TModel>().AsQueryable();
+        }
 
         #endregion
 
         #region Propriétés et indexeurs
 
-        /// <summary>Obtient le contexte de la base de données.</summary>
-        protected TContext Context { get; }
+        /// <inheritdoc />
+        public IQueryable<TModel> Queryable { get; }
 
         #endregion
 
         #region Méthodes publiques
 
-        /// <summary>The create.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Add(TModel model)
+        /// <inheritdoc />
+        public int Add(TModel model)
         {
-            await this.Context.Set<TModel>().AddAsync(model);
-            return await this.Context.SaveChangesAsync();
+            this.context.Set<TModel>().Add(model);
+            return this.context.SaveChanges();
         }
 
-        /// <summary>Méthode d'ajout d'une liste d'éléments.</summary>
-        /// <param name="models">La liste d'éléments à ajouter.</param>
-        /// <returns>Retourne le nombre de ligne impactées.</returns>
-        public async Task<int> AddRange(IEnumerable<TModel> models)
+        /// <inheritdoc />
+        public async Task<int> AddAsync(TModel model, CancellationToken stoppingToken = default)
         {
-            await this.Context.Set<TModel>().AddRangeAsync(models);
-            return await this.Context.SaveChangesAsync();
+            await this.context.Set<TModel>().AddAsync(model, stoppingToken);
+            return await this.context.SaveChangesAsync(stoppingToken);
         }
 
-        /// <summary>The exists.</summary>
-        /// <param name="id">The id.</param>
-        /// <returns>The <see cref="bool" />.</returns>
-        public bool Exists(TIdentity id) => this.Context.Set<TModel>().Any(e => e.Id.CompareTo(id) == 0);
-
-        /// <summary>The get all.</summary>
-        /// <param name="includes">The includes.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<List<TModel>> GetAll(params Expression<Func<TModel, object>>[] includes)
+        /// <inheritdoc />
+        public int AddRange(IEnumerable<TModel> models)
         {
-            var set = this.Context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+            this.context.Set<TModel>().AddRange(models);
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public async Task<int> AddRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
+        {
+            await this.context.Set<TModel>().AddRangeAsync(models, stoppingToken);
+            return await this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        public bool Exists(TIdentity id) => this.context.Set<TModel>().Any(e => e.Id.CompareTo(id) == 0);
+
+        /// <inheritdoc />
+        public async Task<bool> ExistsAsync(TIdentity id, CancellationToken stoppingToken = default)
+            => await this.context.Set<TModel>().AnyAsync(e => e.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false);
+
+        /// <inheritdoc />
+        public List<TModel> GetAll(params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null ? set.ToList() : includeSet.ToList();
+        }
+
+        /// <inheritdoc />
+        public List<TModel> GetAll(int skip, int take)
+            => this.SkipAndTake(skip, take).ToList();
+
+        /// <inheritdoc />
+        public async Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null ? await set.ToListAsync(stoppingToken).ConfigureAwait(false) : await includeSet.ToListAsync(stoppingToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public async Task<List<TModel>> GetAllAsync(int skip, int take, CancellationToken stoppingToken = default)
+            => await this.SkipAndTake(skip, take).ToListAsync(stoppingToken);
+
+        /// <inheritdoc />
+        public TModel GetDetails(TIdentity id, params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null
+                       ? set.SingleOrDefault(model => model.Id.CompareTo(id) == 0)
+                       : includeSet.SingleOrDefault(model => model.Id.CompareTo(id) == 0);
+        }
+
+        /// <inheritdoc />
+        public TModel GetDetails(TIdentity id) => this.context.Set<TModel>().SingleOrDefault(model => model.Id.CompareTo(id) == 0);
+
+        /// <inheritdoc />
+        public async Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null
+                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken)
+                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken);
+        }
+
+        /// <inheritdoc />
+        public async Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default)
+            => await this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken);
+
+        /// <inheritdoc />
+        public int Remove(TModel model)
+        {
+            this.context.Set<TModel>().Remove(model);
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public int RemoveAll()
+        {
+            this.context.Set<TModel>().RemoveRange(this.Queryable.ToList());
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public async Task<int> RemoveAllAsync(CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().RemoveRange(await this.Queryable.ToListAsync(stoppingToken).ConfigureAwait(false));
+            return await this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        public async Task<int> RemoveAsync(TModel model, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().Remove(model);
+            return await this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        public int RemoveRange(IEnumerable<TModel> models)
+        {
+            this.context.Set<TModel>().RemoveRange(models);
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public async Task<int> RemoveRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().RemoveRange(models);
+            return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        public int Update(TModel model)
+        {
+            this.context.Set<TModel>().Update(model);
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public async Task<int> UpdateAsync(TModel model, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().Update(model);
+            return await this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        public int UpdateRange(IEnumerable<TModel> models)
+        {
+            this.context.Set<TModel>().UpdateRange(models);
+            return this.context.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public async Task<int> UpdateRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().UpdateRange(models);
+            return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
+        }
+
+        #endregion
+
+        #region Méthodes privées
+
+        private static IIncludableQueryable<TModel, object> GetIncludeSet(Expression<Func<TModel, object>>[] includes, DbSet<TModel> set)
+            => includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+#pragma warning disable CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
                 null,
+#pragma warning restore CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
                 (current, include) =>
                     current == null
                         ? set.Include(include)
                         : current.Include(include));
-            return includeSet == null ? await set.ToListAsync() : await includeSet.ToListAsync();
-        }
 
-        /// <summary>The get all.</summary>
-        /// <returns>Return all elements.</returns>
-        public IAsyncEnumerable<TModel> GetAll()
-            => this.GetAll(0, 0);
-
-        /// <summary>The get all with pagination.</summary>
-        /// <param name="skip">The skip.</param>
-        /// <param name="take">The take.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public IAsyncEnumerable<TModel> GetAll(int skip, int take)
+        private IQueryable<TModel> SkipAndTake(int skip, int take)
         {
-            var queryable = this.Context.Set<TModel>().Skip(skip);
+            var queryable = this.context.Set<TModel>().Skip(skip);
 
             if (take > 0)
             {
                 queryable = queryable.Take(take);
             }
 
-            return queryable.ToAsyncEnumerable();
-        }
-
-        /// <summary>The get details.</summary>
-        /// <param name="id">The id.</param>
-        /// <param name="includes">The includes.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<TModel> GetDetails(TIdentity id, params Expression<Func<TModel, object>>[] includes)
-        {
-            var set = this.Context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
-                null,
-                (current, include)
-                    => current == null
-                           ? set.Include(include)
-                           : current.Include(include));
-            return includeSet == null
-                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0)
-                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
-        }
-
-        /// <summary>The get details.</summary>
-        /// <param name="id">The id.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<TModel> GetDetails(TIdentity id) => await this.Context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
-
-        /// <summary>The remove.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Remove(TModel model)
-        {
-            this.Context.Set<TModel>().Remove(model);
-            return await this.Context.SaveChangesAsync();
-        }
-
-        /// <summary>Méthode suppression des données de la table.</summary>
-        /// <returns>Retourne le nombre de ligné impactées.</returns>
-        public async Task<int> RemoveAll()
-        {
-            this.Context.Set<TModel>().RemoveRange(this.GetAll().ToEnumerable());
-            return await this.Context.SaveChangesAsync();
-        }
-
-        /// <summary>The update.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Update(TModel model)
-        {
-            this.Context.Set<TModel>().Update(model);
-            return await this.Context.SaveChangesAsync();
+            return queryable;
         }
 
         #endregion

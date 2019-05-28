@@ -36,7 +36,7 @@ namespace Ustilz.Time
 
         /// <summary>Définit la fonction maintenant.</summary>
         /// <value>The fonction maintenant.</value>
-        public static Func<DateTime> SetFonctionMaintenant
+        public static Func<DateTime>? SetFonctionMaintenant
         {
             set => fonction = value ?? (() => DateTime.Now);
         }

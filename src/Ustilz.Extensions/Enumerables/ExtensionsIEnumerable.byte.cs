@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Enumerables
+namespace Ustilz.Extensions.Enumerables
 {
     #region Usings
 

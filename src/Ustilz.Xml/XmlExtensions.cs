@@ -25,10 +25,8 @@ namespace Ustilz.Xml
         public static T FromXml<T>([NotNull] this XDocument xDocument)
         {
             var xmlSerializer = new XmlSerializer(typeof(T));
-            using (var reader = xDocument.CreateReader())
-            {
-                return (T)xmlSerializer.Deserialize(reader);
-            }
+            using var reader = xDocument.CreateReader();
+            return (T)xmlSerializer.Deserialize(reader);
         }
 
         /// <summary>Méthode de dé-sérialisation à partir d'une chaine de caractère.</summary>
@@ -38,10 +36,8 @@ namespace Ustilz.Xml
         public static T FromXml<T>([NotNull] this string xmlStr)
         {
             var xmlSerializer = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(xmlStr ?? throw new ArgumentNullException(nameof(xmlStr), "La chaine de caractères ne peut pas être nulle.")))
-            {
-                return (T)xmlSerializer.Deserialize(reader);
-            }
+            using var reader = new StringReader(xmlStr ?? throw new ArgumentNullException(nameof(xmlStr), "La chaine de caractères ne peut pas être nulle."));
+            return (T)xmlSerializer.Deserialize(reader);
         }
 
         /// <summary>Méthode de dé-sérialisation à partir d'un document Xml.</summary>
@@ -51,10 +47,8 @@ namespace Ustilz.Xml
         public static T FromXml<T>([NotNull] this XmlDocument xmlDocument)
         {
             var xmlSerializer = new XmlSerializer(typeof(T));
-            using (var reader = new XmlNodeReader(xmlDocument.DocumentElement ?? throw new InvalidOperationException("Le document ne peut pas être null.")))
-            {
-                return (T)xmlSerializer.Deserialize(reader);
-            }
+            using var reader = new XmlNodeReader(xmlDocument.DocumentElement ?? throw new InvalidOperationException("Le document ne peut pas être null."));
+            return (T)xmlSerializer.Deserialize(reader);
         }
 
         /// <summary>Méthode de sérialisation d'un objet.</summary>
@@ -64,12 +58,9 @@ namespace Ustilz.Xml
         public static string ToXml<T>(this T obj)
         {
             var doc = new XDocument();
-            using (var xmlWriter = doc.CreateWriter())
-            {
-                var xmlSerializer = new XmlSerializer(typeof(T));
-                xmlSerializer.Serialize(xmlWriter, obj);
-            }
-
+            using var xmlWriter = doc.CreateWriter();
+            var xmlSerializer = new XmlSerializer(typeof(T));
+            xmlSerializer.Serialize(xmlWriter, obj);
             return doc.ToString();
         }
 

@@ -29,6 +29,7 @@ namespace Ustilz.Extensions
         [Pure]
         [PublicAPI]
         public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [CanBeNull] T parameter)
+            where T : new()
         {
             action.ThrowIfNull(nameof(action));
 
@@ -57,6 +58,7 @@ namespace Ustilz.Extensions
         [Pure]
         [PublicAPI]
         public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [CanBeNull] T parameter)
+            where TResult : new()
         {
             func.ThrowIfNull(nameof(func));
 

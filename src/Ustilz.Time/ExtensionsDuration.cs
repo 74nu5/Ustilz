@@ -21,35 +21,21 @@ namespace Ustilz.Time
         /// <param name="dateTime">Date à partir de laquelle la projection est faite.</param>
         /// <returns>Retourne la date projétée.</returns>
         public static DateTime From(this Duration duration, DateTime dateTime)
-        {
-            switch (duration)
-            {
-                case Second:
-                    return dateTime.AddSeconds(1);
-                case Minute:
-                    return dateTime.AddMinutes(1);
-                case Hour:
-                    return dateTime.AddHours(1);
-                case HalfDay:
-                    return dateTime.AddHours(12);
-                case Day:
-                    return dateTime.AddDays(1);
-                case Week:
-                    return dateTime.AddDays(7);
-                case Month:
-                    return dateTime.AddMonths(1);
-                case Quarter:
-                    return dateTime.AddMonths(3);
-                case Semester:
-                    return dateTime.AddMonths(6);
-                case Year:
-                    return dateTime.AddYears(1);
-                case Decade:
-                    return dateTime.AddYears(10);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(duration));
-            }
-        }
+            => duration switch
+                   {
+                       Second => dateTime.AddSeconds(1),
+                       Minute => dateTime.AddMinutes(1),
+                       Hour => dateTime.AddHours(1),
+                       HalfDay => dateTime.AddHours(12),
+                       Day => dateTime.AddDays(1),
+                       Week => dateTime.AddDays(7),
+                       Month => dateTime.AddMonths(1),
+                       Quarter => dateTime.AddMonths(3),
+                       Semester => dateTime.AddMonths(6),
+                       Year => dateTime.AddYears(1),
+                       Decade => dateTime.AddYears(10),
+                       var _ => throw new ArgumentOutOfRangeException(nameof(duration))
+                   };
 
         #endregion
     }

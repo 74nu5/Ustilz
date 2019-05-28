@@ -53,7 +53,7 @@ namespace Ustilz.Logging.LoggerAction
         #region Méthodes publiques
 
         /// <inheritdoc />
-        public IDisposable BeginScope<TState>(TState state) => null;
+        public IDisposable? BeginScope<TState>(TState state) => null;
 
         /// <inheritdoc />
         public bool IsEnabled(LogLevel logLevel) => this.action != null;

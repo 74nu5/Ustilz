@@ -138,7 +138,7 @@ namespace Ustilz.Extensions.String
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown.</exception>
         [NotNull]
-        public static string GenerateHash([NotNull] string password, string salt = null, HashType provider = HashType.MD5)
+        public static string GenerateHash([NotNull] string password, string? salt = null, HashType provider = HashType.MD5)
         {
             Check.NotEmpty(password, nameof(password));
 

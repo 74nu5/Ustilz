@@ -17,7 +17,7 @@ namespace Ustilz.Programs
         #region Champs
 
         /// <summary>The actions to launch.</summary>
-        private Action[] actionsToLaunch;
+        private Action[] actionsToLaunch = new Action[0];
 
         /// <summary>The has exit.</summary>
         private bool hasExit;
