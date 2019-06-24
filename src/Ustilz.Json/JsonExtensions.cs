@@ -23,17 +23,34 @@ namespace Ustilz.Json
         public static T FromJson<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
 
         /// <summary>Méthode de sérialisation d'un objet en Json.</summary>
-        /// <param name="obj">L'objet à sérialiser.</param>
+        /// <param name="objectToSerialize">L'objet à sérialiser.</param>
         /// <typeparam name="T">Type à partir duquel sérialiser.</typeparam>
         /// <returns>Retourne une chaine de caractères représentant l'objet en paramètre.</returns>
-        public static string ToJson<T>(this T obj)
-            => JsonConvert.SerializeObject(obj, obj?.GetType() ?? throw new NullReferenceException("obj ne doit pas être nul."), Formatting.None, null);
+        /// <exception cref="ArgumentNullException"><paramref name="objectToSerialize" /> is <see langword="null" />.</exception>
+        public static string ToJson<T>([NotNull] this T objectToSerialize)
+        {
+            if (objectToSerialize == null)
+            {
+                throw new ArgumentNullException(nameof(objectToSerialize));
+            }
+
+            return JsonConvert.SerializeObject(objectToSerialize, objectToSerialize.GetType(), Formatting.None, null);
+        }
 
         /// <summary>Méthode de sérialisation d'un objet en Json formatté.</summary>
-        /// <param name="obj">L'objet à sérialiser.</param>
+        /// <param name="objectToSerialize">L'objet à sérialiser.</param>
         /// <typeparam name="T">Type à partir duquel sérialiser.</typeparam>
         /// <returns>Retourne une chaine de caractères représentant l'objet en paramètre.</returns>
-        public static string ToJsonFormatted<T>(this T obj) => JsonConvert.SerializeObject(obj, obj?.GetType() ?? throw new NullReferenceException("obj ne doit pas être nul."), Formatting.Indented, null);
+        /// <exception cref="ArgumentNullException"><paramref name="objectToSerialize" /> is <see langword="null" />.</exception>
+        public static string ToJsonFormatted<T>([NotNull] this T objectToSerialize)
+        {
+            if (objectToSerialize == null)
+            {
+                throw new ArgumentNullException(nameof(objectToSerialize));
+            }
+
+            return JsonConvert.SerializeObject(objectToSerialize, objectToSerialize.GetType(), Formatting.Indented, null);
+        }
 
         #endregion
     }
