@@ -20,6 +20,7 @@ namespace Ustilz.Time
         /// <param name="duration">Durée de la projection.</param>
         /// <param name="dateTime">Date à partir de laquelle la projection est faite.</param>
         /// <returns>Retourne la date projétée.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="System.DateTime"></see> is less than <see cref="System.DateTime.MinValue"></see> or greater than <see cref="System.DateTime.MaxValue"></see>.</exception>
         public static DateTime From(this Duration duration, DateTime dateTime)
             => duration switch
                    {

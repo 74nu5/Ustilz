@@ -1,4 +1,4 @@
-namespace Ustilz.Time.Date
+namespace Ustilz.Time
 {
     #region Usings
 
@@ -18,8 +18,10 @@ namespace Ustilz.Time.Date
         /// <summary>The readable time stamp.</summary>
         /// <param name="currentDate">The current date.</param>
         /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="OverflowException">value is greater than <see cref="int.MaxValue"></see> or less than <see cref="int.MinValue"></see>.</exception>
         [NotNull]
         [ExcludeFromCodeCoverage]
+        [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obligé.")]
         public static string ReadableTimeStamp(this DateTime currentDate)
         {
             const int Second = 1;
