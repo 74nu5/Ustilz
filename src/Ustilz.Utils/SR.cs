@@ -3,13 +3,12 @@ namespace Ustilz.Utils
     #region Usings
 
     using System;
+    using System.Globalization;
     using System.Resources;
 
     #endregion
 
-    /// <summary>
-    /// Classe d'accès aux ressources.
-    /// </summary>
+    /// <summary>Classe d'accès aux ressources.</summary>
     // ReSharper disable once InconsistentNaming
     internal static class SR
     {
@@ -40,12 +39,14 @@ namespace Ustilz.Utils
 
         #endregion
 
+        #region Méthodes privées
+
         private static string? GetResourceString(string resourceKey, string? defaultString = null)
         {
             string? resourceString = null;
             try
             {
-                resourceString = ResourceManager.GetString(resourceKey);
+                resourceString = ResourceManager.GetString(resourceKey, CultureInfo.CurrentCulture);
             }
             catch (MissingManifestResourceException)
             {
@@ -53,5 +54,7 @@ namespace Ustilz.Utils
 
             return defaultString != null && resourceKey.Equals(resourceString, StringComparison.Ordinal) ? defaultString : resourceString;
         }
+
+        #endregion
     }
 }
