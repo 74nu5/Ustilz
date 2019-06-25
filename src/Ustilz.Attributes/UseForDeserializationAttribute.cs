@@ -10,28 +10,25 @@ namespace Ustilz.Attributes
 
     /// <summary>The use for deserialization attribute.</summary>
     [MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Parameter | AttributeTargets.GenericParameter)]
     public sealed class UseForDeserializationAttribute : Attribute
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute" />.</summary>
         public UseForDeserializationAttribute()
             : this(ImplicitUseKindFlags.Default)
         {
         }
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.</summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute" />.</summary>
         /// <param name="targetFlags">The target flags.</param>
         public UseForDeserializationAttribute(ImplicitUseTargetFlags targetFlags)
             : this(ImplicitUseKindFlags.Default, targetFlags)
         {
         }
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute"/>.</summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UseForDeserializationAttribute" />.</summary>
         /// <param name="useKindFlags">The use kind flags.</param>
         /// <param name="targetFlags">The target flags.</param>
         public UseForDeserializationAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags = ImplicitUseTargetFlags.Default)

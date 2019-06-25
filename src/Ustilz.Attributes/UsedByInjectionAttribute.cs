@@ -10,30 +10,25 @@ namespace Ustilz.Attributes
 
     /// <summary>The use for deserialization attribute.</summary>
     [MeansImplicitUse]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.GenericParameter)]
     public sealed class UsedByInjectionAttribute : Attribute
     {
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute"/>.
-        /// .</summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute" />. .</summary>
         public UsedByInjectionAttribute()
             : this(ImplicitUseKindFlags.Default)
         {
         }
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute"/>.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute" />.</summary>
         /// <param name="targetFlags">The target flags.</param>
         public UsedByInjectionAttribute(ImplicitUseTargetFlags targetFlags)
             : this(ImplicitUseKindFlags.Default, targetFlags)
         {
         }
 
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute"/>.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute" />.</summary>
         /// <param name="useKindFlags">The use kind flags.</param>
         /// <param name="targetFlags">The target flags.</param>
         public UsedByInjectionAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags = ImplicitUseTargetFlags.Default)
