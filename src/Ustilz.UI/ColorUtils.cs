@@ -26,36 +26,68 @@ namespace Ustilz.UI
 
         /// <summary>Méthode de génération de couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">maxValue is less than 0.</exception>
         [NotNull]
         public static string GenerateColor() => $"{Random.Next(0x1000000):X6}";
 
         /// <summary>The get color from nom.</summary>
         /// <param name="nom">The nom.</param>
         /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="nom" /> is <see langword="null" />.</exception>
+        /// <exception cref="FormatException">format includes an unsupported specifier. Supported format specifiers are listed in the Remarks section.</exception>
+        /// <exception cref="ArgumentException">
+        ///     style is not a <see cref="System.Globalization.NumberStyles"></see> value. -or- style includes the
+        ///     <see cref="System.Globalization.NumberStyles.AllowHexSpecifier"></see> or <see cref="System.Globalization.NumberStyles.HexNumber"></see> flag along with another value.
+        /// </exception>
         [NotNull]
-        public static string GetColorFromNom([NotNull] string nom) => GetColorFromNom(nom, false);
+        public static string GetColorFromNom([NotNull] string nom)
+        {
+            if (nom == null)
+            {
+                throw new ArgumentNullException(nameof(nom));
+            }
+
+            if (nom.Length == 3)
+            {
+                return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";
+            }
+
+            var s = string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)));
+            var bi = BigInteger.Parse(s, NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture);
+            var bii = bi % 0xFFFFFF;
+
+            var color = $"#{(long)bii:X6}";
+            return color.Length != 7 ? "#000000" : color;
+        }
 
         /// <summary>The get color from nom.</summary>
         /// <param name="nom">The nom.</param>
-        /// <param name="éclaircir"> Booléen pour éclaircir la couleur.</param>
         /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="nom" /> is <see langword="null" />.</exception>
+        /// <exception cref="FormatException">value does not comply with the input pattern specified by style.</exception>
+        /// <exception cref="ArgumentException">
+        ///     style is not a <see cref="System.Globalization.NumberStyles"></see> value. -or- style includes the
+        ///     <see cref="System.Globalization.NumberStyles.AllowHexSpecifier"></see> or <see cref="System.Globalization.NumberStyles.HexNumber"></see> flag along with another value.
+        /// </exception>
         [NotNull]
-        public static string GetColorFromNom([NotNull] string nom, bool éclaircir)
+        public static string GetLightColorFromNom([NotNull] string nom)
         {
-            if (nom.Length == 3)
+            if (nom == null)
             {
-                return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X")))}";
+                throw new ArgumentNullException(nameof(nom));
             }
 
-            var s = string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X")));
-            var bi = BigInteger.Parse(s, NumberStyles.AllowHexSpecifier);
+            if (nom.Length == 3)
+            {
+                return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";
+            }
+
+            var s = string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)));
+            var bi = BigInteger.Parse(s, NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture);
             var bii = bi % 0xFFFFFF;
 
             // On force des couleurs plus claire pour pouvoir l'utiliser comme fond
-            if (éclaircir)
-            {
-                bii |= 0xA0A0A0;
-            }
+            bii |= 0xA0A0A0;
 
             var color = $"#{(long)bii:X6}";
             return color.Length != 7 ? "#000000" : color;
