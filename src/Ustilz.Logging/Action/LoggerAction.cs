@@ -1,16 +1,15 @@
-namespace Ustilz.Logging.LoggerAction
+namespace Ustilz.Logging.Action
 {
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     using Microsoft.Extensions.Logging;
 
     #endregion
 
-    /// <summary>
-    ///     Classe du logger d'action.
-    /// </summary>
+    /// <summary>Classe du logger d'action.</summary>
     public sealed class LoggerAction : ILogger
     {
         #region Champs
@@ -23,9 +22,7 @@ namespace Ustilz.Logging.LoggerAction
 
         #region Constructeurs et destructeurs
 
-        /// <summary>
-        ///     Initialise une nouvelle instance de la classe <see cref="LoggerAction" />.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="LoggerAction" />.</summary>
         /// <param name="categoryName">Catégorie du log.</param>
         /// <param name="action">Action à effectuer lors du log.</param>
         internal LoggerAction(string categoryName, LogDelegate action)
@@ -38,9 +35,7 @@ namespace Ustilz.Logging.LoggerAction
 
         #region Delegates
 
-        /// <summary>
-        ///     Délégué représentant l'action à effectuer lors du log.
-        /// </summary>
+        /// <summary>Délégué représentant l'action à effectuer lors du log.</summary>
         /// <param name="categoryName">Nom de la catégorie du log.</param>
         /// <param name="logLevel">Niveau de log.</param>
         /// <param name="eventId">Identifiant de l'évènement.</param>
@@ -59,8 +54,18 @@ namespace Ustilz.Logging.LoggerAction
         public bool IsEnabled(LogLevel logLevel) => this.action != null;
 
         /// <inheritdoc />
+        /// <exception cref="Exception">A delegate callback throws an exception.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="formatter" /> is <see langword="null" />.</exception>
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Inherited from ILogger")]
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
-            => this.action(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
+        {
+            if (formatter == null)
+            {
+                throw new ArgumentNullException(nameof(formatter));
+            }
+
+            this.action(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
+        }
 
         #endregion
     }
