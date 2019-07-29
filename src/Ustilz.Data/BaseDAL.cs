@@ -6,6 +6,7 @@ namespace Ustilz.Data
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using System.Threading;
     using System.Threading.Tasks;
 
     using JetBrains.Annotations;
@@ -17,100 +18,110 @@ namespace Ustilz.Data
 
     #endregion
 
-    /// <summary>The totem dao.</summary>
-    /// <typeparam name="TContext">Type du contexte.</typeparam>
-    /// <typeparam name="TModel">Type du model.</typeparam>
-    /// <typeparam name="TIdentity">Type de la clé primaire du model.</typeparam>
+    /// <summary> The totem dao. </summary>
+    /// <typeparam name="TContext"> Type du contexte. </typeparam>
+    /// <typeparam name="TModel"> Type du model. </typeparam>
+    /// <typeparam name="TIdentity"> Type de la clé primaire du model. </typeparam>
     [PublicAPI]
     public abstract class BaseDAL<TContext, TModel, TIdentity>
         : IBaseDAL<TModel, TIdentity>
         where TModel : class, IDto<TIdentity>
-        where TIdentity : IComparable<TIdentity>
         where TContext : DbContext
+        where TIdentity : IComparable<TIdentity>
     {
+        #region Champs
+
+        private readonly TContext context;
+
+        #endregion
+
         #region Constructeurs et destructeurs
 
-        /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{TContext, TModel, TIdentity}" />.</summary>
-        /// <param name="context">The context.</param>
-        protected BaseDAL(TContext context) => this.Context = context;
+        /// <summary> Initialise une nouvelle instance de la classe <see cref="BaseDAL{TContext, TModel, TIdentity}" />. </summary>
+        /// <param name="context"> The context. </param>
+        protected BaseDAL(TContext context)
+        {
+            this.context = context;
+            this.Queryable = this.context.Set<TModel>();
+        }
 
         #endregion
 
         #region Propriétés et indexeurs
 
-        /// <summary>Obtient le contexte de la base de données.</summary>
-        protected TContext Context { get; }
+        /// <summary> Obtient le contexte de la base de données. </summary>
+        protected IQueryable<TModel> Queryable { get; }
 
         #endregion
 
         #region Méthodes publiques
 
-        /// <summary>The create.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Add(TModel model)
+        /// <summary> The create. </summary>
+        /// <param name="model"> The model. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        public async Task<int> AddModelAsync(TModel model, CancellationToken token)
         {
-            await this.Context.Set<TModel>().AddAsync(model);
-            return await this.Context.SaveChangesAsync();
-        }
-
-        /// <summary>Méthode d'ajout d'une liste d'éléments.</summary>
-        /// <param name="models">La liste d'éléments à ajouter.</param>
-        /// <returns>Retourne le nombre de ligne impactées.</returns>
-        public async Task<int> AddRange(IEnumerable<TModel> models)
-        {
-            await this.Context.Set<TModel>().AddRangeAsync(models);
-            return await this.Context.SaveChangesAsync();
-        }
-
-        /// <summary>The exists.</summary>
-        /// <param name="id">The id.</param>
-        /// <returns>The <see cref="bool" />.</returns>
-        public bool Exists(TIdentity id) => this.Context.Set<TModel>().Any(e => e.Id.CompareTo(id) == 0);
-
-        /// <summary>The get all.</summary>
-        /// <param name="includes">The includes.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<List<TModel>> GetAll(params Expression<Func<TModel, object>>[] includes)
-        {
-            var set = this.Context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
-                null,
-                (current, include) =>
-                    current == null
-                        ? set.Include(include)
-                        : current.Include(include));
-            return includeSet == null ? await set.ToListAsync() : await includeSet.ToListAsync();
-        }
-
-        /// <summary>The get all.</summary>
-        /// <returns>Return all elements.</returns>
-        public IAsyncEnumerable<TModel> GetAll()
-            => this.GetAll(0, 0);
-
-        /// <summary>The get all with pagination.</summary>
-        /// <param name="skip">The skip.</param>
-        /// <param name="take">The take.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public IAsyncEnumerable<TModel> GetAll(int skip, int take)
-        {
-            var queryable = this.Context.Set<TModel>().Skip(skip);
-
-            if (take > 0)
+            if (model == null)
             {
-                queryable = queryable.Take(take);
+                throw new ArgumentNullException(nameof(model));
             }
 
-            return queryable.ToAsyncEnumerable();
+            await this.context.Set<TModel>().AddAsync(model, token).ConfigureAwait(false);
+            return await this.context.SaveChangesAsync(token).ConfigureAwait(false);
         }
 
-        /// <summary>The get details.</summary>
-        /// <param name="id">The id.</param>
-        /// <param name="includes">The includes.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<TModel> GetDetails(TIdentity id, params Expression<Func<TModel, object>>[] includes)
+        /// <summary> Méthode d'ajout d'une liste d'éléments. </summary>
+        /// <param name="models"> La liste d'éléments à ajouter. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> Retourne le nombre de ligne impactées. </returns>
+        public async Task<int> AddRangeAsync(IEnumerable<TModel> models, CancellationToken token)
         {
-            var set = this.Context.Set<TModel>();
+            if (models == null)
+            {
+                throw new ArgumentNullException(nameof(models));
+            }
+
+            await this.context.Set<TModel>().AddRangeAsync(models, token).ConfigureAwait(false);
+            return await this.context.SaveChangesAsync(token).ConfigureAwait(false);
+        }
+
+        /// <summary> The exists. </summary>
+        /// <param name="id"> The id. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> The <see cref="bool" />. </returns>
+        public Task<bool> ExistsAsync(TIdentity id, CancellationToken token)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            return this.context.Set<TModel>().AnyAsync(e => e.Id.CompareTo(id) == 0, token);
+        }
+
+        /// <summary> The get details. </summary>
+        /// <param name="id"> The id. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        public Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken token)
+        {
+            if (id == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            return this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token);
+        }
+
+        /// <summary> The get details. </summary>
+        /// <param name="id"> The id. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <param name="includes"> The includes. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        public async Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken token, params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
             var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
                 null,
                 (current, include)
@@ -118,41 +129,74 @@ namespace Ustilz.Data
                            ? set.Include(include)
                            : current.Include(include));
             return includeSet == null
-                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0)
-                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
+                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token).ConfigureAwait(false)
+                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token).ConfigureAwait(false);
         }
 
-        /// <summary>The get details.</summary>
-        /// <param name="id">The id.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<TModel> GetDetails(TIdentity id) => await this.Context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0);
-
-        /// <summary>The remove.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Remove(TModel model)
+        /// <summary> Méthode suppression des données de la table. </summary>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> Retourne le nombre de ligné impactées. </returns>
+        public Task<int> RemoveAllAsync(CancellationToken token)
         {
-            this.Context.Set<TModel>().Remove(model);
-            return await this.Context.SaveChangesAsync();
+            this.context.Set<TModel>().RemoveRange(this.GetQueryableWithIncludes());
+            return this.context.SaveChangesAsync(token);
         }
 
-        /// <summary>Méthode suppression des données de la table.</summary>
-        /// <returns>Retourne le nombre de ligné impactées.</returns>
-        public async Task<int> RemoveAll()
+        /// <summary> The remove. </summary>
+        /// <param name="model"> The model. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        public Task<int> RemoveAsync(TModel model, CancellationToken token)
         {
-            this.Context.Set<TModel>().RemoveRange(this.GetAll().ToEnumerable());
-            return await this.Context.SaveChangesAsync();
+            this.context.Set<TModel>().Remove(model);
+            return this.context.SaveChangesAsync(token);
         }
 
-        /// <summary>The update.</summary>
-        /// <param name="model">The model.</param>
-        /// <returns>The <see cref="Task" />.</returns>
-        public async Task<int> Update(TModel model)
+        /// <summary> The update. </summary>
+        /// <param name="model"> The model. </param>
+        /// <param name="token"> Token d'annulation de la tache. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        public Task<int> UpdateAsync(TModel model, CancellationToken token)
         {
-            this.Context.Set<TModel>().Update(model);
-            return await this.Context.SaveChangesAsync();
+            this.context.Set<TModel>().Update(model);
+            return this.context.SaveChangesAsync(token);
         }
 
         #endregion
+
+        /// <summary> The get all. </summary>
+        /// <param name="includes"> The includes. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        protected IQueryable<TModel> GetQueryableWithIncludes(params Expression<Func<TModel, object>>[] includes)
+        {
+            if (includes == null)
+            {
+                throw new ArgumentNullException(nameof(includes));
+            }
+
+            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+                null,
+                (current, include) =>
+                    current == null
+                        ? this.Queryable.Include(include)
+                        : current.Include(include));
+            return includeSet?.AsQueryable() ?? this.Queryable?.AsQueryable();
+        }
+
+        /// <summary> The get all with pagination. </summary>
+        /// <param name="skip"> The skip. </param>
+        /// <param name="take"> The take. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        protected IQueryable<TModel> GetQueryablePaged(int skip, int take)
+        {
+            var queryable = this.Queryable.Skip(skip);
+
+            if (take > 0)
+            {
+                queryable = queryable.Take(take);
+            }
+
+            return queryable;
+        }
     }
 }

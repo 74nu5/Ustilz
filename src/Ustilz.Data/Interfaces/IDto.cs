@@ -3,6 +3,10 @@ namespace Ustilz.Data.Interfaces
     #region Usings
 
     using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    using JetBrains.Annotations;
 
     #endregion
 
@@ -18,6 +22,9 @@ namespace Ustilz.Data.Interfaces
         /// <summary>
         ///     Obtient l'identifiant technique.
         /// </summary>
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [UsedImplicitly]
         TIdentity Id { get; }
 
         #endregion

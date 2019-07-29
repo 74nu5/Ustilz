@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>preview</LangVersion>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <LangVersion>latest</LangVersion>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0.0</Version>
+    <Version>1.1.1.0</Version>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -40,6 +40,18 @@
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-rc.114">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="2.6.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Text.Analyzers" Version="2.6.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
