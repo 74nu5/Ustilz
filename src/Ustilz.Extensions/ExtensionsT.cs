@@ -6,6 +6,7 @@ namespace Ustilz.Extensions
     using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Linq;
 
     using JetBrains.Annotations;
@@ -22,9 +23,9 @@ namespace Ustilz.Extensions
         ///     Méthode de "transformation" d'objet en boolean.
         /// </summary>
         /// <typeparam name="T">Type à "transformer".</typeparam>
-        /// <param name="obj">Objet à "transformer".</param>
+        /// <param name="objToBool">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
-        public static bool AsBool<T>(this T obj) => obj switch
+        public static bool AsBool<T>(this T objToBool) => objToBool switch
         {
             int n => n > 0,
             string s when bool.TryParse(s, out var b) => b,
@@ -237,10 +238,10 @@ namespace Ustilz.Extensions
 
                 if (u != null)
                 {
-                    return (T)Convert.ChangeType(value, u);
+                    return (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture);
                 }
 
-                return (T)Convert.ChangeType(value, t);
+                return (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
             catch
             {

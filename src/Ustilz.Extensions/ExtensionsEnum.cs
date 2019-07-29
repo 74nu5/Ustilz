@@ -5,6 +5,8 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
 
@@ -58,12 +60,13 @@ namespace Ustilz.Extensions
         /// <param name="value">Value to match.</param>
         /// <param name="values">Values to match against.</param>
         /// <returns>Return true if matched.</returns>
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful")]
         public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
 
         /// <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>
         /// <param name="enumValue">Valeur de l'énumération.</param>
         /// <returns>Retourne la valeur entière de l'énumération.</returns>
-        public static int ToInt(this Enum enumValue) => Convert.ToInt32(enumValue);
+        public static int ToInt(this Enum enumValue) => Convert.ToInt32(enumValue, CultureInfo.CurrentCulture);
 
         #endregion
     }

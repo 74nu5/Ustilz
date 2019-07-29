@@ -58,7 +58,7 @@
         {
             var result =
                 await new Func<string, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, TResponse)>>(
-                    this.GetHttpResponseAsyncInternal<TResponse>).TestPerf(out var timestamp, url, headers, authentification);
+                    this.GetHttpResponseAsyncInternal<TResponse>).TestPerf(out var timestamp, url, headers, authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -75,7 +75,7 @@
         {
             var result =
                 await new Func<string, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)>>(
-                    this.GetHttpResponseAsyncInternal).TestPerf(out var timestamp, url, headers, authentification);
+                    this.GetHttpResponseAsyncInternal).TestPerf(out var timestamp, url, headers, authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -87,7 +87,7 @@
         /// <returns>The <see cref="Task" />.</returns>
         public async Task<TResponse> GetStringAsync<TResponse>(string url, string authentification)
         {
-            var result = await new Func<string, string, Task<TResponse>>(this.GetResponseAsyncInternal<TResponse>).TestPerf(out var timestamp, url, authentification);
+            var result = await new Func<string, string, Task<TResponse>>(this.GetResponseAsyncInternal<TResponse>).TestPerf(out var timestamp, url, authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -102,7 +102,7 @@
                 out var timestamp,
                 url,
                 null,
-                authentification);
+                authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -118,7 +118,7 @@
                 out var timestamp,
                 url,
                 headers,
-                authentification);
+                authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -136,7 +136,7 @@
                 url,
                 null,
                 content,
-                authentification);
+                authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -153,7 +153,7 @@
                 url,
                 null,
                 content,
-                authentification);
+                authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -171,7 +171,7 @@
                 url,
                 headers,
                 content,
-                authentification);
+                authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -190,7 +190,7 @@
         {
             var result =
                 await new Func<string, Dictionary<string, IEnumerable<string>>, string, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)>>(
-                    this.PostHttpResponseAsyncInternal).TestPerf(out var timestamp, url, headers, body, authentification);
+                    this.PostHttpResponseAsyncInternal).TestPerf(out var timestamp, url, headers, body, authentification).ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -217,7 +217,7 @@
 
             try
             {
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync(url).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     return (response.StatusCode, response.ReasonPhrase, null, default);
@@ -249,14 +249,14 @@
 
             try
             {
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync(url).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     return (response.StatusCode, response.ReasonPhrase, null, null);
                 }
 
                 var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
-                return (response.StatusCode, response.ReasonPhrase, headersResponse, await response.Content.ReadAsStringAsync());
+                return (response.StatusCode, response.ReasonPhrase, headersResponse, await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             }
             catch (WebException ex)
             {
@@ -277,7 +277,7 @@
 
             try
             {
-                var response = await client.GetStringAsync(url);
+                var response = await client.GetStringAsync(url).ConfigureAwait(false);
                 return response.FromJson<TResponse>();
             }
             catch (WebException ex)
@@ -300,7 +300,7 @@
 
             try
             {
-                return await client.GetStringAsync(url);
+                return await client.GetStringAsync(url).ConfigureAwait(false);
             }
             catch (WebException ex)
             {
@@ -327,8 +327,8 @@
 
             try
             {
-                var responseMessage = await client.PostAsync(url, content);
-                return await responseMessage.Content.ReadAsStringAsync();
+                var responseMessage = await client.PostAsync(url, content).ConfigureAwait(false);
+                return await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
             catch (WebException ex)
             {
@@ -361,7 +361,7 @@
 
             try
             {
-                var response = await client.PostAsync(url, json);
+                var response = await client.PostAsync(url, json).ConfigureAwait(false);
                 return response.Content.ToString().FromJson<TResponse>();
             }
             catch (WebException ex)
@@ -396,14 +396,14 @@
 
             try
             {
-                var response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(url, content).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     return (response.StatusCode, response.ReasonPhrase, null, null);
                 }
 
                 var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
-                return (response.StatusCode, response.ReasonPhrase, headersResponse, await response.Content.ReadAsStringAsync());
+                return (response.StatusCode, response.ReasonPhrase, headersResponse, await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             }
             catch (WebException ex)
             {

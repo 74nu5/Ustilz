@@ -31,7 +31,7 @@ namespace Ustilz.Http
         {
             using (var ms = new MemoryStream(2048))
             {
-                await request.Body.CopyToAsync(ms);
+                await request.Body.CopyToAsync(ms).ConfigureAwait(false);
                 return ms.ToArray();
             }
         }
@@ -44,7 +44,7 @@ namespace Ustilz.Http
         {
             using (var reader = new StreamReader(request.Body, encoding ?? Encoding.UTF8))
             {
-                return await reader.ReadToEndAsync();
+                return await reader.ReadToEndAsync().ConfigureAwait(false);
             }
         }
 
