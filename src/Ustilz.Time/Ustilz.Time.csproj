@@ -3,18 +3,20 @@
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <NullableContextOptions>enable</NullableContextOptions>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
+    <FileVersion>1.2.1.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.1.0.0</Version>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
+    <Description>Utility for work with dates and durations</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <NeutralLanguage>fr-FR</NeutralLanguage>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <PackageVersion>1.2.0.0</PackageVersion>
+    <PackageVersion>1.2.1.0</PackageVersion>
+    <Title>Ustilz.Time</Title>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Ustilz.Time.xml</DocumentationFile>
