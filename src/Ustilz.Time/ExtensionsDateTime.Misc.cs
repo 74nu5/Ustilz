@@ -24,10 +24,10 @@ namespace Ustilz.Time
         [PublicAPI]
         public static (int yearAge, int monthAge, int dayAge) AgeFrom(this DateTime startDay, DateTime? day = null)
         {
-            var toDay = day ?? DateTime.Now;
+            var toDay = day ?? Clock.Now;
             var toDayToStartDayYear = toDay.Year - startDay.Year;
-            if (toDayToStartDayYear <= 0 &&
-                (toDayToStartDayYear != 0 || (startDay.Month >= toDay.Month && (startDay.Month != toDay.Month || startDay.Day > toDay.Day))))
+            if ((toDayToStartDayYear <= 0) &&
+                ((toDayToStartDayYear != 0) || ((startDay.Month >= toDay.Month) && ((startDay.Month != toDay.Month) || (startDay.Day > toDay.Day)))))
             {
                 throw new ArgumentException(Resources.ExtensionsDateTime_Age_Birthday_date_must_be_earlier_than_current_date);
             }
@@ -36,7 +36,7 @@ namespace Ustilz.Time
             var daysRemain = toDay.Day + (daysInStartDayMonth - startDay.Day);
 
             return toDay.Month > startDay.Month
-                       ? (toDayToStartDayYear, toDay.Month - (startDay.Month + 1) + Math.Abs(daysRemain / daysInStartDayMonth),
+                       ? (toDayToStartDayYear, (toDay.Month - (startDay.Month + 1)) + Math.Abs(daysRemain / daysInStartDayMonth),
                              ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth)
                        : toDay.Month != startDay.Month
                            ? (toDay.Year - 1 - startDay.Year, toDay.Month + (11 - startDay.Month) + Math.Abs(daysRemain / daysInStartDayMonth),
@@ -88,7 +88,7 @@ namespace Ustilz.Time
         [Pure]
         [PublicAPI]
         public static TimeSpan Elapsed(this DateTime dateTime)
-            => DateTime.Now - dateTime;
+            => Clock.Now - dateTime;
 
         #endregion
     }

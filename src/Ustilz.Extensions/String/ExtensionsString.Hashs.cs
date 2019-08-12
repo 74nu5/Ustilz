@@ -14,6 +14,7 @@ namespace Ustilz.Extensions.String
     using JetBrains.Annotations;
 
     using Ustilz.Extensions.Enumerables;
+    using Ustilz.Time;
     using Ustilz.Utils;
 
     #endregion
@@ -27,11 +28,11 @@ namespace Ustilz.Extensions.String
         private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new Dictionary<HashType, HashAlgorithm>();
 
         /// <summary>The random.</summary>
-        private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
+        private static readonly Random Random = new Random((int)Clock.Now.Ticks);
 
         #endregion
 
-        #region HashType enum
+        #region Enumérations
 
         /// <summary>Supported hash algorithms.</summary>
         [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]

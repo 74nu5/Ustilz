@@ -30,7 +30,7 @@ namespace Ustilz.Time
             const int Day = 24 * Hour;
             const int Month = 30 * Day;
 
-            var ts = new TimeSpan(Horloge.Maintenant.Ticks - currentDate.Ticks);
+            var ts = new TimeSpan(Clock.Now.Ticks - currentDate.Ticks);
             var delta = Math.Abs(ts.TotalSeconds);
 
             if (delta < 1 * Minute)
@@ -65,7 +65,7 @@ namespace Ustilz.Time
 
             if (delta < 30 * Day)
             {
-                return Horloge.Maintenant.Month == 3 && delta > 27 * Day ? "one month ago" : $"{ts.Days} days ago";
+                return (Clock.Now.Month == 3) && (delta > 27 * Day) ? "one month ago" : $"{ts.Days} days ago";
             }
 
             if (delta < 12 * Month)

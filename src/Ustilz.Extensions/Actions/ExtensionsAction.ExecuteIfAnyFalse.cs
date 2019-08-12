@@ -14,15 +14,13 @@ namespace Ustilz.Extensions.Actions
     {
         #region Méthodes publiques
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
-        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="trueAction">The action to execute if all of the given value is true.</param>
         /// <param name="values">The Boolean values to check.</param>
+        /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
+        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
+        /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         [PublicAPI]
         public static void ExecuteIfAnyFalse([NotNull] this Action falseAction, Action? trueAction = null, [NotNull] params Func<bool>[] values)
         {
@@ -39,10 +37,7 @@ namespace Ustilz.Extensions.Actions
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
@@ -70,10 +65,7 @@ namespace Ustilz.Extensions.Actions
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -104,10 +96,7 @@ namespace Ustilz.Extensions.Actions
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -141,10 +130,7 @@ namespace Ustilz.Extensions.Actions
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>

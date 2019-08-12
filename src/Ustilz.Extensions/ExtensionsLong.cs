@@ -3,24 +3,36 @@ namespace Ustilz.Extensions
     #region Usings
 
     using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     using JetBrains.Annotations;
 
     #endregion
 
-    /// <summary>
-    /// Classe d'extension du type long.
-    /// </summary>
+    /// <summary>Classe d'extension du type long.</summary>
     [PublicAPI]
     public static class ExtensionsLong
     {
-        #region Méthodes privées
+        #region Champs et constantes statiques
 
-        /// <summary>
-        /// Métode de conversion d'un nombre en lettres.
-        /// </summary>
+        private static readonly IReadOnlyList<string> UnitWords = new[]
+        {
+            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+            "seventeen", "eighteen", "nineteen"
+        };
+
+        private static readonly IReadOnlyList<string> TensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+        #endregion
+
+        #region Méthodes publiques
+
+        /// <summary>Métode de conversion d'un nombre en lettres.</summary>
         /// <param name="number">Nombre à convertir.</param>
         /// <returns>Retourne la représentation en lettre du nombre passé en paramètres.</returns>
+        /// <exception cref="OverflowException">value equals <see cref="long.MinValue"></see>.</exception>
+        [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obvious")]
         public static string ConvertIntoWords(this long number)
         {
             if (number == 0)
@@ -63,22 +75,16 @@ namespace Ustilz.Extensions
                 return words;
             }
 
-            var unitsMap = new[]
-            {
-                "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-                "seventeen", "eighteen", "nineteen"
-            };
-            var tensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
             if (number < 20)
             {
-                words += unitsMap[number];
+                words += UnitWords[(int)number];
                 return words;
             }
 
-            words += tensMap[number / 10];
+            words += TensMap[(int)number / 10];
             if (number % 10 > 0)
             {
-                words += " " + unitsMap[number % 10];
+                words += $" {UnitWords[(int)number % 10]}";
             }
 
             return words;

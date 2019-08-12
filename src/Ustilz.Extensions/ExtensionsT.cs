@@ -6,6 +6,9 @@ namespace Ustilz.Extensions
     using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.IO;
     using System.Linq;
 
     using JetBrains.Annotations;
@@ -22,14 +25,14 @@ namespace Ustilz.Extensions
         ///     Méthode de "transformation" d'objet en boolean.
         /// </summary>
         /// <typeparam name="T">Type à "transformer".</typeparam>
-        /// <param name="obj">Objet à "transformer".</param>
+        /// <param name="transformObject">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
-        public static bool AsBool<T>(this T obj) => obj switch
+        public static bool AsBool<T>(this T transformObject) => transformObject switch
         {
             int n => n > 0,
             string s when bool.TryParse(s, out var b) => b,
             string s when int.TryParse(s, out var i) => i.AsBool(),
-            string s => s != string.Empty,
+            string s => !string.IsNullOrEmpty(s),
             object o when o is string s => s.AsBool(),
             object o when o is int i => i.AsBool(),
             var _ => false
@@ -47,30 +50,35 @@ namespace Ustilz.Extensions
 
         /// <summary>Executes the action specified, which the given object as parameter.</summary>
         /// <remarks>Use this method to chain method calls on the same object.</remarks>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        /// <typeparam name="T">The type of the object.</typeparam>
-        /// <param name="obj">The object to act on.</param>
+        /// <param name="chainObject">The object to act on.</param>
         /// <param name="action">The action.</param>
+        /// <typeparam name="T">The type of the object.</typeparam>
         /// <returns>Returns the given object.</returns>
-        [PublicAPI]
+        /// <exception cref="Exception">A delegate callback throws an exception.</exception>
+        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
         [Pure]
-        public static T Chain<T>([CanBeNull] this T obj, [NotNull] Action<T> action)
+        public static T Chain<T>([CanBeNull] this T chainObject, [NotNull] Action<T> action)
         {
             action.ThrowIfNull(nameof(action));
-            action(obj);
-            return obj;
+#pragma warning disable CA1062 // Validate arguments of public methods
+            action(chainObject);
+#pragma warning restore CA1062 // Validate arguments of public methods
+            return chainObject;
         }
 
         /// <summary>Méthode d'affichage d'un objet. </summary>
         /// <param name="o">L'objet à afficher. </param>
         /// <typeparam name="T">Type de l'objet. </typeparam>
         /// <returns>Retourne l'objet. </returns>
+        /// <exception cref="IOException">An I/O error occurred.</exception>
+        /// <exception cref="ArgumentNullException">values is null.</exception>
+        /// <exception cref="InvalidCastException">An element in the sequence cannot be cast to type TResult.</exception>
         public static T Dump<T>(this T o)
         {
             if (o is IEnumerable list)
             {
                 var enumerable = list as object[] ?? list.Cast<object>().ToArray();
-                Console.WriteLine(@"[{0}]", string.Join(", ", enumerable.Select(t => t.Dump()).ToArray()));
+                Console.WriteLine($@"[{string.Join(", ", enumerable.Select(t => t.Dump()).ToArray())}]");
                 return o;
             }
 
@@ -94,7 +102,6 @@ namespace Ustilz.Extensions
         /// <returns>Renvoie true si la valeur est présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
         {
             values.ThrowIfNull(nameof(values));
@@ -108,7 +115,6 @@ namespace Ustilz.Extensions
         /// <returns>Retourne true si la valeur est présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        [PublicAPI]
         public static bool IsIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
         {
             values.ThrowIfNull(nameof(values));
@@ -122,7 +128,6 @@ namespace Ustilz.Extensions
         /// <returns>Renvoie true si la valeur n'est pas présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        [PublicAPI]
         public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
             => !value.IsIn(values);
 
@@ -133,7 +138,6 @@ namespace Ustilz.Extensions
         /// <returns>Retourne true si la valeur n'est pas présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        [PublicAPI]
         public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
             => !value.IsIn(values);
 
@@ -155,33 +159,34 @@ namespace Ustilz.Extensions
             where T : class
             => source == null;
 
-        /// <summary>Permute les valeurs données.</summary>
-        /// <param name="obj">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
-        /// <param name="value0">La première valeur.</param>
-        /// <param name="value1">La deuxième valeur.</param>
-        /// <typeparam name="T">Le type des valeurs.</typeparam>
-        [PublicAPI]
-        public static void Swap<T>([CanBeNull] this object obj, ref T value0, ref T value1)
+#pragma warning disable IDE0060 // Supprimer le paramètre inutilisé
+                               /// <summary>Permute les valeurs données.</summary>
+                               /// <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
+                               /// <param name="value0">La première valeur.</param>
+                               /// <param name="value1">La deuxième valeur.</param>
+                               /// <typeparam name="T">Le type des valeurs.</typeparam>
+        public static void Swap<T>([CanBeNull] this object nullObject, ref T value0, ref T value1)
+#pragma warning restore IDE0060 // Supprimer le paramètre inutilisé
         {
             var temp = value0;
             value0 = value1;
             value1 = temp;
         }
 
-        /// <summary>Lève une exception <see cref="ArgumentNullException" /> si <paramref name="obj"/> est null.</summary>
+        /// <summary>Lève une exception <see cref="ArgumentNullException" /> si <paramref name="testObject"/> est null.</summary>
         /// <remarks>
         ///     Si <paramref name="errorMessage" /> est null, cette méthode utilisera le message par défaut suivant:
         ///             "{nom d'objet} ne peut pas être nul".
         /// </remarks>
-        /// <param name="obj">The object to check.</param>
-        /// <param name="parameterName">Le nom du paramètre <paramref name="obj"/>.</param>
-        /// <param name="errorMessage">Le texte utilisé comme message d'exception si <paramref name="obj" /> est nul.</param>
-        /// <typeparam name="TObject">Le type de l'objet <paramref name="obj"/>.</typeparam>
-        [PublicAPI]
+        /// <param name="testObject">The object to check.</param>
+        /// <param name="parameterName">Le nom du paramètre <paramref name="testObject"/>.</param>
+        /// <param name="errorMessage">Le texte utilisé comme message d'exception si <paramref name="testObject" /> est nul.</param>
+        /// <typeparam name="TObject">Le type de l'objet <paramref name="testObject"/>.</typeparam>
+        /// <exception cref="ArgumentNullException">Obj is null.</exception>
         [DebuggerStepThrough]
-        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject obj, [NotNull] string parameterName, string? errorMessage = null)
+        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject testObject, [NotNull] string parameterName, string? errorMessage = null)
         {
-            if (obj != null)
+            if (testObject != null)
             {
                 return;
             }
@@ -193,9 +198,17 @@ namespace Ustilz.Extensions
         /// <param name="value">Valeur à convertir.</param>
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value"/> is <see langword="null"/>.</exception>
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
+        [SuppressMessage("ReSharper", "CatchAllClause", Justification = "Obvious")]
         public static T To<T>([NotNull] this IConvertible value)
             where T : new()
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
             try
             {
                 if (value.Equals(string.Empty))
@@ -206,9 +219,11 @@ namespace Ustilz.Extensions
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
-                return u != null ? (T)Convert.ChangeType(value, u) : (T)Convert.ChangeType(value, t);
+                return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-            catch
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return new T();
             }
@@ -219,6 +234,8 @@ namespace Ustilz.Extensions
         /// <param name="ifError">Valeur à renvoyer si la conversion échoue.</param>
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
+        [SuppressMessage("ReSharper", "CatchAllClause", Justification = "Obvious")]
         public static T To<T>([CanBeNull] this IConvertible value, IConvertible ifError)
         {
             try
@@ -231,9 +248,11 @@ namespace Ustilz.Extensions
                 var t = typeof(T);
                 var u = Nullable.GetUnderlyingType(t);
 
-                return u != null ? (T)Convert.ChangeType(value, u) : (T)Convert.ChangeType(value, t);
+                return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-            catch
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return (T)ifError;
             }

@@ -25,6 +25,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type du paramètre.</typeparam>
         /// <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
         /// <exception cref="ArgumentNullException">L'action ne peut pas être nulle.</exception>
+        /// <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
         [NotNull]
         [Pure]
         [PublicAPI]
@@ -39,7 +40,9 @@ namespace Ustilz.Extensions
                 action(parameter);
                 result.Result = parameter;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 result.Exception = ex;
             }

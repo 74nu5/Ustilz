@@ -6,6 +6,7 @@
     using System.Linq;
 
     using Ustilz.Extensions.String;
+    using Ustilz.Time;
 
     using Xunit;
 
@@ -21,7 +22,7 @@
         public void BetweenTest()
         {
             Assert.True(1.Between(0, 2));
-            Assert.True(DateTime.Now.Between(DateTime.MinValue, DateTime.MaxValue));
+            Assert.True(Clock.Now.Between(DateTime.MinValue, DateTime.MaxValue));
             Assert.False(50.Between(0, 2));
             Assert.False(42.Between(0, 2));
         }
@@ -121,10 +122,9 @@
         [Fact]
         public void IsNullOrEmptyTest()
         {
-            string s = null;
-            Assert.True(string.IsNullOrEmpty(s));
+            Assert.True(string.IsNullOrEmpty(null));
 
-            s = string.Empty;
+            var s = string.Empty;
             Assert.True(s.IsNullOrEmpty());
 
             s = "Test";

@@ -17,7 +17,7 @@
         #region Constructeurs et destructeurs
 
         /// <summary>Initializes a new instance of the <see cref="HorlogeTest" /> class.</summary>
-        public HorlogeTest() => Horloge.Reset();
+        public HorlogeTest() => Clock.Reset();
 
         #endregion
 
@@ -25,14 +25,14 @@
 
         /// <inheritdoc />
         /// <summary>The dispose.</summary>
-        public void Dispose() => Horloge.Reset();
+        public void Dispose() => Clock.Reset();
 
         /// <summary>The fonction maintenant test.</summary>
         [Fact]
         public void FonctionMaintenantTest()
         {
-            Horloge.SetFonctionMaintenant = () => new DateTime(2018, 1, 07);
-            var maintenant = Horloge.Maintenant;
+            Clock.SetFunctionNow(() => new DateTime(2018, 1, 07));
+            var maintenant = Clock.Now;
 
             Assert.Equal(7, maintenant.Day);
             Assert.Equal(0, maintenant.Hour);
@@ -41,10 +41,10 @@
             Assert.Equal(2018, maintenant.Year);
             Assert.Equal(0, maintenant.Second);
 
-            Horloge.SetFonctionMaintenant = null;
+            Clock.SetFunctionNow(null);
 
-            var now = DateTime.Now;
-            maintenant = Horloge.Maintenant;
+            var now = Clock.Now;
+            maintenant = Clock.Now;
 
             Assert.Equal(now.Day, maintenant.Day);
             Assert.Equal(now.Hour, maintenant.Hour);
@@ -58,8 +58,8 @@
         [Fact]
         public void MaintenantTest()
         {
-            var now = DateTime.Now;
-            var maintenant = Horloge.Maintenant;
+            var now = Clock.Now;
+            var maintenant = Clock.Now;
 
             Assert.Equal(now.Day, maintenant.Day);
             Assert.Equal(now.Hour, maintenant.Hour);
@@ -73,8 +73,8 @@
         [Fact]
         public void ResetTest()
         {
-            Horloge.SetFonctionMaintenant = () => new DateTime(2018, 1, 07);
-            var maintenant = Horloge.Maintenant;
+            Clock.SetFunctionNow(() => new DateTime(2018, 1, 07));
+            var maintenant = Clock.Now;
 
             Assert.Equal(7, maintenant.Day);
             Assert.Equal(0, maintenant.Hour);
@@ -83,10 +83,10 @@
             Assert.Equal(2018, maintenant.Year);
             Assert.Equal(0, maintenant.Second);
 
-            Horloge.Reset();
+            Clock.Reset();
 
-            var now = DateTime.Now;
-            maintenant = Horloge.Maintenant;
+            var now = Clock.Now;
+            maintenant = Clock.Now;
 
             Assert.Equal(now.Day, maintenant.Day);
             Assert.Equal(now.Hour, maintenant.Hour);
