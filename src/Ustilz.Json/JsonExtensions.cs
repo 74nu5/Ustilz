@@ -3,10 +3,9 @@ namespace Ustilz.Json
     #region Usings
 
     using System;
+    using System.Text.Json;
 
     using JetBrains.Annotations;
-
-    using Newtonsoft.Json;
 
     #endregion
 
@@ -20,7 +19,15 @@ namespace Ustilz.Json
         /// <param name="json">La chaine de caractères représentant le json à dé-sérialiser.</param>
         /// <typeparam name="T">Type à dé-sérialiser.</typeparam>
         /// <returns>L'objet de type T.</returns>
-        public static T FromJson<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
+        public static T FromJson<T>(this string json)
+        {
+            if (string.IsNullOrEmpty(json))
+            {
+                throw new ArgumentException($"{nameof(json)} parameter is null or empty.", nameof(json));
+            }
+
+            return JsonSerializer.Deserialize<T>(json);
+        }
 
         /// <summary>Méthode de sérialisation d'un objet en Json.</summary>
         /// <param name="objectToSerialize">L'objet à sérialiser.</param>
@@ -34,7 +41,7 @@ namespace Ustilz.Json
                 throw new ArgumentNullException(nameof(objectToSerialize));
             }
 
-            return JsonConvert.SerializeObject(objectToSerialize, objectToSerialize.GetType(), Formatting.None, null);
+            return JsonSerializer.Serialize<T>(objectToSerialize, new JsonSerializerOptions { WriteIndented = false });
         }
 
         /// <summary>Méthode de sérialisation d'un objet en Json formatté.</summary>
@@ -49,7 +56,7 @@ namespace Ustilz.Json
                 throw new ArgumentNullException(nameof(objectToSerialize));
             }
 
-            return JsonConvert.SerializeObject(objectToSerialize, objectToSerialize.GetType(), Formatting.Indented, null);
+            return JsonSerializer.Serialize<T>(objectToSerialize, new JsonSerializerOptions { WriteIndented = true });
         }
 
         #endregion
