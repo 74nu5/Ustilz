@@ -5,6 +5,7 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
 
@@ -21,7 +22,7 @@ namespace Ustilz.Extensions
         /// <summary>To the description dictionary.</summary>
         /// <typeparam name="T">Type de l'énumération.</typeparam>
         /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum.</returns>
-        public static Dictionary<string, string> GetDescriptionDictionary<T>()
+        public static Dictionary<string, string?> GetDescriptionDictionary<T>()
             where T : Enum
         {
             var type = typeof(T);
@@ -58,7 +59,7 @@ namespace Ustilz.Extensions
         /// <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>
         /// <param name="enumValue">Valeur de l'énumération.</param>
         /// <returns>Retourne la valeur entière de l'énumération.</returns>
-        public static int ToInt(this Enum enumValue) => Convert.ToInt32(enumValue);
+        public static int ToInt(this Enum enumValue) => Convert.ToInt32(enumValue, CultureInfo.CurrentCulture);
 
         #endregion
     }

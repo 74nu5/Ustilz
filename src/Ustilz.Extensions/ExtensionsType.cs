@@ -3,19 +3,18 @@ namespace Ustilz.Extensions
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Text;
-
-    using JetBrains.Annotations;
 
     using Ustilz.Utils;
 
     #endregion
 
     /// <summary>The extensions type.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsType
     {
         #region Méthodes publiques

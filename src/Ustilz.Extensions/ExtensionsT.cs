@@ -7,16 +7,15 @@ namespace Ustilz.Extensions
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.IO;
     using System.Linq;
 
-    using JetBrains.Annotations;
-
     #endregion
 
     /// <summary>The extensions t. </summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsT
     {
         #region Méthodes publiques
@@ -57,12 +56,14 @@ namespace Ustilz.Extensions
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         /// <exception cref="ArgumentNullException">The action can not be null.</exception>
         [Pure]
-        public static T Chain<T>([CanBeNull] this T chainObject, [NotNull] Action<T> action)
+        public static T Chain<T>([MaybeNull] this T chainObject, [NotNull] Action<T> action)
         {
-            action.ThrowIfNull(nameof(action));
-#pragma warning disable CA1062 // Validate arguments of public methods
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
             action(chainObject);
-#pragma warning restore CA1062 // Validate arguments of public methods
             return chainObject;
         }
 
@@ -91,7 +92,7 @@ namespace Ustilz.Extensions
         /// <param name="defaultValue">La valeur par défaut.</param>
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne l'objet passé en entrée, la valeur par défaut si celle-ci est nulle.</returns>
-        public static T IfNull<T>([CanBeNull] this T source, T defaultValue)
+        public static T IfNull<T>([MaybeNull] this T source, T defaultValue)
             where T : class
             => source ?? defaultValue;
 
@@ -102,7 +103,7 @@ namespace Ustilz.Extensions
         /// <returns>Renvoie true si la valeur est présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        public static bool IsIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
+        public static bool IsIn<T>([MaybeNull] this T value, [NotNull] params T[] values)
         {
             values.ThrowIfNull(nameof(values));
             return values.Contains(value);
@@ -115,7 +116,7 @@ namespace Ustilz.Extensions
         /// <returns>Retourne true si la valeur est présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        public static bool IsIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
+        public static bool IsIn<T>([MaybeNull] this T value, [NotNull] IEnumerable<T> values)
         {
             values.ThrowIfNull(nameof(values));
             return values.Contains(value);
@@ -128,7 +129,7 @@ namespace Ustilz.Extensions
         /// <returns>Renvoie true si la valeur n'est pas présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] params T[] values)
+        public static bool IsNotIn<T>([MaybeNull] this T value, [NotNull] params T[] values)
             => !value.IsIn(values);
 
         /// <summary>Vérifie si la valeur n'est pas présente dans le IEnumerable donné.</summary>
@@ -138,7 +139,7 @@ namespace Ustilz.Extensions
         /// <returns>Retourne true si la valeur n'est pas présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
         [Pure]
-        public static bool IsNotIn<T>([CanBeNull] this T value, [NotNull] IEnumerable<T> values)
+        public static bool IsNotIn<T>([MaybeNull] this T value, [NotNull] IEnumerable<T> values)
             => !value.IsIn(values);
 
         /// <summary>Détermine si l'objet n'est pas nul.</summary>
@@ -146,7 +147,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet n'est pas null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNotNull<T>([CanBeNull] this T source)
+        public static bool IsNotNull<T>([MaybeNull] this T source)
             where T : class
             => source != null;
 
@@ -155,17 +156,17 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet est null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNull<T>([CanBeNull] this T source)
+        public static bool IsNull<T>([MaybeNull] this T source)
             where T : class
             => source == null;
 
 #pragma warning disable IDE0060 // Supprimer le paramètre inutilisé
-                               /// <summary>Permute les valeurs données.</summary>
-                               /// <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
-                               /// <param name="value0">La première valeur.</param>
-                               /// <param name="value1">La deuxième valeur.</param>
-                               /// <typeparam name="T">Le type des valeurs.</typeparam>
-        public static void Swap<T>([CanBeNull] this object nullObject, ref T value0, ref T value1)
+        /// <summary>Permute les valeurs données.</summary>
+        /// <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
+        /// <param name="value0">La première valeur.</param>
+        /// <param name="value1">La deuxième valeur.</param>
+        /// <typeparam name="T">Le type des valeurs.</typeparam>
+        public static void Swap<T>([MaybeNull] this object nullObject, ref T value0, ref T value1)
 #pragma warning restore IDE0060 // Supprimer le paramètre inutilisé
         {
             var temp = value0;
@@ -184,7 +185,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="TObject">Le type de l'objet <paramref name="testObject"/>.</typeparam>
         /// <exception cref="ArgumentNullException">Obj is null.</exception>
         [DebuggerStepThrough]
-        public static void ThrowIfNull<TObject>([NoEnumeration] [CanBeNull] this TObject testObject, [NotNull] string parameterName, string? errorMessage = null)
+        public static void ThrowIfNull<TObject>([MaybeNull] this TObject testObject, [NotNull] string parameterName, string? errorMessage = null)
         {
             if (testObject != null)
             {
@@ -221,9 +222,7 @@ namespace Ustilz.Extensions
 
                 return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return new T();
             }
@@ -236,7 +235,7 @@ namespace Ustilz.Extensions
         /// <returns>Retourne l'objet convertit.</returns>
         [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
         [SuppressMessage("ReSharper", "CatchAllClause", Justification = "Obvious")]
-        public static T To<T>([CanBeNull] this IConvertible value, IConvertible ifError)
+        public static T To<T>([MaybeNull] this IConvertible value, IConvertible ifError)
         {
             try
             {
@@ -250,9 +249,7 @@ namespace Ustilz.Extensions
 
                 return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 return (T)ifError;
             }

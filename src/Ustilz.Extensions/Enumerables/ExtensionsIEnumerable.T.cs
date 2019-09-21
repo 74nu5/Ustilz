@@ -5,14 +5,14 @@ namespace Ustilz.Extensions.Enumerables
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.Linq;
-
-    using JetBrains.Annotations;
 
     #endregion
 
     /// <summary>The extensions i enumerable.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static partial class ExtensionsIEnumerable
     {
         #region Méthodes publiques
@@ -23,6 +23,11 @@ namespace Ustilz.Extensions.Enumerables
         /// <param name="action">Action to perform.</param>
         public static void ForEach<T>([NotNull] this IEnumerable<T> enumerable, Action<T> action)
         {
+            if (enumerable is null)
+            {
+                throw new ArgumentNullException(nameof(enumerable));
+            }
+
             foreach (var item in enumerable)
             {
                 action(item);
@@ -43,8 +48,8 @@ namespace Ustilz.Extensions.Enumerables
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
-        [PublicAPI]
-        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable)
+        [JetBrains.Annotations.PublicAPI]
+        public static bool NotAny<T>([NotNull] [JetBrains.Annotations.ItemCanBeNull] this IEnumerable<T> enumerable)
         {
             enumerable.ThrowIfNull(nameof(enumerable));
 
@@ -59,8 +64,8 @@ namespace Ustilz.Extensions.Enumerables
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         [Pure]
-        [PublicAPI]
-        public static bool NotAny<T>([NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate)
+        [JetBrains.Annotations.PublicAPI]
+        public static bool NotAny<T>([NotNull] [JetBrains.Annotations.ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, bool> predicate)
         {
             enumerable.ThrowIfNull(nameof(enumerable));
             predicate.ThrowIfNull(nameof(predicate));

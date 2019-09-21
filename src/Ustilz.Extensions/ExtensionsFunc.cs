@@ -5,16 +5,16 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.Reflection;
-
-    using JetBrains.Annotations;
 
     using Ustilz.Extensions.Models;
 
     #endregion
 
     /// <summary>The extensions func. </summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsFunc
     {
         #region Méthodes publiques
@@ -25,11 +25,10 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type du paramètre.</typeparam>
         /// <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
         /// <exception cref="ArgumentNullException">L'action ne peut pas être nulle.</exception>
-        /// <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
-        [NotNull]
+        /// <exception cref="Exception">A delegate callback throws an exception.</exception>
+        [return: NotNull]
         [Pure]
-        [PublicAPI]
-        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [CanBeNull] T parameter)
+        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [MaybeNull] T parameter)
             where T : new()
         {
             action.ThrowIfNull(nameof(action));
@@ -40,9 +39,7 @@ namespace Ustilz.Extensions
                 action(parameter);
                 result.Result = parameter;
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 result.Exception = ex;
             }
@@ -57,10 +54,9 @@ namespace Ustilz.Extensions
         /// <typeparam name="TResult">Le type du résultat.</typeparam>
         /// <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
         /// <exception cref="ArgumentNullException">La fonction ne peut pas être nulle.</exception>
-        [NotNull]
+        [return: NotNull]
         [Pure]
-        [PublicAPI]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [CanBeNull] T parameter)
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [MaybeNull] T parameter)
             where TResult : new()
         {
             func.ThrowIfNull(nameof(func));
@@ -83,7 +79,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type du paramètres d'entrée. </typeparam>
         /// <typeparam name="TResult">Type du retour. </typeparam>
         /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        [NotNull]
+        [return: NotNull]
         public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
         {
             var t = new Dictionary<T, TResult>();
@@ -104,7 +100,7 @@ namespace Ustilz.Extensions
         /// <param name="func">Fonction à mémoïser. </param>
         /// <typeparam name="TResult">Type du retour. </typeparam>
         /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        [NotNull]
+        [return: NotNull]
         public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
         {
             var t = new Dictionary<string, TResult>();
@@ -128,6 +124,11 @@ namespace Ustilz.Extensions
         /// <returns>La valeur de retour.</returns>
         public static TResult TestPerf<TResult>([NotNull] this Func<TResult> function, out long timestamp)
         {
+            if (function is null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -147,6 +148,11 @@ namespace Ustilz.Extensions
         /// <returns>La valeur de retour.</returns>
         public static TResult TestPerf<T, TResult>([NotNull] this Func<T, TResult> function, out long timestamp, T param)
         {
+            if (function is null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -168,6 +174,11 @@ namespace Ustilz.Extensions
         /// <returns>La valeur de retour.</returns>
         public static TResult TestPerf<T1, T2, TResult>([NotNull] this Func<T1, T2, TResult> function, out long timestamp, T1 param1, T2 param2)
         {
+            if (function is null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -191,6 +202,11 @@ namespace Ustilz.Extensions
         /// <returns>La valeur de retour.</returns>
         public static TResult TestPerf<T1, T2, T3, TResult>([NotNull] this Func<T1, T2, T3, TResult> function, out long timestamp, T1 param1, T2 param2, T3 param3)
         {
+            if (function is null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -222,6 +238,11 @@ namespace Ustilz.Extensions
             T3 param3,
             T4 param4)
         {
+            if (function is null)
+            {
+                throw new ArgumentNullException(nameof(function));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -239,6 +260,11 @@ namespace Ustilz.Extensions
         /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
         public static long TestPerf<T>([NotNull] this Action<T> action, T param)
         {
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -253,6 +279,11 @@ namespace Ustilz.Extensions
         /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
         public static long TestPerf([NotNull] this Action action)
         {
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
             var stopWatch = new Stopwatch();
             stopWatch.Start();
 

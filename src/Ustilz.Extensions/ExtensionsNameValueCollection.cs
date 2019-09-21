@@ -5,14 +5,13 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-
-    using JetBrains.Annotations;
 
     #endregion
 
     /// <summary>The extensions name value collection.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsNameValueCollection
     {
         #region Méthodes publiques
@@ -23,7 +22,7 @@ namespace Ustilz.Extensions
         /// <exception cref="ArgumentNullException"><paramref name="nvc" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">keySelector produces duplicate keys for two elements.</exception>
         /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection.</exception>
-        [NotNull]
+        [return: NotNull]
         public static Dictionary<string, string> ToDictionary([NotNull] this NameValueCollection nvc)
         {
             if (nvc == null)

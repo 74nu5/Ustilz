@@ -29,7 +29,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.Any(x => !x()))
             {
-                falseAction();
+                falseAction?.Invoke();
             }
             else
             {

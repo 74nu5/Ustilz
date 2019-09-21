@@ -4,13 +4,12 @@ namespace Ustilz.Extensions
 
     using System;
     using System.Collections.Generic;
-
-    using JetBrains.Annotations;
+    using System.Diagnostics.CodeAnalysis;
 
     #endregion
 
     /// <summary>The extensions list. </summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     internal static class ExtensionsIList
     {
         #region Méthodes Internes

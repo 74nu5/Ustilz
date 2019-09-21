@@ -1,13 +1,13 @@
-﻿namespace Ustilz.Extensions.Enumerables
+namespace Ustilz.Extensions.Enumerables
 {
     #region Usings
 
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Diagnostics.Contracts;
     using System.IO;
     using System.Linq;
-
-    using JetBrains.Annotations;
 
     #endregion
 
@@ -20,10 +20,10 @@
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <returns>The combined path.</returns>
-        [PublicAPI]
+        [JetBrains.Annotations.PublicAPI]
         [Pure]
-        [NotNull]
-        public static string PathCombine([NotNull] [ItemCanBeNull] this IEnumerable<string> enumerable)
+        [return: NotNull]
+        public static string PathCombine([NotNull] [JetBrains.Annotations.ItemCanBeNull] this IEnumerable<string> enumerable)
         {
             enumerable.ThrowIfNull(nameof(enumerable));
 
