@@ -11,11 +11,11 @@ namespace Ustilz.Extensions.String
     using System.Security.Cryptography;
     using System.Text;
 
-    using JetBrains.Annotations;
-
     using Ustilz.Extensions.Enumerables;
     using Ustilz.Time;
     using Ustilz.Utils;
+
+    using NotNullAttribute = System.Diagnostics.CodeAnalysis.NotNullAttribute;
 
     #endregion
 
@@ -71,7 +71,7 @@ namespace Ustilz.Extensions.String
 
                 foreach (var t in hash)
                 {
-                    ret.Append(t.ToString("x2"));
+                    ret.Append(t.ToString("x2", CultureInfo.CurrentCulture));
                 }
 
                 return ret.ToString();
@@ -100,7 +100,7 @@ namespace Ustilz.Extensions.String
             var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
 
             var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
-            var decryptByteArray = decryptArray.Select(s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber))).ToArray();
+            var decryptByteArray = decryptArray.Select(s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber, CultureInfo.CurrentCulture))).ToArray();
             var bytes = rsa.Decrypt(decryptByteArray, true);
 
             return Encoding.UTF8.GetString(bytes);
@@ -138,7 +138,7 @@ namespace Ustilz.Extensions.String
         /// <param name="provider">The provider.</param>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown.</exception>
-        [NotNull]
+        [return: NotNull]
         public static string GenerateHash([NotNull] string password, string? salt = null, HashType provider = HashType.MD5)
         {
             Check.NotEmpty(password, nameof(password));
@@ -162,7 +162,7 @@ namespace Ustilz.Extensions.String
         public static string GeneratePassword()
         {
             var randomNumber = Random.Next(5000, int.MaxValue);
-            return Convert.ToBase64String(Encoding.Unicode.GetBytes(randomNumber.ToString()));
+            return Convert.ToBase64String(Encoding.Unicode.GetBytes(randomNumber.ToString(CultureInfo.CurrentCulture)));
         }
 
         /// <summary>Random salt to comsume in hash generation.</summary>
@@ -174,7 +174,7 @@ namespace Ustilz.Extensions.String
         /// <summary>Random salt to comsume in hash generation.</summary>
         /// <param name="length">Length of salt value should be even, hex string will be twice of the length.</param>
         /// <returns>Bytes representation of salt value.</returns>
-        [NotNull]
+        [return: NotNull]
         public static byte[] GenerateSaltBytes(int length = 16)
         {
             var salt = new byte[length];
@@ -189,6 +189,11 @@ namespace Ustilz.Extensions.String
         /// <returns>True if password is equal to the hash value.</returns>
         public static bool Validate([NotNull] string hashValue, [NotNull] string password)
         {
+            if (string.IsNullOrEmpty(hashValue))
+            {
+                throw new ArgumentException($"{nameof(hashValue)}' parameter is null.", nameof(hashValue));
+            }
+
             Check.NotEmpty(hashValue, nameof(hashValue));
 
             var hashParts = hashValue.Split('$');
@@ -224,26 +229,31 @@ namespace Ustilz.Extensions.String
         private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);
-
+            HashAlgorithm algo;
             switch (hash)
             {
                 case HashType.MD5:
-                    return MD5.Create().ComputeHash(inputBytes);
-
+                    algo = MD5.Create();
+                    break;
                 case HashType.SHA1:
-                    return SHA1.Create().ComputeHash(inputBytes);
-
+                    algo = SHA1.Create();
+                    break;
                 case HashType.SHA256:
-                    return SHA256.Create().ComputeHash(inputBytes);
-
+                    algo = SHA256.Create();
+                    break;
                 case HashType.SHA384:
-                    return SHA384.Create().ComputeHash(inputBytes);
-
+                    algo = SHA384.Create();
+                    break;
                 case HashType.SHA512:
-                    return SHA512.Create().ComputeHash(inputBytes);
-
+                    algo = SHA512.Create();
+                    break;
                 default:
                     return inputBytes;
+            }
+
+            using (algo)
+            {
+                return algo.ComputeHash(inputBytes);
             }
         }
 

@@ -24,9 +24,9 @@
         public bool Equals(Personne x, Personne y) => x?.Nom == y?.Nom && x?.Prenom == y?.Prenom;
 
         /// <summary>Returns a hash code for the specified object.</summary>
-        /// <param name="obj">The <see cref="T:System.Object"></see> for which a hash code is to be returned.</param>
+        /// <param name="obj">The <see cref="object"></see> for which a hash code is to be returned.</param>
         /// <returns>A hash code for the specified object.</returns>
-        /// <exception cref="T:System.ArgumentNullException">The type of <paramref name="obj">obj</paramref> is a reference type and <paramref name="obj">obj</paramref> is null.</exception>
+        /// <exception cref="ArgumentNullException">The type of <paramref name="obj">obj</paramref> is a reference type and <paramref name="obj">obj</paramref> is null.</exception>
         public int GetHashCode(Personne obj) => obj.GetHashCode();
 
         #endregion

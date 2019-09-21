@@ -6,6 +6,11 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\netcoreapp3.0\</OutputPath>
+    <DocumentationFile>bin\Debug\netcoreapp3.0\Ustilz.Extensions.Test.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\..\src\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
@@ -19,10 +24,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4" />
-    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="2.9.4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
-    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="2.9.4" />
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeQuality.Analyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="Microsoft.NetCore.Analyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

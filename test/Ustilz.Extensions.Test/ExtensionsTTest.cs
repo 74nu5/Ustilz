@@ -39,7 +39,9 @@
             void Action2(A s2)
                 => a.S = "Test";
 
+#pragma warning disable IDE0009 // L'accès au membre doit être qualifié.
             var chain = a.Chain(Action1).Chain(Action2);
+#pragma warning restore IDE0009 // L'accès au membre doit être qualifié.
             Assert.Equal(100, a.I);
             Assert.Equal("Test", a.S);
             Assert.Equal(100, chain.I);
