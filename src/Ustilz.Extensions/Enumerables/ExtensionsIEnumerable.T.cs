@@ -98,6 +98,48 @@ namespace Ustilz.Extensions.Enumerables
             return source.Skip(--page * pageSize).Take(pageSize);
         }
 
+        /// <summary>
+        /// Méthode récupération d'une énumération avec index.
+        /// </summary>
+        /// <typeparam name="T">Type de la liste.</typeparam>
+        /// <param name="enumerable">Enumérable à traiter.</param>
+        /// <returns>Retourne un énumarable contenant des <see cref="Tuple"/>, représentant un couple (item, index0).</returns>
+        public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> enumerable)
+            => enumerable.Select((item, index) => (item, index));
+
+        /// <summary>
+        /// Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}"/>.
+        /// </summary>
+        /// <typeparam name="T">Type d'élément de l'énumérable.</typeparam>
+        /// <param name="enumerable">Enumérable à ajuster.</param>
+        /// <param name="shouldReplace">Condition de d'ajustement.</param>
+        /// <param name="replacement">Valeur de remplacement.</param>
+        /// <returns>Retourne la liste initiale avec les ajustements.</returns>
+        public static IEnumerable<T> Adjust<T>(this IEnumerable<T> enumerable, Func<T, int, bool> shouldReplace, T replacement) =>
+            enumerable.Select(
+                (obj, pos) =>
+                    shouldReplace(obj, pos)
+                        ? replacement
+                        : obj);
+
+        /// <summary>
+        /// Méthode de split d'un liste en n liste.
+        /// </summary>
+        /// <typeparam name="T">Type de la liste.</typeparam>
+        /// <param name="enumerable">Liste à spliter.</param>
+        /// <param name="split">Nombre de liste.</param>
+        /// <returns>Retourne une liste splité.</returns>
+        private static IEnumerable<IEnumerable<T>> SplitList<T>(IEnumerable<T> enumerable, int split)
+        {
+            var list = enumerable.ToList();
+            var count = list.Count;
+            var subN = count / split;
+            for (int i = 0; i < count; i += subN)
+            {
+                yield return list.Skip(i).Take(subN);
+            }
+        }
+
         #endregion
     }
 }
