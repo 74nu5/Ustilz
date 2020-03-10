@@ -30,7 +30,8 @@ namespace Ustilz.Extensions.Configuration
                 Path.Combine(
                     AppContext.BaseDirectory,
                     $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}",
-                    "appsettings.Development.json"), true);
+                    "appsettings.Development.json"),
+                true);
 
             return builder;
         }

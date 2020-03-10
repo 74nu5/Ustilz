@@ -22,14 +22,14 @@ namespace Ustilz.Extensions.Actions
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse([NotNull] this Action falseAction, Action? trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse(this Action? falseAction, Action? trueAction = null, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
             if (values.Any(x => !x()))
             {
-                falseAction?.Invoke();
+                falseAction!.Invoke();
             }
             else
             {
@@ -47,7 +47,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T>(
-            [NotNull] this Action<T> falseAction,
+            this Action<T>? falseAction,
             [CanBeNull] T parameter,
             Action<T>? trueAction = null,
             [NotNull] params Func<bool>[] values)
@@ -57,7 +57,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter);
+                falseAction!.Invoke(parameter);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2>(
-            [NotNull] this Action<T1, T2> falseAction,
+            this Action<T1, T2>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             Action<T1, T2>? trueAction = null,
@@ -88,7 +88,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2);
+                falseAction!.Invoke(parameter1, parameter2);
             }
             else
             {
@@ -110,7 +110,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> falseAction,
+            this Action<T1, T2, T3>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
@@ -122,7 +122,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2, parameter3);
+                falseAction!.Invoke(parameter1, parameter2, parameter3);
             }
             else
             {
@@ -146,7 +146,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> falseAction,
+            this Action<T1, T2, T3, T4>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
@@ -159,7 +159,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2, parameter3, parameter4);
+                falseAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
             else
             {
@@ -173,7 +173,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse([NotNull] this Action falseAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse(this Action? falseAction, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
@@ -183,7 +183,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            falseAction();
+            falseAction!.Invoke();
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -194,7 +194,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse<T>([NotNull] this Action<T> falseAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse<T>(this Action<T>? falseAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
@@ -204,7 +204,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            falseAction(parameter);
+            falseAction!.Invoke(parameter);
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -218,7 +218,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2>(
-            [NotNull] this Action<T1, T2> falseAction,
+            this Action<T1, T2>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [NotNull] params Func<bool>[] values)
@@ -231,7 +231,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            falseAction(parameter1, parameter2);
+            falseAction!.Invoke(parameter1, parameter2);
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -247,7 +247,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> falseAction,
+            this Action<T1, T2, T3>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
@@ -261,7 +261,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3);
+            falseAction!.Invoke(parameter1, parameter2, parameter3);
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -279,7 +279,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> falseAction,
+            this Action<T1, T2, T3, T4>? falseAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
@@ -294,7 +294,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3, parameter4);
+            falseAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
 
         #endregion
