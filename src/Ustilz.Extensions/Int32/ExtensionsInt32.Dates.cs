@@ -12,11 +12,9 @@ namespace Ustilz.Extensions.Int32
     [PublicAPI]
     public static partial class ExtensionsInt32
     {
-        #region Méthodes publiques
-
         /// <summary>
-        /// Méthode qui renvoie une date du mois d'août.
-        /// <code>
+        ///     Méthode qui renvoie une date du mois d'août.
+        ///     <code>
         /// 12.Août(2010); // = new DateTime(2010, 8, 12)
         /// </code>
         /// </summary>
@@ -110,7 +108,5 @@ namespace Ustilz.Extensions.Int32
         /// <returns>The <see cref="System.DateTime" />.</returns>
         public static DateTime Septembre(this int day, int year)
             => new DateTime(year, 9, day);
-
-        #endregion
     }
 }

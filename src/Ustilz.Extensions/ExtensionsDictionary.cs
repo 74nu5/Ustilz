@@ -4,13 +4,12 @@ namespace Ustilz.Extensions
 
     using System;
     using System.Collections.Generic;
-
-    using JetBrains.Annotations;
+    using System.Diagnostics.CodeAnalysis;
 
     #endregion
 
     /// <summary>The extensions dictionary.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsDictionary
     {
         #region Méthodes publiques
@@ -21,9 +20,19 @@ namespace Ustilz.Extensions
         /// <typeparam name="TKey">Le type de la clé.</typeparam>
         /// <typeparam name="TValue">Le type de la valeur.</typeparam>
         /// <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur par défaut est retournée.</returns>
-        public static TValue GetOrCreate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
+        public static TValue GetOrCreate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key)
             where TValue : new()
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (dictionary is null)
+            {
+                throw new ArgumentNullException(nameof(dictionary));
+            }
+
             if (dictionary.TryGetValue(key, out var ret))
             {
                 return ret;
@@ -42,8 +51,23 @@ namespace Ustilz.Extensions
         /// <typeparam name="TKey">Le type de la clé.</typeparam>
         /// <typeparam name="TValue">Le type de la valeur.</typeparam>
         /// <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur calculée est retournée.</returns>
-        public static TValue GetOrCreate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> valueProvider)
+        public static TValue GetOrCreate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, Func<TValue> valueProvider)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (dictionary is null)
+            {
+                throw new ArgumentNullException(nameof(dictionary));
+            }
+
+            if (valueProvider is null)
+            {
+                throw new ArgumentNullException(nameof(valueProvider));
+            }
+
             if (dictionary.TryGetValue(key, out var ret))
             {
                 return ret;
@@ -62,8 +86,18 @@ namespace Ustilz.Extensions
         /// <typeparam name="TKey">Le type de la clé.</typeparam>
         /// <typeparam name="TValue">Le type de la valeur.</typeparam>
         /// <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur calculée est retournée.</returns>
-        public static TValue GetOrCreate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue missingValue)
+        public static TValue GetOrCreate<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, TValue missingValue)
         {
+            if (key is null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+            if (dictionary is null)
+            {
+                throw new ArgumentNullException(nameof(dictionary));
+            }
+
             if (dictionary.TryGetValue(key, out var ret))
             {
                 return ret;
@@ -82,8 +116,13 @@ namespace Ustilz.Extensions
         /// <typeparam name="TValue">Type de la valeur.</typeparam>
         /// <param name="dictionary">Dictionnaire à modifier.</param>
         /// <param name="keys">Clés à supprimer.</param>
-        public static void Remove<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, params TKey[] keys)
+        public static void Remove<TKey, TValue>([NotNull] this IDictionary<TKey, TValue> dictionary, params TKey[] keys)
         {
+            if (dictionary is null)
+            {
+                throw new ArgumentNullException(nameof(dictionary));
+            }
+
             foreach (var key in keys)
             {
                 dictionary.Remove(key);

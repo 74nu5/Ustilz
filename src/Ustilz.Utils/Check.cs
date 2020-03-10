@@ -20,19 +20,32 @@ namespace Ustilz.Utils
         #region Méthodes publiques
 
         /// <summary>The has no nulls.</summary>
-        /// <param name="value">The value.</param>
+        /// <param name="collection">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
         /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>The IReadOnlyList.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="collection" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterName" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">Collection has null.</exception>
         [NotNull]
-        public static IReadOnlyList<T> HasNoNulls<T>([NotNull] IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
+        public static IReadOnlyList<T> HasNoNulls<T>([NotNull] IReadOnlyList<T> collection, [InvokerParameterName] [NotNull] string parameterName)
             where T : class
         {
-            NotNull(value, parameterName);
-
-            if (value.All(e => e != null))
+            if (collection == null)
             {
-                return value;
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (parameterName == null)
+            {
+                throw new ArgumentNullException(nameof(parameterName));
+            }
+
+            NotNull(collection, parameterName);
+
+            if (collection.All(e => e != null))
+            {
+                return collection;
             }
 
             NotEmpty(parameterName, nameof(parameterName));
@@ -45,10 +58,23 @@ namespace Ustilz.Utils
         /// <param name="parameterName">The parameter name.</param>
         /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>The IReadOnlyList.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="parameterName" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">Collection is empty.</exception>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
-        public static IReadOnlyList<T> NotEmpty<T>(IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
+        public static IReadOnlyList<T> NotEmpty<T>([NotNull] IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
         {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            if (parameterName == null)
+            {
+                throw new ArgumentNullException(nameof(parameterName));
+            }
+
             NotNull(value, parameterName);
 
             if (value.Count != 0)
@@ -65,28 +91,25 @@ namespace Ustilz.Utils
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
         /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="value" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">Value is empty.</exception>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static string NotEmpty(string value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            Exception e = null;
             if (value is null)
             {
-                e = new ArgumentNullException(parameterName);
-            }
-            else if (value.Trim().Length == 0)
-            {
-                e = new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
+                NotEmpty(parameterName, nameof(parameterName));
+                throw new ArgumentNullException(parameterName);
             }
 
-            if (e == null)
+            if (value.Trim().Length != 0)
             {
                 return value;
             }
 
             NotEmpty(parameterName, nameof(parameterName));
-
-            throw e;
+            throw new ArgumentException(Strings.ArgumentIsEmpty(parameterName));
         }
 
         /// <summary>Méthode de vérification de la nullité de l'objet passé en paramètre.</summary>
@@ -94,6 +117,8 @@ namespace Ustilz.Utils
         /// <param name="parameterName">Nom du paramètre.</param>
         /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>Retourne l'objet en entrée.</returns>
+        /// <exception cref="ArgumentNullException">value is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">Value is empty.</exception>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName)
@@ -114,6 +139,8 @@ namespace Ustilz.Utils
         /// <param name="propertyName">Nom de la propriété.</param>
         /// <typeparam name="T">Type de la valeur à tester.</typeparam>
         /// <returns>Retourne l'objet en entrée.</returns>
+        /// <exception cref="ArgumentException">Value is null.</exception>
+        /// <exception cref="ArgumentNullException">value is <see langword="null" />.</exception>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] [NotNull] string parameterName, [NotNull] string propertyName)
@@ -133,10 +160,11 @@ namespace Ustilz.Utils
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
         /// <returns>The <see cref="string" />.</returns>
-        [CanBeNull]
-        public static string NullButNotEmpty([CanBeNull] string value, [InvokerParameterName] [NotNull] string parameterName)
+        /// <exception cref="ArgumentException">Value is null.</exception>
+        /// <exception cref="ArgumentNullException">value is <see langword="null" />.</exception>
+        public static string? NullButNotEmpty(string? value, [InvokerParameterName] [NotNull] string parameterName)
         {
-            if (value is null || (value.Length != 0))
+            if (value is null || value.Length != 0)
             {
                 return value;
             }
@@ -150,6 +178,8 @@ namespace Ustilz.Utils
         /// <param name="value">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
         /// <returns>The <see cref="Type" />.</returns>
+        /// <exception cref="ArgumentException">Condition.</exception>
+        /// <exception cref="ArgumentNullException">value is <see langword="null" />.</exception>
         public static Type ValidEntityType(Type value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (value.GetTypeInfo().IsClass)

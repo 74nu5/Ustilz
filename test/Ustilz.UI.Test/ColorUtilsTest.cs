@@ -42,7 +42,7 @@
         [Fact]
         public void GetColorFromNomClairTest()
         {
-            var colorFromNom = ColorUtils.GetColorFromNom("Test", true);
+            var colorFromNom = ColorUtils.GetLightColorFromNom("Test");
             Assert.Equal("#E5F3E8", colorFromNom);
         }
 

@@ -10,8 +10,6 @@ namespace Ustilz.Json.Test
 
     public sealed class JsonExtensionsTest
     {
-        #region Méthodes publiques
-
         [Fact]
         public void FromJsonTest()
         {
@@ -28,7 +26,7 @@ namespace Ustilz.Json.Test
         public void ToJsonFormattedTest()
         {
             const string Expected =
-@"{
+                @"{
   ""Prenom"": ""John"",
   ""Nom"": ""Smith""
 }";
@@ -49,7 +47,5 @@ namespace Ustilz.Json.Test
 
             Assert.Equal(Expected, result);
         }
-
-        #endregion
     }
 }

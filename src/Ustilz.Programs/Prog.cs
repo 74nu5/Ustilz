@@ -3,6 +3,7 @@ namespace Ustilz.Programs
     #region Usings
 
     using System;
+    using System.Collections.Generic;
 
     using JetBrains.Annotations;
 
@@ -45,6 +46,8 @@ namespace Ustilz.Programs
         /// </summary>
         private Prog()
         {
+            this.serviceProvider = new ServiceCollection().BuildServiceProvider();
+            this.logAction = new Action<string>[0];
         }
 
         #endregion

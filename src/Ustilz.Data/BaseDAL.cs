@@ -37,150 +37,164 @@ namespace Ustilz.Data
 
         #region Constructeurs et destructeurs
 
-        /// <summary> Initialise une nouvelle instance de la classe <see cref="BaseDAL{TContext, TModel, TIdentity}" />. </summary>
-        /// <param name="context"> The context. </param>
-        protected BaseDAL(TContext context)
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{Tcontext, TModel, TIdentity}" />.</summary>
+        /// <param name="context">The context.</param>
+        /// <exception cref="ArgumentNullException"><paramref name="context" /> is null.</exception>
+        protected BaseDAL([NotNull] TContext context)
         {
-            this.context = context;
-            this.Queryable = this.context.Set<TModel>();
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
+            this.Queryable = this.context.Set<TModel>().AsQueryable();
         }
 
         #endregion
 
         #region Propriétés et indexeurs
 
-        /// <summary> Obtient le contexte de la base de données. </summary>
-        protected IQueryable<TModel> Queryable { get; }
+        /// <inheritdoc />
+        public IQueryable<TModel> Queryable { get; }
 
         #endregion
 
         #region Méthodes publiques
 
-        /// <summary> The create. </summary>
-        /// <param name="model"> The model. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        public async Task<int> AddModelAsync(TModel model, CancellationToken token)
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public async Task<int> AddAsync(TModel model, CancellationToken stoppingToken = default)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException(nameof(model));
-            }
-
-            await this.context.Set<TModel>().AddAsync(model, token).ConfigureAwait(false);
-            return await this.context.SaveChangesAsync(token).ConfigureAwait(false);
+            await this.context.Set<TModel>().AddAsync(model, stoppingToken).ConfigureAwait(false);
+            return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
         }
 
-        /// <summary> Méthode d'ajout d'une liste d'éléments. </summary>
-        /// <param name="models"> La liste d'éléments à ajouter. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> Retourne le nombre de ligne impactées. </returns>
-        public async Task<int> AddRangeAsync(IEnumerable<TModel> models, CancellationToken token)
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public async Task<int> AddRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
         {
-            if (models == null)
-            {
-                throw new ArgumentNullException(nameof(models));
-            }
-
-            await this.context.Set<TModel>().AddRangeAsync(models, token).ConfigureAwait(false);
-            return await this.context.SaveChangesAsync(token).ConfigureAwait(false);
+            await this.context.Set<TModel>().AddRangeAsync(models, stoppingToken).ConfigureAwait(false);
+            return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
         }
 
-        /// <summary> The exists. </summary>
-        /// <param name="id"> The id. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> The <see cref="bool" />. </returns>
-        public Task<bool> ExistsAsync(TIdentity id, CancellationToken token)
-        {
-            if (id == null)
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+        /// <inheritdoc />
+        public Task<bool> ExistsAsync(TIdentity id, CancellationToken stoppingToken = default)
+            => this.context.Set<TModel>().AnyAsync(e => e.Id.CompareTo(id) == 0, stoppingToken);
 
-            return this.context.Set<TModel>().AnyAsync(e => e.Id.CompareTo(id) == 0, token);
-        }
-
-        /// <summary> The get details. </summary>
-        /// <param name="id"> The id. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        public Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken token)
-        {
-            if (id == null)
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-
-            return this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token);
-        }
-
-        /// <summary> The get details. </summary>
-        /// <param name="id"> The id. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <param name="includes"> The includes. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        public async Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken token, params Expression<Func<TModel, object>>[] includes)
+        /// <inheritdoc />
+        public async Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
         {
             var set = this.context.Set<TModel>();
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
-                null,
-                (current, include)
-                    => current == null
-                           ? set.Include(include)
-                           : current.Include(include));
-            return includeSet == null
-                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token).ConfigureAwait(false)
-                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, token).ConfigureAwait(false);
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null ? await set.ToListAsync(stoppingToken).ConfigureAwait(false) : await includeSet.ToListAsync(stoppingToken).ConfigureAwait(false);
         }
 
-        /// <summary> Méthode suppression des données de la table. </summary>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> Retourne le nombre de ligné impactées. </returns>
-        public Task<int> RemoveAllAsync(CancellationToken token)
+        /// <inheritdoc />
+        public Task<List<TModel>> GetAllAsync(int skip, int take, CancellationToken stoppingToken = default)
+            => this.SkipAndTake(skip, take).ToListAsync(stoppingToken);
+
+        /// <inheritdoc />
+        public async Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
         {
-            this.context.Set<TModel>().RemoveRange(this.GetQueryableWithIncludes());
-            return this.context.SaveChangesAsync(token);
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return includeSet == null
+                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false)
+                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false);
         }
 
-        /// <summary> The remove. </summary>
-        /// <param name="model"> The model. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        public Task<int> RemoveAsync(TModel model, CancellationToken token)
+        /// <inheritdoc />
+        public Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default)
+            => this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken);
+
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public async Task<int> RemoveAllAsync(CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().RemoveRange(await this.Queryable.ToListAsync(stoppingToken).ConfigureAwait(false));
+            return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
+        }
+
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public Task<int> RemoveAsync(TModel model, CancellationToken stoppingToken = default)
         {
             this.context.Set<TModel>().Remove(model);
-            return this.context.SaveChangesAsync(token);
+            return this.context.SaveChangesAsync(stoppingToken);
         }
 
-        /// <summary> The update. </summary>
-        /// <param name="model"> The model. </param>
-        /// <param name="token"> Token d'annulation de la tache. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        public Task<int> UpdateAsync(TModel model, CancellationToken token)
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public Task<int> RemoveRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().RemoveRange(models);
+            return this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public Task<int> UpdateAsync(TModel model, CancellationToken stoppingToken = default)
         {
             this.context.Set<TModel>().Update(model);
-            return this.context.SaveChangesAsync(token);
+            return this.context.SaveChangesAsync(stoppingToken);
+        }
+
+        /// <inheritdoc />
+        /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
+        /// <exception cref="DbUpdateConcurrencyException">
+        ///     A concurrency violation is encountered while saving to the database. A concurrency violation occurs when an unexpected number of
+        ///     rows are affected during save. This is usually because the data in the database has been modified since it was loaded into memory.
+        /// </exception>
+        public Task<int> UpdateRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default)
+        {
+            this.context.Set<TModel>().UpdateRange(models);
+            return this.context.SaveChangesAsync(stoppingToken);
         }
 
         #endregion
 
-        /// <summary> The get all. </summary>
-        /// <param name="includes"> The includes. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        protected IQueryable<TModel> GetQueryableWithIncludes(params Expression<Func<TModel, object>>[] includes)
-        {
-            if (includes == null)
-            {
-                throw new ArgumentNullException(nameof(includes));
-            }
+        #region Méthodes privées
 
-            var includeSet = includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+        private static IIncludableQueryable<TModel, object> GetIncludeSet(Expression<Func<TModel, object>>[] includes, DbSet<TModel> set)
+            => includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+#pragma warning disable CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
                 null,
+#pragma warning restore CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
                 (current, include) =>
                     current == null
-                        ? this.Queryable.Include(include)
+                        ? set.Include(include)
                         : current.Include(include));
-            return includeSet?.AsQueryable() ?? this.Queryable?.AsQueryable();
+
+        private IQueryable<TModel> SkipAndTake(int skip, int take)
+        {
+            var queryable = this.context.Set<TModel>().Skip(skip);
+
+            if (take > 0)
+            {
+                queryable = queryable.Take(take);
+            }
+
+            return queryable;
         }
 
         /// <summary> The get all with pagination. </summary>

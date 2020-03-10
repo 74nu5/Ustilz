@@ -11,8 +11,6 @@
     /// <summary>The extensions int 32.</summary>
     public sealed partial class ExtensionsInt32Test
     {
-        #region Méthodes privées
-
         /// <summary>The times test.</summary>
         [Fact]
         private void TimesTest()
@@ -21,7 +19,5 @@
             5.Times(() => i++);
             Assert.Equal(5, i);
         }
-
-        #endregion
     }
 }

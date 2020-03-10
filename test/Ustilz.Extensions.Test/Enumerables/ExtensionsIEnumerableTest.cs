@@ -17,8 +17,6 @@
     [PublicAPI]
     public class ExtensionsIEnumerableTest
     {
-        #region Méthodes publiques
-
         /// <summary>The for each test.</summary>
         [Fact]
         public void ForEachTest()
@@ -46,7 +44,5 @@
             var ro = l.ToReadOnly();
             Assert.IsType<ReadOnlyCollection<int>>(ro);
         }
-
-        #endregion
     }
 }

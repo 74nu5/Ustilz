@@ -5,7 +5,6 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
@@ -23,20 +22,15 @@ namespace Ustilz.Extensions
         /// <summary>To the description dictionary.</summary>
         /// <typeparam name="T">Type de l'énumération.</typeparam>
         /// <returns>Retourne un dictionnaire { key = name, value = description } pour une enum.</returns>
-        public static Dictionary<string, string> GetDescriptionDictionary<T>()
+        public static Dictionary<string, string?> GetDescriptionDictionary<T>()
             where T : Enum
         {
             var type = typeof(T);
 
-            string Selector(string name)
-            {
-                if (!(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute))
-                {
-                    return null;
-                }
-
-                return attribute.Description ?? string.Empty;
-            }
+            string? Selector(string name)
+                => !(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute)
+                       ? null
+                       : attribute.Description ?? string.Empty;
 
             return Enum.GetNames(type).ToDictionary(name => name, Selector);
         }

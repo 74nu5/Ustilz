@@ -12,7 +12,16 @@
     /// <summary>The extensions string.</summary>
     public sealed partial class ExtensionsStringTest
     {
-        #region Méthodes publiques
+        [Fact]
+        public void FsAnoTest()
+        {
+            const string Expected = "Bonjour John Smith";
+            const string Pattern = "Bonjour @{Prenom} @{Nom}";
+
+            var result = Pattern.Fs(new { Prenom = "John", Nom = "Smith" });
+
+            Assert.Equal(Expected, result);
+        }
 
         /// <summary>The fs test.</summary>
         [Fact]
@@ -24,17 +33,6 @@
             var p = new Personne { Prenom = "John", Nom = "Smith" };
 
             var result = Pattern.Fs(p);
-
-            Assert.Equal(Expected, result);
-        }
-
-        [Fact]
-        public void FsAnoTest()
-        {
-            const string Expected = "Bonjour John Smith";
-            const string Pattern = "Bonjour @{Prenom} @{Nom}";
-
-            var result = Pattern.Fs(new { Prenom = "John", Nom = "Smith" });
 
             Assert.Equal(Expected, result);
         }
@@ -68,7 +66,5 @@
         public void ToExceptionTest()
         {
         }
-
-        #endregion
     }
 }

@@ -1,16 +1,14 @@
-namespace Ustilz.Time.Date
+namespace Ustilz.Time
 {
     #region Usings
 
     using System;
     using System.Diagnostics.CodeAnalysis;
 
-    using JetBrains.Annotations;
-
     #endregion
 
     /// <summary>The extensions date time.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static partial class ExtensionsDateTime
     {
         #region Méthodes publiques
@@ -18,8 +16,10 @@ namespace Ustilz.Time.Date
         /// <summary>The readable time stamp.</summary>
         /// <param name="currentDate">The current date.</param>
         /// <returns>The <see cref="string" />.</returns>
-        [NotNull]
+        /// <exception cref="OverflowException">value is greater than <see cref="int.MaxValue"></see> or less than <see cref="int.MinValue"></see>.</exception>
+        [return: NotNull]
         [ExcludeFromCodeCoverage]
+        [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obligé.")]
         public static string ReadableTimeStamp(this DateTime currentDate)
         {
             const int Second = 1;
@@ -28,7 +28,7 @@ namespace Ustilz.Time.Date
             const int Day = 24 * Hour;
             const int Month = 30 * Day;
 
-            var ts = new TimeSpan(Horloge.Maintenant.Ticks - currentDate.Ticks);
+            var ts = new TimeSpan(Clock.Now.Ticks - currentDate.Ticks);
             var delta = Math.Abs(ts.TotalSeconds);
 
             if (delta < 1 * Minute)
@@ -63,12 +63,7 @@ namespace Ustilz.Time.Date
 
             if (delta < 30 * Day)
             {
-                if (Horloge.Maintenant.Month == 3 && delta > 27 * Day)
-                {
-                    return "one month ago";
-                }
-
-                return $"{ts.Days} days ago";
+                return (Clock.Now.Month == 3) && (delta > 27 * Day) ? "one month ago" : $"{ts.Days} days ago";
             }
 
             if (delta < 12 * Month)

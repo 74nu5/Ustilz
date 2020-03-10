@@ -17,8 +17,6 @@ namespace Ustilz.Data.Interfaces
     public interface IDto<out TIdentity>
         where TIdentity : IComparable<TIdentity>
     {
-        #region Propriétés et indexeurs
-
         /// <summary>
         ///     Obtient l'identifiant technique.
         /// </summary>
@@ -26,7 +24,5 @@ namespace Ustilz.Data.Interfaces
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [UsedImplicitly]
         TIdentity Id { get; }
-
-        #endregion
     }
 }

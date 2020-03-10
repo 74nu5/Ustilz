@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Configuration
+namespace Ustilz.Extensions.Configuration
 {
     #region Usings
 
@@ -19,16 +19,19 @@
 
         /// <summary>The use app settings json.</summary>
         /// <param name="builder">The builder.</param>
-        /// <exception cref="ArgumentNullException">
-        ///     Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT
-        ///     n'est pas trouvée.
-        /// </exception>
+        /// <exception cref="ArgumentNullException">Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.</exception>
         /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
+        /// <exception cref="ArgumentException">path1, path2, or path3 contains one or more of the invalid characters defined in <see cref="System.IO.Path.GetInvalidPathChars"></see>.</exception>
         public static IConfigurationBuilder UseAppSettingsJson(this IConfigurationBuilder builder)
         {
             // Set up configuration sources.
             builder.AddJsonFile("appsettings.json", true);
-            builder.AddJsonFile(Path.Combine(AppContext.BaseDirectory, string.Format("..{0}..{0}..{0}", Path.DirectorySeparatorChar), "appsettings.Development.json"), true);
+            builder.AddJsonFile(
+                Path.Combine(
+                    AppContext.BaseDirectory,
+                    $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}",
+                    "appsettings.Development.json"),
+                true);
 
             return builder;
         }

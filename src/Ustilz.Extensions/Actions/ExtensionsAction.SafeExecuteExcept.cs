@@ -12,8 +12,6 @@
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>Executes the given action inside of a try catch block and catches all exception expect the specified type.</summary>
         /// <exception cref="ArgumentNullException">Action can not be null.</exception>
         /// <typeparam name="TException">The type of the exception to throw.</typeparam>
@@ -89,7 +87,5 @@
                 return false;
             }
         }
-
-        #endregion
     }
 }

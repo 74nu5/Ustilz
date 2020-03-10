@@ -1,20 +1,20 @@
-﻿namespace Ustilz.Extensions
+namespace Ustilz.Extensions
 {
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Text;
-
-    using JetBrains.Annotations;
 
     using Ustilz.Utils;
 
     #endregion
 
     /// <summary>The extensions type.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsType
     {
         #region Méthodes publiques
@@ -23,8 +23,21 @@
         /// <param name="type">The type.</param>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
         /// <returns>The <see cref="Func{TResult}" />.</returns>
-        public static Func<TResult> Ctor<TResult>(this Type type)
+        /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        /// <exception cref="ArgumentNullException">constructor is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type" /> is null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+        ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
+        ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+        /// </exception>
+        public static Func<TResult> Ctor<TResult>([NotNull] this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             var ci = GetConstructor(type, Type.EmptyTypes);
             return Expression.Lambda<Func<TResult>>(Expression.New(ci)).Compile();
         }
@@ -34,8 +47,21 @@
         /// <typeparam name="TArg1">Type du premier argument.</typeparam>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
         /// <returns>The <see cref="Func{T,TResult}" />.</returns>
-        public static Func<TArg1, TResult> Ctor<TArg1, TResult>(this Type type)
+        /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        /// <exception cref="ArgumentNullException">constructor is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type" /> is null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+        ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
+        ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+        /// </exception>
+        public static Func<TArg1, TResult> Ctor<TArg1, TResult>([NotNull] this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             var ci = GetConstructor(type, typeof(TArg1));
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
 
@@ -49,8 +75,21 @@
         /// <typeparam name="TArg2">Type du deuxième argument.</typeparam>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
         /// <returns>The <see cref="Func{T1,T2,TResult}" />.</returns>
-        public static Func<TArg1, TArg2, TResult> Ctor<TArg1, TArg2, TResult>(this Type type)
+        /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        /// <exception cref="ArgumentNullException">constructor is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type" /> is null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+        ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
+        ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+        /// </exception>
+        public static Func<TArg1, TArg2, TResult> Ctor<TArg1, TArg2, TResult>([NotNull] this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2));
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
             var param2 = Expression.Parameter(typeof(TArg2), "arg2");
@@ -66,8 +105,21 @@
         /// <typeparam name="TArg3">Type du troisième argument.</typeparam>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
         /// <returns>The <see cref="Func{T1,T2,T3,TResult}" />.</returns>
-        public static Func<TArg1, TArg2, TArg3, TResult> Ctor<TArg1, TArg2, TArg3, TResult>(this Type type)
+        /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        /// <exception cref="ArgumentNullException">constructor is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type" /> is null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+        ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
+        ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+        /// </exception>
+        public static Func<TArg1, TArg2, TArg3, TResult> Ctor<TArg1, TArg2, TArg3, TResult>([NotNull] this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3));
 
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
@@ -85,8 +137,21 @@
         /// <typeparam name="TArg4">Type du quatrième argument.</typeparam>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
         /// <returns>The <see cref="Func{T1,T2,T3,T4,TResult}" />.</returns>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Ctor<TArg1, TArg2, TArg3, TArg4, TResult>(this Type type)
+        /// <exception cref="InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        /// <exception cref="ArgumentNullException">constructor is null.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="type" /> is null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+        ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
+        ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+        /// </exception>
+        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Ctor<TArg1, TArg2, TArg3, TArg4, TResult>([NotNull] this Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3), typeof(TArg4));
 
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
@@ -117,18 +182,8 @@
                 return ci;
             }
 
-            var sb = new StringBuilder();
-            sb.Append(type.Name).Append(" has no ctor(");
-            for (var i = 0; i < argumentTypes.Length; i++)
-            {
-                if (i > 0)
-                {
-                    sb.Append(',');
-                }
-
-                sb.Append(argumentTypes[i].Name);
-            }
-
+            var sb = new StringBuilder().Append(type.Name).Append(" has no ctor(");
+            sb.Append(string.Join(", ", argumentTypes.Select(t => t.Name)));
             sb.Append(')');
             throw new InvalidOperationException(sb.ToString());
         }

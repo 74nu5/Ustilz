@@ -79,3 +79,10 @@ dotnet_style_qualification_for_property = true:error
 dotnet_style_readonly_field = true:suggestion
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
 
+
+# CA1031: Ne pas intercepter les types d'exception générale
+dotnet_diagnostic.CA1031.severity = silent
+dotnet_diagnostic.CA1303.severity = silent
+
+# IDE0065: Directive using mal placée
+csharp_using_directive_placement = inside_namespace:warning

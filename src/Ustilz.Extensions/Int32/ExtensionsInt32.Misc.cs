@@ -14,8 +14,6 @@ namespace Ustilz.Extensions.Int32
     /// <summary>The extensions int 32.</summary>
     public static partial class ExtensionsInt32
     {
-        #region Méthodes publiques
-
         /// <summary>Checks if the Int32 value is a factor of the specified factor number.</summary>
         /// <exception cref="DivideByZeroException">Value is 0.</exception>
         /// <param name="value">The Int32 value to check.</param>
@@ -42,7 +40,7 @@ namespace Ustilz.Extensions.Int32
         [PublicAPI]
         [Pure]
         public static bool IsMultipleOf(this int value, int factor)
-            => (value != 0) && (value % factor == 0);
+            => value != 0 && value % factor == 0;
 
         /// <summary>Checks if the Int32 is odd.</summary>
         /// <param name="value">The Int32 to check.</param>
@@ -144,7 +142,5 @@ namespace Ustilz.Extensions.Int32
         /// <param name="action">The action.</param>
         public static void Times(this int count, Action action)
             => Parallel.For(0, count, (l, state) => action());
-
-        #endregion
     }
 }

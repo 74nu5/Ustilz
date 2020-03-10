@@ -9,8 +9,6 @@
     /// <summary>The extensions int 32.</summary>
     public static partial class ExtensionsInt32
     {
-        #region Méthodes publiques
-
         /// <summary>Returns a TimeSpan representing the specified number of days.</summary>
         /// <param name="days">The days.</param>
         /// <returns>The <see cref="TimeSpan" />.</returns>
@@ -46,7 +44,5 @@
         /// <returns>The <see cref="TimeSpan" />.</returns>
         public static TimeSpan Ticks(this int ticks)
             => TimeSpan.FromTicks(ticks);
-
-        #endregion
     }
 }

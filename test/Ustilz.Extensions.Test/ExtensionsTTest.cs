@@ -6,6 +6,7 @@
     using System.Linq;
 
     using Ustilz.Extensions.String;
+    using Ustilz.Time;
 
     using Xunit;
 
@@ -21,7 +22,7 @@
         public void BetweenTest()
         {
             Assert.True(1.Between(0, 2));
-            Assert.True(DateTime.Now.Between(DateTime.MinValue, DateTime.MaxValue));
+            Assert.True(Clock.Now.Between(DateTime.MinValue, DateTime.MaxValue));
             Assert.False(50.Between(0, 2));
             Assert.False(42.Between(0, 2));
         }
@@ -38,7 +39,9 @@
             void Action2(A s2)
                 => a.S = "Test";
 
+#pragma warning disable IDE0009 // L'accès au membre doit être qualifié.
             var chain = a.Chain(Action1).Chain(Action2);
+#pragma warning restore IDE0009 // L'accès au membre doit être qualifié.
             Assert.Equal(100, a.I);
             Assert.Equal("Test", a.S);
             Assert.Equal(100, chain.I);
@@ -95,18 +98,39 @@
         {
             string s = null;
             Assert.True(s.IsNull());
-            Assert.True(s.IsNullOrEmpty());
+
+            s = string.Empty;
+            Assert.False(s.IsNull());
+
+            s = "Test";
+            Assert.False(s.IsNull());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNotNullTest()
+        {
+            string s = null;
             Assert.False(s.IsNotNull());
 
             s = string.Empty;
             Assert.True(s.IsNotNull());
-            Assert.True(s.IsNullOrEmpty());
-            Assert.False(s.IsNull());
 
             s = "Test";
             Assert.True(s.IsNotNull());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNullOrEmptyTest()
+        {
+            Assert.True(string.IsNullOrEmpty(null));
+
+            var s = string.Empty;
+            Assert.True(s.IsNullOrEmpty());
+
+            s = "Test";
             Assert.False(s.IsNullOrEmpty());
-            Assert.False(s.IsNull());
         }
 
         [Fact]

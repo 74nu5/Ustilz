@@ -12,8 +12,6 @@ namespace Ustilz.Utils
     [PublicAPI]
     public abstract class AutoOperators : IComparable
     {
-        #region Opérateurs
-
         /// <summary>Operator equals.</summary>
         /// <param name="obj1">First object to compare.</param>
         /// <param name="obj2">Second object to compare.</param>
@@ -56,10 +54,6 @@ namespace Ustilz.Utils
         public static bool operator <=(AutoOperators obj1, AutoOperators obj2)
             => Compare(obj1, obj2) <= 0;
 
-        #endregion
-
-        #region Méthodes publiques
-
         /// <summary>Comparaison method by référence.</summary>
         /// <param name="obj1">First object to compare.</param>
         /// <param name="obj2">Second object to compare.</param>
@@ -76,7 +70,5 @@ namespace Ustilz.Utils
 
         /// <inheritdoc />
         public abstract override int GetHashCode();
-
-        #endregion
     }
 }

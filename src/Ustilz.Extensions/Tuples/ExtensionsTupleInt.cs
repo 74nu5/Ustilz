@@ -8,8 +8,6 @@ namespace Ustilz.Extensions.Tuples
 
     public static class ExtensionsTupleInt
     {
-        #region Méthodes publiques
-
         public static TimeSpan Hours(this double time)
         {
             var h = Math.Round(time);
@@ -29,7 +27,5 @@ namespace Ustilz.Extensions.Tuples
 
         public static TimeSpan Minutes(this (int minute, int second) time)
             => TimeSpan.FromSeconds((60 * time.minute) + time.second);
-
-        #endregion
     }
 }

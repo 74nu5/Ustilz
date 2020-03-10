@@ -60,15 +60,13 @@ namespace Ustilz.Extensions.String
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from left.</returns>
-        [CanBeNull]
-        public static string Left([CanBeNull] this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(0, length) : value;
+        public static string? Left(this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(0, length) : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
-        [CanBeNull]
-        public static string Right([CanBeNull] this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(value.Length - length) : value;
+        public static string? Right(this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(value.Length - length) : value;
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>
@@ -120,7 +118,7 @@ namespace Ustilz.Extensions.String
         /// <typeparam name="T">Type à inspecter.</typeparam>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="ArgumentException">Lève une exception lorsque la propriété et/ou la valeur n'est pas trouvé.</exception>
-        private static string GetValue<T>([NotNull] Match match, T data)
+        private static string? GetValue<T>([NotNull] Match match, T data)
         {
             var paraName = match.Groups[1].Value;
             try

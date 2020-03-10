@@ -3,14 +3,13 @@ namespace Ustilz.Extensions
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text;
-
-    using JetBrains.Annotations;
 
     #endregion
 
     /// <summary>The extensions exception.</summary>
-    [PublicAPI]
+    [JetBrains.Annotations.PublicAPI]
     public static class ExtensionsException
     {
         #region Méthodes publiques
@@ -20,6 +19,11 @@ namespace Ustilz.Extensions
         /// <returns>The <see cref="string" />.</returns>
         public static string GetMessagesFromEntireExceptionChain([NotNull] this Exception e)
         {
+            if (e is null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             // get the full error message list from the inner exceptions
             var message = new StringBuilder(e.Message);
             var count = 0;

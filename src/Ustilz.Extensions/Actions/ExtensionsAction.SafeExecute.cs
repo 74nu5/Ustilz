@@ -13,8 +13,6 @@
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>Executes the given action inside of a try catch block and catches all exceptions.</summary>
         /// <exception cref="ArgumentNullException">Action can not be null.</exception>
         /// <param name="action">The action to execute.</param>
@@ -118,7 +116,5 @@
                 return false;
             }
         }
-
-        #endregion
     }
 }

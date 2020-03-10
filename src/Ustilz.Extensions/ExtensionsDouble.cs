@@ -21,6 +21,17 @@ namespace Ustilz.Extensions
 
         #region Méthodes publiques
 
+        /// <summary>Méthode d'obtention d'un <see cref="TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</summary>
+        /// <param name="time">Valeur décimal à convertir.</param>
+        /// <returns>Retourne un <see cref="TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</returns>
+        public static TimeSpan Hours(this double time)
+        {
+            var h = Math.Round(time);
+            var min = (time - h) * 60;
+
+            return TimeSpan.FromMinutes((60 * h) + min);
+        }
+
         /// <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
         /// <param name="valeur1">The valeur1.</param>
         /// <param name="valeur2">The valeur2.</param>
