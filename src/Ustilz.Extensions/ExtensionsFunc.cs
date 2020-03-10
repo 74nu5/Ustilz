@@ -38,7 +38,7 @@ namespace Ustilz.Extensions
             var result = new ExecutionResult<T>();
             try
             {
-                action(parameter);
+                action!.Invoke(parameter);
                 result.Result = parameter;
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace Ustilz.Extensions
             var result = new ExecutionResult<TResult>();
             try
             {
-                result.Result = func(parameter);
+                result.Result = func!.Invoke(parameter);
             }
             catch (Exception ex)
             {
@@ -87,6 +87,7 @@ namespace Ustilz.Extensions
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
         {
+            // ReSharper disable once RedundantAssignment
             var t = new Dictionary<T, TResult>();
             return n =>
             {
@@ -108,6 +109,7 @@ namespace Ustilz.Extensions
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
         {
+            // ReSharper disable once RedundantAssignment
             var t = new Dictionary<string, TResult>();
             return () =>
             {

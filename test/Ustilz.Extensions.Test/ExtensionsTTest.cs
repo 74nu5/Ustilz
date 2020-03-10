@@ -5,7 +5,7 @@
     using System;
     using System.Linq;
 
-    using Ustilz.Extensions.String;
+    using Ustilz.Extensions.Strings;
     using Ustilz.Time;
 
     using Xunit;

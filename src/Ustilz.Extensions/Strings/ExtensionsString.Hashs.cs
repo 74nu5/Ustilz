@@ -1,4 +1,4 @@
-namespace Ustilz.Extensions.String
+namespace Ustilz.Extensions.Strings
 {
     #region Usings
 
@@ -210,6 +210,8 @@ namespace Ustilz.Extensions.String
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
         /// <returns>The <see cref="byte" />.</returns>
+        [SuppressMessage("Security", "CA5351:Ne pas utiliser d'algorithmes de chiffrement cassés", Justification = "Ca peut toujours servir.")]
+        [SuppressMessage("Security", "CA5350:Ne pas utiliser d'algorithmes de chiffrement faibles", Justification = "Ca peut toujours servir.")]
         private static byte[] GetHash(string input, HashType hash)
         {
             var inputBytes = Encoding.ASCII.GetBytes(input);

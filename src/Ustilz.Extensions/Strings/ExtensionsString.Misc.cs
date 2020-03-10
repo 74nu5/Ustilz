@@ -1,4 +1,4 @@
-namespace Ustilz.Extensions.String
+namespace Ustilz.Extensions.Strings
 {
     #region Usings
 
@@ -21,7 +21,8 @@ namespace Ustilz.Extensions.String
         /// <typeparam name="T">Type à formatter.</typeparam>
         /// <returns>The <see cref="string" />.</returns>
         public static string Fs<T>(this string template, T data)
-            => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{").Replace("}}", "}");
+            => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{", StringComparison.CurrentCulture)
+                    .Replace("}}", "}", StringComparison.CurrentCulture);
 
         /// <summary>Convert hex String to bytes representation.</summary>
         /// <param name="hexString">Hex string to convert into bytes.</param>
@@ -29,6 +30,11 @@ namespace Ustilz.Extensions.String
         [NotNull]
         public static byte[] HexToBytes([NotNull] this string hexString)
         {
+            if (hexString is null)
+            {
+                throw new ArgumentNullException(nameof(hexString));
+            }
+
             if (hexString.Length % 2 != 0)
             {
                 throw new ArgumentException($"HexString cannot be in odd number: {hexString}");

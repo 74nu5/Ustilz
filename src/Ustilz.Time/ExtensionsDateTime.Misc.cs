@@ -20,7 +20,7 @@ namespace Ustilz.Time
         /// <exception cref="OverflowException">value equals <see cref="int.MinValue"></see>.</exception>
         [Pure]
         [PublicAPI]
-        public static (int yearAge, int monthAge, int dayAge) AgeFrom(this DateTime startDay, DateTime? day = null)
+        public static (int YearAge, int MonthAge, int DayAge) AgeFrom(this DateTime startDay, DateTime? day = null)
         {
             var toDay = day ?? Clock.Now;
             var toDayToStartDayYear = toDay.Year - startDay.Year;

@@ -7,7 +7,7 @@ namespace Ustilz.Extensions.Enumerables
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
-    using Ustilz.Extensions.String;
+    using Ustilz.Extensions.Strings;
 
     #endregion
 

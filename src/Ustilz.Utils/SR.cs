@@ -9,11 +9,10 @@ namespace Ustilz.Utils
     #endregion
 
     /// <summary>Classe d'accès aux ressources.</summary>
-
     // ReSharper disable once InconsistentNaming
     internal static class SR
     {
-        private static ResourceManager resourceManager;
+        private static ResourceManager? resourceManager;
 
         /// <summary>Obtient le message "Enumeration yielded no results".</summary>
         internal static string? EmptyEnumerable => GetResourceString("EmptyEnumerable", @"Enumeration yielded no results");

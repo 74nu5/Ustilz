@@ -33,15 +33,15 @@ namespace Ustilz.Razor.Components
         public string Class { get; set; }
 
         /// <summary>
-        ///     Obtient ou définit la classe de mapping des classes CSS.
-        /// </summary>
-        protected ClassMapper ClassMapper { get; set; } = new ClassMapper();
-
-        /// <summary>
         ///     Obtient ou définit un style en ligne pour un élément du DOM.
         /// </summary>
         [Parameter]
         public string Style { get; set; }
+
+        /// <summary>
+        ///     Obtient ou définit la classe de mapping des classes CSS.
+        /// </summary>
+        protected ClassMapper ClassMapper { get; set; } = new ClassMapper();
 
         /// <summary>
         ///     Obtient ou définit la classe de mapping des styles CSS.

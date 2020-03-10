@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
     #region Usings
 
@@ -24,7 +24,7 @@
 
             try
             {
-                action();
+                action!.Invoke();
 
                 return true;
             }
@@ -103,12 +103,12 @@
 
             try
             {
-                action();
+                action!.Invoke();
                 return true;
             }
             catch (Exception ex)
             {
-                if (exceptionsToCatch.NotAny(x => x == ex.GetType()))
+                if (exceptionsToCatch!.NotAny(x => x == ex.GetType()))
                 {
                     throw;
                 }

@@ -153,7 +153,7 @@ namespace Ustilz.Extensions.Enumerables
         {
             if (page < 1 || pageSize < 1)
             {
-                throw new ArgumentException(Strings.MustBeOneOrGreater, page < 1 ? "page" : "pageSize");
+                throw new ArgumentException(Messages.MustBeOneOrGreater, page < 1 ? "page" : "pageSize");
             }
 
             return source.Skip(--page * pageSize).Take(pageSize);
@@ -182,7 +182,7 @@ namespace Ustilz.Extensions.Enumerables
         /// <param name="enumerable">Liste à spliter.</param>
         /// <param name="split">Nombre de liste.</param>
         /// <returns>Retourne une liste splité.</returns>
-        private static IEnumerable<IEnumerable<T>> SplitList<T>(IEnumerable<T> enumerable, int split)
+        public static IEnumerable<IEnumerable<T>> SplitList<T>(IEnumerable<T> enumerable, int split)
         {
             var list = enumerable.ToList();
             var count = list.Count;

@@ -100,12 +100,10 @@ namespace Ustilz.Extensions.Actions
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
         /// <typeparam name="T3">The type of the third parameter.</typeparam>
-        /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
-        /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
@@ -136,10 +134,12 @@ namespace Ustilz.Extensions.Actions
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
         /// <typeparam name="T3">The type of the third parameter.</typeparam>
+        /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+        /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]

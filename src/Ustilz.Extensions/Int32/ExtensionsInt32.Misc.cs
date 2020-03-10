@@ -131,7 +131,7 @@ namespace Ustilz.Extensions.Int32
         {
             if (startValue > endValue)
             {
-                throw new ArgumentException(Strings.RangeTo_ValueException, nameof(startValue));
+                throw new ArgumentException(Messages.RangeTo_ValueException, nameof(startValue));
             }
 
             return Enumerable.Range(startValue, endValue - startValue);

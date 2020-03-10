@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
     #region Usings
 
@@ -10,6 +10,7 @@
     #endregion
 
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
+    [PublicAPI]
     public static partial class ExtensionsAction
     {
         /// <summary>Executes the given action inside of a try catch block and catches all exception expect the specified type.</summary>
@@ -74,7 +75,7 @@
 
             try
             {
-                action();
+                action!.Invoke();
                 return true;
             }
             catch (Exception ex)

@@ -2,7 +2,7 @@
 {
     #region Usings
 
-    using Ustilz.Extensions.String;
+    using Ustilz.Extensions.Strings;
     using Ustilz.Test.Models;
 
     using Xunit;

@@ -29,7 +29,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.All(x => x()))
             {
-                trueAction();
+                trueAction!.Invoke();
             }
             else
             {
@@ -56,7 +56,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.All(x => x()))
             {
-                trueAction(parameter);
+                trueAction!.Invoke(parameter);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.All(x => x()))
             {
-                trueAction(parameter1, parameter2);
+                trueAction!.Invoke(parameter1, parameter2);
             }
             else
             {
@@ -127,7 +127,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.All(x => x()))
             {
-                trueAction(parameter1, parameter2, parameter3);
+                trueAction!.Invoke(parameter1, parameter2, parameter3);
             }
             else
             {
@@ -167,7 +167,7 @@ namespace Ustilz.Extensions.Actions
 
             if (values.All(x => x()))
             {
-                trueAction(parameter1, parameter2, parameter3, parameter4);
+                trueAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
             else
             {
@@ -191,7 +191,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            trueAction();
+            trueAction!.Invoke();
         }
 
         /// <summary>Executes the specified action if the given Boolean values are true.</summary>
@@ -212,7 +212,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            trueAction(parameter);
+            trueAction!.Invoke(parameter);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are true.</summary>
@@ -239,7 +239,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            trueAction(parameter1, parameter2);
+            trueAction!.Invoke(parameter1, parameter2);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are true.</summary>
@@ -269,7 +269,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            trueAction(parameter1, parameter2, parameter3);
+            trueAction!.Invoke(parameter1, parameter2, parameter3);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are true.</summary>
@@ -302,7 +302,7 @@ namespace Ustilz.Extensions.Actions
                 return;
             }
 
-            trueAction(parameter1, parameter2, parameter3, parameter4);
+            trueAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (values.NotAny(x => x()))
+            if (values!.NotAny(x => x()))
             {
-                falseAction();
+                falseAction!.Invoke();
             }
             else
             {
@@ -55,9 +55,9 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (values.NotAny(x => x()))
+            if (values!.NotAny(x => x()))
             {
-                falseAction(parameter);
+                falseAction!.Invoke(parameter);
             }
             else
             {
@@ -89,9 +89,9 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (values.NotAny(x => x()))
+            if (values!.NotAny(x => x()))
             {
-                falseAction(parameter1, parameter2);
+                falseAction!.Invoke(parameter1, parameter2);
             }
             else
             {
@@ -126,9 +126,9 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (values.NotAny(x => x()))
+            if (values!.NotAny(x => x()))
             {
-                falseAction(parameter1, parameter2, parameter3);
+                falseAction!.Invoke(parameter1, parameter2, parameter3);
             }
             else
             {
@@ -166,9 +166,9 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (values.NotAny(x => x()))
+            if (values!.NotAny(x => x()))
             {
-                falseAction(parameter1, parameter2, parameter3, parameter4);
+                falseAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
             else
             {
@@ -187,12 +187,12 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (!values.NotAny(x => x()))
+            if (!values!.NotAny(x => x()))
             {
                 return;
             }
 
-            falseAction();
+            falseAction!.Invoke();
         }
 
         /// <summary>Executes the specified action if the given Boolean values are false.</summary>
@@ -208,12 +208,12 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (!values.NotAny(x => x()))
+            if (!values!.NotAny(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter);
+            falseAction!.Invoke(parameter);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are false.</summary>
@@ -235,12 +235,12 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (!values.NotAny(x => x()))
+            if (!values!.NotAny(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2);
+            falseAction!.Invoke(parameter1, parameter2);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are false.</summary>
@@ -265,12 +265,12 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (!values.NotAny(x => x()))
+            if (!values!.NotAny(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3);
+            falseAction!.Invoke(parameter1, parameter2, parameter3);
         }
 
         /// <summary>Executes the specified action if the given Boolean values are false.</summary>
@@ -298,12 +298,12 @@ namespace Ustilz.Extensions.Actions
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
 
-            if (!values.NotAny(x => x()))
+            if (!values!.NotAny(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3, parameter4);
+            falseAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
     }
 }
