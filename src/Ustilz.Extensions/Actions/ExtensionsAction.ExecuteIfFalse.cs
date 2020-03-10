@@ -13,8 +13,6 @@ namespace Ustilz.Extensions.Actions
     /// <summary>The extensions action.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>
         ///     Executes the specified action if the given Boolean values are false,
         ///     otherwise it executes the specified true action, if one is specified.
@@ -52,8 +50,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse<T>(
-            [NotNull] this Action<T> falseAction, [CanBeNull] T parameter, Action<T>? trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse<T>([NotNull] this Action<T> falseAction, [CanBeNull] T parameter, Action<T>? trueAction = null, [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
@@ -230,7 +227,10 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2>(
-            [NotNull] this Action<T1, T2> falseAction, [CanBeNull] T1 parameter1, [CanBeNull] T2 parameter2, [NotNull] params Func<bool>[] values)
+            [NotNull] this Action<T1, T2> falseAction,
+            [CanBeNull] T1 parameter1,
+            [CanBeNull] T2 parameter2,
+            [NotNull] params Func<bool>[] values)
         {
             falseAction.ThrowIfNull(nameof(falseAction));
             values.ThrowIfNull(nameof(values));
@@ -305,7 +305,5 @@ namespace Ustilz.Extensions.Actions
 
             falseAction(parameter1, parameter2, parameter3, parameter4);
         }
-
-        #endregion
     }
 }

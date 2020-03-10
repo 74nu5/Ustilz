@@ -12,12 +12,10 @@ namespace Ustilz.Extensions.Models
         where T : new()
     {
         /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="ExecutionResult{T}"/>.
+        ///     Initialise une nouvelle instance de la classe <see cref="ExecutionResult{T}" />.
         /// </summary>
         public ExecutionResult()
             => this.Result = new T();
-
-        #region Propriétés et indexeurs
 
         /// <summary>Obtient ou définit l'exception.</summary>
         /// <value>The exception.</value>
@@ -26,7 +24,5 @@ namespace Ustilz.Extensions.Models
         /// <summary>Obtient ou définit le résultat.</summary>
         /// <value>The result.</value>
         public T Result { get; set; }
-
-        #endregion
     }
 }

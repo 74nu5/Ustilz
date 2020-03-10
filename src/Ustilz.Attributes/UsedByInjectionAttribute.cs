@@ -13,8 +13,6 @@ namespace Ustilz.Attributes
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.GenericParameter)]
     public sealed class UsedByInjectionAttribute : Attribute
     {
-        #region Constructeurs et destructeurs
-
         /// <summary>Initialise une nouvelle instance de la classe <see cref="UsedByInjectionAttribute" />. .</summary>
         public UsedByInjectionAttribute()
             : this(ImplicitUseKindFlags.Default)
@@ -37,10 +35,6 @@ namespace Ustilz.Attributes
             this.TargetFlags = targetFlags;
         }
 
-        #endregion
-
-        #region Propriétés et indexeurs
-
         /// <summary>Obtient the target flags.</summary>
         /// <value>The target flags.</value>
         [UsedImplicitly]
@@ -50,7 +44,5 @@ namespace Ustilz.Attributes
         /// <value>The use kind flags.</value>
         [UsedImplicitly]
         public ImplicitUseKindFlags UseKindFlags { get; private set; }
-
-        #endregion
     }
 }

@@ -15,8 +15,6 @@ namespace Ustilz.Extensions.Configuration
     [PublicAPI]
     public static class ExtensionsConfigurationBuilder
     {
-        #region Méthodes publiques
-
         /// <summary>The use app settings json.</summary>
         /// <param name="builder">The builder.</param>
         /// <exception cref="ArgumentNullException">Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.</exception>
@@ -35,7 +33,5 @@ namespace Ustilz.Extensions.Configuration
 
             return builder;
         }
-
-        #endregion
     }
 }

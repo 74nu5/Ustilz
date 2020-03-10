@@ -22,8 +22,6 @@ namespace Ustilz.Http
     [PublicAPI]
     public static class HttpExtensions
     {
-        #region Méthodes publiques
-
         /// <summary>Retrieves the raw body as a byte array from the Request.Body stream.</summary>
         /// <param name="request">The request.</param>
         /// <returns>The <see cref="Task" />.</returns>
@@ -167,7 +165,5 @@ namespace Ustilz.Http
                 response.Headers.Add(key, value.ToArray());
             }
         }
-
-        #endregion
     }
 }

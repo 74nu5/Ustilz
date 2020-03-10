@@ -12,15 +12,9 @@ namespace Ustilz.Logging.Action
     /// <summary>Classe du logger d'action.</summary>
     public sealed class LoggerAction : ILogger
     {
-        #region Champs
-
         private readonly LogDelegate action;
 
         private readonly string categoryName;
-
-        #endregion
-
-        #region Constructeurs et destructeurs
 
         /// <summary>Initialise une nouvelle instance de la classe <see cref="LoggerAction" />.</summary>
         /// <param name="categoryName">Catégorie du log.</param>
@@ -31,10 +25,6 @@ namespace Ustilz.Logging.Action
             this.action = action;
         }
 
-        #endregion
-
-        #region Delegates
-
         /// <summary>Délégué représentant l'action à effectuer lors du log.</summary>
         /// <param name="categoryName">Nom de la catégorie du log.</param>
         /// <param name="logLevel">Niveau de log.</param>
@@ -42,10 +32,6 @@ namespace Ustilz.Logging.Action
         /// <param name="exception">Exception levée, null s'il n'y en a pas.</param>
         /// <param name="message">Message à loguer.</param>
         public delegate void LogDelegate(string categoryName, LogLevel logLevel, EventId eventId, Exception exception, string message);
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <inheritdoc />
         public IDisposable? BeginScope<TState>(TState state) => null;
@@ -66,7 +52,5 @@ namespace Ustilz.Logging.Action
 
             this.action(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
         }
-
-        #endregion
     }
 }

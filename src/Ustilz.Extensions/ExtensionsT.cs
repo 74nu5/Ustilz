@@ -19,8 +19,6 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsT
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode de "transformation" d'objet en boolean.</summary>
         /// <typeparam name="T">Type à "transformer".</typeparam>
         /// <param name="transformObject">Objet à "transformer".</param>
@@ -47,7 +45,7 @@ namespace Ustilz.Extensions
             T from,
             T to)
             where T : IComparable<T>
-            => (value.CompareTo(from) >= 0) && (value.CompareTo(to) <= 0);
+            => value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
 
         /// <summary>Executes the action specified, which the given object as parameter.</summary>
         /// <remarks>Use this method to chain method calls on the same object.</remarks>
@@ -255,7 +253,7 @@ namespace Ustilz.Extensions
         {
             try
             {
-                if ((value == null) || value.Equals(string.Empty))
+                if (value == null || value.Equals(string.Empty))
                 {
                     return (T)ifError;
                 }
@@ -270,7 +268,5 @@ namespace Ustilz.Extensions
                 return (T)ifError;
             }
         }
-
-        #endregion
     }
 }

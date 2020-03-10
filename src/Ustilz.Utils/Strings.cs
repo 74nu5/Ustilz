@@ -15,14 +15,8 @@ namespace Ustilz.Utils
     [PublicAPI]
     public static class Strings
     {
-        #region Champs et constantes statiques
-
         /// <summary>The resource manager.</summary>
         private static readonly ResourceManager ResourceManager = new ResourceManager("Ustilz.Utils.Properties.Strings", typeof(Strings).GetTypeInfo().Assembly);
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>The string argument '{argumentName}' cannot be empty.</summary>
         /// <param name="argumentName">The argument Name.</param>
@@ -66,10 +60,6 @@ namespace Ustilz.Utils
             GetString("InvalidEntityType", "type", "argumentName"),
             new[] { type, argumentName });
 
-        #endregion
-
-        #region Méthodes privées
-
         /// <summary>The get string.</summary>
         /// <param name="name">The name.</param>
         /// <param name="formatterNames">The formatter names.</param>
@@ -94,7 +84,5 @@ namespace Ustilz.Utils
 
             return str;
         }
-
-        #endregion
     }
 }

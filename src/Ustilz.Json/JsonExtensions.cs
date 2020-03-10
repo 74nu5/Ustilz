@@ -13,8 +13,6 @@ namespace Ustilz.Json
     [PublicAPI]
     public static class JsonExtensions
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode de dé-sérialisation à partir d'une chaine de caractères.</summary>
         /// <param name="json">La chaine de caractères représentant le json à dé-sérialiser.</param>
         /// <typeparam name="T">Type à dé-sérialiser.</typeparam>
@@ -41,7 +39,7 @@ namespace Ustilz.Json
                 throw new ArgumentNullException(nameof(objectToSerialize));
             }
 
-            return JsonSerializer.Serialize<T>(objectToSerialize, new JsonSerializerOptions { WriteIndented = false });
+            return JsonSerializer.Serialize(objectToSerialize, new JsonSerializerOptions { WriteIndented = false });
         }
 
         /// <summary>Méthode de sérialisation d'un objet en Json formatté.</summary>
@@ -56,9 +54,7 @@ namespace Ustilz.Json
                 throw new ArgumentNullException(nameof(objectToSerialize));
             }
 
-            return JsonSerializer.Serialize<T>(objectToSerialize, new JsonSerializerOptions { WriteIndented = true });
+            return JsonSerializer.Serialize(objectToSerialize, new JsonSerializerOptions { WriteIndented = true });
         }
-
-        #endregion
     }
 }

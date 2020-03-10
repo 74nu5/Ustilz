@@ -3,22 +3,21 @@ namespace Ustilz.Extensions
     #region Usings
 
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Text;
+
+    using JetBrains.Annotations;
 
     using Ustilz.Utils;
 
     #endregion
 
     /// <summary>The extensions type.</summary>
-    [JetBrains.Annotations.PublicAPI]
+    [PublicAPI]
     public static class ExtensionsType
     {
-        #region Méthodes publiques
-
         /// <summary>The ctor.</summary>
         /// <param name="type">The type.</param>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
@@ -31,7 +30,9 @@ namespace Ustilz.Extensions
         ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
         ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
         /// </exception>
-        public static Func<TResult> Ctor<TResult>([NotNull] this Type type)
+        public static Func<TResult> Ctor<TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Type type)
         {
             if (type == null)
             {
@@ -55,7 +56,9 @@ namespace Ustilz.Extensions
         ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
         ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
         /// </exception>
-        public static Func<TArg1, TResult> Ctor<TArg1, TResult>([NotNull] this Type type)
+        public static Func<TArg1, TResult> Ctor<TArg1, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Type type)
         {
             if (type == null)
             {
@@ -65,8 +68,7 @@ namespace Ustilz.Extensions
             var ci = GetConstructor(type, typeof(TArg1));
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
 
-            return Expression.Lambda<Func<TArg1, TResult>>(
-                Expression.New(ci, param1), param1).Compile();
+            return Expression.Lambda<Func<TArg1, TResult>>(Expression.New(ci, param1), param1).Compile();
         }
 
         /// <summary>The ctor.</summary>
@@ -83,7 +85,9 @@ namespace Ustilz.Extensions
         ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
         ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
         /// </exception>
-        public static Func<TArg1, TArg2, TResult> Ctor<TArg1, TArg2, TResult>([NotNull] this Type type)
+        public static Func<TArg1, TArg2, TResult> Ctor<TArg1, TArg2, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Type type)
         {
             if (type == null)
             {
@@ -94,8 +98,7 @@ namespace Ustilz.Extensions
             var param1 = Expression.Parameter(typeof(TArg1), "arg1");
             var param2 = Expression.Parameter(typeof(TArg2), "arg2");
 
-            return Expression.Lambda<Func<TArg1, TArg2, TResult>>(
-                Expression.New(ci, param1, param2), param1, param2).Compile();
+            return Expression.Lambda<Func<TArg1, TArg2, TResult>>(Expression.New(ci, param1, param2), param1, param2).Compile();
         }
 
         /// <summary>The ctor.</summary>
@@ -113,7 +116,9 @@ namespace Ustilz.Extensions
         ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
         ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
         /// </exception>
-        public static Func<TArg1, TArg2, TArg3, TResult> Ctor<TArg1, TArg2, TArg3, TResult>([NotNull] this Type type)
+        public static Func<TArg1, TArg2, TArg3, TResult> Ctor<TArg1, TArg2, TArg3, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Type type)
         {
             if (type == null)
             {
@@ -145,7 +150,9 @@ namespace Ustilz.Extensions
         ///     not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="System.Linq.Expressions.Expression.Type"></see> property of an element of
         ///     parameters is not assignable from the type of the corresponding parameter type of TDelegate.
         /// </exception>
-        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Ctor<TArg1, TArg2, TArg3, TArg4, TResult>([NotNull] this Type type)
+        public static Func<TArg1, TArg2, TArg3, TArg4, TResult> Ctor<TArg1, TArg2, TArg3, TArg4, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Type type)
         {
             if (type == null)
             {
@@ -161,10 +168,6 @@ namespace Ustilz.Extensions
 
             return Expression.Lambda<Func<TArg1, TArg2, TArg3, TArg4, TResult>>(Expression.New(ci, param1, param2, param3, param4), param1, param2, param3, param4).Compile();
         }
-
-        #endregion
-
-        #region Méthodes privées
 
         /// <summary>The get constructor.</summary>
         /// <param name="type">The type.</param>
@@ -187,7 +190,5 @@ namespace Ustilz.Extensions
             sb.Append(')');
             throw new InvalidOperationException(sb.ToString());
         }
-
-        #endregion
     }
 }

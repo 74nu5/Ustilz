@@ -12,8 +12,6 @@ namespace Ustilz.Extensions.Actions
     /// <summary>The extensions action.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>
         ///     Executes the specified action if the given Boolean values are true,
         ///     otherwise it executes the specified false action, if one is specified.
@@ -306,7 +304,5 @@ namespace Ustilz.Extensions.Actions
 
             trueAction(parameter1, parameter2, parameter3, parameter4);
         }
-
-        #endregion
     }
 }

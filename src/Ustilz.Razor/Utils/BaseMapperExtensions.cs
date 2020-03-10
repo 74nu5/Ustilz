@@ -14,8 +14,6 @@ namespace Ustilz.Razor.Utils
     [PublicAPI]
     public static class BaseMapperExtensions
     {
-        #region Méthodes publiques
-
         /// <summary>
         ///     Method which add a class by it name.
         /// </summary>
@@ -115,7 +113,5 @@ namespace Ustilz.Razor.Utils
             m.Items.Add(() => func() ? name : null);
             return m;
         }
-
-        #endregion
     }
 }

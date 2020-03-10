@@ -16,8 +16,6 @@ namespace Ustilz.Extensions
     [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
     public static class ExtensionsTimeSpan
     {
-        #region Méthodes publiques
-
         /// <summary>Renvoie un DateTime dont la valeur est définie sur Now moins la valeur TimeSpan fournie.</summary>
         /// <param name="value">Durée fournie.</param>
         /// <returns>The <see cref="DateTime" />.</returns>
@@ -51,7 +49,5 @@ namespace Ustilz.Extensions
         /// </exception>
         public static DateTime FromNowUtc(this TimeSpan value)
             => DateTime.UtcNow.Add(value);
-
-        #endregion
     }
 }

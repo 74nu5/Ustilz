@@ -13,8 +13,6 @@ namespace Ustilz.Time.Test
     /// <summary>The extensions date time test.</summary>
     public sealed class ExtensionsDateTimeTest : IDisposable
     {
-        #region Constructeurs et destructeurs
-
         /// <summary>Initializes a new instance of the <see cref="ExtensionsDateTimeTest" /> class.</summary>
         /// <param name="output">The output.</param>
         public ExtensionsDateTimeTest(ITestOutputHelper output)
@@ -26,10 +24,6 @@ namespace Ustilz.Time.Test
             // Pour éviter le mois de février.
             Clock.SetFunctionNow(() => now);
         }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <inheritdoc />
         /// <summary>The dispose.</summary>
@@ -143,7 +137,5 @@ namespace Ustilz.Time.Test
             var readable = subtract.ReadableTimeStamp();
             Assert.Equal("yesterday", readable);
         }
-
-        #endregion
     }
 }

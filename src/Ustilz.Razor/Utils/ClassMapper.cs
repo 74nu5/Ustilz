@@ -12,8 +12,6 @@ namespace Ustilz.Razor.Utils
     [PublicAPI]
     public class ClassMapper : BaseMapper
     {
-        #region Méthodes publiques
-
         /// <summary>Method which joins all css classes.</summary>
         /// <returns>Returns all css classes join.</returns>
         public string AsString()
@@ -23,7 +21,5 @@ namespace Ustilz.Razor.Utils
         /// <returns>Returns all css classes.</returns>
         public override string ToString()
             => this.AsString();
-
-        #endregion
     }
 }

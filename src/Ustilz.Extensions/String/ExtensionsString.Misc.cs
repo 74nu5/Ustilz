@@ -15,8 +15,6 @@ namespace Ustilz.Extensions.String
     [PublicAPI]
     public static partial class ExtensionsString
     {
-        #region Méthodes publiques
-
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
@@ -60,13 +58,13 @@ namespace Ustilz.Extensions.String
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from left.</returns>
-        public static string? Left(this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(0, length) : value;
+        public static string? Left(this string value, int length) => value != null && value.Length > length ? value.Substring(0, length) : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
-        public static string? Right(this string value, int length) => (value != null) && (value.Length > length) ? value.Substring(value.Length - length) : value;
+        public static string? Right(this string value, int length) => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>
@@ -108,10 +106,6 @@ namespace Ustilz.Extensions.String
             return ss;
         }
 
-        #endregion
-
-        #region Méthodes privées
-
         /// <summary>The get value.</summary>
         /// <param name="match">The match.</param>
         /// <param name="data">The data.</param>
@@ -132,7 +126,5 @@ namespace Ustilz.Extensions.String
                 throw new ArgumentException(errMsg);
             }
         }
-
-        #endregion
     }
 }

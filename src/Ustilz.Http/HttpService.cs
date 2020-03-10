@@ -21,14 +21,8 @@ namespace Ustilz.Http
     [PublicAPI]
     public sealed class HttpService : IDisposable
     {
-        #region Champs
-
         /// <summary>The handler.</summary>
         private readonly HttpClientHandler handler;
-
-        #endregion
-
-        #region Constructeurs et destructeurs
 
         /// <summary>Initialise une nouvelle instance de la classe <see cref="HttpService" />.Initializes a new instance of the <see cref="HttpService" /> class.</summary>
         public HttpService()
@@ -36,10 +30,6 @@ namespace Ustilz.Http
             this.handler = new HttpClientHandler();
             this.handler.ServerCertificateCustomValidationCallback += (message, certificate2, arg3, arg4) => true;
         }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
         public void Dispose()
@@ -214,8 +204,7 @@ namespace Ustilz.Http
                                                                                                                                                         IEnumerable<string>>(),
                                                                                                                                                     content,
                                                                                                                                                     authentification)
-                                                                                                                                                .ConfigureAwait(
-                                                                                                                                                    false);
+                                                                                                                                                .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -234,8 +223,7 @@ namespace Ustilz.Http
                                                                                                                                                     headers,
                                                                                                                                                     content,
                                                                                                                                                     authentification)
-                                                                                                                                                .ConfigureAwait(
-                                                                                                                                                    false);
+                                                                                                                                                .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -258,10 +246,6 @@ namespace Ustilz.Http
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
-
-        #endregion
-
-        #region Méthodes privées
 
         /// <summary>The get response async internal.</summary>
         /// <param name="url">The url.</param>
@@ -468,7 +452,5 @@ namespace Ustilz.Http
                 throw ex.ProcessWebException();
             }
         }
-
-        #endregion
     }
 }

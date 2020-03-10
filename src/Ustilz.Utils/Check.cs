@@ -17,8 +17,6 @@ namespace Ustilz.Utils
     [PublicAPI]
     public static class Check
     {
-        #region Méthodes publiques
-
         /// <summary>The has no nulls.</summary>
         /// <param name="collection">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
@@ -191,7 +189,5 @@ namespace Ustilz.Utils
 
             throw new ArgumentException(Strings.InvalidEntityType(value, parameterName));
         }
-
-        #endregion
     }
 }

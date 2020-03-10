@@ -17,8 +17,6 @@ namespace Ustilz.Xml
     [PublicAPI]
     public static class XmlExtensions
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode de dé-sérialisation à partir d'un XDocument.</summary>
         /// <param name="xDocument">Le XDocument à dé-sérialiser.</param>
         /// <typeparam name="T">Le type vers lequel dé-sérialiser.</typeparam>
@@ -104,7 +102,5 @@ namespace Ustilz.Xml
             xmlSerializer.Serialize(xmlWriter, objectToDeserialize);
             return doc.ToString();
         }
-
-        #endregion
     }
 }

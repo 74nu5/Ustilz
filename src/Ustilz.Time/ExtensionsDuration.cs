@@ -14,8 +14,6 @@ namespace Ustilz.Time
     [PublicAPI]
     public static class ExtensionsDuration
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode calcul de projection d'une date.</summary>
         /// <param name="duration">Durée de la projection.</param>
         /// <param name="dateTime">Date à partir de laquelle la projection est faite.</param>
@@ -40,7 +38,5 @@ namespace Ustilz.Time
                 Decade => dateTime.AddYears(10),
                 var _ => throw new ArgumentOutOfRangeException(nameof(duration))
             };
-
-        #endregion
     }
 }

@@ -12,8 +12,6 @@ namespace Ustilz.Extensions.Actions
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">TrueAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
@@ -286,7 +284,5 @@ namespace Ustilz.Extensions.Actions
 
             trueAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
-
-        #endregion
     }
 }

@@ -15,8 +15,6 @@ namespace Ustilz.Extensions.Enumerables
     [PublicAPI]
     public static partial class ExtensionsIEnumerable
     {
-        #region Méthodes publiques
-
         /// <summary>
         ///     Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}" />.
         /// </summary>
@@ -177,10 +175,6 @@ namespace Ustilz.Extensions.Enumerables
         public static IEnumerable<(T Item, int Index)> WithIndex<T>(this IEnumerable<T> enumerable)
             => enumerable.Select((item, index) => (item, index));
 
-        #endregion
-
-        #region Méthodes privées
-
         /// <summary>
         ///     Méthode de split d'un liste en n liste.
         /// </summary>
@@ -198,7 +192,5 @@ namespace Ustilz.Extensions.Enumerables
                 yield return list.Skip(i).Take(subN);
             }
         }
-
-        #endregion
     }
 }

@@ -12,8 +12,6 @@ namespace Ustilz.Extensions.Actions
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="trueAction">The action to execute if all of the given value is true.</param>
@@ -128,7 +126,7 @@ namespace Ustilz.Extensions.Actions
             }
             else
             {
-                trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
+                trueAction?.Invoke(parameter1, parameter2, parameter3);
             }
         }
 
@@ -163,7 +161,7 @@ namespace Ustilz.Extensions.Actions
             }
             else
             {
-                trueAction?.Invoke(parameter1, parameter2, parameter3);
+                trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
         }
 
@@ -296,7 +294,5 @@ namespace Ustilz.Extensions.Actions
 
             falseAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
-
-        #endregion
     }
 }

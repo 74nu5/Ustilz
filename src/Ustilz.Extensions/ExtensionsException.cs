@@ -3,21 +3,22 @@ namespace Ustilz.Extensions
     #region Usings
 
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Text;
+
+    using JetBrains.Annotations;
 
     #endregion
 
     /// <summary>The extensions exception.</summary>
-    [JetBrains.Annotations.PublicAPI]
+    [PublicAPI]
     public static class ExtensionsException
     {
-        #region Méthodes publiques
-
         /// <summary>The get messages from entire exception chain.</summary>
         /// <param name="e">The e.</param>
         /// <returns>The <see cref="string" />.</returns>
-        public static string GetMessagesFromEntireExceptionChain([NotNull] this Exception e)
+        public static string GetMessagesFromEntireExceptionChain(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Exception e)
         {
             if (e is null)
             {
@@ -37,7 +38,5 @@ namespace Ustilz.Extensions
 
             return message.ToString();
         }
-
-        #endregion
     }
 }

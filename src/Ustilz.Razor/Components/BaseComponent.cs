@@ -16,8 +16,6 @@ namespace Ustilz.Razor.Components
     [PublicAPI]
     public abstract class BaseComponent : ComponentBase
     {
-        #region Constructeurs et destructeurs
-
         /// <summary>
         ///     Initialise une nouvelle instance de la classe <see cref="BaseComponent" />.
         /// </summary>
@@ -27,10 +25,6 @@ namespace Ustilz.Razor.Components
 
             this.StyleMapper.Add(() => this.Style);
         }
-
-        #endregion
-
-        #region Propriétés et indexeurs
 
         /// <summary>
         ///     Obtient ou définit un ou plusieurs nom de classe pour un élément du DOM.
@@ -53,8 +47,6 @@ namespace Ustilz.Razor.Components
         ///     Obtient ou définit la classe de mapping des styles CSS.
         /// </summary>
         protected StyleMapper StyleMapper { get; set; } = new StyleMapper();
-
-        #endregion
 
         /// <summary>
         ///     Method which invoke the <see cref="ComponentBase.StateHasChanged" />.

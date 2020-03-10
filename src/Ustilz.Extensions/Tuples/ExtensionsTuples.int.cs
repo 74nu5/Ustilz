@@ -12,8 +12,6 @@ namespace Ustilz.Extensions.Tuples
     [PublicAPI]
     public static class ExtensionsTuples
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode d'obtention d'un <see cref="TimeSpan" /> réprésentant la valeur en tuple (heures, minutes) à passée en paramètre.</summary>
         /// <param name="time">Valeur décimal à convertir.</param>
         /// <returns>Retourne un <see cref="TimeSpan" /> réprésentant la valeur décimen tuple (heures, minutes) passée en paramètre.</returns>
@@ -37,7 +35,5 @@ namespace Ustilz.Extensions.Tuples
         /// <returns>Retourne un <see cref="TimeSpan" /> réprésentant la valeur décimen tuple (minutes, secondes) passée en paramètre.</returns>
         public static TimeSpan Minutes(this (int Minute, int Second) time)
             => TimeSpan.FromSeconds((60 * time.Minute) + time.Second);
-
-        #endregion
     }
 }

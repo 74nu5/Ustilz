@@ -21,14 +21,8 @@ namespace Ustilz.Data.Interfaces
         where TModel : class, IDto<TIdentity>
         where TIdentity : IComparable<TIdentity>
     {
-        #region Propriétés et indexeurs
-
         /// <summary>Obtient le contexte de la base de données.</summary>
         IQueryable<TModel> Queryable { get; }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>The create.</summary>
         /// <param name="model">The model.</param>
@@ -102,7 +96,5 @@ namespace Ustilz.Data.Interfaces
         /// <param name="stoppingToken">Token d'arret de la tache.</param>
         /// <returns>The <see cref="Task" />.</returns>
         Task<int> UpdateRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default);
-
-        #endregion
     }
 }

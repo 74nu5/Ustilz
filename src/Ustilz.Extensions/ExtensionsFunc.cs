@@ -6,19 +6,18 @@ namespace Ustilz.Extensions
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.Diagnostics.Contracts;
     using System.Reflection;
+
+    using JetBrains.Annotations;
 
     using Ustilz.Extensions.Models;
 
     #endregion
 
     /// <summary>The extensions func. </summary>
-    [JetBrains.Annotations.PublicAPI]
+    [PublicAPI]
     public static class ExtensionsFunc
     {
-        #region Méthodes publiques
-
         /// <summary>Exécute l'action donnée avec la valeur comme paramètre et gère toutes les exceptions pendant l'exécution.</summary>
         /// <param name="action">L'action à exécuter.</param>
         /// <param name="parameter">Paramètre de l'action, celui-ci est retourné après l'exécution dans la propriété <see cref="ExecutionResult{T}.Result" />.</param>
@@ -26,9 +25,12 @@ namespace Ustilz.Extensions
         /// <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
         /// <exception cref="ArgumentNullException">L'action ne peut pas être nulle.</exception>
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
-        [return: NotNull]
-        [Pure]
-        public static IExecutionResult<T> ExecuteSafe<T>([NotNull] this Action<T> action, [MaybeNull] T parameter)
+        [return: System.Diagnostics.CodeAnalysis.NotNull]
+        [System.Diagnostics.Contracts.Pure]
+        public static IExecutionResult<T> ExecuteSafe<T>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Action<T> action,
+            [MaybeNull] T parameter)
             where T : new()
         {
             action.ThrowIfNull(nameof(action));
@@ -54,9 +56,12 @@ namespace Ustilz.Extensions
         /// <typeparam name="TResult">Le type du résultat.</typeparam>
         /// <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
         /// <exception cref="ArgumentNullException">La fonction ne peut pas être nulle.</exception>
-        [return: NotNull]
-        [Pure]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>([NotNull] this Func<T, TResult> func, [MaybeNull] T parameter)
+        [return: System.Diagnostics.CodeAnalysis.NotNull]
+        [System.Diagnostics.Contracts.Pure]
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<T, TResult> func,
+            [MaybeNull] T parameter)
             where TResult : new()
         {
             func.ThrowIfNull(nameof(func));
@@ -79,7 +84,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type du paramètres d'entrée. </typeparam>
         /// <typeparam name="TResult">Type du retour. </typeparam>
         /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        [return: NotNull]
+        [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
         {
             var t = new Dictionary<T, TResult>();
@@ -100,7 +105,7 @@ namespace Ustilz.Extensions
         /// <param name="func">Fonction à mémoïser. </param>
         /// <typeparam name="TResult">Type du retour. </typeparam>
         /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        [return: NotNull]
+        [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
         {
             var t = new Dictionary<string, TResult>();
@@ -122,7 +127,10 @@ namespace Ustilz.Extensions
         /// <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
         /// <typeparam name="TResult">Le type du résultat. </typeparam>
         /// <returns>La valeur de retour.</returns>
-        public static TResult TestPerf<TResult>([NotNull] this Func<TResult> function, out long timestamp)
+        public static TResult TestPerf<TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<TResult> function,
+            out long timestamp)
         {
             if (function is null)
             {
@@ -146,7 +154,11 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type du paramètre. </typeparam>
         /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
         /// <returns>La valeur de retour.</returns>
-        public static TResult TestPerf<T, TResult>([NotNull] this Func<T, TResult> function, out long timestamp, T param)
+        public static TResult TestPerf<T, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<T, TResult> function,
+            out long timestamp,
+            T param)
         {
             if (function is null)
             {
@@ -172,7 +184,12 @@ namespace Ustilz.Extensions
         /// <typeparam name="T2">Le type du second paramètre. </typeparam>
         /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
         /// <returns>La valeur de retour.</returns>
-        public static TResult TestPerf<T1, T2, TResult>([NotNull] this Func<T1, T2, TResult> function, out long timestamp, T1 param1, T2 param2)
+        public static TResult TestPerf<T1, T2, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<T1, T2, TResult> function,
+            out long timestamp,
+            T1 param1,
+            T2 param2)
         {
             if (function is null)
             {
@@ -200,7 +217,13 @@ namespace Ustilz.Extensions
         /// <typeparam name="T3">Le type du troisième paramètre.</typeparam>
         /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
         /// <returns>La valeur de retour.</returns>
-        public static TResult TestPerf<T1, T2, T3, TResult>([NotNull] this Func<T1, T2, T3, TResult> function, out long timestamp, T1 param1, T2 param2, T3 param3)
+        public static TResult TestPerf<T1, T2, T3, TResult>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<T1, T2, T3, TResult> function,
+            out long timestamp,
+            T1 param1,
+            T2 param2,
+            T3 param3)
         {
             if (function is null)
             {
@@ -231,7 +254,8 @@ namespace Ustilz.Extensions
         /// <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
         /// <returns>La valeur de retour.</returns>
         public static TResult TestPerf<T1, T2, T3, T4, TResult>(
-            [NotNull] this Func<T1, T2, T3, T4, TResult> function,
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Func<T1, T2, T3, T4, TResult> function,
             out long timestamp,
             T1 param1,
             T2 param2,
@@ -258,7 +282,10 @@ namespace Ustilz.Extensions
         /// <param name="param">Le paramètre de l'action. </param>
         /// <typeparam name="T">Le type du paramètre. </typeparam>
         /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
-        public static long TestPerf<T>([NotNull] this Action<T> action, T param)
+        public static long TestPerf<T>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Action<T> action,
+            T param)
         {
             if (action is null)
             {
@@ -277,7 +304,9 @@ namespace Ustilz.Extensions
         /// <summary>Méthode de test de performance. </summary>
         /// <param name="action">L'action à exécuter. </param>
         /// <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
-        public static long TestPerf([NotNull] this Action action)
+        public static long TestPerf(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Action action)
         {
             if (action is null)
             {
@@ -292,7 +321,5 @@ namespace Ustilz.Extensions
             stopWatch.Stop();
             return stopWatch.ElapsedMilliseconds;
         }
-
-        #endregion
     }
 }

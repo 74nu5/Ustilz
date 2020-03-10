@@ -5,19 +5,19 @@ namespace Ustilz.Time
     using System;
     using System.Diagnostics.CodeAnalysis;
 
+    using JetBrains.Annotations;
+
     #endregion
 
     /// <summary>The extensions date time.</summary>
-    [JetBrains.Annotations.PublicAPI]
+    [PublicAPI]
     public static partial class ExtensionsDateTime
     {
-        #region Méthodes publiques
-
         /// <summary>The readable time stamp.</summary>
         /// <param name="currentDate">The current date.</param>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="OverflowException">value is greater than <see cref="int.MaxValue"></see> or less than <see cref="int.MinValue"></see>.</exception>
-        [return: NotNull]
+        [return: System.Diagnostics.CodeAnalysis.NotNull]
         [ExcludeFromCodeCoverage]
         [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obligé.")]
         public static string ReadableTimeStamp(this DateTime currentDate)
@@ -63,7 +63,7 @@ namespace Ustilz.Time
 
             if (delta < 30 * Day)
             {
-                return (Clock.Now.Month == 3) && (delta > 27 * Day) ? "one month ago" : $"{ts.Days} days ago";
+                return Clock.Now.Month == 3 && delta > 27 * Day ? "one month ago" : $"{ts.Days} days ago";
             }
 
             if (delta < 12 * Month)
@@ -75,7 +75,5 @@ namespace Ustilz.Time
             var years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
             return years <= 1 ? "one year ago" : years + " years ago";
         }
-
-        #endregion
     }
 }

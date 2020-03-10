@@ -11,8 +11,6 @@ namespace Ustilz.Time
     /// <summary>Classe d'extension du type DateTime.</summary>
     public static partial class ExtensionsDateTime
     {
-        #region Méthodes publiques
-
         /// <summary>Calcule la différence entre l'année de la date et l'heure actuelles.</summary>
         /// <param name="startDay">Date à laquelle l'age est calculé.</param>
         /// <param name="day">Date depuis l'age est calculé.</param>
@@ -26,8 +24,8 @@ namespace Ustilz.Time
         {
             var toDay = day ?? Clock.Now;
             var toDayToStartDayYear = toDay.Year - startDay.Year;
-            if ((toDayToStartDayYear <= 0) &&
-                ((toDayToStartDayYear != 0) || ((startDay.Month >= toDay.Month) && ((startDay.Month != toDay.Month) || (startDay.Day > toDay.Day)))))
+            if (toDayToStartDayYear <= 0 &&
+                (toDayToStartDayYear != 0 || (startDay.Month >= toDay.Month && (startDay.Month != toDay.Month || startDay.Day > toDay.Day))))
             {
                 throw new ArgumentException(Resources.ExtensionsDateTime_Age_Birthday_date_must_be_earlier_than_current_date);
             }
@@ -89,7 +87,5 @@ namespace Ustilz.Time
         [PublicAPI]
         public static TimeSpan Elapsed(this DateTime dateTime)
             => Clock.Now - dateTime;
-
-        #endregion
     }
 }

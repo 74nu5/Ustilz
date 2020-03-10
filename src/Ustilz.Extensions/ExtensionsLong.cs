@@ -14,19 +14,13 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsLong
     {
-        #region Champs et constantes statiques
+        private static readonly IReadOnlyList<string> TensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
         private static readonly IReadOnlyList<string> UnitWords = new[]
         {
             "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
             "seventeen", "eighteen", "nineteen"
         };
-
-        private static readonly IReadOnlyList<string> TensMap = new[] { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>Métode de conversion d'un nombre en lettres.</summary>
         /// <param name="number">Nombre à convertir.</param>
@@ -89,7 +83,5 @@ namespace Ustilz.Extensions
 
             return words;
         }
-
-        #endregion
     }
 }

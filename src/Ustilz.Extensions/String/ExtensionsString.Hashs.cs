@@ -15,24 +15,16 @@ namespace Ustilz.Extensions.String
     using Ustilz.Time;
     using Ustilz.Utils;
 
-    using NotNullAttribute = System.Diagnostics.CodeAnalysis.NotNullAttribute;
-
     #endregion
 
     /// <summary>The extensions string.</summary>
     public static partial class ExtensionsString
     {
-        #region Champs et constantes statiques
-
         /// <summary>The hash providers.</summary>
         private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new Dictionary<HashType, HashAlgorithm>();
 
         /// <summary>The random.</summary>
         private static readonly Random Random = new Random((int)Clock.Now.Ticks);
-
-        #endregion
-
-        #region Enumérations
 
         /// <summary>Supported hash algorithms.</summary>
         [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
@@ -53,10 +45,6 @@ namespace Ustilz.Extensions.String
             /// <summary>The sh a 512.</summary>
             SHA512
         }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>Computes the hash of the string using a specified hash algorithm.</summary>
         /// <param name="input">The string to hash.</param>
@@ -86,7 +74,7 @@ namespace Ustilz.Extensions.String
         /// <param name="stringToDecrypt">The string to decrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string" />.</returns>
-        [System.Diagnostics.Contracts.Pure]
+        [Pure]
         public static string Decrypt([NotNull] this string stringToDecrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
@@ -110,7 +98,7 @@ namespace Ustilz.Extensions.String
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string" />.</returns>
-        [System.Diagnostics.Contracts.Pure]
+        [Pure]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToEncrypt))
@@ -218,10 +206,6 @@ namespace Ustilz.Extensions.String
             return hashValue == GenerateHash(password, salt, provider);
         }
 
-        #endregion
-
-        #region Méthodes privées
-
         /// <summary>The get hash.</summary>
         /// <param name="input">The input.</param>
         /// <param name="hash">The hash.</param>
@@ -256,7 +240,5 @@ namespace Ustilz.Extensions.String
                 return algo.ComputeHash(inputBytes);
             }
         }
-
-        #endregion
     }
 }

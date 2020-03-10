@@ -15,8 +15,6 @@
     /// <summary>The extensions t test.</summary>
     public sealed class ExtensionsTTest
     {
-        #region Méthodes publiques
-
         /// <summary>The between test.</summary>
         [Fact]
         public void BetweenTest()
@@ -94,20 +92,6 @@
 
         /// <summary>The if null test.</summary>
         [Fact]
-        public void IsNullTest()
-        {
-            string s = null;
-            Assert.True(s.IsNull());
-
-            s = string.Empty;
-            Assert.False(s.IsNull());
-
-            s = "Test";
-            Assert.False(s.IsNull());
-        }
-
-        /// <summary>The if null test.</summary>
-        [Fact]
         public void IsNotNullTest()
         {
             string s = null;
@@ -131,6 +115,20 @@
 
             s = "Test";
             Assert.False(s.IsNullOrEmpty());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNullTest()
+        {
+            string s = null;
+            Assert.True(s.IsNull());
+
+            s = string.Empty;
+            Assert.False(s.IsNull());
+
+            s = "Test";
+            Assert.False(s.IsNull());
         }
 
         [Fact]
@@ -173,15 +171,9 @@
             Assert.Equal(nameof(s), exception.ParamName);
         }
 
-        #endregion
-
-        #region Nested type: A
-
         /// <summary>The a.</summary>
         private sealed class A
         {
-            #region Propriétés et indexeurs
-
             /// <summary>Gets or sets the i.</summary>
             /// <value>The i.</value>
             public int I { get; set; }
@@ -189,10 +181,6 @@
             /// <summary>Gets or sets the s.</summary>
             /// <value>The s.</value>
             public string S { get; set; }
-
-            #endregion
         }
-
-        #endregion
     }
 }

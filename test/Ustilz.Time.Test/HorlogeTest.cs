@@ -4,8 +4,6 @@
 
     using System;
 
-    using Ustilz.Time;
-
     using Xunit;
 
     #endregion
@@ -14,14 +12,8 @@
     /// <summary>The horloge test.</summary>
     public class HorlogeTest : IDisposable
     {
-        #region Constructeurs et destructeurs
-
         /// <summary>Initializes a new instance of the <see cref="HorlogeTest" /> class.</summary>
         public HorlogeTest() => Clock.Reset();
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <inheritdoc />
         /// <summary>The dispose.</summary>
@@ -95,7 +87,5 @@
             Assert.Equal(now.Year, maintenant.Year);
             Assert.Equal(now.Second, maintenant.Second);
         }
-
-        #endregion
     }
 }

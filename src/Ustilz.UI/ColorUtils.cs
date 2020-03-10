@@ -15,14 +15,8 @@ namespace Ustilz.UI
     [PublicAPI]
     public static class ColorUtils
     {
-        #region Champs et constantes statiques
-
         /// <summary>The random.</summary>
         private static readonly Random Random = new Random();
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>Méthode de génération de couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>
@@ -92,7 +86,5 @@ namespace Ustilz.UI
             var color = $"#{(long)bii:X6}";
             return color.Length != 7 ? "#000000" : color;
         }
-
-        #endregion
     }
 }

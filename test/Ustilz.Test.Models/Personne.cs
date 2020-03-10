@@ -1,22 +1,20 @@
 ﻿namespace Ustilz.Test.Models
 {
+    #region Usings
+
     using System.Collections.Generic;
+
+    #endregion
 
     public sealed class Personne
     {
-        #region Propriétés et indexeurs
-
-        public string Prenom { get; set; }
-
         public string Nom { get; set; }
 
-        #endregion
+        public string Prenom { get; set; }
     }
 
     public class PersonneComparer : IEqualityComparer<Personne>
     {
-        #region Implementation of IEqualityComparer<in Personne>
-
         /// <summary>Determines whether the specified objects are equal.</summary>
         /// <param name="x">The first object of type T to compare.</param>
         /// <param name="y">The second object of type T to compare.</param>
@@ -28,7 +26,5 @@
         /// <returns>A hash code for the specified object.</returns>
         /// <exception cref="ArgumentNullException">The type of <paramref name="obj">obj</paramref> is a reference type and <paramref name="obj">obj</paramref> is null.</exception>
         public int GetHashCode(Personne obj) => obj.GetHashCode();
-
-        #endregion
     }
 }

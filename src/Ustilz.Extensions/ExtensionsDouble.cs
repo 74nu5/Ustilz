@@ -12,14 +12,8 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsDouble
     {
-        #region Champs et constantes statiques
-
         /// <summary>The tolerance two decimal.</summary>
         private const double ToleranceTwoDecimal = 0.01;
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>Méthode d'obtention d'un <see cref="TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</summary>
         /// <param name="time">Valeur décimal à convertir.</param>
@@ -38,7 +32,5 @@ namespace Ustilz.Extensions
         /// <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
         public static bool IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2)
             => Math.Abs(valeur1 - valeur2) < ToleranceTwoDecimal;
-
-        #endregion
     }
 }

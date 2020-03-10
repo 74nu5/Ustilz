@@ -9,16 +9,11 @@ namespace Ustilz.Utils
     #endregion
 
     /// <summary>Classe d'accès aux ressources.</summary>
+
     // ReSharper disable once InconsistentNaming
     internal static class SR
     {
-        #region Champs et constantes statiques
-
         private static ResourceManager resourceManager;
-
-        #endregion
-
-        #region Propriétés et indexeurs
 
         /// <summary>Obtient le message "Enumeration yielded no results".</summary>
         internal static string? EmptyEnumerable => GetResourceString("EmptyEnumerable", @"Enumeration yielded no results");
@@ -37,10 +32,6 @@ namespace Ustilz.Utils
 
         private static ResourceManager ResourceManager => resourceManager ??= new ResourceManager(typeof(SR));
 
-        #endregion
-
-        #region Méthodes privées
-
         private static string? GetResourceString(string resourceKey, string? defaultString = null)
         {
             string? resourceString = null;
@@ -54,7 +45,5 @@ namespace Ustilz.Utils
 
             return defaultString != null && resourceKey.Equals(resourceString, StringComparison.Ordinal) ? defaultString : resourceString;
         }
-
-        #endregion
     }
 }

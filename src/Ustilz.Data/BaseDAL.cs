@@ -29,13 +29,7 @@ namespace Ustilz.Data
         where TContext : DbContext
         where TIdentity : IComparable<TIdentity>
     {
-        #region Champs
-
         private readonly TContext context;
-
-        #endregion
-
-        #region Constructeurs et destructeurs
 
         /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{Tcontext, TModel, TIdentity}" />.</summary>
         /// <param name="context">The context.</param>
@@ -46,16 +40,8 @@ namespace Ustilz.Data
             this.Queryable = this.context.Set<TModel>().AsQueryable();
         }
 
-        #endregion
-
-        #region Propriétés et indexeurs
-
         /// <inheritdoc />
         public IQueryable<TModel> Queryable { get; }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <inheritdoc />
         /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
@@ -171,9 +157,21 @@ namespace Ustilz.Data
             return this.context.SaveChangesAsync(stoppingToken);
         }
 
-        #endregion
+        /// <summary> The get all with pagination. </summary>
+        /// <param name="skip"> The skip. </param>
+        /// <param name="take"> The take. </param>
+        /// <returns> The <see cref="Task" />. </returns>
+        protected IQueryable<TModel> GetQueryablePaged(int skip, int take)
+        {
+            var queryable = this.Queryable.Skip(skip);
 
-        #region Méthodes privées
+            if (take > 0)
+            {
+                queryable = queryable.Take(take);
+            }
+
+            return queryable;
+        }
 
         private static IIncludableQueryable<TModel, object> GetIncludeSet(Expression<Func<TModel, object>>[] includes, DbSet<TModel> set)
             => includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
@@ -188,22 +186,6 @@ namespace Ustilz.Data
         private IQueryable<TModel> SkipAndTake(int skip, int take)
         {
             var queryable = this.context.Set<TModel>().Skip(skip);
-
-            if (take > 0)
-            {
-                queryable = queryable.Take(take);
-            }
-
-            return queryable;
-        }
-
-        /// <summary> The get all with pagination. </summary>
-        /// <param name="skip"> The skip. </param>
-        /// <param name="take"> The take. </param>
-        /// <returns> The <see cref="Task" />. </returns>
-        protected IQueryable<TModel> GetQueryablePaged(int skip, int take)
-        {
-            var queryable = this.Queryable.Skip(skip);
 
             if (take > 0)
             {

@@ -16,8 +16,6 @@ namespace Ustilz.Logging.Action
     [PublicAPI]
     public static class LoggerActionExtensions
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode d'ajout du logger d'action au services du builder.</summary>
         /// <param name="builder">Builder de log de l'application.</param>
         /// <param name="action">Action à effectuer.</param>
@@ -39,7 +37,5 @@ namespace Ustilz.Logging.Action
             builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(serviceProvider => new LoggerActionProvider(action)));
             return builder;
         }
-
-        #endregion
     }
 }
