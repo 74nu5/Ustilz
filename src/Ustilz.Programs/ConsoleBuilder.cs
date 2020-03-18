@@ -9,22 +9,14 @@ namespace Ustilz.Programs
 
     #endregion
 
-    /// <summary>
-    ///     Classe de builder de l'objet <see cref="Cons" />.
-    /// </summary>
+    /// <summary>Classe de builder de l'objet <see cref="Cons" />.</summary>
     public sealed class ConsoleBuilder : ProgBuilder<ConsoleBuilder, Cons>
     {
-        #region Champs
-
         /// <summary>The actions to launch.</summary>
-        private Action[] actionsToLaunch = new Action[0];
+        private Action[] actionsToLaunch = Array.Empty<Action>();
 
         /// <summary>The has exit.</summary>
         private bool hasExit;
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>The actions.</summary>
         /// <param name="actions">Les méthodes à lancer.</param>
@@ -56,7 +48,5 @@ namespace Ustilz.Programs
             this.hasExit = true;
             return this;
         }
-
-        #endregion
     }
 }

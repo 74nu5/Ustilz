@@ -194,7 +194,7 @@ namespace Ustilz.Extensions
         [DebuggerStepThrough]
         [ContractAnnotation("testObject:null => halt")]
         public static void ThrowIfNull<TObject>(
-            [MaybeNull] this TObject testObject,
+            [MaybeNull] [NoEnumeration] this TObject testObject,
             [System.Diagnostics.CodeAnalysis.NotNull]
             string parameterName,
             string? errorMessage = null)

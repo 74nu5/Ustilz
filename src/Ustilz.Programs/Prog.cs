@@ -15,59 +15,38 @@ namespace Ustilz.Programs
 
     /// <summary>The programme.</summary>
     /// <typeparam name="TBuilder">Type du builder.</typeparam>
+    /// <typeparam name="TProg">Classe du programme.</typeparam>
     [PublicAPI]
-    public abstract class Prog<TBuilder>
-        where TBuilder : new()
+    public abstract class Prog<TBuilder, TProg>
+        where TBuilder : ProgBuilder<TBuilder, TProg>, new()
+        where TProg : Prog<TBuilder, TProg>
     {
-        #region Champs
-
-        private readonly Action<string>[] logAction;
+        private readonly ICollection<Action<string>> logAction;
 
         /// <summary>The service provider.</summary>
         private readonly ServiceProvider serviceProvider;
 
-        #endregion
-
-        #region Constructeurs et destructeurs
-
-        /// <summary>
-        ///     Initialise une nouvelle instance de la classe <see cref="Prog{TBuilder}" />.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="Prog{TBuilder, TProg}"/>.</summary>
         /// <param name="provider">Le fournisseur de services.</param>
         /// <param name="logAction">Liste des actions à effectuer lors du log.</param>
-        internal Prog(ServiceProvider provider, Action<string>[] logAction)
+        internal Prog(ServiceProvider provider, ICollection<Action<string>> logAction)
         {
             this.serviceProvider = provider;
             this.logAction = logAction;
         }
 
-        /// <summary>
-        ///     Initialise une nouvelle instance de la classe <see cref="Prog{TBuilder}" />.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="Prog{TBuilder, TProg}"/>.</summary>
         private Prog()
         {
             this.serviceProvider = new ServiceCollection().BuildServiceProvider();
-            this.logAction = new Action<string>[0];
+            this.logAction = Array.Empty<Action<string>>();
         }
 
-        #endregion
-
-        #region Propriétés et indexeurs
-
-        /// <summary>
-        ///     Obtient the builder.
-        /// </summary>
+        /// <summary>Obtient the builder.</summary>
         public static TBuilder Builder
             => new TBuilder();
 
-        #endregion
-
-        #region Méthodes publiques
-
-        /// <summary>
-        ///     Méthode d'écriture d'un message d'erreur (en rouge) dans la console.
-        ///     Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.
-        /// </summary>
+        /// <summary>Méthode d'écriture d'un message d'erreur (en rouge) dans la console. Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.</summary>
         /// <param name="message">Le message à écrire.</param>
         public void Error(string message)
         {
@@ -92,10 +71,7 @@ namespace Ustilz.Programs
         public T GetRequiredService<T>()
             => this.serviceProvider.GetRequiredService<T>();
 
-        /// <summary>
-        ///     Méthode d'écriture d'un message d'information (en cyan) dans la console.
-        ///     Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.
-        /// </summary>
+        /// <summary>Méthode d'écriture d'un message d'information (en cyan) dans la console. Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.</summary>
         /// <param name="message">Le message à écrire.</param>
         public void Info(string message)
         {
@@ -107,10 +83,7 @@ namespace Ustilz.Programs
             this.logAction?.ForEach(action => action?.Invoke(formatMessage));
         }
 
-        /// <summary>
-        ///     Méthode d'écriture d'un message d'attention (en orange) dans la console.
-        ///     Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.
-        /// </summary>
+        /// <summary>Méthode d'écriture d'un message d'attention (en orange) dans la console. Cette méthode invoque aussi les actions de log préalablement renseignée, s'il y en a.</summary>
         /// <param name="message">Le message à écrire.</param>
         public void Warn(string message)
         {
@@ -121,7 +94,5 @@ namespace Ustilz.Programs
             Console.ForegroundColor = color;
             this.logAction?.ForEach(action => action?.Invoke(formatMessage));
         }
-
-        #endregion
     }
 }
