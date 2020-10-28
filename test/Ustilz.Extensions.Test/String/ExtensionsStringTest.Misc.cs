@@ -12,6 +12,9 @@
     /// <summary>The extensions string.</summary>
     public sealed partial class ExtensionsStringTest
     {
+        /// <summary>
+        /// The fs Ano test.
+        /// </summary>
         [Fact]
         public void FsAnoTest()
         {

@@ -44,11 +44,11 @@ namespace Ustilz.Http
         /// <exception cref="ArgumentNullException"><paramref name="url" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="headers" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="authentification" /> is <see langword="null" />.</exception>
-        public async Task<(HttpStatusCode Code, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, TResponse Response)> GetHttpResponseAsync<TResponse>(
+        public async Task<(HttpStatusCode Code, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, TResponse? Response)> GetHttpResponseAsync<TResponse>(
             [NotNull] Uri url,
             [NotNull] Dictionary<string, IEnumerable<string>> headers,
             [NotNull] string authentification)
-            where TResponse : new()
+            where TResponse : class, new()
         {
             if (url == null)
             {
@@ -66,8 +66,9 @@ namespace Ustilz.Http
             }
 
             var result =
-                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, TResponse)>>(
-                    this.GetHttpResponseAsyncInternalAsync<TResponse>).TestPerf(out var timestamp, url, headers, authentification).ConfigureAwait(false);
+                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string?, Dictionary<string, IEnumerable<string>>, TResponse?)>>(
+                        this.GetHttpResponseAsyncInternalAsync<TResponse>).TestPerf(out var timestamp, url, headers, authentification)
+                                                                          .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -80,7 +81,7 @@ namespace Ustilz.Http
         /// <exception cref="ArgumentNullException"><paramref name="headers" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="authentification" /> is <see langword="null" />.</exception>
         /// <returns>The <see cref="Task" />.</returns>
-        public async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> GetHttpResponseAsync(
+        public async Task<(HttpStatusCode StatusCode, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string? Response)> GetHttpResponseAsync(
             [NotNull] Uri url,
             [NotNull] Dictionary<string, IEnumerable<string>> headers,
             [NotNull] string authentification)
@@ -101,8 +102,9 @@ namespace Ustilz.Http
             }
 
             var result =
-                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)>>(
-                    this.GetHttpResponseAsyncInternalAsync).TestPerf(out var timestamp, url, headers, authentification).ConfigureAwait(false);
+                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<(HttpStatusCode, string?, Dictionary<string, IEnumerable<string>>, string?)>>(
+                        this.GetHttpResponseAsyncInternalAsync).TestPerf(out var timestamp, url, headers, authentification)
+                                                               .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -114,7 +116,8 @@ namespace Ustilz.Http
         /// <returns>The <see cref="Task" />.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="url" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="authentification" /> is <see langword="null" />.</exception>
-        public async Task<TResponse> GetStringAsync<TResponse>([NotNull] Uri url, [NotNull] string authentification)
+        public async Task<TResponse?> GetStringAsync<TResponse>([NotNull] Uri url, [NotNull] string authentification)
+            where TResponse : class
         {
             if (url == null)
             {
@@ -126,8 +129,9 @@ namespace Ustilz.Http
                 throw new ArgumentNullException(nameof(authentification));
             }
 
-            var result = await new Func<Uri, string, Task<TResponse>>(this.GetResponseAsyncInternalAsync<TResponse>)
-                               .TestPerf(out var timestamp, url, authentification).ConfigureAwait(false);
+            var result = await new Func<Uri, string, Task<TResponse?>>(this.GetResponseAsyncInternalAsync<TResponse>)
+                               .TestPerf(out var timestamp, url, authentification)
+                               .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -139,12 +143,12 @@ namespace Ustilz.Http
         public async Task<string> GetStringAsync(Uri url, string authentification)
         {
             var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<string>>(this.GetStringAsyncInternalAsync).TestPerf(
-                             out var timestamp,
-                             url,
-                             new Dictionary<string,
-                                 IEnumerable<string>>(),
-                             authentification).ConfigureAwait(
-                             false);
+                                 out var timestamp,
+                                 url,
+                                 new Dictionary<string,
+                                     IEnumerable<string>>(),
+                                 authentification)
+                             .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -157,11 +161,11 @@ namespace Ustilz.Http
         public async Task<string> GetStringAsync(Uri url, Dictionary<string, IEnumerable<string>> headers, string authentification)
         {
             var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, Task<string>>(this.GetStringAsyncInternalAsync).TestPerf(
-                             out var timestamp,
-                             url,
-                             headers,
-                             authentification).ConfigureAwait(
-                             false);
+                                 out var timestamp,
+                                 url,
+                                 headers,
+                                 authentification)
+                             .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -172,20 +176,20 @@ namespace Ustilz.Http
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Type de la réponse.</typeparam>
         /// <returns>The TResponse.</returns>
-        public async Task<TResponse> PostAsync<TResponse>(Uri url, string content, string authentification)
+        public async Task<TResponse?> PostAsync<TResponse>(Uri url, string content, string authentification)
+            where TResponse : class
         {
-            var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<TResponse>>(this.PostAsyncInternalAsync<TResponse>).TestPerf(
-                                                                                                                                                                  out var time,
-                                                                                                                                                                  url,
-                                                                                                                                                                  new Dictionary<
-                                                                                                                                                                      string,
-                                                                                                                                                                      IEnumerable<
-                                                                                                                                                                          string>
-                                                                                                                                                                  >(),
-                                                                                                                                                                  content,
-                                                                                                                                                                  authentification)
-                                                                                                                                                              .ConfigureAwait(
-                                                                                                                                                                  false);
+            var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<TResponse?>>(this.PostAsyncInternalAsync<TResponse>).TestPerf(
+                                 out var time,
+                                 url,
+                                 new Dictionary<
+                                     string,
+                                     IEnumerable<
+                                         string>
+                                 >(),
+                                 content,
+                                 authentification)
+                             .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -198,13 +202,13 @@ namespace Ustilz.Http
         public async Task<string> PostAsync(Uri url, string content, string authentification)
         {
             var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<string>>(this.PostAsyncInternalAsync).TestPerf(
-                                                                                                                                                    out var time,
-                                                                                                                                                    url,
-                                                                                                                                                    new Dictionary<string,
-                                                                                                                                                        IEnumerable<string>>(),
-                                                                                                                                                    content,
-                                                                                                                                                    authentification)
-                                                                                                                                                .ConfigureAwait(false);
+                                 out var time,
+                                 url,
+                                 new Dictionary<string,
+                                     IEnumerable<string>>(),
+                                 content,
+                                 authentification)
+                             .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -218,12 +222,12 @@ namespace Ustilz.Http
         public async Task<string> PostAsync(Uri url, Dictionary<string, IEnumerable<string>> headers, string content, string authentification)
         {
             var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<string>>(this.PostAsyncInternalAsync).TestPerf(
-                                                                                                                                                    out var time,
-                                                                                                                                                    url,
-                                                                                                                                                    headers,
-                                                                                                                                                    content,
-                                                                                                                                                    authentification)
-                                                                                                                                                .ConfigureAwait(false);
+                                 out var time,
+                                 url,
+                                 headers,
+                                 content,
+                                 authentification)
+                             .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {time} ms");
             return result;
         }
@@ -234,15 +238,16 @@ namespace Ustilz.Http
         /// <param name="body">The body.</param>
         /// <param name="authentification">The authentification.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        public async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> PostHttpResponseAsync(
+        public async Task<(HttpStatusCode StatusCode, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string? Response)> PostHttpResponseAsync(
             Uri url,
             Dictionary<string, IEnumerable<string>> headers,
             string body,
             string authentification)
         {
             var result =
-                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<(HttpStatusCode, string, Dictionary<string, IEnumerable<string>>, string)>>(
-                    this.PostHttpResponseAsyncInternalAsync).TestPerf(out var timestamp, url, headers, body, authentification).ConfigureAwait(false);
+                await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string, Task<(HttpStatusCode, string?, Dictionary<string, IEnumerable<string>>, string?)>>(
+                        this.PostHttpResponseAsyncInternalAsync).TestPerf(out var timestamp, url, headers, body, authentification)
+                                                                .ConfigureAwait(false);
             Debug.WriteLine($"GET {url} : {timestamp} ms");
             return result;
         }
@@ -253,12 +258,12 @@ namespace Ustilz.Http
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Type de la réponse.</typeparam>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, TResponse Response)>
+        private async Task<(HttpStatusCode StatusCode, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, TResponse? Response)>
             GetHttpResponseAsyncInternalAsync<TResponse>(
                 Uri url,
                 Dictionary<string, IEnumerable<string>> headers,
                 string authentification)
-            where TResponse : new()
+            where TResponse : class, new()
         {
             var client = new HttpClient(this.handler);
 
@@ -287,10 +292,11 @@ namespace Ustilz.Http
         /// <param name="headers">The headers.</param>
         /// <param name="authentification">The authentification.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> GetHttpResponseAsyncInternalAsync(
-            Uri url,
-            Dictionary<string, IEnumerable<string>> headers,
-            string authentification)
+        private async Task<(HttpStatusCode StatusCode, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string? Response)>
+            GetHttpResponseAsyncInternalAsync(
+                Uri url,
+                Dictionary<string, IEnumerable<string>> headers,
+                string authentification)
         {
             var client = new HttpClient(this.handler);
 
@@ -319,7 +325,8 @@ namespace Ustilz.Http
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Type de la réponse.</typeparam>
         /// <returns>The TResponse.</returns>
-        private async Task<TResponse> GetResponseAsyncInternalAsync<TResponse>(Uri url, string authentification)
+        private async Task<TResponse?> GetResponseAsyncInternalAsync<TResponse>(Uri url, string authentification)
+            where TResponse : class
         {
             var client = new HttpClient(this.handler);
 
@@ -396,7 +403,8 @@ namespace Ustilz.Http
         /// <param name="authentification">The authentification.</param>
         /// <typeparam name="TResponse">Test de la réponse.</typeparam>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<TResponse> PostAsyncInternalAsync<TResponse>(Uri url, Dictionary<string, IEnumerable<string>> headers, string content, string authentification)
+        private async Task<TResponse?> PostAsyncInternalAsync<TResponse>(Uri url, Dictionary<string, IEnumerable<string>> headers, string content, string authentification)
+            where TResponse : class
         {
             var stopWatch = Stopwatch.StartNew();
 
@@ -408,7 +416,7 @@ namespace Ustilz.Http
             try
             {
                 var response = await client.PostAsync(url, json).ConfigureAwait(false);
-                return response.Content.ToString().FromJson<TResponse>();
+                return response.Content.ToString()?.FromJson<TResponse>();
             }
             catch (WebException ex)
             {
@@ -427,11 +435,12 @@ namespace Ustilz.Http
         /// <param name="body">The body.</param>
         /// <param name="authentification">The authentification.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        private async Task<(HttpStatusCode StatusCode, string ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string Response)> PostHttpResponseAsyncInternalAsync(
-            Uri url,
-            Dictionary<string, IEnumerable<string>> headers,
-            string body,
-            string authentification)
+        private async Task<(HttpStatusCode StatusCode, string? ResponsePhrase, Dictionary<string, IEnumerable<string>> Headers, string? Response)>
+            PostHttpResponseAsyncInternalAsync(
+                Uri url,
+                Dictionary<string, IEnumerable<string>> headers,
+                string body,
+                string authentification)
         {
             var client = new HttpClient(this.handler);
             var content = new StringContent(body);

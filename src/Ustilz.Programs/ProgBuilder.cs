@@ -38,7 +38,7 @@ namespace Ustilz.Programs
             this.Services = new ServiceCollection();
             this.loggerFactory = new LoggerFactory();
             this.configurationBuilder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
-            this.LogAction = new List<Action<string>>();
+            this.LogAction = Array.Empty<Action<string>>();
             this.configuration = this.configurationBuilder.Build();
         }
 

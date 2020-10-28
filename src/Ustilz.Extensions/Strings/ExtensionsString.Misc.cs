@@ -64,13 +64,18 @@ namespace Ustilz.Extensions.Strings
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from left.</returns>
-        public static string? Left(this string value, int length) => value != null && value.Length > length ? value.Substring(0, length) : value;
+        public static string Left(this string value, int length)
+            => string.IsNullOrEmpty(value)
+                   ? throw new ArgumentException($"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
+                   : value.Length > length ? value[..length] : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
-        public static string? Right(this string value, int length) => value != null && value.Length > length ? value.Substring(value.Length - length) : value;
+        public static string Right(this string value, int length) => string.IsNullOrEmpty(value)
+                ? throw new ArgumentException($"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
+                : value.Length > length ? value[^length..] : value;
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>
@@ -85,7 +90,7 @@ namespace Ustilz.Extensions.Strings
         /// <typeparam name="T">Type de l'exception.</typeparam>
         public static void ToException<T>(this string message)
             where T : Exception, new() =>
-            throw (T)Activator.CreateInstance(typeof(T), message);
+            throw Activator.CreateInstance(typeof(T), message) as T ?? new Exception(message);
 
         /// <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString.</summary>
         /// <param name="str">Chaine de caractère à transformer.</param>
@@ -118,18 +123,17 @@ namespace Ustilz.Extensions.Strings
         /// <typeparam name="T">Type à inspecter.</typeparam>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="ArgumentException">Lève une exception lorsque la propriété et/ou la valeur n'est pas trouvé.</exception>
-        private static string? GetValue<T>([NotNull] Match match, T data)
+        private static string GetValue<T>([NotNull] Match match, T data)
         {
             var paraName = match.Groups[1].Value;
             try
             {
                 var proper = typeof(T).GetProperty(paraName);
-                return proper?.GetValue(data)?.ToString();
+                return proper?.GetValue(data)?.ToString() ?? string.Empty;
             }
             catch (Exception)
             {
-                var errMsg = $"Not find '{paraName}'";
-                throw new ArgumentException(errMsg);
+                throw new ArgumentException($"Not find '{paraName}'");
             }
         }
     }

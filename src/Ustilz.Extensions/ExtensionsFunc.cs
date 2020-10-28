@@ -33,12 +33,15 @@ namespace Ustilz.Extensions
             [MaybeNull] T parameter)
             where T : new()
         {
-            action.ThrowIfNull(nameof(action));
+            if (action is null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
 
             var result = new ExecutionResult<T>();
             try
             {
-                action!.Invoke(parameter);
+                action.Invoke(parameter);
                 result.Result = parameter;
             }
             catch (Exception ex)
@@ -64,12 +67,15 @@ namespace Ustilz.Extensions
             [MaybeNull] T parameter)
             where TResult : new()
         {
-            func.ThrowIfNull(nameof(func));
+            if (func is null)
+            {
+                throw new ArgumentNullException(nameof(func));
+            }
 
             var result = new ExecutionResult<TResult>();
             try
             {
-                result.Result = func!.Invoke(parameter);
+                result.Result = func.Invoke(parameter);
             }
             catch (Exception ex)
             {
@@ -86,6 +92,7 @@ namespace Ustilz.Extensions
         /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
+            where T : notnull
         {
             // ReSharper disable once RedundantAssignment
             var t = new Dictionary<T, TResult>();

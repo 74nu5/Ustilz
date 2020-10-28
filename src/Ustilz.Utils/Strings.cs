@@ -64,7 +64,7 @@ namespace Ustilz.Utils
         /// <param name="name">The name.</param>
         /// <param name="formatterNames">The formatter names.</param>
         /// <returns>The <see cref="string" />.</returns>
-        private static string? GetString(string name, params string[] formatterNames)
+        private static string GetString(string name, params string[]? formatterNames)
         {
             var str = ResourceManager.GetString(name, CultureInfo.CurrentCulture);
             if (str == null)

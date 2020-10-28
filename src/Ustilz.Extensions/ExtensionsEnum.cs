@@ -5,7 +5,6 @@ namespace Ustilz.Extensions
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
@@ -27,9 +26,9 @@ namespace Ustilz.Extensions
             var type = typeof(T);
 
             string? Selector(string name)
-                => !(type.GetTypeInfo().GetField(name).GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute)
-                       ? null
-                       : attribute.Description ?? string.Empty;
+                => type.GetTypeInfo().GetField(name)?.GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute attribute
+                       ? attribute.Description ?? string.Empty
+                       : null;
 
             return Enum.GetNames(type).ToDictionary(name => name, Selector);
         }
@@ -42,18 +41,17 @@ namespace Ustilz.Extensions
             where T : Enum
         {
             var type = typeof(T);
-            var name = Enum.GetNames(type).FirstOrDefault(f => string.Equals(f, value.ToString(), StringComparison.CurrentCultureIgnoreCase));
+            var name = Enum.GetNames(type).FirstOrDefault(f => string.Equals(f, value.ToString(), StringComparison.CurrentCultureIgnoreCase)) ?? string.Empty;
 
             var field = type.GetTypeInfo().GetField(name);
 
-            return field.GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute customAttribute ? customAttribute.Description ?? string.Empty : name;
+            return field?.GetCustomAttribute(typeof(DisplayAttribute)) is DisplayAttribute customAttribute ? customAttribute.Description ?? string.Empty : name;
         }
 
         /// <summary>Returns true if enum matches any of the given values.</summary>
         /// <param name="value">Value to match.</param>
         /// <param name="values">Values to match against.</param>
         /// <returns>Return true if matched.</returns>
-        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Nom compréhensible.")]
         public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
 
         /// <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>

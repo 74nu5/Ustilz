@@ -131,6 +131,9 @@
             Assert.False(s.IsNull());
         }
 
+        /// <summary>
+        /// The join test.
+        /// </summary>
         [Fact]
         public void JoinTest()
         {

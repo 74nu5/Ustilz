@@ -22,16 +22,9 @@ namespace Ustilz.Extensions
         /// <exception cref="ArgumentException">keySelector produces duplicate keys for two elements.</exception>
         /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection.</exception>
         [return: System.Diagnostics.CodeAnalysis.NotNull]
-        public static Dictionary<string, string> ToDictionary(
-            [System.Diagnostics.CodeAnalysis.NotNull]
-            this NameValueCollection nvc)
-        {
-            if (nvc == null)
-            {
-                throw new ArgumentNullException(nameof(nvc));
-            }
-
-            return nvc.AllKeys.ToDictionary(k => k, k => nvc[k]);
-        }
+        public static Dictionary<string, string> ToDictionary(this NameValueCollection? nvc)
+            => nvc is null
+                   ? throw new ArgumentNullException(nameof(nvc))
+                   : nvc.AllKeys.ToDictionary(k => k ?? throw new NullReferenceException("Name is null"), k => nvc[k] ?? throw new NullReferenceException("Value is null"));
     }
 }

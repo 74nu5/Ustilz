@@ -3,6 +3,7 @@ namespace Ustilz.Xml
     #region Usings
 
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Security;
     using System.Xml;
@@ -26,7 +27,9 @@ namespace Ustilz.Xml
         ///     An error occurred during deserialization. The original exception is available using the
         ///     <see cref="System.Exception.InnerException"></see> property.
         /// </exception>
-        public static T FromXml<T>([NotNull] this XDocument xDocument)
+        [return: MaybeNull]
+        public static T FromXml<T>([System.Diagnostics.CodeAnalysis.NotNull] this XDocument xDocument)
+            where T : class
         {
             if (xDocument == null)
             {
@@ -35,7 +38,7 @@ namespace Ustilz.Xml
 
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader = xDocument.CreateReader();
-            return (T)xmlSerializer.Deserialize(reader);
+            return xmlSerializer.Deserialize(reader) as T;
         }
 
         /// <summary>Méthode de dé-sérialisation à partir d'une chaine de caractère.</summary>
@@ -54,7 +57,9 @@ namespace Ustilz.Xml
         ///     An error occurred during deserialization. The original exception is available using the
         ///     <see cref="System.Exception.InnerException"></see> property.
         /// </exception>
-        public static T FromXml<T>([NotNull] this string xmlStr)
+        [return: MaybeNull]
+        public static T FromXml<T>([System.Diagnostics.CodeAnalysis.NotNull] this string xmlStr)
+            where T : class
         {
             if (xmlStr == null)
             {
@@ -64,7 +69,7 @@ namespace Ustilz.Xml
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader =
                 XmlReader.Create(xmlStr ?? throw new ArgumentNullException(nameof(xmlStr), Resources.XmlExtensions_FromXml_La_chaine_de_caractères_ne_peut_pas_être_nulle_));
-            return (T)xmlSerializer.Deserialize(reader);
+            return xmlSerializer.Deserialize(reader) as T;
         }
 
         /// <summary>Méthode de dé-sérialisation à partir d'un document Xml.</summary>
@@ -73,7 +78,9 @@ namespace Ustilz.Xml
         /// <returns>Retourne l'objet de T dé-sérialisé.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="xmlDocument" /> is <see langword="null" />.</exception>
         /// <exception cref="InvalidOperationException">Le document ne peut pas être null.</exception>
-        public static T FromXml<T>([NotNull] this XmlDocument xmlDocument)
+        [return: MaybeNull]
+        public static T FromXml<T>([JetBrains.Annotations.NotNull] this XmlDocument xmlDocument)
+            where T : class
         {
             if (xmlDocument == null)
             {
@@ -83,7 +90,7 @@ namespace Ustilz.Xml
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader =
                 new XmlNodeReader(xmlDocument.DocumentElement ?? throw new InvalidOperationException(Resources.XmlExtensions_FromXml_Le_document_ne_peut_pas_être_null_));
-            return (T)xmlSerializer.Deserialize(reader);
+            return xmlSerializer.Deserialize(reader) as T;
         }
 
         /// <summary>Méthode de sérialisation d'un objet.</summary>

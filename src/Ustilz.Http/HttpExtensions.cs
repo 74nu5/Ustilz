@@ -80,7 +80,7 @@ namespace Ustilz.Http
 
             var errorResponse = exception.Response;
 
-            using var responseStream = errorResponse.GetResponseStream();
+            using var responseStream = errorResponse?.GetResponseStream();
             if (responseStream == null)
             {
                 throw exception;

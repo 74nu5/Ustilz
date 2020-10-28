@@ -8,8 +8,14 @@ namespace Ustilz.Json.Test
 
     #endregion
 
+    /// <summary>
+    /// The test class of JsonExtensions.
+    /// </summary>
     public sealed class JsonExtensionsTest
     {
+        /// <summary>
+        /// The from json test.
+        /// </summary>
         [Fact]
         public void FromJsonTest()
         {

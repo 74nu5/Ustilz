@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
@@ -16,13 +16,13 @@
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.1\Ustilz.Json.xml</DocumentationFile>
-    <OutputPath>bin\Debug\netstandard2.1\</OutputPath>
+    <DocumentationFile>bin\Debug\net5.0\Ustilz.Json.xml</DocumentationFile>
+    <OutputPath>bin\Debug\net5.0\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\netstandard2.1</OutputPath>
-    <DocumentationFile>bin\Release\netstandard2.1\Ustilz.Json.xml</DocumentationFile>
+    <OutputPath>bin\Release\net5.0</OutputPath>
+    <DocumentationFile>bin\Release\net5.0\Ustilz.Json.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />

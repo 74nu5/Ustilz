@@ -110,10 +110,7 @@ namespace Ustilz.Extensions
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
             params T[] values)
-        {
-            values.ThrowIfNull(nameof(values));
-            return values.Contains(value);
-        }
+            => values.Contains(value);
 
         /// <summary>Vérifie si la valeur est présente dans le IEnumerable donné.</summary>
         /// <param name="value">La valeur à rechercher.</param>
@@ -126,10 +123,7 @@ namespace Ustilz.Extensions
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
             IEnumerable<T> values)
-        {
-            values.ThrowIfNull(nameof(values));
-            return values.Contains(value);
-        }
+            => values.Contains(value);
 
         /// <summary>Vérifie si la valeur n'est pas présente dans le tableau donné.</summary>
         /// <param name="value">La valeur à rechercher.</param>
@@ -162,7 +156,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet n'est pas null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNotNull<T>([MaybeNull] this T source)
+        public static bool IsNotNull<T>(this T? source)
             where T : class
             => source != null;
 
@@ -171,7 +165,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet est null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNull<T>([MaybeNull] this T source)
+        public static bool IsNull<T>(this T? source)
             where T : class
             => source == null;
 
@@ -194,12 +188,13 @@ namespace Ustilz.Extensions
         [DebuggerStepThrough]
         [ContractAnnotation("testObject:null => halt")]
         public static void ThrowIfNull<TObject>(
-            [MaybeNull] [NoEnumeration] this TObject testObject,
+            [MaybeNull] this TObject? testObject,
             [System.Diagnostics.CodeAnalysis.NotNull]
             string parameterName,
             string? errorMessage = null)
+            where TObject : class
         {
-            if (testObject != null)
+            if (testObject is not null)
             {
                 return;
             }

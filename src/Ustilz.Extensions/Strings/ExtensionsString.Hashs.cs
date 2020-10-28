@@ -8,6 +8,7 @@ namespace Ustilz.Extensions.Strings
     using System.Diagnostics.Contracts;
     using System.Globalization;
     using System.Linq;
+    using System.Runtime.Versioning;
     using System.Security.Cryptography;
     using System.Text;
 
@@ -75,14 +76,13 @@ namespace Ustilz.Extensions.Strings
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string" />.</returns>
         [Pure]
+        [SupportedOSPlatform("windows")]
         public static string Decrypt([NotNull] this string stringToDecrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
             {
                 throw new ArgumentException("Empty input or key are not allowed.");
             }
-
-            Contract.EndContractBlock();
 
             var cspp = new CspParameters { KeyContainerName = key };
             var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
@@ -99,6 +99,7 @@ namespace Ustilz.Extensions.Strings
         /// <param name="key">The key.</param>
         /// <returns>The <see cref="string" />.</returns>
         [Pure]
+        [SupportedOSPlatform("windows")]
         public static string Encrypt(this string stringToEncrypt, string key)
         {
             if (string.IsNullOrEmpty(stringToEncrypt))

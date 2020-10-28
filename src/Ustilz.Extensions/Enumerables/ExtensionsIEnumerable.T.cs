@@ -113,12 +113,7 @@ namespace Ustilz.Extensions.Enumerables
         [PublicAPI]
         public static bool NotAny<T>(
             [System.Diagnostics.CodeAnalysis.NotNull] [ItemCanBeNull]
-            this IEnumerable<T> enumerable)
-        {
-            enumerable.ThrowIfNull(nameof(enumerable));
-
-            return !enumerable.Any();
-        }
+            this IEnumerable<T> enumerable) => !enumerable.Any();
 
         /// <summary>Determines whether the given IEnumerable contains no items matching the given predicate, or not.</summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
@@ -134,12 +129,7 @@ namespace Ustilz.Extensions.Enumerables
             this IEnumerable<T> enumerable,
             [System.Diagnostics.CodeAnalysis.NotNull]
             Func<T, bool> predicate)
-        {
-            enumerable.ThrowIfNull(nameof(enumerable));
-            predicate.ThrowIfNull(nameof(predicate));
-
-            return !enumerable.Any(predicate);
-        }
+            => !enumerable.Any(predicate);
 
         /// <summary>
         ///     Gets a subset of IEnumerable by passing the page number.
@@ -150,14 +140,9 @@ namespace Ustilz.Extensions.Enumerables
         /// <param name="pageSize">Page size.</param>
         /// <returns>Return a subset of IEnumerable by passing the page number.</returns>
         public static IEnumerable<T> Page<T>(this IEnumerable<T> source, int page, int pageSize)
-        {
-            if (page < 1 || pageSize < 1)
-            {
-                throw new ArgumentException(Messages.MustBeOneOrGreater, page < 1 ? "page" : "pageSize");
-            }
-
-            return source.Skip(--page * pageSize).Take(pageSize);
-        }
+            => page < 1 || pageSize < 1
+                ? throw new ArgumentException(Messages.MustBeOneOrGreater, page < 1 ? "page" : "pageSize")
+                : source.Skip(--page * pageSize).Take(pageSize);
 
         /// <summary>Read only collection of any enumeration.</summary>
         /// <typeparam name="T">Type of enumeration.</typeparam>

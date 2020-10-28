@@ -27,7 +27,6 @@
         {
         }
 
-
         /// <summary>The generate hash test.</summary>
         [Fact]
         public void GenerateHashTest()
@@ -51,7 +50,6 @@
         public void GenerateSaltTest()
         {
         }
-
 
         /// <summary>The validate test.</summary>
         [Fact]
