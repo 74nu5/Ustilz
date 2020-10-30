@@ -46,21 +46,21 @@ namespace Ustilz.Data.Interfaces
         /// <param name="stoppingToken">Token d'arret de la tache.</param>
         /// <param name="includes">The includes.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
+        Task<List<TModel>> GetAllWithIncludesAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
 
         /// <summary>The get all with pagination.</summary>
         /// <param name="skip">The skip.</param>
         /// <param name="take">The take.</param>
         /// <param name="stoppingToken">Token d'arret de la tache.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        Task<List<TModel>> GetAllAsync(int skip, int take, CancellationToken stoppingToken = default);
+        Task<List<TModel>> GetAllWithSkipTakeAsync(int skip, int take, CancellationToken stoppingToken = default);
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>
         /// <param name="stoppingToken">Token d'arret de la tache.</param>
         /// <param name="includes">The includes.</param>
         /// <returns>The <see cref="Task" />.</returns>
-        Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
+        Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
 
         /// <summary>The get details.</summary>
         /// <param name="id">The id.</param>
@@ -96,5 +96,10 @@ namespace Ustilz.Data.Interfaces
         /// <param name="stoppingToken">Token d'arret de la tache.</param>
         /// <returns>The <see cref="Task" />.</returns>
         Task<int> UpdateRangeAsync(IEnumerable<TModel> models, CancellationToken stoppingToken = default);
+
+        /// <summary>The get all.</summary>
+        /// <param name="stoppingToken">Token d'arret de la tache.</param>
+        /// <returns>The <see cref="Task" />.</returns>
+        Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default);
     }
 }

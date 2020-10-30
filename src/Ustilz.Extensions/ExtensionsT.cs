@@ -77,12 +77,12 @@ namespace Ustilz.Extensions
         /// <exception cref="IOException">An I/O error occurred.</exception>
         /// <exception cref="ArgumentNullException">values is null.</exception>
         /// <exception cref="InvalidCastException">An element in the sequence cannot be cast to type TResult.</exception>
-        public static T Dump<T>(this T o)
+        public static T Display<T>(this T o)
         {
             if (o is IEnumerable list)
             {
                 var enumerable = list as object[] ?? list.Cast<object>().ToArray();
-                Console.WriteLine($@"[{string.Join(", ", enumerable.Select(t => t.Dump()).ToArray())}]");
+                Console.WriteLine($@"[{string.Join(", ", enumerable.Select(t => t.Display()).ToArray())}]");
                 return o;
             }
 
@@ -95,7 +95,7 @@ namespace Ustilz.Extensions
         /// <param name="defaultValue">La valeur par défaut.</param>
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne l'objet passé en entrée, la valeur par défaut si celle-ci est nulle.</returns>
-        public static T IfNull<T>([MaybeNull] this T source, T defaultValue)
+        public static T IfNull<T>([MaybeNull] this T? source, T defaultValue)
             where T : class
             => source ?? defaultValue;
 
@@ -110,7 +110,11 @@ namespace Ustilz.Extensions
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
             params T[] values)
-            => values.Contains(value);
+        {
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+
+            return values.Contains(value);
+        }
 
         /// <summary>Vérifie si la valeur est présente dans le IEnumerable donné.</summary>
         /// <param name="value">La valeur à rechercher.</param>
@@ -123,7 +127,10 @@ namespace Ustilz.Extensions
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
             IEnumerable<T> values)
-            => values.Contains(value);
+        {
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            return values.Contains(value);
+        }
 
         /// <summary>Vérifie si la valeur n'est pas présente dans le tableau donné.</summary>
         /// <param name="value">La valeur à rechercher.</param>
@@ -156,7 +163,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet n'est pas null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNotNull<T>(this T? source)
+        public static bool IsNotNull<T>([MaybeNull] this T? source)
             where T : class
             => source != null;
 
@@ -165,7 +172,7 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type de l'objet.</typeparam>
         /// <returns>Retourne true si l'objet est null, false sinon.</returns>
         [DebuggerStepThrough]
-        public static bool IsNull<T>(this T? source)
+        public static bool IsNull<T>([MaybeNull] this T? source)
             where T : class
             => source == null;
 
@@ -186,10 +193,9 @@ namespace Ustilz.Extensions
         /// <typeparam name="TObject">Le type de l'objet <paramref name="testObject" />.</typeparam>
         /// <exception cref="ArgumentNullException">Obj is null.</exception>
         [DebuggerStepThrough]
-        [ContractAnnotation("testObject:null => halt")]
+        [ContractAnnotation("testObject:null => halt; testObject:notnull=>nothing")]
         public static void ThrowIfNull<TObject>(
-            [MaybeNull] this TObject? testObject,
-            [System.Diagnostics.CodeAnalysis.NotNull]
+            [MaybeNull] [NoEnumeration] this TObject? testObject,
             string parameterName,
             string? errorMessage = null)
             where TObject : class
@@ -207,8 +213,6 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="value" /> is <see langword="null" />.</exception>
-        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
-        [SuppressMessage("ReSharper", "CatchAllClause", Justification = "Obvious")]
         public static T To<T>(
             [System.Diagnostics.CodeAnalysis.NotNull]
             this IConvertible value)
@@ -242,9 +246,7 @@ namespace Ustilz.Extensions
         /// <param name="ifError">Valeur à renvoyer si la conversion échoue.</param>
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
-        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Comprehensible")]
-        [SuppressMessage("ReSharper", "CatchAllClause", Justification = "Obvious")]
-        public static T To<T>([MaybeNull] this IConvertible value, IConvertible ifError)
+        public static T To<T>(this IConvertible? value, IConvertible ifError)
         {
             try
             {

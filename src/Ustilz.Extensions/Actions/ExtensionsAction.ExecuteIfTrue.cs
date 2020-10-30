@@ -22,10 +22,10 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue([NotNull] this Action trueAction, Action? falseAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue(this Action trueAction, Action? falseAction = null, params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (values.All(x => x()))
             {
@@ -49,10 +49,10 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue<T>([NotNull] this Action<T> trueAction, [CanBeNull] T parameter, Action<T>? falseAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue<T>(this Action<T> trueAction, [CanBeNull] T parameter, Action<T>? falseAction = null, params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (values.All(x => x()))
             {
@@ -79,14 +79,14 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2>(
-            [NotNull] this Action<T1, T2> trueAction,
+            this Action<T1, T2> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             Action<T1, T2>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (values.All(x => x()))
             {
@@ -115,15 +115,15 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> trueAction,
+            this Action<T1, T2, T3> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
             Action<T1, T2, T3>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (values.All(x => x()))
             {
@@ -154,20 +154,20 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> trueAction,
+            this Action<T1, T2, T3, T4> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
             [CanBeNull] T4 parameter4,
             Action<T1, T2, T3, T4>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (values.All(x => x()))
             {
-                trueAction!.Invoke(parameter1, parameter2, parameter3, parameter4);
+                trueAction.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
             else
             {
@@ -181,10 +181,10 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue([NotNull] this Action trueAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue(this Action trueAction, params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (!values.All(x => x()))
             {
@@ -202,10 +202,10 @@ namespace Ustilz.Extensions.Actions
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfTrue<T>([NotNull] this Action<T> trueAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfTrue<T>(this Action<T> trueAction, [CanBeNull] T parameter, params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (!values.All(x => x()))
             {
@@ -226,13 +226,13 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2>(
-            [NotNull] this Action<T1, T2> trueAction,
+            this Action<T1, T2> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (!values.All(x => x()))
             {
@@ -255,14 +255,14 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> trueAction,
+            this Action<T1, T2, T3> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (!values.All(x => x()))
             {
@@ -287,15 +287,15 @@ namespace Ustilz.Extensions.Actions
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfTrue<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> trueAction,
+            this Action<T1, T2, T3, T4> trueAction,
             [CanBeNull] T1 parameter1,
             [CanBeNull] T2 parameter2,
             [CanBeNull] T3 parameter3,
             [CanBeNull] T4 parameter4,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
-            trueAction.ThrowIfNull(nameof(trueAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
             if (!values.All(x => x()))
             {

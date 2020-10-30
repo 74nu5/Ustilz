@@ -13,7 +13,7 @@
     public sealed partial class ExtensionsStringTest
     {
         /// <summary>
-        /// The fs Ano test.
+        /// The fs anot test.
         /// </summary>
         [Fact]
         public void FsAnoTest()

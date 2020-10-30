@@ -34,7 +34,7 @@ namespace Ustilz.Data
         /// <summary>Initialise une nouvelle instance de la classe <see cref="BaseDAL{Tcontext, TModel, TIdentity}" />.</summary>
         /// <param name="context">The context.</param>
         /// <exception cref="ArgumentNullException"><paramref name="context" /> is null.</exception>
-        protected BaseDAL([NotNull] TContext context)
+        protected BaseDAL(TContext context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
             this.Queryable = this.context.Set<TModel>().AsQueryable();
@@ -72,30 +72,32 @@ namespace Ustilz.Data
             => this.context.Set<TModel>().AnyAsync(e => e.Id.CompareTo(id) == 0, stoppingToken);
 
         /// <inheritdoc />
-        public async Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
+        public Task<List<TModel>> GetAllAsync(CancellationToken stoppingToken = default)
+            => this.Queryable.ToListAsync(stoppingToken);
+
+        /// <inheritdoc />
+        public async Task<List<TModel>> GetAllWithIncludesAsync(CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
         {
             var set = this.context.Set<TModel>();
             var includeSet = GetIncludeSet(includes, set);
-            return includeSet == null ? await set.ToListAsync(stoppingToken).ConfigureAwait(false) : await includeSet.ToListAsync(stoppingToken).ConfigureAwait(false);
+            return await includeSet.ToListAsync(stoppingToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public Task<List<TModel>> GetAllAsync(int skip, int take, CancellationToken stoppingToken = default)
+        public Task<List<TModel>> GetAllWithSkipTakeAsync(int skip, int take, CancellationToken stoppingToken = default)
             => this.SkipAndTake(skip, take).ToListAsync(stoppingToken);
-
-        /// <inheritdoc />
-        public async Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
-        {
-            var set = this.context.Set<TModel>();
-            var includeSet = GetIncludeSet(includes, set);
-            return includeSet == null
-                       ? await set.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false)
-                       : await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false);
-        }
 
         /// <inheritdoc />
         public Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default)
             => this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken);
+
+        /// <inheritdoc />
+        public async Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
+        {
+            var set = this.context.Set<TModel>();
+            var includeSet = GetIncludeSet(includes, set);
+            return await includeSet.SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken).ConfigureAwait(false);
+        }
 
         /// <inheritdoc />
         /// <exception cref="DbUpdateException">An error is encountered while saving to the database.</exception>
@@ -174,14 +176,15 @@ namespace Ustilz.Data
         }
 
         private static IIncludableQueryable<TModel, object> GetIncludeSet(Expression<Func<TModel, object>>[] includes, DbSet<TModel> set)
-            => includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
-#pragma warning disable CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
-                null,
-#pragma warning restore CS8625 // Impossible de convertir un littéral ayant une valeur null en type référence non Nullable.
-                (current, include) =>
-                    current == null
-                        ? set.Include(include)
-                        : current.Include(include));
+        {
+            _ = set ?? throw new ArgumentNullException(nameof(set));
+            _ = includes ?? throw new ArgumentNullException(nameof(includes));
+
+            return includes.Aggregate<Expression<Func<TModel, object>>, IIncludableQueryable<TModel, object>>(
+                null!,
+                (current, include)
+                    => current.Include(include));
+        }
 
         private IQueryable<TModel> SkipAndTake(int skip, int take)
         {

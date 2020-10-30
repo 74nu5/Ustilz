@@ -22,7 +22,12 @@ namespace Ustilz.Extensions.Enumerables
         [System.Diagnostics.Contracts.Pure]
         [return: System.Diagnostics.CodeAnalysis.NotNull]
         public static string PathCombine(
-            [System.Diagnostics.CodeAnalysis.NotNull] [ItemNotNull]
-            this IEnumerable<string> enumerable) => Path.Combine(enumerable.ToArray());
+            [System.Diagnostics.CodeAnalysis.NotNull] [ItemCanBeNull]
+            this IEnumerable<string> enumerable)
+        {
+            _ = enumerable ?? throw new ArgumentNullException(nameof(enumerable));
+
+            return Path.Combine(enumerable.ToArray());
+        }
     }
 }

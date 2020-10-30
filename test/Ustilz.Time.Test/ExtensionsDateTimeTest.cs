@@ -19,7 +19,7 @@ namespace Ustilz.Time.Test
         {
             Clock.Reset();
             var now = Clock.Now;
-            output.WriteLine($"Maintenant : {now}");
+            output?.WriteLine($"Maintenant : {now}");
 
             // Pour éviter le mois de février.
             Clock.SetFunctionNow(() => now);

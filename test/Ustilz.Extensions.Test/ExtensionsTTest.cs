@@ -31,15 +31,13 @@
         {
             var a = new A();
 
-            void Action1(A s1)
-                => a.I = 100;
+            static void Action1(A s1)
+                => s1.I = 100;
 
-            void Action2(A s2)
-                => a.S = "Test";
+            static void Action2(A s2)
+                => s2.S = "Test";
 
-#pragma warning disable IDE0009 // L'accès au membre doit être qualifié.
             var chain = a.Chain(Action1).Chain(Action2);
-#pragma warning restore IDE0009 // L'accès au membre doit être qualifié.
             Assert.Equal(100, a.I);
             Assert.Equal("Test", a.S);
             Assert.Equal(100, chain.I);
@@ -50,11 +48,11 @@
         [Fact]
         public void DumpTest()
         {
-            Assert.Equal(1, 1.Dump());
+            Assert.Equal(1, 1.Display());
 
             var tab = new[] { 1, 2, 3, 4 };
 
-            Assert.Equal(tab, tab.Dump());
+            Assert.Equal(tab, tab.Display());
         }
 
         /// <summary>The if null test.</summary>

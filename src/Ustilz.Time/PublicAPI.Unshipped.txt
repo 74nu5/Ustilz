@@ -1,0 +1,25 @@
+﻿Ustilz.Time.Clock
+Ustilz.Time.Duration
+Ustilz.Time.Duration.Day = 4 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Decade = 10 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.HalfDay = 3 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Hour = 2 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Minute = 1 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Month = 6 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Quarter = 7 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Second = 0 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Semester = 8 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Week = 5 -> Ustilz.Time.Duration
+Ustilz.Time.Duration.Year = 9 -> Ustilz.Time.Duration
+Ustilz.Time.ExtensionsDateTime
+Ustilz.Time.ExtensionsDuration
+static Ustilz.Time.Clock.Now.get -> System.DateTime
+static Ustilz.Time.Clock.Reset() -> void
+static Ustilz.Time.Clock.SetFunctionNow(System.Func<System.DateTime>? value) -> void
+static Ustilz.Time.ExtensionsDateTime.AgeFrom(this System.DateTime startDay, System.DateTime? day = null) -> (int YearAge, int MonthAge, int DayAge)
+static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours) -> System.DateTime
+static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours, int minutes) -> System.DateTime
+static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours, int minutes, int seconds) -> System.DateTime
+static Ustilz.Time.ExtensionsDateTime.Elapsed(this System.DateTime dateTime) -> System.TimeSpan
+static Ustilz.Time.ExtensionsDateTime.ReadableTimeStamp(this System.DateTime currentDate) -> string!
+static Ustilz.Time.ExtensionsDuration.From(this Ustilz.Time.Duration duration, System.DateTime dateTime) -> System.DateTime

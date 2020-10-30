@@ -15,9 +15,7 @@ namespace Ustilz.Extensions.Enumerables
     [PublicAPI]
     public static partial class ExtensionsIEnumerable
     {
-        /// <summary>
-        ///     Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}" />.
-        /// </summary>
+        /// <summary>Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}" />.</summary>
         /// <typeparam name="T">Type d'élément de l'énumérable.</typeparam>
         /// <param name="enumerable">Enumérable à ajuster.</param>
         /// <param name="shouldReplace">Condition de d'ajustement.</param>
@@ -30,47 +28,37 @@ namespace Ustilz.Extensions.Enumerables
                         ? replacement
                         : obj);
 
-        /// <summary>
-        ///     Méthode qui split une liste à partir d'un tableau de booléen.
-        /// </summary>
+        /// <summary>Méthode qui split une liste à partir d'un tableau de booléen.</summary>
         /// <typeparam name="T">Type de la liste.</typeparam>
         /// <param name="items">Liste à spliter.</param>
         /// <param name="filter">Filtre à appliquer.</param>
         /// <returns>Retourne un tuple contenant les deux listes.</returns>
-        public static (IEnumerable<T> FilteredTrue, IEnumerable<T> FilteredFalse) Bifurcate<T>(this IEnumerable<T> items, IList<bool> filter)
+        public static (IEnumerable<T> FilteredTrue, IEnumerable<T> FilteredFalse) Bifurcate<T>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this IEnumerable<T> items,
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            IList<bool> filter)
         {
-            if (items is null)
-            {
-                throw new ArgumentNullException(nameof(items));
-            }
-
-            if (filter is null)
-            {
-                throw new ArgumentNullException(nameof(filter));
-            }
+            _ = filter ?? throw new ArgumentNullException(nameof(filter));
+            _ = items ?? throw new ArgumentNullException(nameof(items));
 
             var enumerable = items.ToList();
             return (enumerable.Where((val, i) => filter[i]), enumerable.Where((val, i) => !filter[i]));
         }
 
-        /// <summary>
-        ///     Méthode qui split une liste à partir d'un prédicat.
-        /// </summary>
+        /// <summary>Méthode qui split une liste à partir d'un prédicat.</summary>
         /// <typeparam name="T">Type de la liste.</typeparam>
         /// <param name="items">Liste à spliter.</param>
         /// <param name="filter">Prédicat à appliquer.</param>
         /// <returns>Retourne un tuple contenant les deux listes.</returns>
-        public static (IEnumerable<T> FilteredTrue, IEnumerable<T> FilteredFalse) Bifurcate<T>(this IEnumerable<T> items, Func<T, bool> filter)
+        public static (IEnumerable<T> FilteredTrue, IEnumerable<T> FilteredFalse) Bifurcate<T>(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this IEnumerable<T> items,
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            Func<T, bool> filter)
         {
-            if (items is null)
-            {
-                throw new ArgumentNullException(nameof(items));
-            }
-
-            if (filter is null)
-            {
-                throw new ArgumentNullException(nameof(filter));
-            }
+            _ = filter ?? throw new ArgumentNullException(nameof(filter));
+            _ = items ?? throw new ArgumentNullException(nameof(items));
 
             var enumerable = items.ToList();
             return (enumerable.Where(filter), enumerable.Where(val => !filter(val)));
@@ -83,12 +71,11 @@ namespace Ustilz.Extensions.Enumerables
         public static void ForEach<T>(
             [System.Diagnostics.CodeAnalysis.NotNull]
             this IEnumerable<T> enumerable,
+            [System.Diagnostics.CodeAnalysis.NotNull]
             Action<T> action)
         {
-            if (enumerable is null)
-            {
-                throw new ArgumentNullException(nameof(enumerable));
-            }
+            _ = action ?? throw new ArgumentNullException(nameof(action));
+            _ = enumerable ?? throw new ArgumentNullException(nameof(enumerable));
 
             foreach (var item in enumerable)
             {
@@ -113,7 +100,11 @@ namespace Ustilz.Extensions.Enumerables
         [PublicAPI]
         public static bool NotAny<T>(
             [System.Diagnostics.CodeAnalysis.NotNull] [ItemCanBeNull]
-            this IEnumerable<T> enumerable) => !enumerable.Any();
+            this IEnumerable<T> enumerable)
+        {
+            _ = enumerable ?? throw new ArgumentNullException(nameof(enumerable));
+            return !enumerable.Any();
+        }
 
         /// <summary>Determines whether the given IEnumerable contains no items matching the given predicate, or not.</summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
@@ -125,15 +116,16 @@ namespace Ustilz.Extensions.Enumerables
         [System.Diagnostics.Contracts.Pure]
         [PublicAPI]
         public static bool NotAny<T>(
-            [System.Diagnostics.CodeAnalysis.NotNull] [ItemCanBeNull]
-            this IEnumerable<T> enumerable,
-            [System.Diagnostics.CodeAnalysis.NotNull]
+            [ItemCanBeNull] this IEnumerable<T> enumerable,
             Func<T, bool> predicate)
-            => !enumerable.Any(predicate);
+        {
+            _ = predicate ?? throw new ArgumentNullException(nameof(predicate));
+            _ = enumerable ?? throw new ArgumentNullException(nameof(enumerable));
 
-        /// <summary>
-        ///     Gets a subset of IEnumerable by passing the page number.
-        /// </summary>
+            return !enumerable.Any(predicate);
+        }
+
+        /// <summary>Gets a subset of IEnumerable by passing the page number.</summary>
         /// <typeparam name="T">Type of enumerable.</typeparam>
         /// <param name="source">Enumerable source.</param>
         /// <param name="page">Page number.</param>
@@ -141,28 +133,52 @@ namespace Ustilz.Extensions.Enumerables
         /// <returns>Return a subset of IEnumerable by passing the page number.</returns>
         public static IEnumerable<T> Page<T>(this IEnumerable<T> source, int page, int pageSize)
             => page < 1 || pageSize < 1
-                ? throw new ArgumentException(Messages.MustBeOneOrGreater, page < 1 ? "page" : "pageSize")
-                : source.Skip(--page * pageSize).Take(pageSize);
+                   ? throw new ArgumentException(Messages.MustBeOneOrGreater, page < 1 ? "page" : "pageSize")
+                   : source.Skip(--page * pageSize).Take(pageSize);
 
-        /// <summary>Read only collection of any enumeration.</summary>
-        /// <typeparam name="T">Type of enumeration.</typeparam>
-        /// <param name="collection">Enumerable collection.</param>
-        /// <returns>ReadOnlyCollection of the collection.</returns>
-        public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection)
-            => new List<T>(collection).AsReadOnly();
+        /// <summary>Méthode de traitement des éléments d'une liste deux à deux.</summary>
+        /// <param name="source">Liste source.</param>
+        /// <param name="selector">Méthode de calcul des éléments deux à deux.</param>
+        /// <typeparam name="T">Type des éléments de la liste.</typeparam>
+        /// <typeparam name="TReturn">Type du retour du calcul des éléments deux à deux.</typeparam>
+        /// <returns>Retourne une liste contenant les résultat des calcul des éléments deux à deux.</returns>
+        /// <exception cref="ArgumentNullException">Lève une exception si un des arguments est null.</exception>
+        /// <exception cref="InvalidOperationException">Lève une exception si la liste est vide.</exception>
+        /// <exception cref="InvalidOperationException">Lève une exception si la liste contient moins de deux éléménts.</exception>
+        public static IEnumerable<TReturn> Pairwise<T, TReturn>(this IEnumerable<T> source, Func<T, T, TReturn> selector)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
 
-        /// <summary>
-        ///     Méthode récupération d'une énumération avec index.
-        /// </summary>
-        /// <typeparam name="T">Type de la liste.</typeparam>
-        /// <param name="enumerable">Enumérable à traiter.</param>
-        /// <returns>Retourne un énumarable contenant des <see cref="Tuple" />, représentant un couple (item, index0).</returns>
-        public static IEnumerable<(T Item, int Index)> WithIndex<T>(this IEnumerable<T> enumerable)
-            => enumerable.Select((item, index) => (item, index));
+            if (selector == null)
+            {
+                throw new ArgumentNullException(nameof(selector));
+            }
 
-        /// <summary>
-        ///     Méthode de split d'un liste en n liste.
-        /// </summary>
+            using var e = source.GetEnumerator();
+            if (!e.MoveNext())
+            {
+                throw new InvalidOperationException("Sequence cannot be empty.");
+            }
+
+            var prev = e.Current;
+
+            if (!e.MoveNext())
+            {
+                throw new InvalidOperationException("Sequence must contain at least two elements.");
+            }
+
+            do
+            {
+                yield return selector(prev, e.Current);
+                prev = e.Current;
+            }
+            while (e.MoveNext());
+        }
+
+        /// <summary>Méthode de split d'un liste en n liste.</summary>
         /// <typeparam name="T">Type de la liste.</typeparam>
         /// <param name="enumerable">Liste à spliter.</param>
         /// <param name="split">Nombre de liste.</param>
@@ -177,5 +193,19 @@ namespace Ustilz.Extensions.Enumerables
                 yield return list.Skip(i).Take(subN);
             }
         }
+
+        /// <summary>Read only collection of any enumeration.</summary>
+        /// <typeparam name="T">Type of enumeration.</typeparam>
+        /// <param name="collection">Enumerable collection.</param>
+        /// <returns>ReadOnlyCollection of the collection.</returns>
+        public static ReadOnlyCollection<T> ToReadOnly<T>(this IEnumerable<T> collection)
+            => new List<T>(collection).AsReadOnly();
+
+        /// <summary>Méthode récupération d'une énumération avec index.</summary>
+        /// <typeparam name="T">Type de la liste.</typeparam>
+        /// <param name="enumerable">Enumérable à traiter.</param>
+        /// <returns>Retourne un énumarable contenant des <see cref="Tuple" />, représentant un couple (item, index0).</returns>
+        public static IEnumerable<(T Item, int Index)> WithIndex<T>(this IEnumerable<T> enumerable)
+            => enumerable.Select((item, index) => (item, index));
     }
 }

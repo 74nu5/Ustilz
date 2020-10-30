@@ -3,7 +3,6 @@ namespace Ustilz.Logging.Action
     #region Usings
 
     using System;
-    using System.Diagnostics.CodeAnalysis;
 
     using Microsoft.Extensions.Logging;
 
@@ -12,7 +11,7 @@ namespace Ustilz.Logging.Action
     /// <summary>Classe du logger d'action.</summary>
     public sealed class LoggerAction : ILogger
     {
-        private readonly LogDelegate action;
+        private readonly LogDelegate? action;
 
         private readonly string categoryName;
 
@@ -42,7 +41,6 @@ namespace Ustilz.Logging.Action
         /// <inheritdoc />
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="formatter" /> is <see langword="null" />.</exception>
-        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Inherited from ILogger")]
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (formatter == null)
@@ -50,7 +48,7 @@ namespace Ustilz.Logging.Action
                 throw new ArgumentNullException(nameof(formatter));
             }
 
-            this.action(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
+            this.action?.Invoke(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
         }
     }
 }

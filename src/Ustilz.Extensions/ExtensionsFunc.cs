@@ -33,10 +33,7 @@ namespace Ustilz.Extensions
             [MaybeNull] T parameter)
             where T : new()
         {
-            if (action is null)
-            {
-                throw new ArgumentNullException(nameof(action));
-            }
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             var result = new ExecutionResult<T>();
             try
@@ -67,10 +64,7 @@ namespace Ustilz.Extensions
             [MaybeNull] T parameter)
             where TResult : new()
         {
-            if (func is null)
-            {
-                throw new ArgumentNullException(nameof(func));
-            }
+            _ = func ?? throw new ArgumentNullException(nameof(func));
 
             var result = new ExecutionResult<TResult>();
             try

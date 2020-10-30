@@ -70,12 +70,12 @@ namespace Ustilz.Extensions.Actions
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static bool SafeExecuteExcept(this Action action, params Type[] exceptionsToThrow)
         {
-            action.ThrowIfNull(nameof(action));
-            exceptionsToThrow.ThrowIfNull(nameof(exceptionsToThrow));
+            _ = exceptionsToThrow ?? throw new ArgumentNullException(nameof(exceptionsToThrow));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             try
             {
-                action!.Invoke();
+                action.Invoke();
                 return true;
             }
             catch (Exception ex)

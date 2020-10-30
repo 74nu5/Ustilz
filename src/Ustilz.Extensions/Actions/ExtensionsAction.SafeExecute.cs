@@ -18,9 +18,9 @@ namespace Ustilz.Extensions.Actions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute([NotNull] this Action action)
+        public static bool SafeExecute(this Action action)
         {
-            action.ThrowIfNull(nameof(action));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             try
             {
@@ -40,7 +40,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException>([NotNull] this Action action)
+        public static bool SafeExecute<TException>(this Action action)
             where TException : Exception
             => action.SafeExecute(typeof(TException));
 
@@ -51,7 +51,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             => action.SafeExecute(typeof(TException1), typeof(TException2));
@@ -64,7 +64,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2, TException3>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2, TException3>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -79,7 +79,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2, TException3, TException4>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2, TException3, TException4>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -96,19 +96,19 @@ namespace Ustilz.Extensions.Actions
         /// <param name="exceptionsToCatch">A list of exception types to catch.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute([NotNull] this Action action, [NotNull] params Type[] exceptionsToCatch)
+        public static bool SafeExecute(this Action action, params Type[] exceptionsToCatch)
         {
-            action.ThrowIfNull(nameof(action));
-            exceptionsToCatch.ThrowIfNull(nameof(exceptionsToCatch));
+            _ = exceptionsToCatch ?? throw new ArgumentNullException(nameof(exceptionsToCatch));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             try
             {
-                action!.Invoke();
+                action.Invoke();
                 return true;
             }
             catch (Exception ex)
             {
-                if (exceptionsToCatch!.NotAny(x => x == ex.GetType()))
+                if (exceptionsToCatch.NotAny(x => x == ex.GetType()))
                 {
                     throw;
                 }

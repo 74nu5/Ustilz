@@ -26,18 +26,11 @@ namespace Ustilz.Utils
         /// <exception cref="ArgumentNullException"><paramref name="parameterName" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">Collection has null.</exception>
         [NotNull]
-        public static IReadOnlyList<T> HasNoNulls<T>([NotNull] IReadOnlyList<T> collection, [InvokerParameterName] [NotNull] string parameterName)
+        public static IReadOnlyList<T> HasNoNulls<T>(IReadOnlyList<T> collection, [InvokerParameterName] string parameterName)
             where T : class
         {
-            if (collection == null)
-            {
-                throw new ArgumentNullException(nameof(collection));
-            }
-
-            if (parameterName == null)
-            {
-                throw new ArgumentNullException(nameof(parameterName));
-            }
+            _ = parameterName ?? throw new ArgumentNullException(nameof(parameterName));
+            _ = collection ?? throw new ArgumentNullException(nameof(collection));
 
             NotNull(collection, parameterName);
 

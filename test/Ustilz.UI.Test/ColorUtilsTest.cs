@@ -17,6 +17,7 @@
             Assert.Equal(6, couleur.Length);
         }
 
+        /// <summary>The generer couleurs test clair.</summary>
         [Fact]
         public void GetColorFromNomClairTest()
         {
@@ -37,6 +38,7 @@
             Assert.Equal(7, colorFromNom.Length);
         }
 
+        /// <summary>The get color from nom test.</summary>
         [Fact]
         public void GetColorFromNomTest()
         {

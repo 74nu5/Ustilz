@@ -9,7 +9,7 @@ namespace Ustilz.Json.Test
     #endregion
 
     /// <summary>
-    /// The test class of JsonExtensions.
+    /// The json test class.
     /// </summary>
     public sealed class JsonExtensionsTest
     {
@@ -28,6 +28,9 @@ namespace Ustilz.Json.Test
             Assert.Equal(expected, result, new PersonneComparer());
         }
 
+        /// <summary>
+        /// The foprm json formatted test.
+        /// </summary>
         [Fact]
         public void ToJsonFormattedTest()
         {
@@ -43,6 +46,9 @@ namespace Ustilz.Json.Test
             Assert.Equal(Expected, result);
         }
 
+        /// <summary>
+        /// The to json test.
+        /// </summary>
         [Fact]
         public void ToJsonTest()
         {

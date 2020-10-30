@@ -85,7 +85,7 @@ namespace Ustilz.Extensions.Strings
             }
 
             var cspp = new CspParameters { KeyContainerName = key };
-            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+            using var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
 
             var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
             var decryptByteArray = decryptArray.Select(s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber, CultureInfo.CurrentCulture))).ToArray();
@@ -112,10 +112,8 @@ namespace Ustilz.Extensions.Strings
                 throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
             }
 
-            Contract.EndContractBlock();
-
             var cspp = new CspParameters { KeyContainerName = key };
-            var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+            using var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
             var bytes = rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true);
 
             return BitConverter.ToString(bytes);

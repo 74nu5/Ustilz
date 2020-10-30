@@ -10,14 +10,14 @@
 
     /// <inheritdoc />
     /// <summary>The horloge test.</summary>
-    public class HorlogeTest : IDisposable
+    public sealed class HorlogeTest : IDisposable
     {
         /// <summary>Initializes a new instance of the <see cref="HorlogeTest" /> class.</summary>
         public HorlogeTest() => Clock.Reset();
 
         /// <inheritdoc />
         /// <summary>The dispose.</summary>
-        public void Dispose() => Clock.Reset();
+        public void Dispose() => Dispose(true);
 
         /// <summary>The fonction maintenant test.</summary>
         [Fact]
@@ -86,6 +86,14 @@
             Assert.Equal(now.Minute, maintenant.Minute);
             Assert.Equal(now.Year, maintenant.Year);
             Assert.Equal(now.Second, maintenant.Second);
+        }
+
+        private static void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Clock.Reset();
+            }
         }
     }
 }

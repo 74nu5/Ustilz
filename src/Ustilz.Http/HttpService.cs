@@ -265,7 +265,7 @@ namespace Ustilz.Http
                 string authentification)
             where TResponse : class, new()
         {
-            var client = new HttpClient(this.handler);
+            using var client = new HttpClient(this.handler);
 
             client.SetAuthentication(authentification);
             client.SetHeaders(headers);
@@ -298,7 +298,7 @@ namespace Ustilz.Http
                 Dictionary<string, IEnumerable<string>> headers,
                 string authentification)
         {
-            var client = new HttpClient(this.handler);
+            using var client = new HttpClient(this.handler);
 
             client.SetAuthentication(authentification);
             client.SetHeaders(headers);
@@ -328,7 +328,7 @@ namespace Ustilz.Http
         private async Task<TResponse?> GetResponseAsyncInternalAsync<TResponse>(Uri url, string authentification)
             where TResponse : class
         {
-            var client = new HttpClient(this.handler);
+            using var client = new HttpClient(this.handler);
 
             client.SetAuthentication(authentification);
 
@@ -350,7 +350,7 @@ namespace Ustilz.Http
         /// <returns>The <see cref="Task" />.</returns>
         private async Task<string> GetStringAsyncInternalAsync(Uri url, Dictionary<string, IEnumerable<string>> headers, string authentification)
         {
-            var client = new HttpClient(this.handler);
+            using var client = new HttpClient(this.handler);
 
             client.SetAuthentication(authentification);
             client.SetHeaders(headers);
@@ -374,9 +374,9 @@ namespace Ustilz.Http
         private async Task<string> PostAsyncInternalAsync(Uri url, Dictionary<string, IEnumerable<string>> headers, string body, string authentication)
         {
             var stopWatch = Stopwatch.StartNew();
-            var client = new HttpClient(this.handler);
+            using var client = new HttpClient(this.handler);
 
-            var content = new StringContent(body);
+            using var content = new StringContent(body);
             client.SetAuthentication(authentication);
             client.SetHeaders(headers);
 
@@ -408,8 +408,8 @@ namespace Ustilz.Http
         {
             var stopWatch = Stopwatch.StartNew();
 
-            var json = new StringContent(content);
-            var client = new HttpClient(this.handler);
+            using var json = new StringContent(content);
+            using var client = new HttpClient(this.handler);
 
             client.SetAuthentication(authentification);
 
@@ -442,8 +442,8 @@ namespace Ustilz.Http
                 string body,
                 string authentification)
         {
-            var client = new HttpClient(this.handler);
-            var content = new StringContent(body);
+            using var client = new HttpClient(this.handler);
+            using var content = new StringContent(body);
 
             client.SetAuthentication(authentification);
             client.SetHeaders(headers);
