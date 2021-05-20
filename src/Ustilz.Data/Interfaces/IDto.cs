@@ -14,6 +14,7 @@ namespace Ustilz.Data.Interfaces
     ///     Interface de définition de d'un Dto.
     /// </summary>
     /// <typeparam name="TIdentity">Type de l'identifiant.</typeparam>
+    [PublicAPI]
     public interface IDto<out TIdentity>
         where TIdentity : IComparable<TIdentity>
     {
@@ -22,7 +23,6 @@ namespace Ustilz.Data.Interfaces
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [UsedImplicitly]
         TIdentity Id { get; }
     }
 }
