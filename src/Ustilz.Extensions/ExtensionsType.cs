@@ -6,7 +6,6 @@ namespace Ustilz.Extensions
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    using System.Text;
 
     using JetBrains.Annotations;
 
@@ -18,6 +17,8 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsType
     {
+        #region Méthodes publiques
+
         /// <summary>The ctor.</summary>
         /// <param name="type">The type.</param>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
@@ -66,7 +67,7 @@ namespace Ustilz.Extensions
             }
 
             var ci = GetConstructor(type, typeof(TArg1));
-            var param1 = Expression.Parameter(typeof(TArg1), "arg1");
+            var param1 = Expression.Parameter(typeof(TArg1), nameof(TArg1));
 
             return Expression.Lambda<Func<TArg1, TResult>>(Expression.New(ci, param1), param1).Compile();
         }
@@ -95,8 +96,8 @@ namespace Ustilz.Extensions
             }
 
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2));
-            var param1 = Expression.Parameter(typeof(TArg1), "arg1");
-            var param2 = Expression.Parameter(typeof(TArg2), "arg2");
+            var param1 = Expression.Parameter(typeof(TArg1), nameof(TArg1));
+            var param2 = Expression.Parameter(typeof(TArg2), nameof(TArg2));
 
             return Expression.Lambda<Func<TArg1, TArg2, TResult>>(Expression.New(ci, param1, param2), param1, param2).Compile();
         }
@@ -127,9 +128,9 @@ namespace Ustilz.Extensions
 
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3));
 
-            var param1 = Expression.Parameter(typeof(TArg1), "arg1");
-            var param2 = Expression.Parameter(typeof(TArg2), "arg2");
-            var param3 = Expression.Parameter(typeof(TArg3), "arg3");
+            var param1 = Expression.Parameter(typeof(TArg1), nameof(TArg1));
+            var param2 = Expression.Parameter(typeof(TArg2), nameof(TArg2));
+            var param3 = Expression.Parameter(typeof(TArg3), nameof(TArg3));
 
             return Expression.Lambda<Func<TArg1, TArg2, TArg3, TResult>>(Expression.New(ci, param1, param2, param3), param1, param2, param3).Compile();
         }
@@ -161,13 +162,17 @@ namespace Ustilz.Extensions
 
             var ci = GetConstructor(type, typeof(TArg1), typeof(TArg2), typeof(TArg3), typeof(TArg4));
 
-            var param1 = Expression.Parameter(typeof(TArg1), "arg1");
-            var param2 = Expression.Parameter(typeof(TArg2), "arg2");
-            var param3 = Expression.Parameter(typeof(TArg3), "arg3");
-            var param4 = Expression.Parameter(typeof(TArg4), "arg4");
+            var param1 = Expression.Parameter(typeof(TArg1), nameof(TArg1));
+            var param2 = Expression.Parameter(typeof(TArg2), nameof(TArg2));
+            var param3 = Expression.Parameter(typeof(TArg3), nameof(TArg3));
+            var param4 = Expression.Parameter(typeof(TArg4), nameof(TArg4));
 
             return Expression.Lambda<Func<TArg1, TArg2, TArg3, TArg4, TResult>>(Expression.New(ci, param1, param2, param3, param4), param1, param2, param3, param4).Compile();
         }
+
+        #endregion
+
+        #region Méthodes privées
 
         /// <summary>The get constructor.</summary>
         /// <param name="type">The type.</param>
@@ -179,16 +184,10 @@ namespace Ustilz.Extensions
             Check.NotNull(type, nameof(type));
             Check.NotNull(argumentTypes, nameof(argumentTypes));
 
-            var ci = type.GetConstructor(argumentTypes);
-            if (ci != null)
-            {
-                return ci;
-            }
-
-            var sb = new StringBuilder().Append(type.Name).Append(" has no ctor(");
-            sb.Append(string.Join(", ", argumentTypes.Select(t => t.Name)));
-            sb.Append(')');
-            throw new InvalidOperationException(sb.ToString());
+            return type.GetConstructor(argumentTypes) ??
+                   throw new InvalidOperationException($"{type.Name} has no ctor({string.Join(", ", argumentTypes.Select(t => t.Name))})");
         }
+
+        #endregion
     }
 }

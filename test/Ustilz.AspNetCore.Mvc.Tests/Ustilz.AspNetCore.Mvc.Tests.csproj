@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\Ustilz.AspNetCore.Mvc\Ustilz.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\..\src\Ustilz.AspNetCore\Ustilz.AspNetCore.csproj" />
   </ItemGroup>

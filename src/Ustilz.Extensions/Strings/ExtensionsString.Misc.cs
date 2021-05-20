@@ -15,6 +15,8 @@ namespace Ustilz.Extensions.Strings
     [PublicAPI]
     public static partial class ExtensionsString
     {
+        #region Méthodes publiques
+
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
@@ -23,6 +25,14 @@ namespace Ustilz.Extensions.Strings
         public static string Fs<T>(this string template, T data)
             => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{", StringComparison.CurrentCulture)
                     .Replace("}}", "}", StringComparison.CurrentCulture);
+
+
+        /// <summary>Méthode de génération des initiales.</summary>
+        /// <param name="nom">The nom.</param>
+        /// <returns>The <see cref="string" />.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">startIndex plus length indicates a position not within this instance. -or- startIndex or length is less than zero.</exception>
+        /// <exception cref="ArgumentNullException">The property is set to null.</exception>
+        public static string? GenerateInitials(this string? nom) => nom?[..1]?.ToUpper(CultureInfo.CurrentCulture);
 
         /// <summary>Convert hex String to bytes representation.</summary>
         /// <param name="hexString">Hex string to convert into bytes.</param>
@@ -66,16 +76,26 @@ namespace Ustilz.Extensions.Strings
         /// <returns>Returns string from left.</returns>
         public static string Left(this string value, int length)
             => string.IsNullOrEmpty(value)
-                   ? throw new ArgumentException($"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
-                   : value.Length > length ? value[..length] : value;
+                   ? throw new ArgumentException($@"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
+                   : value.Length > length
+                       ? value[..length]
+                       : value;
 
         /// <summary>Returns characters from right of specified length.</summary>
         /// <param name="value">String value.</param>
         /// <param name="length">Max number of charaters to return.</param>
         /// <returns>Returns string from right.</returns>
         public static string Right(this string value, int length) => string.IsNullOrEmpty(value)
-                ? throw new ArgumentException($"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
-                : value.Length > length ? value[^length..] : value;
+                                                                         ? throw new ArgumentException($@"'{nameof(value)}' ne peut pas être null ou vide", nameof(value))
+                                                                         : value.Length > length
+                                                                             ? value[^length..]
+                                                                             : value;
+
+        /// <summary>Splits the string by pascal case.</summary>
+        /// <param name="text">The text.</param>
+        /// <returns>Return text split by pascal case.</returns>
+        public static string SplitPascalCase(this string text)
+            => string.IsNullOrEmpty(text) ? text : Regex.Replace(text, "([A-Z])", " $1", RegexOptions.Compiled).Trim();
 
         /// <summary>Converts string to enum object.</summary>
         /// <typeparam name="T">Type of enum.</typeparam>
@@ -117,6 +137,10 @@ namespace Ustilz.Extensions.Strings
             return ss;
         }
 
+        #endregion
+
+        #region Méthodes privées
+
         /// <summary>The get value.</summary>
         /// <param name="match">The match.</param>
         /// <param name="data">The data.</param>
@@ -136,5 +160,7 @@ namespace Ustilz.Extensions.Strings
                 throw new ArgumentException($"Not find '{paraName}'");
             }
         }
+
+        #endregion
     }
 }

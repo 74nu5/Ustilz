@@ -119,12 +119,9 @@ static Ustilz.Extensions.ExtensionsLong.ConvertIntoWords(this long number) -> st
 static Ustilz.Extensions.ExtensionsNameValueCollection.ToDictionary(this System.Collections.Specialized.NameValueCollection? nvc) -> System.Collections.Generic.Dictionary<string!, string!>!
 static Ustilz.Extensions.ExtensionsT.AsBool<T>(this T transformObject) -> bool
 static Ustilz.Extensions.ExtensionsT.Between<T>(this T value, T from, T to) -> bool
-static Ustilz.Extensions.ExtensionsT.Chain<T>(this T chainObject, System.Action<T>! action) -> T
 static Ustilz.Extensions.ExtensionsT.Display<T>(this T o) -> T
 static Ustilz.Extensions.ExtensionsT.IfNull<T>(this T? source, T! defaultValue) -> T!
-static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, System.Collections.Generic.IEnumerable<T>! values) -> bool
 static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, params T[]! values) -> bool
-static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, System.Collections.Generic.IEnumerable<T>! values) -> bool
 static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, params T[]! values) -> bool
 static Ustilz.Extensions.ExtensionsT.IsNotNull<T>(this T? source) -> bool
 static Ustilz.Extensions.ExtensionsT.IsNull<T>(this T? source) -> bool
@@ -197,3 +194,10 @@ static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minut
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second, int Milliseconds) time) -> System.TimeSpan
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Minutes(this (int Minute, int Second) time) -> System.TimeSpan
+static Ustilz.Extensions.ExtensionsT.Chain<T>(this T chainObject, System.Action<T?>! action) -> T
+static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
+static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
+static Ustilz.Extensions.Strings.ExtensionsString.SplitPascalCase(this string! text) -> string!
+static Ustilz.Extensions.ExtensionsRandom.NextEnum<T>(this System.Random! random) -> T
+Ustilz.Extensions.ExtensionsRandom
+static Ustilz.Extensions.Strings.ExtensionsString.GenerateInitials(this string? nom) -> string?

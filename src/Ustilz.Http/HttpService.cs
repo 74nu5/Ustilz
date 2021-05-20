@@ -28,7 +28,7 @@ namespace Ustilz.Http
         public HttpService()
         {
             this.handler = new HttpClientHandler();
-            this.handler.ServerCertificateCustomValidationCallback += (message, certificate2, arg3, arg4) => true;
+            this.handler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
         }
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

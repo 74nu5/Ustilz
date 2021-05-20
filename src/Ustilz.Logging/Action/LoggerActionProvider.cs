@@ -14,7 +14,7 @@ namespace Ustilz.Logging.Action
     {
         private readonly LoggerAction.LogDelegate action;
 
-        private readonly ConcurrentDictionary<string, LoggerAction> loggers = new ConcurrentDictionary<string, LoggerAction>();
+        private readonly ConcurrentDictionary<string, LoggerAction> loggers = new ();
 
         /// <summary>Initialise une nouvelle instance de la classe <see cref="LoggerActionProvider" />.</summary>
         /// <param name="action">Action à effectuer lors du log.</param>
@@ -30,6 +30,6 @@ namespace Ustilz.Logging.Action
         /// <inheritdoc />
         public void Dispose() => this.loggers.Clear();
 
-        private LoggerAction LoggerActionFactory(string categoryName) => new LoggerAction(categoryName, this.action);
+        private LoggerAction LoggerActionFactory(string categoryName) => new (categoryName, this.action);
     }
 }

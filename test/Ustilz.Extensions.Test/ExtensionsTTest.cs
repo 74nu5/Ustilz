@@ -3,6 +3,7 @@
     #region Usings
 
     using System;
+    using System.Diagnostics;
     using System.Linq;
 
     using Ustilz.Extensions.Strings;
@@ -31,13 +32,20 @@
         {
             var a = new A();
 
-            static void Action1(A s1)
-                => s1.I = 100;
+            static void Action1(A? s1)
+            {
+                Debug.Assert(s1 != null, nameof(s1) + " != null");
+                s1.I = 100;
+            }
 
-            static void Action2(A s2)
-                => s2.S = "Test";
+            static void Action2(A? s2)
+            {
+                Debug.Assert(s2 != null, nameof(s2) + " != null");
+                s2.S = "Test";
+            }
 
             var chain = a.Chain(Action1).Chain(Action2);
+            Debug.Assert(a != null, nameof(a) + " != null");
             Assert.Equal(100, a.I);
             Assert.Equal("Test", a.S);
             Assert.Equal(100, chain.I);
@@ -59,7 +67,7 @@
         [Fact]
         public void IfNullTest()
         {
-            string s = null;
+            string? s = null;
             Assert.Equal(string.Empty, s.IfNull(string.Empty));
 
             s = "Test";
@@ -92,7 +100,7 @@
         [Fact]
         public void IsNotNullTest()
         {
-            string s = null;
+            string? s = null;
             Assert.False(s.IsNotNull());
 
             s = string.Empty;
@@ -119,7 +127,7 @@
         [Fact]
         public void IsNullTest()
         {
-            string s = null;
+            string? s = null;
             Assert.True(s.IsNull());
 
             s = string.Empty;
@@ -181,7 +189,7 @@
 
             /// <summary>Gets or sets the s.</summary>
             /// <value>The s.</value>
-            public string S { get; set; }
+            public string? S { get; set; }
         }
     }
 }

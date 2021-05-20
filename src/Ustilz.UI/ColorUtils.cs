@@ -16,7 +16,7 @@ namespace Ustilz.UI
     public static class ColorUtils
     {
         /// <summary>The random.</summary>
-        private static readonly Random Random = new Random();
+        private static readonly Random Random = new ();
 
         /// <summary>Méthode de génération de couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>

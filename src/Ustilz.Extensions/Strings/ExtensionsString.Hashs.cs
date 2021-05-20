@@ -22,13 +22,12 @@ namespace Ustilz.Extensions.Strings
     public static partial class ExtensionsString
     {
         /// <summary>The hash providers.</summary>
-        private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new Dictionary<HashType, HashAlgorithm>();
+        private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new ();
 
         /// <summary>The random.</summary>
-        private static readonly Random Random = new Random((int)Clock.Now.Ticks);
+        private static readonly Random Random = new ((int)Clock.Now.Ticks);
 
         /// <summary>Supported hash algorithms.</summary>
-        [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "Ce sont des acronymes")]
         public enum HashType
         {
             /// <summary>The m d 5.</summary>
@@ -178,7 +177,7 @@ namespace Ustilz.Extensions.Strings
         {
             if (string.IsNullOrEmpty(hashValue))
             {
-                throw new ArgumentException($"{nameof(hashValue)}' parameter is null.", nameof(hashValue));
+                throw new ArgumentException($@"{nameof(hashValue)}' parameter is null.", nameof(hashValue));
             }
 
             Check.NotEmpty(hashValue, nameof(hashValue));

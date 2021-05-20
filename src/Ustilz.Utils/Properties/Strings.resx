@@ -129,4 +129,7 @@
   <data name="InvalidEntityType" xml:space="preserve">
     <value>The entity type '{type}' provided for the argument '{argumentName}' must be a reference type.</value>
   </data>
+  <data name="MustBePositive" xml:space="preserve">
+    <value>The numeric value {numeric} must be positive.</value>
+  </data>
 </root>

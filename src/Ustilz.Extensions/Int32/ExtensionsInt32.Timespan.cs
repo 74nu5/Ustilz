@@ -1,4 +1,4 @@
-﻿namespace Ustilz.Extensions.Int32
+namespace Ustilz.Extensions.Int32
 {
     #region Usings
 

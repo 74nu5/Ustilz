@@ -19,19 +19,21 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsT
     {
+        #region Méthodes publiques
+
         /// <summary>Méthode de "transformation" d'objet en boolean.</summary>
         /// <typeparam name="T">Type à "transformer".</typeparam>
         /// <param name="transformObject">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
         public static bool AsBool<T>(this T transformObject)
             => transformObject switch
-            {
-                int n => n > 0,
-                string s when bool.TryParse(s, out var b) => b,
-                string s when int.TryParse(s, out var i) => i.AsBool(),
-                string s => !string.IsNullOrEmpty(s),
-                var _ => false
-            };
+               {
+                   int n => n > 0,
+                   string s when bool.TryParse(s, out var b) => b,
+                   string s when int.TryParse(s, out var i) => i.AsBool(),
+                   string s => !string.IsNullOrEmpty(s),
+                   var _ => false
+               };
 
         /// <summary>The between. </summary>
         /// <param name="value">The value. </param>
@@ -44,7 +46,7 @@ namespace Ustilz.Extensions
             this T value,
             T from,
             T to)
-            where T : IComparable<T>
+            where T : IComparable<T?>
             => value.CompareTo(from) >= 0 && value.CompareTo(to) <= 0;
 
         /// <summary>Executes the action specified, which the given object as parameter.</summary>
@@ -59,7 +61,7 @@ namespace Ustilz.Extensions
         public static T Chain<T>(
             [MaybeNull] this T chainObject,
             [System.Diagnostics.CodeAnalysis.NotNull]
-            Action<T> action)
+            Action<T?> action)
         {
             if (action is null)
             {
@@ -99,6 +101,34 @@ namespace Ustilz.Extensions
             where T : class
             => source ?? defaultValue;
 
+        /// <summary>
+        ///     Détermine si un objet de classe implémente un type d'interface et renvoie une liste des types qu'il implémente réellement. Si aucun type correspondant n'est trouvé, une
+        ///     liste vide sera renvoyée.
+        /// </summary>
+        /// <summary xml:lang="en">
+        ///     Determines if a class object implements an interface type and returns a list of types it actually implements. If no matching type is found an empty list
+        ///     will be returned.
+        /// </summary>
+        /// <typeparam name="T">Type de l'objet à tester.</typeparam>
+        /// <param name="obj">Objet à tester.</param>
+        /// <param name="interfaces">Liste des interfaces à tester.</param>
+        /// <returns>Retourne la liste des interfaces implémenter par l'objet.</returns>
+        public static List<Type?> ImplementsInterfaces<T>(this T obj, params Type[] interfaces)
+        {
+            if (obj == null || !interfaces.Any())
+            {
+                return new List<Type?>();
+            }
+
+            Type? Func(Type t)
+                => obj!.GetType().FindInterfaces(
+                                                 (typeObj, criteriaObj) => typeObj.ToString() == criteriaObj?.ToString(), t.FullName).Any()
+                       ? t
+                       : null;
+
+            return (from i in interfaces select Func(i)).Where(t => t != null).ToList();
+        }
+
         /// <summary>Vérifie si la valeur est présente dans le tableau donné.</summary>
         /// <param name="value">La valeur à rechercher.</param>
         /// <param name="values">Un tableau contenant les valeurs.</param>
@@ -126,7 +156,7 @@ namespace Ustilz.Extensions
         public static bool IsIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
-            IEnumerable<T> values)
+            IEnumerable<T?> values)
         {
             _ = values ?? throw new ArgumentNullException(nameof(values));
             return values.Contains(value);
@@ -155,7 +185,7 @@ namespace Ustilz.Extensions
         public static bool IsNotIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
-            IEnumerable<T> values)
+            IEnumerable<T?> values)
             => !value.IsIn(values);
 
         /// <summary>Détermine si l'objet n'est pas nul.</summary>
@@ -176,14 +206,14 @@ namespace Ustilz.Extensions
             where T : class
             => source == null;
 
-#pragma warning disable IDE0060 // Supprimer le paramètre inutilisé
+
         /// <summary>Permute les valeurs données.</summary>
         /// <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
         /// <param name="value0">La première valeur.</param>
         /// <param name="value1">La deuxième valeur.</param>
         /// <typeparam name="T">Le type des valeurs.</typeparam>
+        [SuppressMessage("Style", "IDE0060:Supprimer le paramètre inutilisé", Justification = "<En attente>")]
         public static void Swap<T>([MaybeNull] this object nullObject, ref T value0, ref T value1) => (value0, value1) = (value1, value0);
-#pragma warning restore IDE0060
 
         /// <summary>Lève une exception <see cref="ArgumentNullException" /> si <paramref name="testObject" /> est null.</summary>
         /// <remarks>Si <paramref name="errorMessage" /> est null, cette méthode utilisera le message par défaut suivant: "{nom d'objet} ne peut pas être nul".</remarks>
@@ -265,5 +295,7 @@ namespace Ustilz.Extensions
                 return (T)ifError;
             }
         }
+
+        #endregion
     }
 }

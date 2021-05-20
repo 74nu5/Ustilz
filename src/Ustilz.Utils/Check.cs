@@ -17,6 +17,8 @@ namespace Ustilz.Utils
     [PublicAPI]
     public static class Check
     {
+        #region Méthodes publiques
+
         /// <summary>The has no nulls.</summary>
         /// <param name="collection">The value.</param>
         /// <param name="parameterName">The parameter name.</param>
@@ -26,7 +28,7 @@ namespace Ustilz.Utils
         /// <exception cref="ArgumentNullException"><paramref name="parameterName" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">Collection has null.</exception>
         [NotNull]
-        public static IReadOnlyList<T> HasNoNulls<T>(IReadOnlyList<T> collection, [InvokerParameterName] string parameterName)
+        public static IReadOnlyList<T?> HasNoNulls<T>(IReadOnlyList<T?> collection, [InvokerParameterName] string parameterName)
             where T : class
         {
             _ = parameterName ?? throw new ArgumentNullException(nameof(parameterName));
@@ -54,7 +56,7 @@ namespace Ustilz.Utils
         /// <exception cref="ArgumentException">Collection is empty.</exception>
         [NotNull]
         [ContractAnnotation("value:null => halt")]
-        public static IReadOnlyList<T> NotEmpty<T>([NotNull] IReadOnlyList<T> value, [InvokerParameterName] [NotNull] string parameterName)
+        public static IReadOnlyList<T?> NotEmpty<T>([NotNull] IReadOnlyList<T?> value, [InvokerParameterName] [NotNull] string parameterName)
         {
             if (value == null)
             {
@@ -182,5 +184,27 @@ namespace Ustilz.Utils
 
             throw new ArgumentException(Strings.InvalidEntityType(value, parameterName));
         }
+
+        public static int EnsurePositive(int numeric)
+        {
+            if (numeric <= 0)
+            {
+                throw new ArgumentException(Strings.MustBePositive(numeric), nameof(numeric));
+            }
+
+            return numeric;
+        }
+
+        public static double EnsurePositive(double numeric)
+        {
+            if (numeric <= 0)
+            {
+                throw new ArgumentException(Strings.MustBePositive(numeric), nameof(numeric));
+            }
+
+            return numeric;
+        }
+
+        #endregion
     }
 }

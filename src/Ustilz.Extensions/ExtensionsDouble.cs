@@ -32,5 +32,14 @@ namespace Ustilz.Extensions
         /// <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
         public static bool IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2)
             => Math.Abs(valeur1 - valeur2) < ToleranceTwoDecimal;
+
+        /// <summary>
+        /// Get a certain percentage of the specified number.
+        /// </summary>
+        /// <param name="value">The number to get the percentage of.</param>
+        /// <param name="percentage">The percentage of the specified number to get.</param>
+        /// <returns>The actual specified percentage of the specified number.</returns>
+        public static double GetPercentage(this double value, int percentage)
+            => value * percentage / 100;
     }
 }

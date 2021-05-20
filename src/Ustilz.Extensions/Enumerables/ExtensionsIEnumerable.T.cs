@@ -15,6 +15,8 @@ namespace Ustilz.Extensions.Enumerables
     [PublicAPI]
     public static partial class ExtensionsIEnumerable
     {
+        #region Méthodes publiques
+
         /// <summary>Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}" />.</summary>
         /// <typeparam name="T">Type d'élément de l'énumérable.</typeparam>
         /// <param name="enumerable">Enumérable à ajuster.</param>
@@ -23,10 +25,10 @@ namespace Ustilz.Extensions.Enumerables
         /// <returns>Retourne la liste initiale avec les ajustements.</returns>
         public static IEnumerable<T> Adjust<T>(this IEnumerable<T> enumerable, Func<T, int, bool> shouldReplace, T replacement) =>
             enumerable.Select(
-                (obj, pos) =>
-                    shouldReplace(obj, pos)
-                        ? replacement
-                        : obj);
+                              (obj, pos) =>
+                                  shouldReplace(obj, pos)
+                                      ? replacement
+                                      : obj);
 
         /// <summary>Méthode qui split une liste à partir d'un tableau de booléen.</summary>
         /// <typeparam name="T">Type de la liste.</typeparam>
@@ -43,7 +45,7 @@ namespace Ustilz.Extensions.Enumerables
             _ = items ?? throw new ArgumentNullException(nameof(items));
 
             var enumerable = items.ToList();
-            return (enumerable.Where((val, i) => filter[i]), enumerable.Where((val, i) => !filter[i]));
+            return (enumerable.Where((_, i) => filter[i]), enumerable.Where((_, i) => !filter[i]));
         }
 
         /// <summary>Méthode qui split une liste à partir d'un prédicat.</summary>
@@ -62,6 +64,70 @@ namespace Ustilz.Extensions.Enumerables
 
             var enumerable = items.ToList();
             return (enumerable.Where(filter), enumerable.Where(val => !filter(val)));
+        }
+
+        /// <summary>Méthode de récupération de l'élément de la liste pour lequel le sélecteur renvoie la valeur maximale.</summary>
+        /// <typeparam name="T">Type des éléments de la liste.</typeparam>
+        /// <typeparam name="TValue">Type de la valeur à comparer. Celui-ci doit implémenter <see cref="IComparable{TValue}" />.</typeparam>
+        /// <param name="list">Liste dans laquelle la recherche est effectuée.</param>
+        /// <param name="selector">Selecteur de comparaison.</param>
+        /// <returns>Retourne de l'élément de la liste pour lequel le sélecteur renvoie la valeur maximale.</returns>
+        public static T? FindMax<T, TValue>(this IEnumerable<T> list, Func<T, TValue> selector)
+            where TValue : IComparable<TValue>
+        {
+            var enumerable = list.ToList();
+            var result = enumerable.FirstOrDefault();
+            if (result == null)
+            {
+                return default;
+            }
+
+            var bestMax = selector(result);
+            foreach (var item in enumerable.Skip(1))
+            {
+                var v = selector(item);
+                if (v.CompareTo(bestMax) <= 0)
+                {
+                    continue;
+                }
+
+                bestMax = v;
+                result = item;
+            }
+
+            return result;
+        }
+
+        /// <summary>Méthode de récupération de l'élément de la liste pour lequel le sélecteur renvoie la valeur minimale.</summary>
+        /// <typeparam name="T">Type des éléments de la liste.</typeparam>
+        /// <typeparam name="TValue">Type de la valeur à comparer. Celui-ci doit implémenter <see cref="IComparable{TValue}" />.</typeparam>
+        /// <param name="list">Liste dans laquelle la recherche est effectuée.</param>
+        /// <param name="selector">Selecteur de comparaison.</param>
+        /// <returns>Retourne de l'élément de la liste pour lequel le sélecteur renvoie la valeur minimale.</returns>
+        public static T? FindMin<T, TValue>(this IEnumerable<T> list, Func<T, TValue> selector)
+            where TValue : IComparable<TValue>
+        {
+            var enumerable = list.ToList();
+            var result = enumerable.FirstOrDefault();
+            if (result == null)
+            {
+                return default;
+            }
+
+            var bestMin = selector(result);
+            foreach (var item in enumerable.Skip(1))
+            {
+                var v = selector(item);
+                if (v.CompareTo(bestMin) >= 0)
+                {
+                    continue;
+                }
+
+                bestMin = v;
+                result = item;
+            }
+
+            return result;
         }
 
         /// <summary>Enumerate each element in the enumeration and execute specified action.</summary>
@@ -207,5 +273,7 @@ namespace Ustilz.Extensions.Enumerables
         /// <returns>Retourne un énumarable contenant des <see cref="Tuple" />, représentant un couple (item, index0).</returns>
         public static IEnumerable<(T Item, int Index)> WithIndex<T>(this IEnumerable<T> enumerable)
             => enumerable.Select((item, index) => (item, index));
+
+        #endregion
     }
 }

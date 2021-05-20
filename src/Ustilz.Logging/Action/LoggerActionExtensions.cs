@@ -34,7 +34,7 @@ namespace Ustilz.Logging.Action
                 throw new ArgumentNullException(nameof(action));
             }
 
-            builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(serviceProvider => new LoggerActionProvider(action)));
+            builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(_ => new LoggerActionProvider(action)));
             return builder;
         }
     }
