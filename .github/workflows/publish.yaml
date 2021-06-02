@@ -1,0 +1,151 @@
+name: publish to nuget
+on:
+  push:
+    branches:
+      - master
+jobs:
+  publish:
+    name: build, pack & publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.300
+
+      # Publish Ustilz.Extensions
+      - name: publish Ustilz.Extensions on version change
+        id: publish_nuget_ext
+        uses: rohith/publish-nuget@v2
+        with:
+          # Filepath of the project to be packaged, relative to root of repository
+          PROJECT_FILE_PATH: src/Ustilz.Extensions/Ustilz.Extensions.csproj
+          
+          # NuGet package id, used for version detection & defaults to project name
+          PACKAGE_NAME: Ustilz.Extensions
+          
+          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
+          # VERSION_FILE_PATH: Directory.Build.props
+
+          # Regex pattern to extract version info in a capturing group
+          # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+          
+          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
+          # VERSION_STATIC: 1.0.0
+
+          # Flag to toggle git tagging, enabled by default
+          # TAG_COMMIT: true
+
+          # Format of the git tag, [*] gets replaced with actual version
+          # TAG_FORMAT: v*
+
+          # API key to authenticate with NuGet server
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+
+          # NuGet server uri hosting the packages, defaults to https://api.nuget.org
+          # NUGET_SOURCE: https://api.nuget.org
+
+          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
+          INCLUDE_SYMBOLS: true
+
+      # Publish Ustilz.Data
+      - name: publish Ustilz.Data on version change
+        id: publish_nuget_Data
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Data/Ustilz.Data.csproj
+          PACKAGE_NAME: Ustilz.Data
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+      
+      # Publish Ustilz.Json
+      - name: publish Ustilz.Json on version change
+        id: publish_nuget_Json
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Json/Ustilz.Json.csproj
+          PACKAGE_NAME: Ustilz.Json
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+      
+      # Publish Ustilz.Xml
+      - name: publish Ustilz.Xml on version change
+        id: publish_nuget_Xml
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Xml/Ustilz.Xml.csproj
+          PACKAGE_NAME: Ustilz.Xml
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+      
+      # Publish Ustilz.Time
+      - name: publish Ustilz.Time on version change
+        id: publish_nuget_Time
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Time/Ustilz.Time.csproj
+          PACKAGE_NAME: Ustilz.Time
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                
+      # Publish Ustilz.Utils
+      - name: publish Ustilz.Utils on version change
+        id: publish_nuget_Utils
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Utils/Ustilz.Utils.csproj
+          PACKAGE_NAME: Ustilz.Utils
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                
+      # Publish Ustilz.Logging
+      - name: publish Ustilz.Logging on version change
+        id: publish_nuget_Logging
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Logging/Ustilz.Logging.csproj
+          PACKAGE_NAME: Ustilz.Logging
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                
+      # Publish Ustilz.Extensions.Configuration
+      - name: publish Ustilz.Extensions.Configuration on version change
+        id: publish_nuget_Extensions_Configuration
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Extensions.Configuration/Ustilz.Extensions.Configuration.csproj
+          PACKAGE_NAME: Ustilz.Extensions.Configuration
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                
+      # Publish Ustilz.AspNetCore
+      - name: publish Ustilz.AspNetCore on version change
+        id: publish_nuget_AspNetCore
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.AspNetCore/Ustilz.AspNetCore.csproj
+          PACKAGE_NAME: Ustilz.AspNetCore
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                
+      # Publish Ustilz.AspNetCore.Mvc
+      - name: publish Ustilz.AspNetCore.Mvc on version change
+        id: publish_nuget_AspNetCore_Mvc
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.AspNetCore.Mvc/Ustilz.AspNetCore.Mvc.csproj
+          PACKAGE_NAME: Ustilz.AspNetCore.Mvc
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
+                          
+      # Publish Ustilz.Razor
+      - name: publish Ustilz.Razor on version change
+        id: publish_nuget_Razor
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Razor/Ustilz.Razor.csproj
+          PACKAGE_NAME: Ustilz.Razor
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+          INCLUDE_SYMBOLS: true
