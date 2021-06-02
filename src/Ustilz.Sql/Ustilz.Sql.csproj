@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0.0</Version>
+    <Version>1.2.0</Version>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -17,7 +16,6 @@
     <DocumentationFile>bin\Debug\netstandard2.0\Ustilz.Sql.xml</DocumentationFile>
     <OutputPath>bin\Debug\netstandard2.0\</OutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>bin\Release\netstandard2.0</OutputPath>
     <DocumentationFile>bin\Release\netstandard2.0\Ustilz.Sql.xml</DocumentationFile>

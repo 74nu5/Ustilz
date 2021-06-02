@@ -1,0 +1,2 @@
+﻿Ustilz.Extensions.Configuration.ExtensionsConfigurationBuilder
+static Ustilz.Extensions.Configuration.ExtensionsConfigurationBuilder.UseAppSettingsJson(this Microsoft.Extensions.Configuration.IConfigurationBuilder! builder) -> Microsoft.Extensions.Configuration.IConfigurationBuilder!

@@ -1,33 +1,26 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
-        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="trueAction">The action to execute if all of the given value is true.</param>
         /// <param name="values">The Boolean values to check.</param>
+        /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
+        /// <exception cref="ArgumentNullException">Values can not be null.</exception>
+        /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse([NotNull] this Action falseAction, [CanBeNull] Action trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse(this Action falseAction, Action? trueAction = null, params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = falseAction ?? throw new ArgumentNullException(nameof(falseAction));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.Any(x => !x()))
             {
@@ -39,10 +32,7 @@
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
@@ -52,17 +42,16 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T>(
-            [NotNull] this Action<T> falseAction,
-            [CanBeNull] T parameter,
-            [CanBeNull] Action<T> trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            this Action<T>? falseAction,
+            T parameter,
+            Action<T>? trueAction = null,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter);
+                falseAction?.Invoke(parameter);
             }
             else
             {
@@ -70,10 +59,7 @@
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -85,18 +71,17 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2>(
-            [NotNull] this Action<T1, T2> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] Action<T1, T2> trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            Action<T1, T2>? trueAction = null,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2);
+                falseAction?.Invoke(parameter1, parameter2);
             }
             else
             {
@@ -104,10 +89,7 @@
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -121,19 +103,18 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] Action<T1, T2, T3> trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2, T3>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            Action<T1, T2, T3>? trueAction = null,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2, parameter3);
+                falseAction?.Invoke(parameter1, parameter2, parameter3);
             }
             else
             {
@@ -141,10 +122,7 @@
             }
         }
 
-        /// <summary>
-        ///     Executes the specified action if one of the given Boolean values is false,
-        ///     otherwise it executes the specified true action, if one is specified.
-        /// </summary>
+        /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
         /// <exception cref="ArgumentNullException">FalseAction can not be null.</exception>
         /// <exception cref="ArgumentNullException">Values can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -159,21 +137,21 @@
         /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
+        [SuppressMessage("ReSharper", "TooManyArguments", Justification = "It's API purpose.")]
         public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
-            [CanBeNull] Action<T1, T2, T3, T4> trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2, T3, T4>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
+            Action<T1, T2, T3, T4>? trueAction = null,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.Any(x => !x()))
             {
-                falseAction(parameter1, parameter2, parameter3, parameter4);
+                falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
             else
             {
@@ -187,10 +165,15 @@
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse([NotNull] this Action falseAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse(this Action falseAction, params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = falseAction ?? throw new ArgumentNullException(nameof(falseAction));
+
+            if (values is null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
 
             if (values.All(x => x()))
             {
@@ -208,10 +191,10 @@
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyFalse<T>([NotNull] this Action<T> falseAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyFalse<T>(this Action<T> falseAction, T parameter, params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
+            _ = falseAction ?? throw new ArgumentNullException(nameof(falseAction));
 
             if (values.All(x => x()))
             {
@@ -232,20 +215,19 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2>(
-            [NotNull] this Action<T1, T2> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.All(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2);
+            falseAction?.Invoke(parameter1, parameter2);
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -261,21 +243,20 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3>(
-            [NotNull] this Action<T1, T2, T3> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2, T3>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.All(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3);
+            falseAction?.Invoke(parameter1, parameter2, parameter3);
         }
 
         /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -293,24 +274,21 @@
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
         public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(
-            [NotNull] this Action<T1, T2, T3, T4> falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
-            [NotNull] params Func<bool>[] values)
+            this Action<T1, T2, T3, T4>? falseAction,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
+            params Func<bool>[] values)
         {
-            falseAction.ThrowIfNull(nameof(falseAction));
-            values.ThrowIfNull(nameof(values));
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
             if (values.All(x => x()))
             {
                 return;
             }
 
-            falseAction(parameter1, parameter2, parameter3, parameter4);
+            falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
         }
-
-        #endregion
     }
 }

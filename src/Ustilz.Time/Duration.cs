@@ -1,7 +1,7 @@
 namespace Ustilz.Time
 {
     /// <summary>
-    /// Enumération de durée, à utiliser avec la méthode d'extension <see cref="ExtensionsDuration.From"/>.
+    ///     Enumération de durée, à utiliser avec la méthode d'extension <see cref="ExtensionsDuration.From" />.
     /// </summary>
     public enum Duration
     {

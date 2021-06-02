@@ -3,9 +3,11 @@
     #region Usings
 
     using System;
+    using System.Diagnostics;
     using System.Linq;
 
-    using Ustilz.Extensions.String;
+    using Ustilz.Extensions.Strings;
+    using Ustilz.Time;
 
     using Xunit;
 
@@ -14,14 +16,12 @@
     /// <summary>The extensions t test.</summary>
     public sealed class ExtensionsTTest
     {
-        #region Méthodes publiques
-
         /// <summary>The between test.</summary>
         [Fact]
         public void BetweenTest()
         {
             Assert.True(1.Between(0, 2));
-            Assert.True(DateTime.Now.Between(DateTime.MinValue, DateTime.MaxValue));
+            Assert.True(Clock.Now.Between(DateTime.MinValue, DateTime.MaxValue));
             Assert.False(50.Between(0, 2));
             Assert.False(42.Between(0, 2));
         }
@@ -32,13 +32,20 @@
         {
             var a = new A();
 
-            void Action1(A s1)
-                => a.I = 100;
+            static void Action1(A? s1)
+            {
+                Debug.Assert(s1 != null, nameof(s1) + " != null");
+                s1.I = 100;
+            }
 
-            void Action2(A s2)
-                => a.S = "Test";
+            static void Action2(A? s2)
+            {
+                Debug.Assert(s2 != null, nameof(s2) + " != null");
+                s2.S = "Test";
+            }
 
             var chain = a.Chain(Action1).Chain(Action2);
+            Debug.Assert(a != null, nameof(a) + " != null");
             Assert.Equal(100, a.I);
             Assert.Equal("Test", a.S);
             Assert.Equal(100, chain.I);
@@ -49,18 +56,18 @@
         [Fact]
         public void DumpTest()
         {
-            Assert.Equal(1, 1.Dump());
+            Assert.Equal(1, 1.Display());
 
             var tab = new[] { 1, 2, 3, 4 };
 
-            Assert.Equal(tab, tab.Dump());
+            Assert.Equal(tab, tab.Display());
         }
 
         /// <summary>The if null test.</summary>
         [Fact]
         public void IfNullTest()
         {
-            string s = null;
+            string? s = null;
             Assert.Equal(string.Empty, s.IfNull(string.Empty));
 
             s = "Test";
@@ -91,24 +98,48 @@
 
         /// <summary>The if null test.</summary>
         [Fact]
-        public void IsNullTest()
+        public void IsNotNullTest()
         {
-            string s = null;
-            Assert.True(s.IsNull());
-            Assert.True(s.IsNullOrEmpty());
+            string? s = null;
             Assert.False(s.IsNotNull());
 
             s = string.Empty;
             Assert.True(s.IsNotNull());
-            Assert.True(s.IsNullOrEmpty());
-            Assert.False(s.IsNull());
 
             s = "Test";
             Assert.True(s.IsNotNull());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNullOrEmptyTest()
+        {
+            Assert.True(string.IsNullOrEmpty(null));
+
+            var s = string.Empty;
+            Assert.True(s.IsNullOrEmpty());
+
+            s = "Test";
             Assert.False(s.IsNullOrEmpty());
+        }
+
+        /// <summary>The if null test.</summary>
+        [Fact]
+        public void IsNullTest()
+        {
+            string? s = null;
+            Assert.True(s.IsNull());
+
+            s = string.Empty;
+            Assert.False(s.IsNull());
+
+            s = "Test";
             Assert.False(s.IsNull());
         }
 
+        /// <summary>
+        /// The join test.
+        /// </summary>
         [Fact]
         public void JoinTest()
         {
@@ -149,26 +180,16 @@
             Assert.Equal(nameof(s), exception.ParamName);
         }
 
-        #endregion
-
-        #region Nested type: A
-
         /// <summary>The a.</summary>
         private sealed class A
         {
-            #region Propriétés et indexeurs
-
             /// <summary>Gets or sets the i.</summary>
             /// <value>The i.</value>
             public int I { get; set; }
 
             /// <summary>Gets or sets the s.</summary>
             /// <value>The s.</value>
-            public string S { get; set; }
-
-            #endregion
+            public string? S { get; set; }
         }
-
-        #endregion
     }
 }

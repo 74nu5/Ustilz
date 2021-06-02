@@ -8,10 +8,14 @@ namespace Ustilz.Json.Test
 
     #endregion
 
+    /// <summary>
+    /// The json test class.
+    /// </summary>
     public sealed class JsonExtensionsTest
     {
-        #region Méthodes publiques
-
+        /// <summary>
+        /// The from json test.
+        /// </summary>
         [Fact]
         public void FromJsonTest()
         {
@@ -24,11 +28,14 @@ namespace Ustilz.Json.Test
             Assert.Equal(expected, result, new PersonneComparer());
         }
 
+        /// <summary>
+        /// The foprm json formatted test.
+        /// </summary>
         [Fact]
         public void ToJsonFormattedTest()
         {
             const string Expected =
-@"{
+                @"{
   ""Prenom"": ""John"",
   ""Nom"": ""Smith""
 }";
@@ -39,6 +46,9 @@ namespace Ustilz.Json.Test
             Assert.Equal(Expected, result);
         }
 
+        /// <summary>
+        /// The to json test.
+        /// </summary>
         [Fact]
         public void ToJsonTest()
         {
@@ -49,7 +59,5 @@ namespace Ustilz.Json.Test
 
             Assert.Equal(Expected, result);
         }
-
-        #endregion
     }
 }

@@ -4,8 +4,6 @@ namespace Ustilz.Time.Test
 
     using System;
 
-    using Ustilz.Time.Date;
-
     using Xunit;
     using Xunit.Abstractions;
 
@@ -15,34 +13,28 @@ namespace Ustilz.Time.Test
     /// <summary>The extensions date time test.</summary>
     public sealed class ExtensionsDateTimeTest : IDisposable
     {
-        #region Constructeurs et destructeurs
-
         /// <summary>Initializes a new instance of the <see cref="ExtensionsDateTimeTest" /> class.</summary>
         /// <param name="output">The output.</param>
         public ExtensionsDateTimeTest(ITestOutputHelper output)
         {
-            Horloge.Reset();
-            var now = DateTime.Now;
-            output.WriteLine($"Maintenant : {now}");
+            Clock.Reset();
+            var now = Clock.Now;
+            output?.WriteLine($"Maintenant : {now}");
 
             // Pour éviter le mois de février.
-            Horloge.SetFonctionMaintenant = () => now;
+            Clock.SetFunctionNow(() => now);
         }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <inheritdoc />
         /// <summary>The dispose.</summary>
-        public void Dispose() => Horloge.Reset();
+        public void Dispose() => Clock.Reset();
 
         /// <summary>The readable time stamp for 10 year test.</summary>
         [Fact(Skip = "Ne marche pas pour l'instant")]
         public void ReadableTimeStampFor10YearTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.AddYears(-10).ReadableTimeStamp();
+            var readable = Clock.Now.AddYears(-10).ReadableTimeStamp();
             Assert.Equal("10 years ago", readable);
         }
 
@@ -51,7 +43,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor15DaysTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromDays(15)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromDays(15)).ReadableTimeStamp();
             Assert.Equal("15 days ago", readable);
         }
 
@@ -60,7 +52,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor1HoursTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromHours(1)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromHours(1)).ReadableTimeStamp();
             Assert.Equal("an hour ago", readable);
         }
 
@@ -69,7 +61,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor1MonthsTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.AddMonths(-1).ReadableTimeStamp();
+            var readable = Clock.Now.AddMonths(-1).ReadableTimeStamp();
             Assert.Equal("one month ago", readable);
         }
 
@@ -78,7 +70,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor1YearTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.AddYears(-1).ReadableTimeStamp();
+            var readable = Clock.Now.AddYears(-1).ReadableTimeStamp();
             Assert.Equal("one year ago", readable);
         }
 
@@ -87,7 +79,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor2HoursTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromHours(2)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromHours(2)).ReadableTimeStamp();
             Assert.Equal("2 hours ago", readable);
         }
 
@@ -96,7 +88,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor30MinutesTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromMinutes(30)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromMinutes(30)).ReadableTimeStamp();
             Assert.Equal("30 minutes ago", readable);
         }
 
@@ -105,7 +97,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor5SecondsTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromSeconds(5)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromSeconds(5)).ReadableTimeStamp();
             Assert.Equal("5 seconds ago", readable);
         }
 
@@ -114,7 +106,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampFor9MonthsTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.AddMonths(-9).ReadableTimeStamp();
+            var readable = Clock.Now.AddMonths(-9).ReadableTimeStamp();
             Assert.Equal("9 months ago", readable);
         }
 
@@ -123,7 +115,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampForOneMinuteTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromMinutes(1)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromMinutes(1)).ReadableTimeStamp();
             Assert.Equal("a minute ago", readable);
         }
 
@@ -132,7 +124,7 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampForOneSecondTest()
         {
             // Test 1 minute
-            var readable = Horloge.Maintenant.Subtract(TimeSpan.FromSeconds(1)).ReadableTimeStamp();
+            var readable = Clock.Now.Subtract(TimeSpan.FromSeconds(1)).ReadableTimeStamp();
             Assert.Equal("one second ago", readable);
         }
 
@@ -141,11 +133,9 @@ namespace Ustilz.Time.Test
         public void ReadableTimeStampForYesterdayTest()
         {
             // Test 1 minute
-            var subtract = Horloge.Maintenant.Subtract(TimeSpan.FromDays(1));
+            var subtract = Clock.Now.Subtract(TimeSpan.FromDays(1));
             var readable = subtract.ReadableTimeStamp();
             Assert.Equal("yesterday", readable);
         }
-
-        #endregion
     }
 }

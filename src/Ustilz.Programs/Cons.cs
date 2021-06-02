@@ -11,43 +11,26 @@ namespace Ustilz.Programs
 
     #endregion
 
-    /// <summary>
-    /// Classe représentant l'objet Cons, permettant de configurer une application console.
-    /// </summary>
-    public sealed class Cons : Prog<ConsoleBuilder>
+    /// <summary>Classe représentant l'objet Cons, permettant de configurer une application console.</summary>
+    public sealed class Cons : Prog<ConsoleBuilder, Cons>
     {
-        #region Champs
-
         private readonly Action[] actionsToLaunch;
 
         private readonly bool hasExit;
 
-        #endregion
-
-        #region Constructeurs et destructeurs
-
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="Cons"/>.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="Cons" />.</summary>
         /// <param name="actions">Les actions à effectuer dans l'application console.</param>
         /// <param name="hasExit">True si un choix de sortie doit être ajouter au menu, False sinon.</param>
         /// <param name="provider">Fournisseur de services.</param>
         /// <param name="logAction">Liste d'action à effectuer lors du log.</param>
-        internal Cons(Action[] actions, bool hasExit, ServiceProvider provider, Action<string>[] logAction)
+        internal Cons(Action[] actions, bool hasExit, ServiceProvider provider, ICollection<Action<string>> logAction)
             : base(provider, logAction)
         {
             this.actionsToLaunch = actions;
             this.hasExit = hasExit;
         }
 
-        #endregion
-
-        #region Méthodes publiques
-
-        /// <summary>
-        ///     Méthode utilitaire qui propose de lancer les méthodes passer en paramètre.
-        ///     Un choix pour quitter l'application est afficher lorsque le paramètre withExit est à true.
-        /// </summary>
+        /// <summary>Méthode utilitaire qui propose de lancer les méthodes passer en paramètre. Un choix pour quitter l'application est afficher lorsque le paramètre withExit est à true.</summary>
         public void Run()
         {
             IList<Action> enumerable = this.actionsToLaunch.ToList();
@@ -62,12 +45,12 @@ namespace Ustilz.Programs
 
                 foreach (var action in this.actionsToLaunch)
                 {
-                    this.Info($"{$"|    - {i++}) {action.GetMethodInfo().Name}".PadRight(TotalWidth)}|");
+                    this.Info($"{$"|    - {i++}) {action.GetMethodInfo().Name}",TotalWidth}|");
                 }
 
                 if (this.hasExit)
                 {
-                    this.Info($"{$"|    - {i}) Exit".PadRight(TotalWidth)}|");
+                    this.Info($"{$"|    - {i}) Exit",TotalWidth}|");
                     enumerable.Add(() => Environment.Exit(-1));
                 }
 
@@ -88,7 +71,7 @@ namespace Ustilz.Programs
                 {
                     var isChoixNumérique = int.TryParse(entry, out var choix);
 
-                    if (!isChoixNumérique || ((choix <= enumerable.Count) && (choix > 0)))
+                    if (!isChoixNumérique || (choix <= enumerable.Count && choix > 0))
                     {
                         enumerable[choix - 1].Invoke();
                     }
@@ -96,7 +79,5 @@ namespace Ustilz.Programs
             }
             while (true);
         }
-
-        #endregion
     }
 }

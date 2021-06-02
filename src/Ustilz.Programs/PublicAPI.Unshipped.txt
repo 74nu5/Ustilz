@@ -1,0 +1,33 @@
+Ustilz.Programs.Batch
+Ustilz.Programs.Batch.Batch(Microsoft.Extensions.DependencyInjection.ServiceProvider provider, System.Collections.Generic.ICollection<System.Action<string>> logAction) -> void
+Ustilz.Programs.BatchBuilder
+Ustilz.Programs.BatchBuilder.BatchBuilder() -> void
+Ustilz.Programs.Cons
+Ustilz.Programs.Cons.Run() -> void
+Ustilz.Programs.ConsoleBuilder
+Ustilz.Programs.ConsoleBuilder.Actions(params System.Action[] actions) -> Ustilz.Programs.ConsoleBuilder
+Ustilz.Programs.ConsoleBuilder.ConsoleBuilder() -> void
+Ustilz.Programs.ConsoleBuilder.UTF8() -> Ustilz.Programs.ConsoleBuilder
+Ustilz.Programs.ConsoleBuilder.WithExit() -> Ustilz.Programs.ConsoleBuilder
+Ustilz.Programs.Prog<TBuilder, TProg>
+Ustilz.Programs.Prog<TBuilder, TProg>.Error(string message) -> void
+Ustilz.Programs.Prog<TBuilder, TProg>.Get<T>() -> T
+Ustilz.Programs.Prog<TBuilder, TProg>.GetRequiredService<T>() -> T
+Ustilz.Programs.Prog<TBuilder, TProg>.Info(string message) -> void
+Ustilz.Programs.Prog<TBuilder, TProg>.Warn(string message) -> void
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddScoped<T>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddScoped<TType, TImplementation>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddSingleton<T>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddSingleton<TType, TImplementation>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddTransient<T>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.AddTransient<TType, TImplementation>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.Dispose() -> void
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.UseAppSettingsJson<TOptions>() -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.UseBasicLogger(params System.Action<string>[] logMessageActions) -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.UseConfig(System.Action<Microsoft.Extensions.Configuration.IConfigurationBuilder> action) -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+Ustilz.Programs.ProgBuilder<TBuilder, TProg>.UseLogger(System.Action<Microsoft.Extensions.Logging.ILoggerFactory, Microsoft.Extensions.Configuration.IConfigurationRoot> action) -> Ustilz.Programs.ProgBuilder<TBuilder, TProg>
+abstract Ustilz.Programs.ProgBuilder<TBuilder, TProg>.Build() -> TProg
+override Ustilz.Programs.BatchBuilder.Build() -> Ustilz.Programs.Batch
+override Ustilz.Programs.ConsoleBuilder.Build() -> Ustilz.Programs.Cons
+static Ustilz.Programs.Prog<TBuilder, TProg>.Builder.get -> TBuilder

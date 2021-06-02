@@ -9,8 +9,6 @@
     /// <summary>The extensions string.</summary>
     public sealed partial class ExtensionsStringTest
     {
-        #region Méthodes publiques
-
         /// <summary>The compute hash test.</summary>
         [Fact(Skip = "Test non implémenté.")]
         public void ComputeHashTest()
@@ -28,7 +26,6 @@
         public void EncryptTest()
         {
         }
-
 
         /// <summary>The generate hash test.</summary>
         [Fact]
@@ -54,13 +51,10 @@
         {
         }
 
-
         /// <summary>The validate test.</summary>
         [Fact]
         public void ValidateTest()
         {
         }
-
-        #endregion
     }
 }

@@ -3,7 +3,9 @@ namespace Ustilz.Programs
     #region Usings
 
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     using JetBrains.Annotations;
 
@@ -18,9 +20,8 @@ namespace Ustilz.Programs
     /// <typeparam name="TProg">Type de programme.</typeparam>
     [PublicAPI]
     public abstract class ProgBuilder<TBuilder, TProg>
+        : IDisposable
     {
-        #region Champs
-
         /// <summary>The configuration builder.</summary>
         private readonly ConfigurationBuilder configurationBuilder;
 
@@ -30,34 +31,22 @@ namespace Ustilz.Programs
         /// <summary>Gets or sets the configuration.</summary>
         private IConfigurationRoot configuration;
 
-        #endregion
-
-        #region Constructeurs et destructeurs
-
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="ProgBuilder{TBuilder, TProg}"/>.
-        /// </summary>
+        /// <summary>Initialise une nouvelle instance de la classe <see cref="ProgBuilder{TBuilder, TProg}" />.</summary>
         internal ProgBuilder()
         {
             this.configurationBuilder = new ConfigurationBuilder();
             this.Services = new ServiceCollection();
             this.loggerFactory = new LoggerFactory();
             this.configurationBuilder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
+            this.LogAction = Array.Empty<Action<string>>();
+            this.configuration = this.configurationBuilder.Build();
         }
 
-        #endregion
-
-        #region Propriétés et indexeurs
-
-        /// <summary>Obtient ou définit l'action du log.</summary>
-        protected Action<string>[] LogAction { get; set; }
+        /// <summary>Obtient l'action du log.</summary>
+        protected ICollection<Action<string>> LogAction { get; private set; }
 
         /// <summary>Obtient les services.</summary>
         protected ServiceCollection Services { get; }
-
-        #endregion
-
-        #region Méthodes publiques
 
         /// <summary>The add scoped.</summary>
         /// <typeparam name="T">Type à ajouter.</typeparam>
@@ -72,7 +61,7 @@ namespace Ustilz.Programs
         /// <summary>The add scoped.</summary>
         /// <typeparam name="TType">Type à ajouter.</typeparam>
         /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddScoped<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
@@ -94,7 +83,7 @@ namespace Ustilz.Programs
         /// <summary>The add singleton.</summary>
         /// <typeparam name="TType">Type à ajouter.</typeparam>
         /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddSingleton<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
@@ -116,7 +105,7 @@ namespace Ustilz.Programs
         /// <summary>The add transient.</summary>
         /// <typeparam name="TType">Type à ajouter.</typeparam>
         /// <typeparam name="TImplementation">Implémentation du type à ajouter.</typeparam>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> AddTransient<TType, TImplementation>()
             where TType : class
             where TImplementation : class, TType
@@ -129,9 +118,16 @@ namespace Ustilz.Programs
         /// <returns>Retourne le programme builder.</returns>
         public abstract TProg Build();
 
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         /// <summary>The use app settings json.</summary>
         /// <typeparam name="TOptions">Type d'options.</typeparam>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         /// <exception cref="ArgumentNullException">Lève une exception lorsque la variable d'environnement ASPNETCORE_ENVIRONMENT n'est pas trouvée.</exception>
         public ProgBuilder<TBuilder, TProg> UseAppSettingsJson<TOptions>()
             where TOptions : class
@@ -141,7 +137,7 @@ namespace Ustilz.Programs
             // Set up configuration sources.
             this.configurationBuilder.AddJsonFile("appsettings.json", true);
             this.configurationBuilder.AddJsonFile(
-                Path.Combine(AppContext.BaseDirectory, string.Format("..{0}..{0}..{0}", Path.DirectorySeparatorChar), "appsettings.Development.json"),
+                Path.Combine(AppContext.BaseDirectory, $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}", "appsettings.Development.json"),
                 true);
 
             this.Services.Configure<TOptions>(this.configuration);
@@ -154,15 +150,17 @@ namespace Ustilz.Programs
         /// <returns>Retourne le builder.</returns>
         public ProgBuilder<TBuilder, TProg> UseBasicLogger(params Action<string>[] logMessageActions)
         {
-            this.LogAction = logMessageActions;
+            this.LogAction = logMessageActions.ToList();
             return this;
         }
 
         /// <summary>The use config.</summary>
         /// <param name="action">The action.</param>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
         public ProgBuilder<TBuilder, TProg> UseConfig(Action<IConfigurationBuilder> action)
         {
+            _ = action ?? throw new ArgumentNullException(nameof(action));
+
             this.Services.AddOptions();
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Path.Combine(AppContext.BaseDirectory));
@@ -175,13 +173,18 @@ namespace Ustilz.Programs
 
         /// <summary>The use logger.</summary>
         /// <param name="action">The func.</param>
-        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}"/>.</returns>
-        public ProgBuilder<TBuilder, TProg> UseLogger(Action<ILoggerFactory, IConfigurationRoot> action)
+        /// <returns>The <see cref="ProgBuilder{TBuilder, TProg}" />.</returns>
+        public ProgBuilder<TBuilder, TProg> UseLogger([NotNull] Action<ILoggerFactory, IConfigurationRoot> action)
         {
+            _ = action ?? throw new ArgumentNullException(nameof(action));
+
             action(this.loggerFactory, this.configuration);
             return this;
         }
 
-        #endregion
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <param name="dispose">Dispose bool.</param>
+        protected virtual void Dispose(bool dispose)
+            => this.loggerFactory?.Dispose();
     }
 }

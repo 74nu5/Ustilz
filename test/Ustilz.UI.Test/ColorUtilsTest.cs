@@ -9,14 +9,20 @@
     /// <summary>The color utils test.</summary>
     public sealed class ColorUtilsTest
     {
-        #region Méthodes publiques
-
         /// <summary>The generer couleurs test.</summary>
         [Fact]
         public void GenererCouleursTest()
         {
             var couleur = ColorUtils.GenerateColor();
             Assert.Equal(6, couleur.Length);
+        }
+
+        /// <summary>The generer couleurs test clair.</summary>
+        [Fact]
+        public void GetColorFromNomClairTest()
+        {
+            var colorFromNom = ColorUtils.GetLightColorFromNom("Test");
+            Assert.Equal("#E5F3E8", colorFromNom);
         }
 
         /// <summary>The get color from nom test nominal.</summary>
@@ -32,20 +38,12 @@
             Assert.Equal(7, colorFromNom.Length);
         }
 
+        /// <summary>The get color from nom test.</summary>
         [Fact]
         public void GetColorFromNomTest()
         {
             var colorFromNom = ColorUtils.GetColorFromNom("Test");
             Assert.Equal("#6573C8", colorFromNom);
         }
-
-        [Fact]
-        public void GetColorFromNomClairTest()
-        {
-            var colorFromNom = ColorUtils.GetColorFromNom("Test", true);
-            Assert.Equal("#E5F3E8", colorFromNom);
-        }
-
-        #endregion
     }
 }

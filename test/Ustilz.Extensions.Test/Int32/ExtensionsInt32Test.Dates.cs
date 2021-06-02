@@ -13,8 +13,6 @@
     /// <summary>The extensions int 32.</summary>
     public sealed partial class ExtensionsInt32Test
     {
-        #region Méthodes publiques
-
         /// <summary>The août test.</summary>
         [Fact]
         public void AoûtTest()
@@ -122,7 +120,5 @@
             var dateRef = new DateTime(1987, 9, 15);
             Assert.Equal(dateRef, date);
         }
-
-        #endregion
     }
 }

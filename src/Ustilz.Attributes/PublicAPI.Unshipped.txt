@@ -1,0 +1,12 @@
+﻿Ustilz.Attributes.UseForDeserializationAttribute
+Ustilz.Attributes.UseForDeserializationAttribute.TargetFlags.get -> JetBrains.Annotations.ImplicitUseTargetFlags
+Ustilz.Attributes.UseForDeserializationAttribute.UseForDeserializationAttribute() -> void
+Ustilz.Attributes.UseForDeserializationAttribute.UseForDeserializationAttribute(JetBrains.Annotations.ImplicitUseKindFlags useKindFlags, JetBrains.Annotations.ImplicitUseTargetFlags targetFlags = JetBrains.Annotations.ImplicitUseTargetFlags.Default) -> void
+Ustilz.Attributes.UseForDeserializationAttribute.UseForDeserializationAttribute(JetBrains.Annotations.ImplicitUseTargetFlags targetFlags) -> void
+Ustilz.Attributes.UseForDeserializationAttribute.UseKindFlags.get -> JetBrains.Annotations.ImplicitUseKindFlags
+Ustilz.Attributes.UsedByInjectionAttribute
+Ustilz.Attributes.UsedByInjectionAttribute.TargetFlags.get -> JetBrains.Annotations.ImplicitUseTargetFlags
+Ustilz.Attributes.UsedByInjectionAttribute.UseKindFlags.get -> JetBrains.Annotations.ImplicitUseKindFlags
+Ustilz.Attributes.UsedByInjectionAttribute.UsedByInjectionAttribute() -> void
+Ustilz.Attributes.UsedByInjectionAttribute.UsedByInjectionAttribute(JetBrains.Annotations.ImplicitUseKindFlags useKindFlags, JetBrains.Annotations.ImplicitUseTargetFlags targetFlags = JetBrains.Annotations.ImplicitUseTargetFlags.Default) -> void
+Ustilz.Attributes.UsedByInjectionAttribute.UsedByInjectionAttribute(JetBrains.Annotations.ImplicitUseTargetFlags targetFlags) -> void

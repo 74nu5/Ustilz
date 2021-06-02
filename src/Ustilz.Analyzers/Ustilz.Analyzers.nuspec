@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Ustilz.Analyzers</id>
+    <version>1.0.0</version>
+    <authors>T4nu5</authors>
+    <owners>T4nu5</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+	<licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <description>Meta package of analyzers</description>
+    <releaseNotes>Add analyzers.</releaseNotes>
+	<repository type="Git" url="https://github.com/avondero/Ustilz" />
+    <copyright>Copyright 2020</copyright>
+    <tags>analyzers Ustilz</tags>
+    <dependencies>
+		<dependency id="JetBrains.Annotations" version="2019.1.3" />
+        <dependency id="Microsoft.CodeAnalysis.FxCopAnalyzers" version="2.9.8" />
+        <dependency id="StyleCop.Analyzers" version="1.1.118" />
+		<dependency id="Microsoft.CodeAnalysis.PublicApiAnalyzers" version="2.9.8" />
+		<dependency id="Text.Analyzers" version="2.6.4" />
+    </dependencies>
+  </metadata>
+</package>

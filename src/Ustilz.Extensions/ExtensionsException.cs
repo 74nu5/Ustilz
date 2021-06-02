@@ -1,25 +1,26 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Text;
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The extensions exception.</summary>
     [PublicAPI]
     public static class ExtensionsException
     {
-        #region Méthodes publiques
-
         /// <summary>The get messages from entire exception chain.</summary>
         /// <param name="e">The e.</param>
         /// <returns>The <see cref="string" />.</returns>
-        public static string GetMessagesFromEntireExceptionChain([NotNull] this Exception e)
+        public static string GetMessagesFromEntireExceptionChain(
+            [System.Diagnostics.CodeAnalysis.NotNull]
+            this Exception e)
         {
+            if (e is null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             // get the full error message list from the inner exceptions
             var message = new StringBuilder(e.Message);
             var count = 0;
@@ -33,7 +34,5 @@ namespace Ustilz.Extensions
 
             return message.ToString();
         }
-
-        #endregion
     }
 }

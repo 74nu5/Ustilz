@@ -1,32 +1,26 @@
-﻿namespace Ustilz.Extensions.Actions
+namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
 
     using Ustilz.Extensions.Enumerables;
 
-    #endregion
-
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
     {
-        #region Méthodes publiques
-
         /// <summary>Executes the given action inside of a try catch block and catches all exceptions.</summary>
         /// <exception cref="ArgumentNullException">Action can not be null.</exception>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute([NotNull] this Action action)
+        public static bool SafeExecute(this Action action)
         {
-            action.ThrowIfNull(nameof(action));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             try
             {
-                action();
+                action!.Invoke();
 
                 return true;
             }
@@ -42,7 +36,7 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException>([NotNull] this Action action)
+        public static bool SafeExecute<TException>(this Action action)
             where TException : Exception
             => action.SafeExecute(typeof(TException));
 
@@ -53,7 +47,7 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             => action.SafeExecute(typeof(TException1), typeof(TException2));
@@ -66,7 +60,7 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2, TException3>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2, TException3>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -81,7 +75,7 @@
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute<TException1, TException2, TException3, TException4>([NotNull] this Action action)
+        public static bool SafeExecute<TException1, TException2, TException3, TException4>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -98,14 +92,14 @@
         /// <param name="exceptionsToCatch">A list of exception types to catch.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
-        public static bool SafeExecute([NotNull] this Action action, [NotNull] params Type[] exceptionsToCatch)
+        public static bool SafeExecute(this Action action, params Type[] exceptionsToCatch)
         {
-            action.ThrowIfNull(nameof(action));
-            exceptionsToCatch.ThrowIfNull(nameof(exceptionsToCatch));
+            _ = exceptionsToCatch ?? throw new ArgumentNullException(nameof(exceptionsToCatch));
+            _ = action ?? throw new ArgumentNullException(nameof(action));
 
             try
             {
-                action();
+                action.Invoke();
                 return true;
             }
             catch (Exception ex)
@@ -118,7 +112,5 @@
                 return false;
             }
         }
-
-        #endregion
     }
 }

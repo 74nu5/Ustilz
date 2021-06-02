@@ -1,0 +1,7 @@
+#nullable enable
+static Ustilz.UI.ExtensionsColor.GetContrastingColor(this System.Drawing.Color value) -> System.Drawing.Color
+Ustilz.UI.ColorUtils
+static Ustilz.UI.ColorUtils.GenerateColor() -> string!
+static Ustilz.UI.ColorUtils.GetColorFromNom(string! nom) -> string!
+static Ustilz.UI.ColorUtils.GetLightColorFromNom(string! nom) -> string!
+Ustilz.UI.ExtensionsColor

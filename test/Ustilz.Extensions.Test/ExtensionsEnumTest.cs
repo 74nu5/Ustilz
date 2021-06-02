@@ -14,14 +14,36 @@ namespace Ustilz.Extensions.Test
     [PublicAPI]
     public sealed class ExtensionsEnumTest
     {
-        #region Champs et constantes statiques
-
         /// <summary>The item.</summary>
         private const Test Item = Test.Item1;
 
-        #endregion
+        /// <summary>The test.</summary>
+        private enum Test
+        {
+            /// <summary>The item 1.</summary>
+            Item1,
 
-        #region Méthodes publiques
+            /// <summary>The item 2.</summary>
+            Item2,
+
+            /// <summary>The item 3.</summary>
+            Item3
+        }
+
+        /// <summary>The test enum.</summary>
+        private enum TestEnum
+        {
+            /// <summary>The valeur 1.</summary>
+            [Display]
+            Valeur1,
+
+            /// <summary>The valeur 2.</summary>
+            Valeur2,
+
+            /// <summary>The valeur 3.</summary>
+            [Display(Description = "Troisième valeur")]
+            Valeur3
+        }
 
         /// <summary>The in false test.</summary>
         [Fact]
@@ -69,35 +91,6 @@ namespace Ustilz.Extensions.Test
             Assert.Equal(string.Empty, descriptionDictionary["Valeur1"]);
             Assert.Null(descriptionDictionary["Valeur2"]);
             Assert.Equal("Troisième valeur", descriptionDictionary["Valeur3"]);
-        }
-
-        #endregion
-
-        /// <summary>The test.</summary>
-        private enum Test
-        {
-            /// <summary>The item 1.</summary>
-            Item1,
-
-            /// <summary>The item 2.</summary>
-            Item2,
-
-            /// <summary>The item 3.</summary>
-            Item3
-        }
-
-        /// <summary>The test enum.</summary>
-        private enum TestEnum
-        {
-            /// <summary>The valeur 1.</summary>
-            [Display] Valeur1,
-
-            /// <summary>The valeur 2.</summary>
-            Valeur2,
-
-            /// <summary>The valeur 3.</summary>
-            [Display(Description = "Troisième valeur")]
-            Valeur3
         }
     }
 }
