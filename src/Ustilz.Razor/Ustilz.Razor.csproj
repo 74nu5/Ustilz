@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <RazorLangVersion>3.0</RazorLangVersion>
     <NeutralLanguage>fr</NeutralLanguage>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0.0-beta1</Version>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
+    <FileVersion>2.1.0</FileVersion>
+    <Version>2.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
@@ -16,18 +15,14 @@
     <RepositoryType>Git</RepositoryType>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Ustilz.Razor.xml</DocumentationFile>
     <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>bin\Release\net5.0\Ustilz.Razor.xml</DocumentationFile>
   </PropertyGroup>
-
-
   <ItemGroup>
     <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
@@ -38,7 +33,6 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <None Include="..\Settings.StyleCop" Link="Settings.StyleCop" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.5" />

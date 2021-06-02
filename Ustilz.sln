@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
+		dotnet-version.ps1 = dotnet-version.ps1
 		GlobalSuppressions.cs = GlobalSuppressions.cs
 		src\Settings.StyleCop = src\Settings.StyleCop
 		src\stylecop.json = src\stylecop.json
