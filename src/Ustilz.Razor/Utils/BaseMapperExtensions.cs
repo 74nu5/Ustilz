@@ -1,12 +1,8 @@
 namespace Ustilz.Razor.Utils
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>
     ///     Extensions class of <see cref="BaseMapper" />.
@@ -22,15 +18,8 @@ namespace Ustilz.Razor.Utils
         /// <returns>Returns the <see cref="BaseMapper" />.</returns>
         public static BaseMapper Add(this BaseMapper m, string name)
         {
-            if (m == null)
-            {
-                throw new ArgumentNullException(nameof(m));
-            }
-
-            if (name == null)
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
+            _ = name ?? throw new ArgumentNullException(nameof(name));
+            _ = m ?? throw new ArgumentNullException(nameof(m));
 
             m.Items.Add(() => name);
             return m;
@@ -44,15 +33,8 @@ namespace Ustilz.Razor.Utils
         /// <returns>Returns the <see cref="BaseMapper" />.</returns>
         public static BaseMapper Add(this BaseMapper m, Func<string> funcName)
         {
-            if (m == null)
-            {
-                throw new ArgumentNullException(nameof(m));
-            }
-
-            if (funcName == null)
-            {
-                throw new ArgumentNullException(nameof(funcName));
-            }
+            _ = funcName ?? throw new ArgumentNullException(nameof(funcName));
+            _ = m ?? throw new ArgumentNullException(nameof(m));
 
             m.Items.Add(funcName);
             return m;
@@ -67,20 +49,9 @@ namespace Ustilz.Razor.Utils
         /// <returns>Returns the <see cref="BaseMapper" />.</returns>
         public static BaseMapper AddIf(this BaseMapper m, Func<string> funcName, Func<bool> func)
         {
-            if (m == null)
-            {
-                throw new ArgumentNullException(nameof(m));
-            }
-
-            if (funcName == null)
-            {
-                throw new ArgumentNullException(nameof(funcName));
-            }
-
-            if (func == null)
-            {
-                throw new ArgumentNullException(nameof(func));
-            }
+            _ = func ?? throw new ArgumentNullException(nameof(func));
+            _ = funcName ?? throw new ArgumentNullException(nameof(funcName));
+            _ = m ?? throw new ArgumentNullException(nameof(m));
 
             m.Items.Add(() => func() ? funcName() : null);
             return m;
@@ -95,20 +66,9 @@ namespace Ustilz.Razor.Utils
         /// <returns>Returns the <see cref="BaseMapper" />.</returns>
         public static BaseMapper AddIf(this BaseMapper m, string name, Func<bool> func)
         {
-            if (m == null)
-            {
-                throw new ArgumentNullException(nameof(m));
-            }
-
-            if (name == null)
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
-
-            if (func == null)
-            {
-                throw new ArgumentNullException(nameof(func));
-            }
+            _ = func ?? throw new ArgumentNullException(nameof(func));
+            _ = name ?? throw new ArgumentNullException(nameof(name));
+            _ = m ?? throw new ArgumentNullException(nameof(m));
 
             m.Items.Add(() => func() ? name : null);
             return m;

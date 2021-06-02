@@ -1,12 +1,8 @@
 namespace Ustilz.UI
 {
-    #region Usings
-
     using System.Drawing;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>
     /// Classe statique d'extension de la classe <see cref="Color"/>.
@@ -14,8 +10,6 @@ namespace Ustilz.UI
     [PublicAPI]
     public static class ExtensionsColor
     {
-        #region Méthodes publiques
-
         /// <summary>
         /// Méthode qui retourne une coleur contrastante par rapport à celle passée en paramètre pour rendre un texte affichable.
         /// </summary>
@@ -29,7 +23,5 @@ namespace Ustilz.UI
 
             return Color.FromArgb(d, d, d);
         }
-
-        #endregion
     }
 }

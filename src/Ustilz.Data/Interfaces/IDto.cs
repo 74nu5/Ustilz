@@ -1,14 +1,10 @@
 namespace Ustilz.Data.Interfaces
 {
-    #region Usings
-
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>
     ///     Interface de définition de d'un Dto.

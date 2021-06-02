@@ -1,10 +1,6 @@
 namespace Ustilz.Extensions.Models
 {
-    #region Usings
-
     using System;
-
-    #endregion
 
     /// <summary>Le résultat de l'exécution.</summary>
     /// <typeparam name="T">Type du résultat.</typeparam>

@@ -1,7 +1,5 @@
 namespace Ustilz.Logging.Action
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
@@ -9,8 +7,6 @@ namespace Ustilz.Logging.Action
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.Logging;
-
-    #endregion
 
     /// <summary>Classe d'extensions du logger d'action.</summary>
     [PublicAPI]

@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Linq;
     using System.Linq.Expressions;
@@ -11,14 +9,10 @@ namespace Ustilz.Extensions
 
     using Ustilz.Utils;
 
-    #endregion
-
     /// <summary>The extensions type.</summary>
     [PublicAPI]
     public static class ExtensionsType
     {
-        #region Méthodes publiques
-
         /// <summary>The ctor.</summary>
         /// <param name="type">The type.</param>
         /// <typeparam name="TResult">Type du résultat.</typeparam>
@@ -170,10 +164,6 @@ namespace Ustilz.Extensions
             return Expression.Lambda<Func<TArg1, TArg2, TArg3, TArg4, TResult>>(Expression.New(ci, param1, param2, param3, param4), param1, param2, param3, param4).Compile();
         }
 
-        #endregion
-
-        #region Méthodes privées
-
         /// <summary>The get constructor.</summary>
         /// <param name="type">The type.</param>
         /// <param name="argumentTypes">The argument types.</param>
@@ -187,7 +177,5 @@ namespace Ustilz.Extensions
             return type.GetConstructor(argumentTypes) ??
                    throw new InvalidOperationException($"{type.Name} has no ctor({string.Join(", ", argumentTypes.Select(t => t.Name))})");
         }
-
-        #endregion
     }
 }

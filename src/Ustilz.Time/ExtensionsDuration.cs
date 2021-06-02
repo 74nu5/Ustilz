@@ -1,14 +1,10 @@
 namespace Ustilz.Time
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
 
     using static Duration;
-
-    #endregion
 
     /// <summary>Classe d'extension de l'énumération <see cref="Duration" />.</summary>
     [PublicAPI]

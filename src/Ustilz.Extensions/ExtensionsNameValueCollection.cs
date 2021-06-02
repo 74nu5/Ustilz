@@ -1,15 +1,11 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Linq;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions name value collection.</summary>
     [PublicAPI]
@@ -21,10 +17,10 @@ namespace Ustilz.Extensions
         /// <exception cref="ArgumentNullException"><paramref name="nvc" /> is <see langword="null" />.</exception>
         /// <exception cref="ArgumentException">keySelector produces duplicate keys for two elements.</exception>
         /// <exception cref="NotSupportedException">The collection is read-only and the operation attempts to modify the collection.</exception>
-        [return: System.Diagnostics.CodeAnalysis.NotNull]
+        
         public static Dictionary<string, string> ToDictionary(this NameValueCollection? nvc)
             => nvc is null
                    ? throw new ArgumentNullException(nameof(nvc))
-                   : nvc.AllKeys.ToDictionary(k => k ?? throw new NullReferenceException("Name is null"), k => nvc[k] ?? throw new NullReferenceException("Value is null"));
+                   : nvc.AllKeys.ToDictionary(k => k ?? throw new InvalidOperationException("Name is null"), k => nvc[k] ?? throw new InvalidOperationException("Value is null"));
     }
 }

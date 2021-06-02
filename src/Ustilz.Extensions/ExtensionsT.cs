@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -13,27 +11,23 @@ namespace Ustilz.Extensions
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The extensions t. </summary>
     [PublicAPI]
     public static class ExtensionsT
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode de "transformation" d'objet en boolean.</summary>
         /// <typeparam name="T">Type à "transformer".</typeparam>
         /// <param name="transformObject">Objet à "transformer".</param>
         /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
         public static bool AsBool<T>(this T transformObject)
             => transformObject switch
-               {
-                   int n => n > 0,
-                   string s when bool.TryParse(s, out var b) => b,
-                   string s when int.TryParse(s, out var i) => i.AsBool(),
-                   string s => !string.IsNullOrEmpty(s),
-                   var _ => false
-               };
+            {
+                int n                                     => n > 0,
+                string s when bool.TryParse(s, out var b) => b,
+                string s when int.TryParse(s, out var i)  => i.AsBool(),
+                string s                                  => !string.IsNullOrEmpty(s),
+                var _                                     => false
+            };
 
         /// <summary>The between. </summary>
         /// <param name="value">The value. </param>
@@ -57,7 +51,6 @@ namespace Ustilz.Extensions
         /// <returns>Returns the given object.</returns>
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         /// <exception cref="ArgumentNullException">The action can not be null.</exception>
-        [System.Diagnostics.Contracts.Pure]
         public static T Chain<T>(
             [MaybeNull] this T chainObject,
             [System.Diagnostics.CodeAnalysis.NotNull]
@@ -115,18 +108,9 @@ namespace Ustilz.Extensions
         /// <returns>Retourne la liste des interfaces implémenter par l'objet.</returns>
         public static List<Type?> ImplementsInterfaces<T>(this T obj, params Type[] interfaces)
         {
-            if (obj == null || !interfaces.Any())
-            {
-                return new List<Type?>();
-            }
+            _ = obj ?? throw new ArgumentNullException(nameof(obj));
 
-            Type? Func(Type t)
-                => obj!.GetType().FindInterfaces(
-                                                 (typeObj, criteriaObj) => typeObj.ToString() == criteriaObj?.ToString(), t.FullName).Any()
-                       ? t
-                       : null;
-
-            return (from i in interfaces select Func(i)).Where(t => t != null).ToList();
+            return !interfaces.Any() ? new List<Type?>() : (from i in interfaces select SelectInterfaces(i, obj)).Where(t => t != null).ToList();
         }
 
         /// <summary>Vérifie si la valeur est présente dans le tableau donné.</summary>
@@ -135,7 +119,6 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type de la valeur.</typeparam>
         /// <returns>Renvoie true si la valeur est présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
-        [System.Diagnostics.Contracts.Pure]
         public static bool IsIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
@@ -152,7 +135,6 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type de la valeur.</typeparam>
         /// <returns>Retourne true si la valeur est présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
-        [System.Diagnostics.Contracts.Pure]
         public static bool IsIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
@@ -168,7 +150,6 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type de la valeur.</typeparam>
         /// <returns>Renvoie true si la valeur n'est pas présente dans le tableau, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
-        [System.Diagnostics.Contracts.Pure]
         public static bool IsNotIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
@@ -181,7 +162,6 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Le type de la valeur.</typeparam>
         /// <returns>Retourne true si la valeur n'est pas présente dans le IEnumerable, false sinon.</returns>
         /// <exception cref="ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
-        [System.Diagnostics.Contracts.Pure]
         public static bool IsNotIn<T>(
             [MaybeNull] this T value,
             [System.Diagnostics.CodeAnalysis.NotNull]
@@ -205,7 +185,6 @@ namespace Ustilz.Extensions
         public static bool IsNull<T>([MaybeNull] this T? source)
             where T : class
             => source == null;
-
 
         /// <summary>Permute les valeurs données.</summary>
         /// <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
@@ -243,15 +222,11 @@ namespace Ustilz.Extensions
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="value" /> is <see langword="null" />.</exception>
-        public static T To<T>(
-            [System.Diagnostics.CodeAnalysis.NotNull]
-            this IConvertible value)
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Easy to understand")]
+        public static T To<T>(this IConvertible value)
             where T : new()
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
+            _ = value ?? throw new ArgumentNullException(nameof(value));
 
             try
             {
@@ -265,7 +240,7 @@ namespace Ustilz.Extensions
 
                 return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-            catch (Exception)
+            catch
             {
                 return new T();
             }
@@ -276,6 +251,7 @@ namespace Ustilz.Extensions
         /// <param name="ifError">Valeur à renvoyer si la conversion échoue.</param>
         /// <typeparam name="T">Type vers lequel convertir.</typeparam>
         /// <returns>Retourne l'objet convertit.</returns>
+        [SuppressMessage("ReSharper", "MethodNameNotMeaningful", Justification = "Easy to understand")]
         public static T To<T>(this IConvertible? value, IConvertible ifError)
         {
             try
@@ -290,12 +266,18 @@ namespace Ustilz.Extensions
 
                 return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
             }
-            catch (Exception)
+            catch
             {
                 return (T)ifError;
             }
         }
 
-        #endregion
+        private static Type? SelectInterfaces<T>(Type t, T obj)
+        {
+            _ = obj ?? throw new ArgumentNullException(nameof(obj));
+            return obj.GetType().FindInterfaces((typeObj, criteriaObj) => typeObj.ToString() == criteriaObj?.ToString(), t.FullName).Any()
+                       ? t
+                       : null;
+        }
     }
 }

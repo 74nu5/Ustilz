@@ -1,14 +1,11 @@
 namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     using JetBrains.Annotations;
 
     using Ustilz.Extensions.Enumerables;
-
-    #endregion
 
     /// <summary>The extensions action.</summary>
     public static partial class ExtensionsAction
@@ -23,14 +20,11 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse(this Action? falseAction, Action? trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse(this Action? falseAction, Action? trueAction = null, params Func<bool>[] values)
         {
-            if (values == null)
-            {
-                throw new ArgumentNullException(nameof(values));
-            }
+            _ = values ?? throw new ArgumentNullException(nameof(values));
 
-            if (values!.NotAny(x => x()))
+            if (values.NotAny(x => x()))
             {
                 falseAction?.Invoke();
             }
@@ -52,14 +46,14 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse<T>(this Action<T>? falseAction, [CanBeNull] T parameter, Action<T>? trueAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse<T>(this Action<T>? falseAction, T parameter, Action<T>? trueAction = null, params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (values!.NotAny(x => x()))
+            if (values.NotAny(x => x()))
             {
                 falseAction?.Invoke(parameter);
             }
@@ -85,17 +79,17 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2>(
             this Action<T1, T2>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
+            T1 parameter1,
+            T2 parameter2,
             Action<T1, T2>? trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (values!.NotAny(x => x()))
+            if (values.NotAny(x => x()))
             {
                 falseAction?.Invoke(parameter1, parameter2);
             }
@@ -123,18 +117,18 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2, T3>(
             this Action<T1, T2, T3>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
             Action<T1, T2, T3>? trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (values!.NotAny(x => x()))
+            if (values.NotAny(x => x()))
             {
                 falseAction?.Invoke(parameter1, parameter2, parameter3);
             }
@@ -162,21 +156,22 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
+        [SuppressMessage("ReSharper", "TooManyArguments", Justification = "It's API purpose.")]
         public static void ExecuteIfFalse<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
             Action<T1, T2, T3, T4>? trueAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (values!.NotAny(x => x()))
+            if (values.NotAny(x => x()))
             {
                 falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
             }
@@ -192,14 +187,14 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if the given values are false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse(this Action? falseAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse(this Action? falseAction, params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (!values!.NotAny(x => x()))
+            if (!values.NotAny(x => x()))
             {
                 return;
             }
@@ -215,14 +210,14 @@ namespace Ustilz.Extensions.Actions
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfFalse<T>(this Action<T>? falseAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfFalse<T>(this Action<T>? falseAction, T parameter, params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (!values!.NotAny(x => x()))
+            if (!values.NotAny(x => x()))
             {
                 return;
             }
@@ -242,16 +237,16 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2>(
             this Action<T1, T2>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (!values!.NotAny(x => x()))
+            if (!values.NotAny(x => x()))
             {
                 return;
             }
@@ -273,17 +268,17 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2, T3>(
             this Action<T1, T2, T3>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (!values!.NotAny(x => x()))
+            if (!values.NotAny(x => x()))
             {
                 return;
             }
@@ -307,18 +302,18 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfFalse<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4>? falseAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
+            params Func<bool>[] values)
         {
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
             }
 
-            if (!values!.NotAny(x => x()))
+            if (!values.NotAny(x => x()))
             {
                 return;
             }

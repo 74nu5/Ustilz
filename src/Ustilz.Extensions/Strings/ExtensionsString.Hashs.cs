@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions.Strings
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
@@ -16,16 +14,14 @@ namespace Ustilz.Extensions.Strings
     using Ustilz.Time;
     using Ustilz.Utils;
 
-    #endregion
-
     /// <summary>The extensions string.</summary>
     public static partial class ExtensionsString
     {
         /// <summary>The hash providers.</summary>
-        private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new ();
+        private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new();
 
         /// <summary>The random.</summary>
-        private static readonly Random Random = new ((int)Clock.Now.Ticks);
+        private static readonly Random Random = new((int)Clock.Now.Ticks);
 
         /// <summary>Supported hash algorithms.</summary>
         public enum HashType
@@ -125,6 +121,7 @@ namespace Ustilz.Extensions.Strings
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown.</exception>
         [return: NotNull]
+        [SuppressMessage("ReSharper", "FlagArgument", Justification = "Not flag.")]
         public static string GenerateHash([NotNull] string password, string? salt = null, HashType provider = HashType.MD5)
         {
             Check.NotEmpty(password, nameof(password));
@@ -132,15 +129,14 @@ namespace Ustilz.Extensions.Strings
             salt ??= GenerateSalt();
 
             var bytes = Encoding.Unicode.GetBytes(salt + password);
-            try
+
+            if (!HashProviders.ContainsKey(provider))
             {
-                var hash = HashProviders[provider].ComputeHash(bytes);
-                return provider + "$" + salt + "$" + hash.ToHexString();
+                throw new NotSupportedException($"Hash Provider '{provider}' is not supported");
             }
-            catch (KeyNotFoundException ex)
-            {
-                throw new NotSupportedException($"Hash Provider '{provider}' is not supported", ex);
-            }
+
+            var hash = HashProviders[provider].ComputeHash(bytes);
+            return provider + "$" + salt + "$" + hash.ToHexString();
         }
 
         /// <summary>Generate random string to be used as passwords and salts.</summary>

@@ -1,12 +1,8 @@
 namespace Ustilz.Utils
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>A base class that automatically provides all operator overloads based on your class only implementing CompareTo.</summary>
     [PublicAPI]

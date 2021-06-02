@@ -1,12 +1,8 @@
 namespace Ustilz.Attributes
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The use for deserialization attribute.</summary>
     [MeansImplicitUse]

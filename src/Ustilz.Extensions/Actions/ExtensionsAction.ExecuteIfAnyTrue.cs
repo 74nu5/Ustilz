@@ -1,13 +1,10 @@
 namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
+using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction
@@ -19,7 +16,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue(this Action? trueAction, Action? falseAction = null, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyTrue(this Action? trueAction, Action? falseAction = null, params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -46,9 +43,9 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T>(
             this Action<T>? trueAction,
-            [CanBeNull] T parameter,
+            T parameter,
             Action<T>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -77,10 +74,10 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T1, T2>(
             this Action<T1, T2>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
+            T1 parameter1,
+            T2 parameter2,
             Action<T1, T2>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -111,11 +108,11 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T1, T2, T3>(
             this Action<T1, T2, T3>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
             Action<T1, T2, T3>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -146,14 +143,15 @@ namespace Ustilz.Extensions.Actions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
+        [SuppressMessage("ReSharper", "TooManyArguments", Justification = "It's API purpose.")]
         public static void ExecuteIfAnyTrue<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
             Action<T1, T2, T3, T4>? falseAction = null,
-            [NotNull] params Func<bool>[] values)
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -175,7 +173,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue(this Action? trueAction, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyTrue(this Action? trueAction, params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -197,7 +195,7 @@ namespace Ustilz.Extensions.Actions
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         [PublicAPI]
-        public static void ExecuteIfAnyTrue<T>(this Action<T>? trueAction, [CanBeNull] T parameter, [NotNull] params Func<bool>[] values)
+        public static void ExecuteIfAnyTrue<T>(this Action<T>? trueAction, T parameter, params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -223,9 +221,9 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T1, T2>(
             this Action<T1, T2>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -253,10 +251,10 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T1, T2, T3>(
             this Action<T1, T2, T3>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            params Func<bool>[] values)
         {
             if (values == null)
             {
@@ -286,11 +284,11 @@ namespace Ustilz.Extensions.Actions
         [PublicAPI]
         public static void ExecuteIfAnyTrue<T1, T2, T3, T4>(
             this Action<T1, T2, T3, T4>? trueAction,
-            [CanBeNull] T1 parameter1,
-            [CanBeNull] T2 parameter2,
-            [CanBeNull] T3 parameter3,
-            [CanBeNull] T4 parameter4,
-            [NotNull] params Func<bool>[] values)
+            T1 parameter1,
+            T2 parameter2,
+            T3 parameter3,
+            T4 parameter4,
+            params Func<bool>[] values)
         {
             if (values == null)
             {

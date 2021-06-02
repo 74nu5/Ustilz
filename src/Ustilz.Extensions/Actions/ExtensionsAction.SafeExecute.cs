@@ -1,14 +1,10 @@
 namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
 
     using Ustilz.Extensions.Enumerables;
-
-    #endregion
 
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     public static partial class ExtensionsAction

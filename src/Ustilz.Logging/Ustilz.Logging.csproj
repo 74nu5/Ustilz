@@ -16,12 +16,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Ustilz.Logging.xml</DocumentationFile>
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\netstandard2.0</OutputPath>
-    <DocumentationFile>bin\Release\netstandard2.0\Ustilz.Logging.xml</DocumentationFile>
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\net5.0\Ustilz.Logging.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />

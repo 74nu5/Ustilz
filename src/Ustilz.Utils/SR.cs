@@ -1,12 +1,8 @@
 namespace Ustilz.Utils
 {
-    #region Usings
-
     using System;
     using System.Globalization;
     using System.Resources;
-
-    #endregion
 
     /// <summary>Classe d'accès aux ressources.</summary>
     // ReSharper disable once InconsistentNaming
@@ -33,15 +29,7 @@ namespace Ustilz.Utils
 
         private static string? GetResourceString(string resourceKey, string? defaultString = null)
         {
-            string? resourceString = null;
-            try
-            {
-                resourceString = ResourceManager.GetString(resourceKey, CultureInfo.CurrentCulture);
-            }
-            catch (MissingManifestResourceException)
-            {
-            }
-
+            var resourceString = ResourceManager.GetString(resourceKey, CultureInfo.CurrentCulture);
             return defaultString != null && resourceKey.Equals(resourceString, StringComparison.Ordinal) ? defaultString : resourceString;
         }
     }

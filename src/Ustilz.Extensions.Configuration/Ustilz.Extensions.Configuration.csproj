@@ -17,8 +17,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
     <DocumentationFile>bin\Debug\net5.0\Ustilz.Extensions.Configuration.xml</DocumentationFile>
+    <OutputPath>bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\net5.0\Ustilz.Extensions.Configuration.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

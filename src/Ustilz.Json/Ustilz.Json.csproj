@@ -17,11 +17,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Ustilz.Json.xml</DocumentationFile>
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\net5.0</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>bin\Release\net5.0\Ustilz.Json.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>

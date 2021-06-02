@@ -1,12 +1,8 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>
     /// Classe statique d'extension du type <see cref="Random"/>.
@@ -14,8 +10,6 @@ namespace Ustilz.Extensions
     [PublicAPI]
     public static class ExtensionsRandom
     {
-        #region Méthodes publiques
-
         /// <summary>
         /// Méthode de sélection aléatoire dans une énumération.
         /// </summary>
@@ -30,7 +24,5 @@ namespace Ustilz.Extensions
             var index = random.Next(array.GetLowerBound(0), array.GetUpperBound(0) + 1);
             return (T)(array.GetValue(index) ?? throw new InvalidOperationException("Value not found."));
         }
-
-        #endregion
     }
 }

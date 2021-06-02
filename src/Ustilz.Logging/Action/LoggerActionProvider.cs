@@ -1,13 +1,9 @@
 namespace Ustilz.Logging.Action
 {
-    #region Usings
-
     using System;
     using System.Collections.Concurrent;
 
     using Microsoft.Extensions.Logging;
-
-    #endregion
 
     /// <summary>Classe du provider du logger d'action.</summary>
     internal sealed class LoggerActionProvider : ILoggerProvider

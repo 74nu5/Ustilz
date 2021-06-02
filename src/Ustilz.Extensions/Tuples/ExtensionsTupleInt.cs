@@ -1,12 +1,8 @@
 namespace Ustilz.Extensions.Tuples
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>
     /// Classe d'extension pour les ints.

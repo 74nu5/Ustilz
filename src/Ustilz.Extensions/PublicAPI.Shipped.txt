@@ -7,7 +7,6 @@ Ustilz.Extensions.ExtensionsDouble
 Ustilz.Extensions.ExtensionsEnum
 Ustilz.Extensions.ExtensionsException
 Ustilz.Extensions.ExtensionsFunc
-Ustilz.Extensions.ExtensionsLong
 Ustilz.Extensions.ExtensionsNameValueCollection
 Ustilz.Extensions.ExtensionsT
 Ustilz.Extensions.ExtensionsTimeSpan
@@ -101,7 +100,7 @@ static Ustilz.Extensions.ExtensionsDouble.Hours(this double time) -> System.Time
 static Ustilz.Extensions.ExtensionsDouble.IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2) -> bool
 static Ustilz.Extensions.ExtensionsEnum.GetDescriptionDictionary<T>() -> System.Collections.Generic.Dictionary<string!, string?>!
 static Ustilz.Extensions.ExtensionsEnum.GetEnumDescription<T>(this T value) -> string!
-static Ustilz.Extensions.ExtensionsEnum.In(this System.Enum! value, params System.Enum![]! values) -> bool
+static Ustilz.Extensions.ExtensionsEnum.IsIn(this System.Enum! value, params System.Enum![]! values) -> bool
 static Ustilz.Extensions.ExtensionsEnum.ToInt(this System.Enum! enumValue) -> int
 static Ustilz.Extensions.ExtensionsException.GetMessagesFromEntireExceptionChain(this System.Exception! e) -> string!
 static Ustilz.Extensions.ExtensionsFunc.ExecuteSafe<T, TResult>(this System.Func<T, TResult>! func, T parameter) -> Ustilz.Extensions.Models.IExecutionResult<TResult>!
@@ -115,7 +114,6 @@ static Ustilz.Extensions.ExtensionsFunc.TestPerf<T1, T2, T3, TResult>(this Syste
 static Ustilz.Extensions.ExtensionsFunc.TestPerf<T1, T2, TResult>(this System.Func<T1, T2, TResult>! function, out long timestamp, T1 param1, T2 param2) -> TResult
 static Ustilz.Extensions.ExtensionsFunc.TestPerf<T>(this System.Action<T>! action, T param) -> long
 static Ustilz.Extensions.ExtensionsFunc.TestPerf<TResult>(this System.Func<TResult>! function, out long timestamp) -> TResult
-static Ustilz.Extensions.ExtensionsLong.ConvertIntoWords(this long number) -> string!
 static Ustilz.Extensions.ExtensionsNameValueCollection.ToDictionary(this System.Collections.Specialized.NameValueCollection? nvc) -> System.Collections.Generic.Dictionary<string!, string!>!
 static Ustilz.Extensions.ExtensionsT.AsBool<T>(this T transformObject) -> bool
 static Ustilz.Extensions.ExtensionsT.Between<T>(this T value, T from, T to) -> bool
@@ -172,7 +170,6 @@ static Ustilz.Extensions.Int32.ExtensionsInt32.Times(this int count, System.Acti
 static Ustilz.Extensions.Strings.ExtensionsString.ComputeHash(this string! input, Ustilz.Extensions.Strings.ExtensionsString.HashType hashType) -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.Decrypt(this string! stringToDecrypt, string! key) -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.Encrypt(this string! stringToEncrypt, string! key) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.Fs<T>(this string! template, T data) -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.GenerateHash(string! password, string? salt = null, Ustilz.Extensions.Strings.ExtensionsString.HashType provider = Ustilz.Extensions.Strings.ExtensionsString.HashType.MD5) -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.GeneratePassword() -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.GenerateSalt(int length = 4) -> string!
@@ -184,7 +181,8 @@ static Ustilz.Extensions.Strings.ExtensionsString.Left(this string! value, int l
 static Ustilz.Extensions.Strings.ExtensionsString.Right(this string! value, int length) -> string!
 static Ustilz.Extensions.Strings.ExtensionsString.ToEnum<T>(this string! value) -> T
 static Ustilz.Extensions.Strings.ExtensionsString.ToException<T>(this string! message) -> void
-static Ustilz.Extensions.Strings.ExtensionsString.ToSecureString(this string! str, bool markReadOnly = false) -> System.Security.SecureString!
+static Ustilz.Extensions.Strings.ExtensionsString.ToSecureString(this string! str) -> System.Security.SecureString!
+static Ustilz.Extensions.Strings.ExtensionsString.ToSecureStringReadOnly(this string! str) -> System.Security.SecureString!
 static Ustilz.Extensions.Strings.ExtensionsString.Validate(string! hashValue, string! password) -> bool
 static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Hours(this (int Hour, int Minute) time) -> System.TimeSpan
 static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
@@ -194,6 +192,7 @@ static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minut
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second, int Milliseconds) time) -> System.TimeSpan
 static Ustilz.Extensions.Tuples.ExtensionsTuples.Minutes(this (int Minute, int Second) time) -> System.TimeSpan
+static Ustilz.Extensions.ExtensionsDictionary.AddOrUpdate<TKey, TValue>(this System.Collections.Generic.Dictionary<TKey, TValue>! dictionary, TKey key, TValue value) -> bool
 static Ustilz.Extensions.ExtensionsT.Chain<T>(this T chainObject, System.Action<T?>! action) -> T
 static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
 static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
@@ -201,3 +200,8 @@ static Ustilz.Extensions.Strings.ExtensionsString.SplitPascalCase(this string! t
 static Ustilz.Extensions.ExtensionsRandom.NextEnum<T>(this System.Random! random) -> T
 Ustilz.Extensions.ExtensionsRandom
 static Ustilz.Extensions.Strings.ExtensionsString.GenerateInitials(this string? nom) -> string?
+static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.FindMax<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
+static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.FindMin<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
+static Ustilz.Extensions.ExtensionsDouble.GetPercentage(this double value, int percentage) -> double
+static Ustilz.Extensions.ExtensionsT.ImplementsInterfaces<T>(this T obj, params System.Type![]! interfaces) -> System.Collections.Generic.List<System.Type?>!
+static Ustilz.Extensions.Strings.ExtensionsString.Format<T>(this string! template, T data) -> string!

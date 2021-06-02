@@ -1,7 +1,5 @@
 namespace Ustilz.Http
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -15,8 +13,6 @@ namespace Ustilz.Http
     using JetBrains.Annotations;
 
     using Microsoft.AspNetCore.Http;
-
-    #endregion
 
     /// <summary>The http client extensions.</summary>
     [PublicAPI]

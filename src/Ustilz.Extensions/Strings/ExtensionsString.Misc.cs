@@ -1,31 +1,25 @@
 namespace Ustilz.Extensions.Strings
 {
-    #region Usings
-
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Security;
     using System.Text.RegularExpressions;
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The extensions string.</summary>
     [PublicAPI]
     public static partial class ExtensionsString
     {
-        #region Méthodes publiques
-
         /// <summary>The format.</summary>
         /// <param name="template">The template.</param>
         /// <param name="data">The data.</param>
         /// <typeparam name="T">Type à formatter.</typeparam>
         /// <returns>The <see cref="string" />.</returns>
-        public static string Fs<T>(this string template, T data)
+        public static string Format<T>(this string template, T data)
             => Regex.Replace(template, @"\@{([\w\d]+)\}", match => GetValue(match, data)).Replace("{{", "{", StringComparison.CurrentCulture)
                     .Replace("}}", "}", StringComparison.CurrentCulture);
-
 
         /// <summary>Méthode de génération des initiales.</summary>
         /// <param name="nom">The nom.</param>
@@ -37,8 +31,7 @@ namespace Ustilz.Extensions.Strings
         /// <summary>Convert hex String to bytes representation.</summary>
         /// <param name="hexString">Hex string to convert into bytes.</param>
         /// <returns>Bytes of hex string.</returns>
-        [NotNull]
-        public static byte[] HexToBytes([NotNull] this string hexString)
+        public static byte[] HexToBytes(this string hexString)
         {
             if (hexString is null)
             {
@@ -101,22 +94,21 @@ namespace Ustilz.Extensions.Strings
         /// <typeparam name="T">Type of enum.</typeparam>
         /// <param name="value">String value to convert.</param>
         /// <returns>Returns enum object.</returns>
-        [System.Diagnostics.Contracts.Pure]
         public static T ToEnum<T>(this string value)
             where T : struct => (T)Enum.Parse(typeof(T), value, true);
 
         /// <summary>The to exception.</summary>
         /// <param name="message">The message.</param>
         /// <typeparam name="T">Type de l'exception.</typeparam>
+        [SuppressMessage("ReSharper", "UnthrowableException", Justification = "Nope...")]
         public static void ToException<T>(this string message)
             where T : Exception, new() =>
             throw Activator.CreateInstance(typeof(T), message) as T ?? new Exception(message);
 
         /// <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString.</summary>
         /// <param name="str">Chaine de caractère à transformer.</param>
-        /// <param name="markReadOnly">Indique si la chaine sécurisée est marquée comme étant en lecture seule.</param>
         /// <returns>Retourne un objet SecureString correspondant à la chaine passée en paramètre.</returns>
-        public static SecureString ToSecureString(this string str, bool markReadOnly = false)
+        public static SecureString ToSecureString(this string str)
         {
             if (string.IsNullOrEmpty(str))
             {
@@ -129,17 +121,18 @@ namespace Ustilz.Extensions.Strings
                 ss.AppendChar(@char);
             }
 
-            if (markReadOnly)
-            {
-                ss.MakeReadOnly();
-            }
-
             return ss;
         }
 
-        #endregion
-
-        #region Méthodes privées
+        /// <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString. la chaine sécurisée est marquée comme étant en lecture seule.</summary>
+        /// <param name="str">Chaine de caractère à transformer.</param>
+        /// <returns>Retourne un objet SecureString correspondant à la chaine passée en paramètre.</returns>
+        public static SecureString ToSecureStringReadOnly(this string str)
+        {
+            var ss = ToSecureString(str);
+            ss.MakeReadOnly();
+            return ss;
+        }
 
         /// <summary>The get value.</summary>
         /// <param name="match">The match.</param>
@@ -147,7 +140,7 @@ namespace Ustilz.Extensions.Strings
         /// <typeparam name="T">Type à inspecter.</typeparam>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="ArgumentException">Lève une exception lorsque la propriété et/ou la valeur n'est pas trouvé.</exception>
-        private static string GetValue<T>([NotNull] Match match, T data)
+        private static string GetValue<T>(Match match, T data)
         {
             var paraName = match.Groups[1].Value;
             try
@@ -160,7 +153,5 @@ namespace Ustilz.Extensions.Strings
                 throw new ArgumentException($"Not find '{paraName}'");
             }
         }
-
-        #endregion
     }
 }

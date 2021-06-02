@@ -1,10 +1,6 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions bool.</summary>
     [PublicAPI]

@@ -1,13 +1,9 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions list. </summary>
     [PublicAPI]

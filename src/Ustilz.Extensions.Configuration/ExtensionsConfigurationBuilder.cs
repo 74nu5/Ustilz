@@ -1,15 +1,11 @@
 namespace Ustilz.Extensions.Configuration
 {
-    #region Usings
-
     using System;
     using System.IO;
 
     using JetBrains.Annotations;
 
     using Microsoft.Extensions.Configuration;
-
-    #endregion
 
     /// <summary>The extensions configuration builder.</summary>
     [PublicAPI]

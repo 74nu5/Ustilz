@@ -1,7 +1,5 @@
 namespace Ustilz.Http
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -14,8 +12,6 @@ namespace Ustilz.Http
 
     using Ustilz.Extensions;
     using Ustilz.Json;
-
-    #endregion
 
     /// <summary>The http service.</summary>
     [PublicAPI]

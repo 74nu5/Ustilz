@@ -1,12 +1,8 @@
 namespace Ustilz.Extensions.Tuples
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Classe d'extensions des <see cref="Tuple{T1,T2}" /> où T et T1 sont de type <see cref="int" />.</summary>
     [PublicAPI]

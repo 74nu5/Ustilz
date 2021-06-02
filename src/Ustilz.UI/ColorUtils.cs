@@ -1,7 +1,5 @@
 namespace Ustilz.UI
 {
-    #region Usings
-
     using System;
     using System.Globalization;
     using System.Linq;
@@ -9,14 +7,12 @@ namespace Ustilz.UI
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The color utils.</summary>
     [PublicAPI]
     public static class ColorUtils
     {
         /// <summary>The random.</summary>
-        private static readonly Random Random = new ();
+        private static readonly Random Random = new();
 
         /// <summary>Méthode de génération de couleurs.</summary>
         /// <returns>The <see cref="string" />.</returns>

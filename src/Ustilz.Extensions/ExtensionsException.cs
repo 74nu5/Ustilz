@@ -1,13 +1,9 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Text;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions exception.</summary>
     [PublicAPI]

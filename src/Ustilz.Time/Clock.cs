@@ -1,12 +1,8 @@
 namespace Ustilz.Time
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Class de wrapping de la propriété <see cref="DateTime.Now" />.</summary>
     [PublicAPI]

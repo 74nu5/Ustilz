@@ -1,15 +1,11 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Diagnostics.CodeAnalysis;
 
     using JetBrains.Annotations;
 
     using Ustilz.Time;
-
-    #endregion
 
     /// <summary>Classe d'extensions des TimeSpan.</summary>
     [PublicAPI]

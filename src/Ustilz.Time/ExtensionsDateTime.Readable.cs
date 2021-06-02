@@ -1,13 +1,9 @@
 namespace Ustilz.Time
 {
-    #region Usings
-
     using System;
     using System.Diagnostics.CodeAnalysis;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions date time.</summary>
     [PublicAPI]
@@ -17,8 +13,8 @@ namespace Ustilz.Time
         /// <param name="currentDate">The current date.</param>
         /// <returns>The <see cref="string" />.</returns>
         /// <exception cref="OverflowException">value is greater than <see cref="int.MaxValue"></see> or less than <see cref="int.MinValue"></see>.</exception>
-        [return: System.Diagnostics.CodeAnalysis.NotNull]
-        [ExcludeFromCodeCoverage]
+        
+        [ExcludeFromCodeCoverage(Justification = "Hard to test")]
         [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obligé.")]
         public static string ReadableTimeStamp(this DateTime currentDate)
         {

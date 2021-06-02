@@ -1,4 +1,5 @@
 #nullable enable
+static Ustilz.Utils.Strings.MustBePositive(object? numericValue) -> string!
 static Ustilz.Utils.Check.HasNoNulls<T>(System.Collections.Generic.IReadOnlyList<T?>! collection, string! parameterName) -> System.Collections.Generic.IReadOnlyList<T?>!
 Ustilz.Utils.AutoOperators
 Ustilz.Utils.AutoOperators.AutoOperators() -> void
@@ -24,7 +25,6 @@ static Ustilz.Utils.Check.ValidEntityType(System.Type! value, string! parameterN
 static Ustilz.Utils.Strings.ArgumentIsEmpty(object? argumentName) -> string!
 static Ustilz.Utils.Strings.ArgumentPropertyNull(object? property, object! argument) -> string!
 static Ustilz.Utils.Strings.CollectionArgumentIsEmpty(object? argumentName) -> string!
-static Ustilz.Utils.Strings.GenerateInitials(this string? nom) -> string?
 static Ustilz.Utils.Strings.InvalidEntityType(object? type, object? argumentName) -> string!
 static Ustilz.Utils.ThrowHelper.ThrowArgumentNullException(string! argument) -> void
 static Ustilz.Utils.ThrowHelper.ThrowArgumentOutOfRangeException(string! argument) -> void
@@ -33,3 +33,5 @@ static Ustilz.Utils.ThrowHelper.ThrowMoreThanOneMatchException() -> void
 static Ustilz.Utils.ThrowHelper.ThrowNoElementsException() -> void
 static Ustilz.Utils.ThrowHelper.ThrowNoMatchException() -> void
 static Ustilz.Utils.ThrowHelper.ThrowNotSupportedException() -> void
+static Ustilz.Utils.Check.EnsurePositive(double numeric) -> double
+static Ustilz.Utils.Check.EnsurePositive(int numeric) -> int

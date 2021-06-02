@@ -1,12 +1,8 @@
 namespace Ustilz.Logging.Action
 {
-    #region Usings
-
     using System;
 
     using Microsoft.Extensions.Logging;
-
-    #endregion
 
     /// <summary>Classe du logger d'action.</summary>
     public sealed class LoggerAction : ILogger

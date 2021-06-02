@@ -1,14 +1,10 @@
 namespace Ustilz.Razor.Components
 {
-    #region Usings
-
     using JetBrains.Annotations;
 
     using Microsoft.AspNetCore.Components;
 
     using Ustilz.Razor.Utils;
-
-    #endregion
 
     /// <summary>
     ///     Base class of razor compenents.
@@ -30,23 +26,23 @@ namespace Ustilz.Razor.Components
         ///     Obtient ou définit un ou plusieurs nom de classe pour un élément du DOM.
         /// </summary>
         [Parameter]
-        public string Class { get; set; }
+        public string Class { get; set; } = string.Empty;
 
         /// <summary>
         ///     Obtient ou définit un style en ligne pour un élément du DOM.
         /// </summary>
         [Parameter]
-        public string Style { get; set; }
+        public string Style { get; set; } = string.Empty;
 
         /// <summary>
         ///     Obtient ou définit la classe de mapping des classes CSS.
         /// </summary>
-        protected ClassMapper ClassMapper { get; set; } = new ClassMapper();
+        protected ClassMapper ClassMapper { get; set; } = new();
 
         /// <summary>
         ///     Obtient ou définit la classe de mapping des styles CSS.
         /// </summary>
-        protected StyleMapper StyleMapper { get; set; } = new StyleMapper();
+        protected StyleMapper StyleMapper { get; set; } = new();
 
         /// <summary>
         ///     Method which invoke the <see cref="ComponentBase.StateHasChanged" />.

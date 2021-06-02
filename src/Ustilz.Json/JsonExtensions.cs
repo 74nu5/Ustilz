@@ -1,14 +1,10 @@
 namespace Ustilz.Json
 {
-    #region Usings
-
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Text.Json;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The json extensions.</summary>
     [PublicAPI]

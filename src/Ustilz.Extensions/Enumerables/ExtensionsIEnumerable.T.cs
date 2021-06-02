@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions.Enumerables
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -9,14 +7,10 @@ namespace Ustilz.Extensions.Enumerables
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The extensions i enumerable.</summary>
     [PublicAPI]
     public static partial class ExtensionsIEnumerable
     {
-        #region Méthodes publiques
-
         /// <summary>Méthode permettant d'ajuster des éléments d'un <see cref="IEnumerable{T}" />.</summary>
         /// <typeparam name="T">Type d'élément de l'énumérable.</typeparam>
         /// <param name="enumerable">Enumérable à ajuster.</param>
@@ -162,7 +156,7 @@ namespace Ustilz.Extensions.Enumerables
         /// <param name="enumerable">The IEnumerable to check.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        [System.Diagnostics.Contracts.Pure]
+        
         [PublicAPI]
         public static bool NotAny<T>(
             [System.Diagnostics.CodeAnalysis.NotNull] [ItemCanBeNull]
@@ -179,7 +173,7 @@ namespace Ustilz.Extensions.Enumerables
         /// <param name="predicate">The predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        [System.Diagnostics.Contracts.Pure]
+        
         [PublicAPI]
         public static bool NotAny<T>(
             [ItemCanBeNull] this IEnumerable<T> enumerable,
@@ -273,7 +267,5 @@ namespace Ustilz.Extensions.Enumerables
         /// <returns>Retourne un énumarable contenant des <see cref="Tuple" />, représentant un couple (item, index0).</returns>
         public static IEnumerable<(T Item, int Index)> WithIndex<T>(this IEnumerable<T> enumerable)
             => enumerable.Select((item, index) => (item, index));
-
-        #endregion
     }
 }

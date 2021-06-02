@@ -1,7 +1,5 @@
 namespace Ustilz.Data
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,8 +13,6 @@ namespace Ustilz.Data
     using Microsoft.EntityFrameworkCore.Query;
 
     using Ustilz.Data.Interfaces;
-
-    #endregion
 
     /// <summary> The totem dao. </summary>
     /// <typeparam name="TContext"> Type du contexte. </typeparam>

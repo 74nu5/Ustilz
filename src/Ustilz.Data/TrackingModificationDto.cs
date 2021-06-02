@@ -1,14 +1,10 @@
 namespace Ustilz.Data
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
 
     using Ustilz.Data.Interfaces;
-
-    #endregion
 
     /// <summary>
     /// Classe qui représente un DTO avec suivi des dates de modifications.

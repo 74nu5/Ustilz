@@ -1,7 +1,5 @@
 namespace Ustilz.Data.Interfaces
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,8 +8,6 @@ namespace Ustilz.Data.Interfaces
     using System.Threading.Tasks;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Interface de définition des méthodes de base des DAL.</summary>
     /// <typeparam name="TModel">Modèle de la DAL.</typeparam>

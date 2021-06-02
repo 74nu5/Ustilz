@@ -1,0 +1,8 @@
+2021-03-04 10:37:05.715 +01:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.200-preview.20614.14\
+2021-03-04 10:37:05.779 +01:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-04 10:37:08.849 +01:00 [INF] Initializing upgrade step Select an entrypoint
+2021-03-04 10:37:26.470 +01:00 [INF] Skipping upgrade step Select an entrypoint
+2021-03-04 10:37:26.471 +01:00 [INF] Upgrade step Select an entrypoint skipped
+2021-03-04 10:37:30.412 +01:00 [INF] Upgrade has completed. Please review any changes.
+2021-03-04 10:37:30.414 +01:00 [INF] Saving upgrade progress file at P:\Projets\git\Ustilz\src\Ustilz.Extensions\.upgrade-assistant

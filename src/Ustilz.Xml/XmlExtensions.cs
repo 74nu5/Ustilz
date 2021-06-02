@@ -1,9 +1,6 @@
 namespace Ustilz.Xml
 {
-    #region Usings
-
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Security;
     using System.Xml;
@@ -11,8 +8,6 @@ namespace Ustilz.Xml
     using System.Xml.Serialization;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The xml utils.</summary>
     [PublicAPI]
@@ -27,14 +22,10 @@ namespace Ustilz.Xml
         ///     An error occurred during deserialization. The original exception is available using the
         ///     <see cref="System.Exception.InnerException"></see> property.
         /// </exception>
-        [return: MaybeNull]
-        public static T FromXml<T>([System.Diagnostics.CodeAnalysis.NotNull] this XDocument xDocument)
+        public static T? FromXml<T>(this XDocument xDocument)
             where T : class
         {
-            if (xDocument == null)
-            {
-                throw new ArgumentNullException(nameof(xDocument));
-            }
+            _ = xDocument ?? throw new ArgumentNullException(nameof(xDocument));
 
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader = xDocument.CreateReader();
@@ -57,14 +48,10 @@ namespace Ustilz.Xml
         ///     An error occurred during deserialization. The original exception is available using the
         ///     <see cref="System.Exception.InnerException"></see> property.
         /// </exception>
-        [return: MaybeNull]
-        public static T FromXml<T>([System.Diagnostics.CodeAnalysis.NotNull] this string xmlStr)
+        public static T? FromXml<T>(this string xmlStr)
             where T : class
         {
-            if (xmlStr == null)
-            {
-                throw new ArgumentNullException(nameof(xmlStr));
-            }
+            _ = xmlStr ?? throw new ArgumentNullException(nameof(xmlStr));
 
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader =
@@ -78,14 +65,10 @@ namespace Ustilz.Xml
         /// <returns>Retourne l'objet de T dé-sérialisé.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="xmlDocument" /> is <see langword="null" />.</exception>
         /// <exception cref="InvalidOperationException">Le document ne peut pas être null.</exception>
-        [return: MaybeNull]
-        public static T FromXml<T>([JetBrains.Annotations.NotNull] this XmlDocument xmlDocument)
+        public static T? FromXml<T>(this XmlDocument xmlDocument)
             where T : class
         {
-            if (xmlDocument == null)
-            {
-                throw new ArgumentNullException(nameof(xmlDocument));
-            }
+            _ = xmlDocument ?? throw new ArgumentNullException(nameof(xmlDocument));
 
             var xmlSerializer = new XmlSerializer(typeof(T));
             using var reader =
@@ -103,6 +86,7 @@ namespace Ustilz.Xml
         /// </exception>
         public static string ToXml<T>(this T objectToDeserialize)
         {
+            _ = objectToDeserialize ?? throw new ArgumentNullException(nameof(objectToDeserialize));
             var doc = new XDocument();
             using var xmlWriter = doc.CreateWriter();
             var xmlSerializer = new XmlSerializer(typeof(T));

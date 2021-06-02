@@ -1,12 +1,8 @@
 namespace Ustilz.Razor.Utils
 {
-    #region Usings
-
     using System.Linq;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Class of css style mapper.</summary>
     [PublicAPI]
@@ -15,7 +11,7 @@ namespace Ustilz.Razor.Utils
         /// <summary>Method which joins all styles.</summary>
         /// <returns>Returns all the styles join.</returns>
         public string AsString()
-            => string.Join("; ", this.Items.Select(i => i()).Where(i => i != null));
+            => string.Join("; ", this.Items.Select(i => i()));
 
         /// <summary>Method which print all styles.</summary>
         /// <returns>Returns all the styles.</returns>

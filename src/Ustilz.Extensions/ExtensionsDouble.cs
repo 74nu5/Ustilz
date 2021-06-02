@@ -1,12 +1,8 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Extensions pour le type double.</summary>
     [PublicAPI]

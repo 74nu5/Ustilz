@@ -1,15 +1,11 @@
 namespace Ustilz.Extensions.Enumerables
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using Ustilz.Extensions.Strings;
-
-    #endregion
 
     /// <summary>The extensions i enumerable.</summary>
     public static partial class ExtensionsIEnumerable

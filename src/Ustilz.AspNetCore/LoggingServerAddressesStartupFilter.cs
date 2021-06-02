@@ -1,13 +1,9 @@
 namespace Ustilz.AspNetCore
 {
-    #region Usings
-
     using System;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-
-    #endregion
 
     internal class LoggingServerAddressesStartupFilter : IStartupFilter
     {
@@ -15,11 +11,10 @@ namespace Ustilz.AspNetCore
             => builder =>
             {
                 builder.UseMiddleware<LoggingServerAddressesMiddleware>();
-               /* builder.UseEndpoints(endpoints => {
-                    endpoints.MapControllers();
-                });*/
+                /* builder.UseEndpoints(endpoints => {
+                     endpoints.MapControllers();
+                 });*/
                 next(builder);
             };
     }
-
 }

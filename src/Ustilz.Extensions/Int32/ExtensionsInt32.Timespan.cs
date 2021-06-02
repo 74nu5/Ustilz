@@ -1,10 +1,6 @@
 namespace Ustilz.Extensions.Int32
 {
-    #region Usings
-
     using System;
-
-    #endregion
 
     /// <summary>The extensions int 32.</summary>
     public static partial class ExtensionsInt32

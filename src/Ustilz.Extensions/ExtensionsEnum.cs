@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -10,8 +8,6 @@ namespace Ustilz.Extensions
     using System.Reflection;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>The extensions enum.</summary>
     [PublicAPI]
@@ -52,7 +48,7 @@ namespace Ustilz.Extensions
         /// <param name="value">Value to match.</param>
         /// <param name="values">Values to match against.</param>
         /// <returns>Return true if matched.</returns>
-        public static bool In(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
+        public static bool IsIn(this Enum value, params Enum[] values) => values.Any(v => v.Equals(value));
 
         /// <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>
         /// <param name="enumValue">Valeur de l'énumération.</param>

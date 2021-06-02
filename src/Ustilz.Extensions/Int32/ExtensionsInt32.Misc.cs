@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions.Int32
 {
-    #region Usings
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,13 +7,9 @@ namespace Ustilz.Extensions.Int32
 
     using JetBrains.Annotations;
 
-    #endregion
-
     /// <summary>The extensions int 32.</summary>
     public static partial class ExtensionsInt32
     {
-        #region Méthodes publiques
-
         /// <summary>Checks if the Int32 value is a factor of the specified factor number.</summary>
         /// <exception cref="DivideByZeroException">Value is 0.</exception>
         /// <param name="value">The Int32 value to check.</param>
@@ -144,7 +138,5 @@ namespace Ustilz.Extensions.Int32
         /// <param name="action">The action.</param>
         public static void Times(this int count, Action action)
             => Parallel.For(0, count, (_, _) => action());
-
-        #endregion
     }
 }

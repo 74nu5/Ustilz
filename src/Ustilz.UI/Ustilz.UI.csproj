@@ -17,11 +17,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Ustilz.UI.xml</DocumentationFile>
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\netstandard2.0</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>bin\Release\netstandard2.0\Ustilz.UI.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
@@ -34,7 +34,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.205">
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.261">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

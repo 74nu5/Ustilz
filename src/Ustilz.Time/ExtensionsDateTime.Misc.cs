@@ -1,12 +1,8 @@
 namespace Ustilz.Time
 {
-    #region Usings
-
     using System;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Classe d'extension du type DateTime.</summary>
     public static partial class ExtensionsDateTime
@@ -53,7 +49,7 @@ namespace Ustilz.Time
         ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
         /// </exception>
         public static DateTime AtTime(this DateTime date, int hours)
-            => new (date.Year, date.Month, date.Day, hours, 0, 0);
+            => new(date.Year, date.Month, date.Day, hours, 0, 0);
 
         /// <summary>Défini une heure et les minutes pour une date donnée.</summary>
         /// <param name="date">Date à modifier.</param>
@@ -65,7 +61,7 @@ namespace Ustilz.Time
         ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
         /// </exception>
         public static DateTime AtTime(this DateTime date, int hours, int minutes)
-            => new (date.Year, date.Month, date.Day, hours, minutes, 0);
+            => new(date.Year, date.Month, date.Day, hours, minutes, 0);
 
         /// <summary>Défini l'heure, les minutes et les secondes pour une date donnée.</summary>
         /// <param name="date">Date à modifier.</param>
@@ -78,7 +74,7 @@ namespace Ustilz.Time
         ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
         /// </exception>
         public static DateTime AtTime(this DateTime date, int hours, int minutes, int seconds)
-            => new (date.Year, date.Month, date.Day, hours, minutes, seconds);
+            => new(date.Year, date.Month, date.Day, hours, minutes, seconds);
 
         /// <summary>Calcule le temps écoulé entre la valeur d'heure de date donnée et DateTime.Now.</summary>
         /// <param name="dateTime">La date fournie.</param>

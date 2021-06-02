@@ -14,15 +14,19 @@
     <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
 	  </PropertyGroup>
+  
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\net5.0\Ustilz.Http.xml</DocumentationFile>
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\netstandard2.0</OutputPath>
-    <DocumentationFile>bin\Release\netstandard2.0\Ustilz.Http.xml</DocumentationFile>
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\net5.0\Ustilz.Http.xml</DocumentationFile>
   </PropertyGroup>
+
+
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
@@ -38,6 +42,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Text.Encodings.Web" Version="5.0.0" />
     <PackageReference Include="Text.Analyzers" Version="2.6.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

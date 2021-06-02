@@ -1,13 +1,9 @@
 namespace Ustilz.Extensions.Actions
 {
-    #region Usings
-
     using System;
     using System.Linq;
 
     using JetBrains.Annotations;
-
-    #endregion
 
     /// <summary>Class containing some extension methods for <see cref="Action" />.</summary>
     [PublicAPI]

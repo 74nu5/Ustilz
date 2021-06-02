@@ -1,5 +1,0 @@
-﻿Ustilz.Xml.XmlExtensions
-static Ustilz.Xml.XmlExtensions.FromXml<T>(this System.Xml.Linq.XDocument! xDocument) -> T!
-static Ustilz.Xml.XmlExtensions.FromXml<T>(this System.Xml.XmlDocument! xmlDocument) -> T!
-static Ustilz.Xml.XmlExtensions.FromXml<T>(this string! xmlStr) -> T!
-static Ustilz.Xml.XmlExtensions.ToXml<T>(this T objectToDeserialize) -> string!
