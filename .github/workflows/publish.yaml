@@ -48,7 +48,7 @@ jobs:
           # NUGET_SOURCE: https://api.nuget.org
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: true
+          # INCLUDE_SYMBOLS: true
 
       # Publish Ustilz.Data
       - name: publish Ustilz.Data on version change
@@ -58,7 +58,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Data/Ustilz.Data.csproj
           PACKAGE_NAME: Ustilz.Data
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
       
       # Publish Ustilz.Json
       - name: publish Ustilz.Json on version change
@@ -68,7 +67,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Json/Ustilz.Json.csproj
           PACKAGE_NAME: Ustilz.Json
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
       
       # Publish Ustilz.Xml
       - name: publish Ustilz.Xml on version change
@@ -78,7 +76,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Xml/Ustilz.Xml.csproj
           PACKAGE_NAME: Ustilz.Xml
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
       
       # Publish Ustilz.Time
       - name: publish Ustilz.Time on version change
@@ -88,7 +85,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Time/Ustilz.Time.csproj
           PACKAGE_NAME: Ustilz.Time
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                 
       # Publish Ustilz.Utils
       - name: publish Ustilz.Utils on version change
@@ -98,7 +94,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Utils/Ustilz.Utils.csproj
           PACKAGE_NAME: Ustilz.Utils
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                 
       # Publish Ustilz.Logging
       - name: publish Ustilz.Logging on version change
@@ -108,7 +103,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Logging/Ustilz.Logging.csproj
           PACKAGE_NAME: Ustilz.Logging
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                 
       # Publish Ustilz.Extensions.Configuration
       - name: publish Ustilz.Extensions.Configuration on version change
@@ -118,7 +112,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Extensions.Configuration/Ustilz.Extensions.Configuration.csproj
           PACKAGE_NAME: Ustilz.Extensions.Configuration
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                 
       # Publish Ustilz.AspNetCore
       - name: publish Ustilz.AspNetCore on version change
@@ -128,7 +121,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.AspNetCore/Ustilz.AspNetCore.csproj
           PACKAGE_NAME: Ustilz.AspNetCore
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                 
       # Publish Ustilz.AspNetCore.Mvc
       - name: publish Ustilz.AspNetCore.Mvc on version change
@@ -138,7 +130,6 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.AspNetCore.Mvc/Ustilz.AspNetCore.Mvc.csproj
           PACKAGE_NAME: Ustilz.AspNetCore.Mvc
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
                           
       # Publish Ustilz.Razor
       - name: publish Ustilz.Razor on version change
@@ -148,4 +139,3 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Razor/Ustilz.Razor.csproj
           PACKAGE_NAME: Ustilz.Razor
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          INCLUDE_SYMBOLS: true
