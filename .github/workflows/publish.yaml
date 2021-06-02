@@ -148,4 +148,13 @@ jobs:
           PROJECT_FILE_PATH: src/Ustilz.Http/Ustilz.Http.csproj
           PACKAGE_NAME: Ustilz.Http
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+                
+      # Publish Ustilz.Attributes
+      - name: publish Ustilz.Attributes on version change
+        id: publish_nuget_Attributes
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: src/Ustilz.Attributes/Ustilz.Attributes.csproj
+          PACKAGE_NAME: Ustilz.Attributes
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
