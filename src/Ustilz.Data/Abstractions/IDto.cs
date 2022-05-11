@@ -1,4 +1,4 @@
-namespace Ustilz.Data.Interfaces;
+namespace Ustilz.Data.Abstractions;
 
 using System;
 using System.ComponentModel.DataAnnotations;

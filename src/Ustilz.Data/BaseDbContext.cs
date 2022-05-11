@@ -2,7 +2,7 @@ namespace Ustilz.Data;
 
 using Microsoft.EntityFrameworkCore;
 
-using Ustilz.Data.Interfaces;
+using Ustilz.Data.Abstractions;
 
 /// <summary>
 ///     Represents the application Database.

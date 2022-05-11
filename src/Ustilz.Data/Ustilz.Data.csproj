@@ -63,4 +63,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AccessLayer\Queries\Models\" />
+  </ItemGroup>
 </Project>

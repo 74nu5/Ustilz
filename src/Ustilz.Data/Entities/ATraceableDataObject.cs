@@ -1,6 +1,6 @@
 namespace Ustilz.Data.Entities;
 
-using Ustilz.Data.Interfaces;
+using Ustilz.Data.Abstractions;
 
 /// <summary>
 ///     Base abstract definition of an object model.
