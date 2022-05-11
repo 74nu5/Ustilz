@@ -9,7 +9,7 @@ using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
 
-using Ustilz.Data;
+using Ustilz.Data.Entities;
 using Ustilz.Data.Interfaces;
 
 #endregion
@@ -18,8 +18,8 @@ using Ustilz.Data.Interfaces;
 [Route("api/[controller]")]
 public class CrudControllerBase<TViewModel, TDetailViewModel, TApiModel, TDal, TEntity, TIdentity> : ControllerBase
     where TIdentity : IComparable<TIdentity>
-    where TEntity : TrackingModificationDto<TIdentity>
-    where TApiModel : TrackingModificationDto<TIdentity>
+    where TEntity : ATraceableDataObject<TIdentity>
+    where TApiModel : ATraceableDataObject<TIdentity>
     where TDal : IBaseDAL<TEntity, TIdentity>
 {
     private readonly IMapper mapper;
@@ -91,7 +91,7 @@ public class CrudControllerBase<TViewModel, TDetailViewModel, TApiModel, TDal, T
             return this.NotFound();
         }
 
-        entity.ModificationDate = DateTime.Now;
+        entity.LastModifiedDate = DateTime.Now;
 
         await this.dal.UpdateAsync(entity).ConfigureAwait(false);
 

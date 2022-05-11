@@ -55,14 +55,14 @@ public interface IBaseDAL<TModel, in TIdentity>
     /// <param name="id">The id.</param>
     /// <param name="stoppingToken">Token d'arret de la tache.</param>
     /// <returns>The <see cref="Task" />.</returns>
-    Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default);
+    Task<TModel?> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default);
 
     /// <summary>The get details.</summary>
     /// <param name="id">The id.</param>
     /// <param name="stoppingToken">Token d'arret de la tache.</param>
     /// <param name="includes">The includes.</param>
     /// <returns>The <see cref="Task" />.</returns>
-    Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
+    Task<TModel?> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes);
 
     /// <summary>Méthode suppression des données de la table.</summary>
     /// <param name="stoppingToken">Token d'arret de la tache.</param>

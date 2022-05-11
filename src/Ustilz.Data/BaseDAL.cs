@@ -1,11 +1,6 @@
 namespace Ustilz.Data;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 using JetBrains.Annotations;
 
@@ -47,7 +42,7 @@ public abstract class BaseDAL<TContext, TModel, TIdentity>
     /// </exception>
     public async Task<int> AddAsync(TModel model, CancellationToken stoppingToken = default)
     {
-        await this.context.Set<TModel>().AddAsync(model, stoppingToken).ConfigureAwait(false);
+        this.context.Set<TModel>().Add(model);
         return await this.context.SaveChangesAsync(stoppingToken).ConfigureAwait(false);
     }
 
@@ -84,11 +79,11 @@ public abstract class BaseDAL<TContext, TModel, TIdentity>
         => this.SkipAndTake(skip, take).ToListAsync(stoppingToken);
 
     /// <inheritdoc />
-    public Task<TModel> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default)
+    public Task<TModel?> GetDetailsAsync(TIdentity id, CancellationToken stoppingToken = default)
         => this.context.Set<TModel>().SingleOrDefaultAsync(model => model.Id.CompareTo(id) == 0, stoppingToken);
 
     /// <inheritdoc />
-    public async Task<TModel> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
+    public async Task<TModel?> GetDetailsWithIncludesAsync(TIdentity id, CancellationToken stoppingToken = default, params Expression<Func<TModel, object>>[] includes)
     {
         var set = this.context.Set<TModel>();
         var includeSet = GetIncludeSet(includes, set);
