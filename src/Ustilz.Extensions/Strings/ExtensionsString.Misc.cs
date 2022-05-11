@@ -1,12 +1,18 @@
 namespace Ustilz.Extensions.Strings
 {
+    #region Usings
+
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
+    using System.Linq;
     using System.Security;
+    using System.Text;
     using System.Text.RegularExpressions;
 
     using JetBrains.Annotations;
+
+    #endregion
 
     /// <summary>The extensions string.</summary>
     [PublicAPI]
@@ -132,6 +138,24 @@ namespace Ustilz.Extensions.Strings
             var ss = ToSecureString(str);
             ss.MakeReadOnly();
             return ss;
+        }
+
+        /// <summary>
+        ///     A string extension method that removes the diacritics character from the strings.
+        /// </summary>
+        /// <param name="str">The @this to act on.</param>
+        /// <returns>The string without diacritics character.</returns>
+        public static string RemoveDiacritics(this string str)
+        {
+            string normalizedString = str.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var t in from t in normalizedString let uc = CharUnicodeInfo.GetUnicodeCategory(t) where uc != UnicodeCategory.NonSpacingMark select t)
+            {
+                sb.Append(t);
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
         }
 
         /// <summary>The get value.</summary>
