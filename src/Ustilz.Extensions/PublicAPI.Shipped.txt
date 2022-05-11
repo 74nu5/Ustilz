@@ -82,7 +82,6 @@ static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Bifurcate<T>(this Sys
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Bifurcate<T>(this System.Collections.Generic.IEnumerable<T>! items, System.Func<T, bool>! filter) -> (System.Collections.Generic.IEnumerable<T>! FilteredTrue, System.Collections.Generic.IEnumerable<T>! FilteredFalse)
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.ForEach<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Action<T>! action) -> void
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Join<T>(this System.Collections.Generic.IEnumerable<T>! tab, string! separateur) -> string!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.NotAny<T>(this System.Collections.Generic.IEnumerable<T>! enumerable) -> bool
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.NotAny<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Func<T, bool>! predicate) -> bool
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Page<T>(this System.Collections.Generic.IEnumerable<T>! source, int page, int pageSize) -> System.Collections.Generic.IEnumerable<T>!
 static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Pairwise<T, TReturn>(this System.Collections.Generic.IEnumerable<T>! source, System.Func<T, T, TReturn>! selector) -> System.Collections.Generic.IEnumerable<TReturn>!
@@ -124,7 +123,6 @@ static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, params T[]! values
 static Ustilz.Extensions.ExtensionsT.IsNotNull<T>(this T? source) -> bool
 static Ustilz.Extensions.ExtensionsT.IsNull<T>(this T? source) -> bool
 static Ustilz.Extensions.ExtensionsT.Swap<T>(this object! nullObject, ref T value0, ref T value1) -> void
-static Ustilz.Extensions.ExtensionsT.ThrowIfNull<TObject>(this TObject? testObject, string! parameterName, string? errorMessage = null) -> void
 static Ustilz.Extensions.ExtensionsT.To<T>(this System.IConvertible! value) -> T
 static Ustilz.Extensions.ExtensionsT.To<T>(this System.IConvertible? value, System.IConvertible! ifError) -> T
 static Ustilz.Extensions.ExtensionsTimeSpan.Ago(this System.TimeSpan value) -> System.DateTime

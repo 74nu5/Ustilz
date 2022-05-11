@@ -1,26 +1,24 @@
-namespace Ustilz.Extensions.Enumerables
+namespace Ustilz.Extensions.Enumerables;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Ustilz.Extensions.Strings;
+
+/// <summary>The extensions i enumerable.</summary>
+public static partial class ExtensionsIEnumerable
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-
-    using Ustilz.Extensions.Strings;
-
-    /// <summary>The extensions i enumerable.</summary>
-    public static partial class ExtensionsIEnumerable
+    /// <summary>Converts bytes collection to hexadecimal representation.</summary>
+    /// <param name="bytes">Bytes to convert.</param>
+    /// <returns>Hexadecimal representation string.</returns>
+    public static string ToHexString(this IEnumerable<byte> bytes)
     {
-        /// <summary>Converts bytes collection to hexadecimal representation.</summary>
-        /// <param name="bytes">Bytes to convert.</param>
-        /// <returns>Hexadecimal representation string.</returns>
-        public static string ToHexString([NotNull] this IEnumerable<byte> bytes)
+        if (bytes is null)
         {
-            if (bytes is null)
-            {
-                throw new ArgumentNullException(nameof(bytes));
-            }
-
-            return string.Join(string.Empty, bytes.Select(b => $"0{b:X}".Right(2)));
+            throw new ArgumentNullException(nameof(bytes));
         }
+
+        return string.Join(string.Empty, bytes.Select(b => $"0{b:X}".Right(2)));
     }
 }
