@@ -9,8 +9,8 @@ using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Ustilz.Data.Abstractions;
 using Ustilz.Data.Entities;
-using Ustilz.Data.Interfaces;
 
 #endregion
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28714.193
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9CF5-471B-94DB-C106BE6E2B08}"
 	ProjectSection(SolutionItems) = preProject
@@ -43,7 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore.Mvc", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore", "src\Ustilz.AspNetCore\Ustilz.AspNetCore.csproj", "{C80843D7-7164-4B95-A36D-B08FF37A51F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Api.Data", "src\Ustilz.Api.Data\Ustilz.Api.Data.csproj", "{6184C763-8071-4D15-A78A-D9B1A46B2886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api.Data", "src\Ustilz.Api.Data\Ustilz.Api.Data.csproj", "{6184C763-8071-4D15-A78A-D9B1A46B2886}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api", "src\Ustilz.Api\Ustilz.Api.csproj", "{79A33D64-3088-4064-8112-C0A048E5CBA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Models", "src\Ustilz.Models\Ustilz.Models.csproj", "{9480858B-09EE-45E2-9560-9E55B23924F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -142,6 +146,18 @@ Global
 		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Only libs|Any CPU.Build.0 = Debug|Any CPU
 		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9480858B-09EE-45E2-9560-9E55B23924F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
