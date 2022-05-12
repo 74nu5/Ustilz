@@ -1,5 +1,7 @@
 namespace Ustilz.Models;
 
+using JetBrains.Annotations;
+
 /// <summary>
 ///     Record which represent a return.
 /// </summary>
@@ -7,6 +9,7 @@ namespace Ustilz.Models;
 /// <param name="Success">A boolean indicating whether is success.</param>
 /// <param name="Result">The result.</param>
 /// <param name="ErrorMessage">The error message.</param>
+[PublicAPI]
 public record ServiceResult<TResult>(bool Success, TResult? Result, params string[] ErrorMessage)
 {
     /// <summary>

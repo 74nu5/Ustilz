@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Ustilz.Data.AccessLayer.Abstractions;
 using Ustilz.Data.AccessLayer.Queries.Pageable;
 using Ustilz.Data.Entities;
+using Ustilz.Models;
 
 /// <summary>
 ///     Interface which represent the query base access layer.

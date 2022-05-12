@@ -66,4 +66,7 @@
   <ItemGroup>
     <Folder Include="AccessLayer\Queries\Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ustilz.Models\Ustilz.Models.csproj" />
+  </ItemGroup>
 </Project>

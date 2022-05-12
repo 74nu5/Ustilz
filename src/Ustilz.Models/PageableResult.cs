@@ -1,4 +1,4 @@
-namespace Ustilz.Data.AccessLayer.Queries.Pageable;
+namespace Ustilz.Models;
 
 using JetBrains.Annotations;
 

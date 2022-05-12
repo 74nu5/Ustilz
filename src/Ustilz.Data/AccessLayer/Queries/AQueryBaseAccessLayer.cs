@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Ustilz.Data.AccessLayer.Queries.Abstractions;
 using Ustilz.Data.AccessLayer.Queries.Pageable;
 using Ustilz.Data.Entities;
+using Ustilz.Models;
 
 /// <summary>
 ///     Abstraction that provides basic CRUD operations on models data.
