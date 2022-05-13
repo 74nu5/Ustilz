@@ -1,10 +1,10 @@
-namespace Ustilz.Api.ApiResponse.Results.Extensions;
+namespace Ustilz.Api.ApiResponse.Extensions;
 
 using System.Net;
 
 using Microsoft.AspNetCore.Http;
 
-using Ustilz.Api.ApiResponse.Body;
+using Ustilz.Api.ApiResponse.Results;
 
 public static class ResultsExtensions
 {

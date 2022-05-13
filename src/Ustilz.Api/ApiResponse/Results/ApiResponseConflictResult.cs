@@ -4,7 +4,7 @@ using System.Net;
 
 using JetBrains.Annotations;
 
-using Ustilz.Api.ApiResponse.Body;
+using Ustilz.Api.ApiResponse;
 
 /// <summary>
 ///     Class which represent an api response result.

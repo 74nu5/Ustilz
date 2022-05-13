@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 
 using Microsoft.AspNetCore.Http;
 
-using Ustilz.Api.ApiResponse.Body;
+using Ustilz.Api.ApiResponse;
 
 /// <summary>
 ///     Class which represent an api response result.

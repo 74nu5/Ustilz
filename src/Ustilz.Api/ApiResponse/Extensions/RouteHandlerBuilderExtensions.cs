@@ -1,16 +1,11 @@
-namespace Ustilz.Api.ApiResponse.Results.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+namespace Ustilz.Api.ApiResponse.Extensions;
+
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
-using Ustilz.Api.ApiResponse.Body;
+using Ustilz.Api.ApiResponse;
 
 /// <summary>
 ///     Extension class for <see cref="RouteHandlerBuilder" /> type.

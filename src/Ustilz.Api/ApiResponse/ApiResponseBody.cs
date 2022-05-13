@@ -1,12 +1,9 @@
-namespace Ustilz.Api.ApiResponse.Body;
+namespace Ustilz.Api.ApiResponse;
 
 using System;
 using System.Collections.Generic;
 
 using JetBrains.Annotations;
-
-using Ustilz.Api.ApiResponse;
-using Ustilz.Api.ApiResponse.Enums;
 
 /// <summary>
 ///     Record which represent an api response body.

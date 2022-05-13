@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 
 using Microsoft.AspNetCore.Http;
 
-using Ustilz.Api.ApiResponse.Body;
+using Ustilz.Api.ApiResponse;
 using Ustilz.Models;
 
 /// <summary>
@@ -44,9 +44,9 @@ public class ApiResponseResult<TResult> : IResult
     {
         httpContext.Response.StatusCode = (int)(this.statusCode ?? HttpStatusCode.OK);
 
-        httpContext.Response.Headers.Add(ServiceMonitoringDefinition.CorrelationIdKey, this.headers.CorrelationId.ToString());
-        httpContext.Response.Headers.Add(ServiceMonitoringDefinition.FunctionalIdKey, this.headers.FunctionalId);
-        httpContext.Response.Headers.Add(ServiceMonitoringDefinition.TechnicalIdKey, this.headers.TechnicalId.ToString());
+        httpContext.Response.Headers.Add(ApiRequestHeaders.CorrelationIdKey, this.headers.CorrelationId.ToString());
+        httpContext.Response.Headers.Add(ApiRequestHeaders.FunctionalIdKey, this.headers.FunctionalId);
+        httpContext.Response.Headers.Add(ApiRequestHeaders.TechnicalIdKey, this.headers.TechnicalId.ToString());
 
         return this.result is null ? Task.CompletedTask : httpContext.Response.WriteAsJsonAsync(this.result);
     }

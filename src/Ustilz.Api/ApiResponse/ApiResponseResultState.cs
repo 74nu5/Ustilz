@@ -1,4 +1,4 @@
-namespace Ustilz.Api.ApiResponse.Enums;
+namespace Ustilz.Api.ApiResponse;
 
 /// <summary>
 ///     Represents all result states for an <seealso cref="ApiResponse{TResponse}" />
