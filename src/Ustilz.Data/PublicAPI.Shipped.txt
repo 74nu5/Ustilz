@@ -3,16 +3,16 @@ Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.BaseDAL(TContext! context) -> v
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetAllAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetAllWithIncludesAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetAllWithSkipTakeAsync(int skip, int take, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
-Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetDetailsWithIncludesAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<TModel!>!
+Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetDetailsWithIncludesAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<TModel>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetAllAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetAllWithIncludesAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetAllWithSkipTakeAsync(int skip, int take, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.List<TModel!>!>!
-Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetDetailsWithIncludesAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<TModel!>!
+Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetDetailsWithIncludesAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken), params System.Linq.Expressions.Expression<System.Func<TModel!, object!>!>![]! includes) -> System.Threading.Tasks.Task<TModel>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.AddAsync(TModel! model, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.AddRangeAsync(System.Collections.Generic.IEnumerable<TModel!>! models, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.ExistsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
-Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetDetailsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TModel!>!
+Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetDetailsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TModel>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.GetQueryablePaged(int skip, int take) -> System.Linq.IQueryable<TModel!>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.Queryable.get -> System.Linq.IQueryable<TModel!>!
 Ustilz.Data.BaseDAL<TContext, TModel, TIdentity>.RemoveAllAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
@@ -24,7 +24,7 @@ Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.AddAsync(TModel! model, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.AddRangeAsync(System.Collections.Generic.IEnumerable<TModel!>! models, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.ExistsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
-Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetDetailsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TModel!>!
+Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.GetDetailsAsync(TIdentity id, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<TModel>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.Queryable.get -> System.Linq.IQueryable<TModel!>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.RemoveAllAsync(System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.RemoveAsync(TModel! model, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
@@ -33,11 +33,5 @@ Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.UpdateAsync(TModel! model, Sy
 Ustilz.Data.Interfaces.IBaseDAL<TModel, TIdentity>.UpdateRangeAsync(System.Collections.Generic.IEnumerable<TModel!>! models, System.Threading.CancellationToken stoppingToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<int>!
 Ustilz.Data.Interfaces.IDto<TIdentity>
 Ustilz.Data.Interfaces.IDto<TIdentity>.Id.get -> TIdentity
-abstract Ustilz.Data.TrackingModificationDto<TIdentity>.Id.get -> TIdentity
-Ustilz.Data.TrackingModificationDto<TIdentity>
-Ustilz.Data.TrackingModificationDto<TIdentity>.CreationDate.get -> System.DateTime
-Ustilz.Data.TrackingModificationDto<TIdentity>.CreationDate.set -> void
-Ustilz.Data.TrackingModificationDto<TIdentity>.ModificationDate.get -> System.DateTime?
-Ustilz.Data.TrackingModificationDto<TIdentity>.ModificationDate.set -> void
-Ustilz.Data.TrackingModificationDto<TIdentity>.TrackingModificationDto() -> void
+
 

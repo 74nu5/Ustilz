@@ -1,27 +1,29 @@
-namespace Ustilz.AspNetCore
+namespace Ustilz.AspNetCore;
+
+using System.Threading.Tasks;
+
+using JetBrains.Annotations;
+
+using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
+
+[PublicAPI]
+internal class LoggingServerAddressesMiddleware
 {
-    using System.Threading.Tasks;
+    private readonly IFeatureCollection features;
 
-    using Microsoft.AspNetCore.Hosting.Server;
-    using Microsoft.AspNetCore.Hosting.Server.Features;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Http.Features;
+    public LoggingServerAddressesMiddleware(IServer server)
+        => this.features = server.Features;
 
-    internal class LoggingServerAddressesMiddleware
+    public async Task Invoke(HttpContext context)
     {
-        private readonly IFeatureCollection features;
+        // fetch the addresses
+        var addressFeature = this.features.Get<IServerAddressesFeature>();
+        var addresses = addressFeature.Addresses;
 
-        public LoggingServerAddressesMiddleware(IServer server)
-            => this.features = server.Features;
-
-        public async Task Invoke(HttpContext context)
-        {
-            // fetch the addresses
-            var addressFeature = this.features.Get<IServerAddressesFeature>();
-            var addresses = addressFeature.Addresses;
-
-            // Write the addresses as a comma separated list
-            await context.Response.WriteAsync(string.Join(",", addresses));
-        }
+        // Write the addresses as a comma separated list
+        await context.Response.WriteAsync(string.Join(",", addresses));
     }
 }

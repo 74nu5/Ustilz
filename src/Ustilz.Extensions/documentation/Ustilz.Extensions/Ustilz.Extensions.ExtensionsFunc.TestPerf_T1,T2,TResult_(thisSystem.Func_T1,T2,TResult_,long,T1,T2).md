@@ -1,0 +1,58 @@
+#### [Ustilz.Extensions](index.md 'index')
+### [Ustilz.Extensions](Ustilz.Extensions.md 'Ustilz.Extensions').[ExtensionsFunc](Ustilz.Extensions.ExtensionsFunc.md 'Ustilz.Extensions.ExtensionsFunc')
+
+## ExtensionsFunc.TestPerf<T1,T2,TResult>(this Func<T1,T2,TResult>, long, T1, T2) Method
+
+Méthode de test de performance.
+
+```csharp
+public static TResult TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult> function, out long timestamp, T1 param1, T2 param2);
+```
+#### Type parameters
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T1'></a>
+
+`T1`
+
+Le type du premier paramètre.
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T2'></a>
+
+`T2`
+
+Le type du second paramètre.
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).TResult'></a>
+
+`TResult`
+
+Le type du retour de la fonction.
+#### Parameters
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).function'></a>
+
+`function` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T1](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T1 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).T1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T2](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T2 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).T2')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TResult](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).TResult 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).TResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+La fonction à exécuter.
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).timestamp'></a>
+
+`timestamp` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
+
+Retourne le temps d'exécution de la méthode en millisecondes.
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).param1'></a>
+
+`param1` [T1](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T1 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).T1')
+
+Le premier paramètre de la fonction.
+
+<a name='Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).param2'></a>
+
+`param2` [T2](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).T2 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).T2')
+
+Le second paramètre de la fonction.
+
+#### Returns
+[TResult](Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).md#Ustilz.Extensions.ExtensionsFunc.TestPerf_T1,T2,TResult_(thisSystem.Func_T1,T2,TResult_,long,T1,T2).TResult 'Ustilz.Extensions.ExtensionsFunc.TestPerf<T1,T2,TResult>(this System.Func<T1,T2,TResult>, long, T1, T2).TResult')  
+La valeur de retour.
