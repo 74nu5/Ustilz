@@ -1,4 +1,4 @@
-# Utilz [![Build Status](https://dev.azure.com/tanusland/Ustilz/_apis/build/status/Ustilz-.NET%20Core-CI?branchName=develop)](https://dev.azure.com/tanusland/Ustilz/_build/latest?definitionId=4&branchName=develop)
+# Utilz [![Build Status](https://dev.azure.com/tanusland/Ustilz/_apis/build/status/Ustilz-.NET%20Core-CI?branchName=develop)](https://dev.azure.com/tanusland/Ustilz/_build/latest?definitionId=4&branchName=develop) [![Build Status](https://github.com/avondero/Ustilz/workflows/.NET%20Core/badge.svg)](https://github.com/avondero/Ustilz/workflows/.NET%20Core/badge.svg) 
 
 Librairie d'utilitaires.
 
