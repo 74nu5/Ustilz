@@ -8,6 +8,8 @@
     <FileVersion>2.2.0</FileVersion>
     <Version>2.2.0</Version>
     <Nullable>enable</Nullable>
+      <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+      <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -15,7 +17,15 @@
   </ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="DefaultDocumentation" Version="0.8.3-beta1">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+	  <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.0-preview1.22464.1">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

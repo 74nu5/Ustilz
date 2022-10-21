@@ -31,14 +31,10 @@ public static class ColorUtils
     public static string GetColorFromNom(string nom)
     {
         if (nom == null)
-        {
             throw new ArgumentNullException(nameof(nom));
-        }
 
         if (nom.Length == 3)
-        {
             return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";
-        }
 
         var s = string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)));
         var bi = BigInteger.Parse(s, NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture);
@@ -60,14 +56,10 @@ public static class ColorUtils
     public static string GetLightColorFromNom(string nom)
     {
         if (nom == null)
-        {
             throw new ArgumentNullException(nameof(nom));
-        }
 
         if (nom.Length == 3)
-        {
             return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";
-        }
 
         var s = string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)));
         var bi = BigInteger.Parse(s, NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture);
