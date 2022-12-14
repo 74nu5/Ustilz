@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
+		Directory.Packages.props = Directory.Packages.props
 		dotnet-version.ps1 = dotnet-version.ps1
 		GlobalSuppressions.cs = GlobalSuppressions.cs
 		src\Settings.StyleCop = src\Settings.StyleCop
@@ -42,8 +43,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore.Mvc", "src\Ustilz.AspNetCore.Mvc\Ustilz.AspNetCore.Mvc.csproj", "{038DFB09-A3F6-4BAE-9755-4AFBCCE8F8FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore", "src\Ustilz.AspNetCore\Ustilz.AspNetCore.csproj", "{C80843D7-7164-4B95-A36D-B08FF37A51F1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api.Data", "src\Ustilz.Api.Data\Ustilz.Api.Data.csproj", "{6184C763-8071-4D15-A78A-D9B1A46B2886}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api", "src\Ustilz.Api\Ustilz.Api.csproj", "{79A33D64-3088-4064-8112-C0A048E5CBA9}"
 EndProject
@@ -144,12 +143,6 @@ Global
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Only libs|Any CPU.Build.0 = Release|Any CPU
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Only libs|Any CPU.Build.0 = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
