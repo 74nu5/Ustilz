@@ -58,7 +58,7 @@ public static class ExtensionsDictionary
             return ret;
         }
 
-        ret = new ();
+        ret = new();
         dictionary[key] = ret;
 
         return ret;

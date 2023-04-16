@@ -1,4 +1,6 @@
-﻿public class Todo
+namespace Ustilz.Sample.Api;
+
+public sealed class Todo
 {
     public int Id { get; set; }
 

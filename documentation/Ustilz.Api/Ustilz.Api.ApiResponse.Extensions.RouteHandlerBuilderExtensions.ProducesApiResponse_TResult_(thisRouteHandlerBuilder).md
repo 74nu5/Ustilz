@@ -6,18 +6,18 @@
 Method which add metadata : Produces [ApiResponseBody&lt;TResponse&gt;](Ustilz.Api.ApiResponse.ApiResponseBody_TResponse_.md 'Ustilz.Api.ApiResponse.ApiResponseBody<TResponse>').
 
 ```csharp
-public static Microsoft.AspNetCore.Builder.RouteHandlerBuilder ProducesApiResponse<TResult>(this Microsoft.AspNetCore.Builder.RouteHandlerBuilder routeHandlerBuilder);
+public static RouteHandlerBuilder ProducesApiResponse<TResult>(this RouteHandlerBuilder routeHandlerBuilder);
 ```
 #### Type parameters
 
-<a name='Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions.ProducesApiResponse_TResult_(thisMicrosoft.AspNetCore.Builder.RouteHandlerBuilder).TResult'></a>
+<a name='Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions.ProducesApiResponse_TResult_(thisRouteHandlerBuilder).TResult'></a>
 
 `TResult`
 
 Response type.
 #### Parameters
 
-<a name='Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions.ProducesApiResponse_TResult_(thisMicrosoft.AspNetCore.Builder.RouteHandlerBuilder).routeHandlerBuilder'></a>
+<a name='Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions.ProducesApiResponse_TResult_(thisRouteHandlerBuilder).routeHandlerBuilder'></a>
 
 `routeHandlerBuilder` [Microsoft.AspNetCore.Builder.RouteHandlerBuilder](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RouteHandlerBuilder 'Microsoft.AspNetCore.Builder.RouteHandlerBuilder')
 

@@ -4,5 +4,5 @@
 
 | Classes | |
 | :--- | :--- |
-| [ResultsExtensions](Ustilz.Api.ApiResponse.Extensions.ResultsExtensions.md 'Ustilz.Api.ApiResponse.Extensions.ResultsExtensions') | |
+| [ResultsExtensions](Ustilz.Api.ApiResponse.Extensions.ResultsExtensions.md 'Ustilz.Api.ApiResponse.Extensions.ResultsExtensions') | Class which contains extension methods for [Microsoft.AspNetCore.Http.IResultExtensions](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Http.IResultExtensions 'Microsoft.AspNetCore.Http.IResultExtensions'). |
 | [RouteHandlerBuilderExtensions](Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions.md 'Ustilz.Api.ApiResponse.Extensions.RouteHandlerBuilderExtensions') | Extension class for [Microsoft.AspNetCore.Builder.RouteHandlerBuilder](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Builder.RouteHandlerBuilder 'Microsoft.AspNetCore.Builder.RouteHandlerBuilder') type. |

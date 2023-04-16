@@ -83,9 +83,9 @@ public static class ExtensionsFunc
         var t = new Dictionary<T, TResult>();
         return n =>
                {
-                   if (t.ContainsKey(n))
+                   if (t.TryGetValue(n, out var expression))
                    {
-                       return t[n];
+                       return expression;
                    }
 
                    var result = func(n);

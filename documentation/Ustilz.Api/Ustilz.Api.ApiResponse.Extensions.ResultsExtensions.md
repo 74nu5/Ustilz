@@ -3,6 +3,8 @@
 
 ## ResultsExtensions Class
 
+Class which contains extension methods for [Microsoft.AspNetCore.Http.IResultExtensions](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Http.IResultExtensions 'Microsoft.AspNetCore.Http.IResultExtensions').
+
 ```csharp
 public static class ResultsExtensions
 ```

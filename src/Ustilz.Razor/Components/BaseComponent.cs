@@ -37,12 +37,12 @@ public abstract class BaseComponent : ComponentBase
     /// <summary>
     ///     Obtient ou définit la classe de mapping des classes CSS.
     /// </summary>
-    protected ClassMapper ClassMapper { get; set; } = new ();
+    protected ClassMapper ClassMapper { get; set; } = new();
 
     /// <summary>
     ///     Obtient ou définit la classe de mapping des styles CSS.
     /// </summary>
-    protected StyleMapper StyleMapper { get; set; } = new ();
+    protected StyleMapper StyleMapper { get; set; } = new();
 
     /// <summary>
     ///     Method which invoke the <see cref="ComponentBase.StateHasChanged" />.

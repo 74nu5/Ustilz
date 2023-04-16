@@ -1,12 +1,10 @@
+// Copyright (c) PlaceholderCompany. All rights reserved.
+
 namespace Ustilz.Api.ApiResponse.Results;
 
 using System.Net;
 
 using JetBrains.Annotations;
-
-using Microsoft.AspNetCore.Http;
-
-using Ustilz.Models;
 
 /// <summary>
 ///     Class which represent an api response result.

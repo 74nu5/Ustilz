@@ -3,7 +3,7 @@
 
 ## ApiResponseResultState Enum
 
-Represents all result states for an <seealso cref="!:ApiResponse&lt;TResponse&gt;"/>
+Represents all result states for an <seealso cref="T:Ustilz.Api.ApiResponse.ApiResponseBody`1"/>
 
 ```csharp
 public enum ApiResponseResultState

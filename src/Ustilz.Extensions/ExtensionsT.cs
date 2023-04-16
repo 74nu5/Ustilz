@@ -101,7 +101,7 @@ public static class ExtensionsT
     {
         ArgumentNullException.ThrowIfNull(obj);
 
-        return !interfaces.Any() ? new () : (from i in interfaces select SelectInterfaces(i, obj)).Where(t => t != null).ToList();
+        return !interfaces.Any() ? new() : (from i in interfaces select SelectInterfaces(i, obj)).Where(t => t != null).ToList();
     }
 
     /// <summary>Vérifie si la valeur est présente dans le tableau donné.</summary>
@@ -195,7 +195,7 @@ public static class ExtensionsT
         {
             if (value.Equals(string.Empty))
             {
-                return new ();
+                return new();
             }
 
             var t = typeof(T);
@@ -205,7 +205,7 @@ public static class ExtensionsT
         }
         catch
         {
-            return new ();
+            return new();
         }
     }
 

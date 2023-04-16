@@ -30,7 +30,7 @@ public static class LoggerActionExtensions
             throw new ArgumentNullException(nameof(action));
         }
 
-        builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(_ => new (action)));
+        builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(_ => new(action)));
         return builder;
     }
 }

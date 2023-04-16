@@ -113,7 +113,7 @@ public static partial class ExtensionsString
     {
         if (string.IsNullOrEmpty(str))
         {
-            return new ();
+            return new();
         }
 
         var ss = new SecureString();

@@ -39,6 +39,8 @@ The resources created uri.
 
 `result` [TResult](Ustilz.Api.ApiResponse.Extensions.ResultsExtensions.Created_TResult_(thisMicrosoft.AspNetCore.Http.IResultExtensions,Ustilz.Api.ApiResponse.ApiRequestHeaders,string,TResult).md#Ustilz.Api.ApiResponse.Extensions.ResultsExtensions.Created_TResult_(thisMicrosoft.AspNetCore.Http.IResultExtensions,Ustilz.Api.ApiResponse.ApiRequestHeaders,string,TResult).TResult 'Ustilz.Api.ApiResponse.Extensions.ResultsExtensions.Created<TResult>(this Microsoft.AspNetCore.Http.IResultExtensions, Ustilz.Api.ApiResponse.ApiRequestHeaders, string, TResult).TResult')
 
+The result.
+
 #### Returns
 [Microsoft.AspNetCore.Http.IResult](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Http.IResult 'Microsoft.AspNetCore.Http.IResult')  
 Returns a new api response result.

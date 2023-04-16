@@ -129,7 +129,7 @@ public sealed class HttpService
         var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string?, Task<string>>(this.GetStringAsyncInternalAsync).TestPerf(
                                                                                                                                                     out var timestamp,
                                                                                                                                                     url,
-                                                                                                                                                    new (),
+                                                                                                                                                    new(),
                                                                                                                                                     authentification)
                                                                                                                                           .ConfigureAwait(false);
         Debug.WriteLine($"GET {url} : {timestamp} ms");
@@ -166,7 +166,7 @@ public sealed class HttpService
                                                                                                                                                                       out
                                                                                                                                                                       var time,
                                                                                                                                                                       url,
-                                                                                                                                                                      new (),
+                                                                                                                                                                      new(),
                                                                                                                                                                       content,
                                                                                                                                                                       authentification)
                                                                                                                                                             .ConfigureAwait(
@@ -185,7 +185,7 @@ public sealed class HttpService
         var result = await new Func<Uri, Dictionary<string, IEnumerable<string>>, string, string?, Task<string>>(this.PostAsyncInternalAsync).TestPerf(
                                                                                                                                                        out var time,
                                                                                                                                                        url,
-                                                                                                                                                       new (),
+                                                                                                                                                       new(),
                                                                                                                                                        content,
                                                                                                                                                        authentification)
                                                                                                                                              .ConfigureAwait(false);
@@ -261,7 +261,7 @@ public sealed class HttpService
             var response = await client.GetAsync(url).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
-                return (response.StatusCode, response.ReasonPhrase, new (), new ());
+                return (response.StatusCode, response.ReasonPhrase, new(), new());
             }
 
             var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -298,7 +298,7 @@ public sealed class HttpService
             var response = await client.GetAsync(url).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
-                return (response.StatusCode, response.ReasonPhrase, new (), string.Empty);
+                return (response.StatusCode, response.ReasonPhrase, new(), string.Empty);
             }
 
             var headersResponse = response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -464,7 +464,7 @@ public sealed class HttpService
         {
             var response = await client.PostAsync(url, content).ConfigureAwait(false);
             return !response.IsSuccessStatusCode
-                       ? (response.StatusCode, response.ReasonPhrase, new (), string.Empty)
+                       ? (response.StatusCode, response.ReasonPhrase, new(), string.Empty)
                        : (response.StatusCode, response.ReasonPhrase, response.Headers.ToDictionary(pair => pair.Key, pair => pair.Value),
                           await response.Content.ReadAsStringAsync().ConfigureAwait(false));
         }

@@ -25,7 +25,7 @@ internal static class SR
     /// <summary>Obtient le message "Sequence contains no matching element".</summary>
     internal static string? NoMatch => GetResourceString("NoMatch", @"Sequence contains no matching element");
 
-    private static ResourceManager ResourceManager => resourceManager ??= new (typeof(SR));
+    private static ResourceManager ResourceManager => resourceManager ??= new(typeof(SR));
 
     private static string? GetResourceString(string resourceKey, string? defaultString = null)
     {

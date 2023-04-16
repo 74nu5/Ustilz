@@ -18,10 +18,10 @@ using Ustilz.Utils;
 public static partial class ExtensionsString
 {
     /// <summary>The hash providers.</summary>
-    private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new ();
+    private static readonly Dictionary<HashType, HashAlgorithm> HashProviders = new();
 
     /// <summary>The random.</summary>
-    private static readonly Random Random = new ((int)Clock.Now.Ticks);
+    private static readonly Random Random = new((int)Clock.Now.Ticks);
 
     /// <summary>Supported hash algorithms.</summary>
     public enum HashType

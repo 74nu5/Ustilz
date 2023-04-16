@@ -1,11 +1,11 @@
+// Copyright (c) PlaceholderCompany. All rights reserved.
+
 namespace Ustilz.Extensions;
 
 using System.Linq.Expressions;
 using System.Reflection;
 
 using JetBrains.Annotations;
-
-using Ustilz.Utils;
 
 /// <summary>The extensions type.</summary>
 [PublicAPI]

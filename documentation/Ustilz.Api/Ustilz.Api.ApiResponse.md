@@ -10,4 +10,4 @@
 
 | Enums | |
 | :--- | :--- |
-| [ApiResponseResultState](Ustilz.Api.ApiResponse.ApiResponseResultState.md 'Ustilz.Api.ApiResponse.ApiResponseResultState') | Represents all result states for an <seealso cref="!:ApiResponse&lt;TResponse&gt;"/> |
+| [ApiResponseResultState](Ustilz.Api.ApiResponse.ApiResponseResultState.md 'Ustilz.Api.ApiResponse.ApiResponseResultState') | Represents all result states for an <seealso cref="T:Ustilz.Api.ApiResponse.ApiResponseBody`1"/> |

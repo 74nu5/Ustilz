@@ -12,7 +12,7 @@ using JetBrains.Annotations;
 public static class Strings
 {
     /// <summary>The resource manager.</summary>
-    private static readonly ResourceManager ResourceManager = new ("Ustilz.Utils.Properties.Strings", typeof(Strings).GetTypeInfo().Assembly);
+    private static readonly ResourceManager ResourceManager = new("Ustilz.Utils.Properties.Strings", typeof(Strings).GetTypeInfo().Assembly);
 
     /// <summary>The string argument '{argumentName}' cannot be empty.</summary>
     /// <param name="argumentName">The argument Name.</param>

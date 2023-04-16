@@ -1,7 +1,6 @@
-namespace Ustilz.Razor.Utils;
+// Copyright (c) PlaceholderCompany. All rights reserved.
 
-using System;
-using System.Collections.Generic;
+namespace Ustilz.Razor.Utils;
 
 /// <summary>
 ///     Base class for style and css class mapper.
@@ -11,5 +10,5 @@ public class BaseMapper
     /// <summary>
     ///     Obtient la liste des éléments dans le mapper.
     /// </summary>
-    public List<Func<string?>> Items { get; } = new ();
+    public List<Func<string?>> Items { get; } = new();
 }

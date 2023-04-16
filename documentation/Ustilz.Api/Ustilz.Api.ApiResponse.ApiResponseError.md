@@ -28,3 +28,7 @@ Implements [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/S
 | :--- | :--- |
 | [ErrorCode](Ustilz.Api.ApiResponse.ApiResponseError.ErrorCode.md 'Ustilz.Api.ApiResponse.ApiResponseError.ErrorCode') | The error code. |
 | [ErrorMessage](Ustilz.Api.ApiResponse.ApiResponseError.ErrorMessage.md 'Ustilz.Api.ApiResponse.ApiResponseError.ErrorMessage') | The error message. |
+
+| Operators | |
+| :--- | :--- |
+| [implicit operator ApiResponseError(string)](Ustilz.Api.ApiResponse.ApiResponseError.op_ImplicitUstilz.Api.ApiResponse.ApiResponseError(string).md 'Ustilz.Api.ApiResponse.ApiResponseError.op_Implicit Ustilz.Api.ApiResponse.ApiResponseError(string)') | Implict operator which convert a string to a [ApiResponseError](Ustilz.Api.ApiResponse.ApiResponseError.md 'Ustilz.Api.ApiResponse.ApiResponseError'). |

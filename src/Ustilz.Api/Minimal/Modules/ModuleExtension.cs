@@ -49,6 +49,11 @@ public static class ModuleExtension
         return endpoints;
     }
 
+    /// <summary>
+    ///    Executes all modules build actions.
+    /// </summary>
+    /// <param name="app">The application builder.</param>
+    /// <returns>The application builder.</returns>
     public static IApplicationBuilder UseModuleBuildActions(this IApplicationBuilder app)
     {
         var modules = app.ApplicationServices.GetServices<IModule>();

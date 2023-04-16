@@ -41,7 +41,7 @@ public sealed record ApiRequestHeaders(Guid CorrelationId, string FunctionalId, 
     /// <param name="context">The http context.</param>
     /// <returns>Returns the headers object.</returns>
     [UsedImplicitly]
-    public static ValueTask<ApiRequestHeaders> BindAsync([NotNull] HttpContext context)
+    public static ValueTask<ApiRequestHeaders> BindAsync(HttpContext context)
     {
         _ = Guid.TryParse(context.Request.Headers[CorrelationIdKey], out var correlationIdHeader);
         _ = Guid.TryParse(context.Request.Headers[TechnicalIdKey], out var technicalIdKeyHeader);
