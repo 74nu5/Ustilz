@@ -91,7 +91,7 @@ public sealed class TodoModule : IModule
         return Results.Extensions.NoContent(headers);
     }
 
-    private static IResult GetTodo(ApiRequestHeaders headers, int id, TodoService todoService)
+    private static IResult GetTodo(int id, ApiRequestHeaders headers, TodoService todoService)
         => todoService.GetTodo(id) is { } todo
                ? Results.Extensions.Ok(headers, todo)
                : Results.Extensions.NotFound(headers);

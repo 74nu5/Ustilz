@@ -1,33 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>preview</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyVersion>2.2.0</AssemblyVersion>
     <FileVersion>2.2.0</FileVersion>
     <Version>2.2.0</Version>
     <Nullable>enable</Nullable>
-      <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
-      <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
+    <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+    <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
   </PropertyGroup>
-
-	<ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" />
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" />
   </ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="DefaultDocumentation" />
-	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
-	  <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="StyleCop.Analyzers" />
-
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Ustilz.Models\Ustilz.Models.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ustilz.Models\Ustilz.Models.csproj" />
+  </ItemGroup>
 </Project>
