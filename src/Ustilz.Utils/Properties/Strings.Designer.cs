@@ -19,7 +19,7 @@ namespace Ustilz.Utils.Properties {
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -61,7 +61,7 @@ namespace Ustilz.Utils.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The string argument &apos;{argumentName}&apos; cannot be empty..
+        ///   Recherche une chaîne localisée semblable à The string argument &apos;{argumentName}&apos; cannot be empty.
         /// </summary>
         internal static string ArgumentIsEmpty {
             get {
@@ -70,7 +70,7 @@ namespace Ustilz.Utils.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The property &apos;{property}&apos; of the argument &apos;{argument}&apos; cannot be null..
+        ///   Recherche une chaîne localisée semblable à The property &apos;{property}&apos; of the argument &apos;{argument}&apos; cannot be null.
         /// </summary>
         internal static string ArgumentPropertyNull {
             get {
@@ -79,7 +79,7 @@ namespace Ustilz.Utils.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The collection argument &apos;{argumentName}&apos; must contain at least one element..
+        ///   Recherche une chaîne localisée semblable à The collection argument &apos;{argumentName}&apos; must contain at least one element.
         /// </summary>
         internal static string CollectionArgumentIsEmpty {
             get {
@@ -88,7 +88,7 @@ namespace Ustilz.Utils.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The entity type &apos;{type}&apos; provided for the argument &apos;{argumentName}&apos; must be a reference type..
+        ///   Recherche une chaîne localisée semblable à The entity type &apos;{type}&apos; provided for the argument &apos;{argumentName}&apos; must be a reference type.
         /// </summary>
         internal static string InvalidEntityType {
             get {
@@ -97,7 +97,7 @@ namespace Ustilz.Utils.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à The numeric value {numeric} must be positive..
+        ///   Recherche une chaîne localisée semblable à The numeric value {numeric} must be positive.
         /// </summary>
         internal static string MustBePositive {
             get {

@@ -1,7 +1,5 @@
 namespace Ustilz.AspNetCore;
 
-using System.Threading.Tasks;
-
 using JetBrains.Annotations;
 
 using Microsoft.AspNetCore.Hosting.Server;
@@ -10,17 +8,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 
 [PublicAPI]
-internal class LoggingServerAddressesMiddleware
+internal class LoggingServerAddressesMiddleware(IServer server)
 {
-    private readonly IFeatureCollection features;
-
-    public LoggingServerAddressesMiddleware(IServer server)
-        => this.features = server.Features;
+    private readonly IFeatureCollection features = server.Features;
 
     public async Task Invoke(HttpContext context)
     {
         // fetch the addresses
-        var addressFeature = this.features.Get<IServerAddressesFeature>();
+        var addressFeature = this.features.GetRequiredFeature<IServerAddressesFeature>();
         var addresses = addressFeature.Addresses;
 
         // Write the addresses as a comma separated list

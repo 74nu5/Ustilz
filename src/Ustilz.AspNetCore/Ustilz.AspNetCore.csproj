@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyVersion>2.2.0</AssemblyVersion>
     <FileVersion>2.2.0</FileVersion>
-    <Version>2.2.0</Version>
+    <Version>8.0.0-beta1</Version>
     <IsAspNetCoreApp>true</IsAspNetCoreApp>
     <PackageTags>aspnetcore;routing</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -30,8 +30,8 @@
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
-      <FrameworkReference Include="Microsoft.AspNetCore.App" />
-      <PackageReference Include="DefaultDocumentation" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="DefaultDocumentation" />
     <PackageReference Include="JetBrains.Annotations" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
       <PrivateAssets>all</PrivateAssets>

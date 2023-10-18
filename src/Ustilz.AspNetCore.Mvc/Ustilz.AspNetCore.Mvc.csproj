@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>aspnetcore;routing</PackageTags>
-    <AssemblyVersion>2.2.0</AssemblyVersion>
-    <FileVersion>2.2.0</FileVersion>
-    <Version>2.2.0</Version>
+    <AssemblyVersion>8.0.0</AssemblyVersion>
+    <FileVersion>8.0.0</FileVersion>
+    <Version>8.0.0-beta1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
@@ -39,8 +39,8 @@
     <None Include="..\Settings.StyleCop" Link="Settings.StyleCop" />
   </ItemGroup>
   <ItemGroup>
-      <FrameworkReference Include="Microsoft.AspNetCore.App" />
-      <PackageReference Include="DefaultDocumentation" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="DefaultDocumentation" />
     <PackageReference Include="JetBrains.Annotations" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">

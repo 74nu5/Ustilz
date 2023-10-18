@@ -37,13 +37,13 @@ public static class HttpExtensions
     /// <exception cref="InvalidOperationException">The reader is currently in use by a previous read operation.</exception>
     /// <exception cref="ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="ArgumentOutOfRangeException">The number of characters is larger than <see cref="int.MaxValue"></see>.</exception>
-    public static Task<string> GetRawBodyStringAsync(this HttpRequest request, Encoding? encoding = null)
+    public static async Task<string> GetRawBodyStringAsync(this HttpRequest request, Encoding? encoding = null)
     {
         ArgumentNullException.ThrowIfNull(request);
 
         encoding ??= Encoding.UTF8;
         using var reader = new StreamReader(request.Body, encoding);
-        return reader.ReadToEndAsync();
+        return await reader.ReadToEndAsync();
     }
 
     /// <summary>The process web exception.</summary>

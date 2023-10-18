@@ -80,7 +80,8 @@ public static partial class ExtensionsString
         }
 
         var cspp = new CspParameters { KeyContainerName = key };
-        using var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+        using var rsa = new RSACryptoServiceProvider(cspp);
+        rsa.PersistKeyInCsp = true;
 
         var decryptArray = stringToDecrypt.Split(new[] { "-" }, StringSplitOptions.None);
         var decryptByteArray = decryptArray.Select(s => Convert.ToByte(byte.Parse(s, NumberStyles.HexNumber, CultureInfo.CurrentCulture))).ToArray();
@@ -108,7 +109,8 @@ public static partial class ExtensionsString
         }
 
         var cspp = new CspParameters { KeyContainerName = key };
-        using var rsa = new RSACryptoServiceProvider(cspp) { PersistKeyInCsp = true };
+        using var rsa = new RSACryptoServiceProvider(cspp);
+        rsa.PersistKeyInCsp = true;
         var bytes = rsa.Encrypt(Encoding.UTF8.GetBytes(stringToEncrypt), true);
 
         return BitConverter.ToString(bytes);

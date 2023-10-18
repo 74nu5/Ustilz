@@ -1,7 +1,5 @@
 namespace Ustilz.Extensions;
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
@@ -29,6 +27,7 @@ public static class ExtensionsFunc
         _ = action ?? throw new ArgumentNullException(nameof(action));
 
         var result = new ExecutionResult<T>();
+
         try
         {
             action(parameter);
@@ -49,8 +48,6 @@ public static class ExtensionsFunc
     /// <typeparam name="TResult">Le type du résultat.</typeparam>
     /// <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
     /// <exception cref="ArgumentNullException">La fonction ne peut pas être nulle.</exception>
-        
-        
     public static IExecutionResult<TResult> ExecuteSafe<T, TResult>(
         this Func<T, TResult> func,
         [MaybeNull] T parameter)
@@ -59,6 +56,7 @@ public static class ExtensionsFunc
         _ = func ?? throw new ArgumentNullException(nameof(func));
 
         var result = new ExecutionResult<TResult>();
+
         try
         {
             result.Result = func(parameter);
@@ -76,43 +74,39 @@ public static class ExtensionsFunc
     /// <typeparam name="T">Type du paramètres d'entrée. </typeparam>
     /// <typeparam name="TResult">Type du retour. </typeparam>
     /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        
     public static Func<T, TResult> Memoize<T, TResult>(this Func<T, TResult> func)
         where T : notnull
     {
         var t = new Dictionary<T, TResult>();
-        return n =>
-               {
-                   if (t.TryGetValue(n, out var expression))
-                   {
-                       return expression;
-                   }
 
-                   var result = func(n);
-                   t.Add(n, result);
-                   return result;
-               };
+        return n =>
+        {
+            if (t.TryGetValue(n, out var expression))
+                return expression;
+
+            var result = func(n);
+            t.Add(n, result);
+            return result;
+        };
     }
 
     /// <summary>Méthode de mémoïsation d'une fonction. </summary>
     /// <param name="func">Fonction à mémoïser. </param>
     /// <typeparam name="TResult">Type du retour. </typeparam>
     /// <returns>Retourne une fonction <see cref="Func{T,TResult}" />. </returns>
-        
     public static Func<TResult> Memoize<TResult>(this Func<TResult> func)
     {
         var t = new Dictionary<string, TResult>();
-        return () =>
-               {
-                   if (t.ContainsKey(func.GetMethodInfo().Name))
-                   {
-                       return t[func.GetMethodInfo().Name];
-                   }
 
-                   var result = func();
-                   t.Add(func.GetMethodInfo().Name, result);
-                   return result;
-               };
+        return () =>
+        {
+            if (t.TryGetValue(func.GetMethodInfo().Name, out var expression))
+                return expression;
+
+            var result = func();
+            t.Add(func.GetMethodInfo().Name, result);
+            return result;
+        };
     }
 
     /// <summary>Méthode de test de performance.</summary>

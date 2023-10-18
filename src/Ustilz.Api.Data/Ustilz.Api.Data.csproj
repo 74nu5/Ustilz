@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyVersion>2.2.0</AssemblyVersion>
     <FileVersion>2.2.0</FileVersion>
-    <Version>2.2.0</Version>
+    <Version>8.0.0-beta1</Version>
     <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
     <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
   </PropertyGroup>
