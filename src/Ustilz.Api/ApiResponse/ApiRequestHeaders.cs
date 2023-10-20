@@ -45,7 +45,7 @@ public sealed record ApiRequestHeaders(Guid CorrelationId, string FunctionalId, 
     {
         _ = Guid.TryParse(context.Request.Headers[CorrelationIdKey], out var correlationIdHeader);
         _ = Guid.TryParse(context.Request.Headers[TechnicalIdKey], out var technicalIdKeyHeader);
-        var functionalId = context.Request.Headers[FunctionalIdKey];
+        var functionalId = context.Request.Headers[FunctionalIdKey].FirstOrDefault() ?? Guid.NewGuid().ToString();
 
         var loggerFactory = context.RequestServices.GetRequiredService<ILoggerFactory>();
         var logger = loggerFactory.CreateLogger(typeof(ApiRequestHeaders));

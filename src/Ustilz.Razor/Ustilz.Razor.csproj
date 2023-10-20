@@ -1,50 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <LangVersion>preview</LangVersion>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <AssemblyVersion>2.2.0</AssemblyVersion>
-        <FileVersion>2.2.0</FileVersion>
-        <Version>2.2.0</Version>
-        <RazorLangVersion>3.0</RazorLangVersion>
-        <NeutralLanguage>fr</NeutralLanguage>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Authors>T4nu5</Authors>
-        <Company>Tanuscorp</Company>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
-        <DefaultDocumentationFolder>..\..\documentation/$(AssemblyName)</DefaultDocumentationFolder>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <OutputPath>bin\Release</OutputPath>
-        <DocumentationFile>bin\Release\net6.0\Ustilz.Razor.xml</DocumentationFile>
-    </PropertyGroup>
-    <ItemGroup>
-        <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="..\.editorconfig" Link=".editorconfig" />
-        <None Include="..\Settings.StyleCop" Link="Settings.StyleCop" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="DefaultDocumentation" />
-        <PackageReference Include="JetBrains.Annotations" />
-        <PackageReference Include="Microsoft.AspNetCore.Components" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.Configuration" />
-        <PackageReference Include="StyleCop.Analyzers" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyVersion>2.2.0</AssemblyVersion>
+    <FileVersion>2.2.0</FileVersion>
+    <Version>8.0.0-beta1</Version>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <NeutralLanguage>fr</NeutralLanguage>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>T4nu5</Authors>
+    <Company>Tanuscorp</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+    <DefaultDocumentationFolder>..\..\documentation/$(AssemblyName)</DefaultDocumentationFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\net6.0\Ustilz.Razor.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\Settings.StyleCop" Link="Settings.StyleCop" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" />
+    <PackageReference Include="JetBrains.Annotations" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="StyleCop.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

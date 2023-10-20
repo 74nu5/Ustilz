@@ -26,10 +26,10 @@ public sealed class LoggerAction : ILogger
     /// <param name="eventId">Identifiant de l'évènement.</param>
     /// <param name="exception">Exception levée, null s'il n'y en a pas.</param>
     /// <param name="message">Message à loguer.</param>
-    public delegate void LogDelegate(string categoryName, LogLevel logLevel, EventId eventId, Exception exception, string message);
+    public delegate void LogDelegate(string categoryName, LogLevel logLevel, EventId eventId, Exception? exception, string message);
 
     /// <inheritdoc />
-    public IDisposable? BeginScope<TState>(TState state) => null;
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
 
     /// <inheritdoc />
     public bool IsEnabled(LogLevel logLevel) => this.action != null;
@@ -37,13 +37,9 @@ public sealed class LoggerAction : ILogger
     /// <inheritdoc />
     /// <exception cref="Exception">A delegate callback throws an exception.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="formatter" /> is <see langword="null" />.</exception>
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
-        if (formatter == null)
-        {
-            throw new ArgumentNullException(nameof(formatter));
-        }
-
+        ArgumentNullException.ThrowIfNull(formatter);
         this.action?.Invoke(this.categoryName, logLevel, eventId, exception, formatter(state, exception));
     }
 }

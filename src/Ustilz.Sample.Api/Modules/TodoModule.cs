@@ -1,9 +1,11 @@
 namespace Ustilz.Sample.Api.Modules;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 
 using JetBrains.Annotations;
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 using Ustilz.Api.ApiResponse;
@@ -35,6 +37,7 @@ public sealed class TodoModule : IModule
     public void ConfigureModule(IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
+
         scope.ServiceProvider.GetRequiredService<TodoDb>()
              .Database.EnsureCreated();
     }
@@ -43,6 +46,7 @@ public sealed class TodoModule : IModule
     ///     Maps incoming requests to the specified services types declared by the module.
     /// </summary>
     /// <param name="endpoints">The route builder.</param>
+    [SuppressMessage("ReSharper", "RouteTemplates.RouteParameterConstraintNotResolved")]
     public void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         endpoints.MapGet("/todos", GetTodos)
@@ -76,7 +80,7 @@ public sealed class TodoModule : IModule
         return Results.Extensions.Created<Todo>(headers, $"/todos/{t.Id}");
     }
 
-    private static async Task<IResult> UpdateTodo(ApiRequestHeaders headers, TodoService todoService, int id, Todo todo)
+    private static async Task<IResult> UpdateTodo([FromRoute] int id, ApiRequestHeaders headers, TodoService todoService, Todo todo)
     {
         if (id < -1)
             return Results.Extensions.BadRequest(headers);
@@ -91,7 +95,7 @@ public sealed class TodoModule : IModule
         return Results.Extensions.NoContent(headers);
     }
 
-    private static IResult GetTodo(ApiRequestHeaders headers, int id, TodoService todoService)
+    private static IResult GetTodo([FromRoute] int id, ApiRequestHeaders headers, TodoService todoService)
         => todoService.GetTodo(id) is { } todo
                ? Results.Extensions.Ok(headers, todo)
                : Results.Extensions.NotFound(headers);

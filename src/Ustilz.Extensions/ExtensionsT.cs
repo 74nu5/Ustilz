@@ -17,13 +17,13 @@ public static class ExtensionsT
     /// <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
     public static bool AsBool<T>(this T transformObject)
         => transformObject switch
-           {
-               int n => n > 0,
-               string s when bool.TryParse(s, out var b) => b,
-               string s when int.TryParse(s, out var i) => i.AsBool(),
-               string s => !string.IsNullOrEmpty(s),
-               var _ => false
-           };
+        {
+            int n => n > 0,
+            string s when bool.TryParse(s, out var b) => b,
+            string s when int.TryParse(s, out var i) => i.AsBool(),
+            string s => !string.IsNullOrEmpty(s),
+            var _ => false,
+        };
 
     /// <summary>The between. </summary>
     /// <param name="value">The value. </param>
@@ -191,22 +191,13 @@ public static class ExtensionsT
     {
         ArgumentNullException.ThrowIfNull(value);
 
-        try
-        {
-            if (value.Equals(string.Empty))
-            {
-                return new();
-            }
-
-            var t = typeof(T);
-            var u = Nullable.GetUnderlyingType(t);
-
-            return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
-        }
-        catch
-        {
+        if (value.Equals(string.Empty))
             return new();
-        }
+
+        var t = typeof(T);
+        var u = Nullable.GetUnderlyingType(t);
+
+        return u != null ? (T)Convert.ChangeType(value, u, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, t, CultureInfo.CurrentCulture);
     }
 
     /// <summary>Méthode de conversion.</summary>
@@ -228,7 +219,15 @@ public static class ExtensionsT
 
             return nonNullableType != null ? (T)Convert.ChangeType(value, nonNullableType, CultureInfo.CurrentCulture) : (T)Convert.ChangeType(value, type, CultureInfo.CurrentCulture);
         }
-        catch
+        catch (InvalidCastException)
+        {
+            return (T)ifError;
+        }
+        catch (FormatException)
+        {
+            return (T)ifError;
+        }
+        catch (OverflowException)
         {
             return (T)ifError;
         }
@@ -238,6 +237,7 @@ public static class ExtensionsT
     {
         ArgumentNullException.ThrowIfNull(type);
         ArgumentNullException.ThrowIfNull(obj);
+
         return obj.GetType().FindInterfaces((typeObj, criteriaObj) => typeObj.ToString() == criteriaObj?.ToString(), type.FullName).Any()
                    ? type
                    : null;
