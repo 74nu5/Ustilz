@@ -1,7 +1,6 @@
 namespace Ustilz.Extensions.Actions;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using JetBrains.Annotations;
 
@@ -156,7 +155,6 @@ public static partial class ExtensionsAction
     /// <param name="trueAction">The action to execute if any of the given values is true.</param>
     /// <param name="values">The Boolean values to check.</param>
     [PublicAPI]
-    [SuppressMessage("ReSharper", "TooManyArguments", Justification = "It's API purpose.")]
     public static void ExecuteIfFalse<T1, T2, T3, T4>(
         this Action<T1, T2, T3, T4>? falseAction,
         T1 parameter1,

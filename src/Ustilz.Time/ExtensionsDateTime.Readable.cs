@@ -1,6 +1,5 @@
 namespace Ustilz.Time;
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 
 using JetBrains.Annotations;
@@ -13,9 +12,7 @@ public static partial class ExtensionsDateTime
     /// <param name="currentDate">The current date.</param>
     /// <returns>The <see cref="string" />.</returns>
     /// <exception cref="OverflowException">value is greater than <see cref="int.MaxValue"></see> or less than <see cref="int.MinValue"></see>.</exception>
-        
     [ExcludeFromCodeCoverage(Justification = "Hard to test")]
-    [SuppressMessage("ReSharper", "MethodTooLong", Justification = "Obligé.")]
     public static string ReadableTimeStamp(this DateTime currentDate)
     {
         const int Second = 1;
@@ -27,48 +24,32 @@ public static partial class ExtensionsDateTime
         var ts = new TimeSpan(Clock.Now.Ticks - currentDate.Ticks);
         var delta = Math.Abs(ts.TotalSeconds);
 
-        if (delta < 1 * Minute)
+        switch (delta)
         {
-            return ts.Seconds == 1 ? "one second ago" : $"{ts.Seconds} seconds ago";
+            case < 1 * Minute:
+                return ts.Seconds == 1 ? "one second ago" : $"{ts.Seconds} seconds ago";
+            case < 2 * Minute:
+                return "a minute ago";
+            case < 45 * Minute:
+                return $"{ts.Minutes} minutes ago";
+            case < 90 * Minute:
+                return "an hour ago";
+            case < 24 * Hour:
+                return $"{ts.Hours} hours ago";
+            case < 48 * Hour:
+                return "yesterday";
+            case < 30 * Day:
+                return Clock.Now.Month == 3 && delta > 27 * Day ? "one month ago" : $"{ts.Days} days ago";
+            case < 12 * Month:
+            {
+                var months = Convert.ToInt32(Math.Floor((double)ts.Days / 30));
+                return months <= 1 ? "one month ago" : $"{months} months ago";
+            }
+            default:
+            {
+                var years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
+                return years <= 1 ? "one year ago" : years + " years ago";
+            }
         }
-
-        if (delta < 2 * Minute)
-        {
-            return "a minute ago";
-        }
-
-        if (delta < 45 * Minute)
-        {
-            return $"{ts.Minutes} minutes ago";
-        }
-
-        if (delta < 90 * Minute)
-        {
-            return "an hour ago";
-        }
-
-        if (delta < 24 * Hour)
-        {
-            return $"{ts.Hours} hours ago";
-        }
-
-        if (delta < 48 * Hour)
-        {
-            return "yesterday";
-        }
-
-        if (delta < 30 * Day)
-        {
-            return Clock.Now.Month == 3 && delta > 27 * Day ? "one month ago" : $"{ts.Days} days ago";
-        }
-
-        if (delta < 12 * Month)
-        {
-            var months = Convert.ToInt32(Math.Floor((double)ts.Days / 30));
-            return months <= 1 ? "one month ago" : $"{months} months ago";
-        }
-
-        var years = Convert.ToInt32(Math.Floor((double)ts.Days / 365));
-        return years <= 1 ? "one year ago" : years + " years ago";
     }
 }

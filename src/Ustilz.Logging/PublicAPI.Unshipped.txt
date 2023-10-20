@@ -1,7 +1,0 @@
-﻿Ustilz.Logging.Action.LoggerAction
-Ustilz.Logging.Action.LoggerAction.BeginScope<TState>(TState state) -> System.IDisposable?
-Ustilz.Logging.Action.LoggerAction.IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel) -> bool
-Ustilz.Logging.Action.LoggerAction.Log<TState>(Microsoft.Extensions.Logging.LogLevel logLevel, Microsoft.Extensions.Logging.EventId eventId, TState state, System.Exception! exception, System.Func<TState, System.Exception!, string!>! formatter) -> void
-Ustilz.Logging.Action.LoggerAction.LogDelegate
-Ustilz.Logging.Action.LoggerActionExtensions
-static Ustilz.Logging.Action.LoggerActionExtensions.AddLoggerEvent(this Microsoft.Extensions.Logging.ILoggingBuilder! builder, Ustilz.Logging.Action.LoggerAction.LogDelegate! action) -> Microsoft.Extensions.Logging.ILoggingBuilder!

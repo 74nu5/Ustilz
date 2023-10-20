@@ -14,7 +14,6 @@ using Ustilz.Api.Minimal.Modules;
 using Ustilz.Sample.Api.Services;
 
 [UsedImplicitly]
-[SuppressMessage("ReSharper", "RouteTemplates.RouteParameterConstraintNotResolved")]
 public sealed class TodoModule : IModule
 {
     /// <summary>
@@ -47,6 +46,7 @@ public sealed class TodoModule : IModule
     ///     Maps incoming requests to the specified services types declared by the module.
     /// </summary>
     /// <param name="endpoints">The route builder.</param>
+    [SuppressMessage("ReSharper", "RouteTemplates.RouteParameterConstraintNotResolved")]
     public void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         endpoints.MapGet("/todos", GetTodos)

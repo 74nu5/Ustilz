@@ -61,7 +61,7 @@ namespace Ustilz.Xml {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à La chaine de caractères ne peut pas être nulle.
+        ///   Recherche une chaîne localisée semblable à La chaine de caractères ne peut pas être nulle..
         /// </summary>
         internal static string XmlExtensions_FromXml_La_chaine_de_caractères_ne_peut_pas_être_nulle_ {
             get {
@@ -70,7 +70,7 @@ namespace Ustilz.Xml {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Le document ne peut pas être null.
+        ///   Recherche une chaîne localisée semblable à Le document ne peut pas être null..
         /// </summary>
         internal static string XmlExtensions_FromXml_Le_document_ne_peut_pas_être_null_ {
             get {

@@ -1,11 +1,7 @@
 namespace Ustilz.Extensions.Strings;
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.Versioning;
 using System.Security.Cryptography;
 using System.Text;
@@ -39,7 +35,7 @@ public static partial class ExtensionsString
         SHA384,
 
         /// <summary>The sh a 512.</summary>
-        SHA512
+        SHA512,
     }
 
     /// <summary>Computes the hash of the string using a specified hash algorithm.</summary>
@@ -60,7 +56,7 @@ public static partial class ExtensionsString
 
             return ret.ToString();
         }
-        catch
+        catch (ArgumentNullException)
         {
             return string.Empty;
         }
@@ -122,7 +118,6 @@ public static partial class ExtensionsString
     /// <param name="provider">The provider.</param>
     /// <returns>The <see cref="string" />.</returns>
     /// <exception cref="NotSupportedException">Throws an exception when the hash type is unknown.</exception>
-    [SuppressMessage("ReSharper", "FlagArgument", Justification = "Not flag.")]
     public static string GenerateHash(string password, string? salt = null, HashType provider = HashType.MD5)
     {
         Check.NotEmpty(password, nameof(password));
@@ -132,9 +127,7 @@ public static partial class ExtensionsString
         var bytes = Encoding.Unicode.GetBytes(salt + password);
 
         if (!HashProviders.ContainsKey(provider))
-        {
             throw new NotSupportedException($"Hash Provider '{provider}' is not supported");
-        }
 
         var hash = HashProviders[provider].ComputeHash(bytes);
         return provider + "$" + salt + "$" + hash.ToHexString();
@@ -179,10 +172,11 @@ public static partial class ExtensionsString
         Check.NotEmpty(hashValue, nameof(hashValue));
 
         var hashParts = hashValue.Split('$');
+
         if (hashParts.Length != 3)
         {
             throw new ArgumentException(
-                                        "hashValue is not valid, it should contain hash algorithm, salt and hash value seperated by '$' e.g 'MD5$F8F25518$23C1916FF7C0A35166BEBCE564D19586'");
+                "hashValue is not valid, it should contain hash algorithm, salt and hash value seperated by '$' e.g 'MD5$F8F25518$23C1916FF7C0A35166BEBCE564D19586'");
         }
 
         HashType provider;
@@ -203,37 +197,21 @@ public static partial class ExtensionsString
     /// <summary>The get hash.</summary>
     /// <param name="input">The input.</param>
     /// <param name="hash">The hash.</param>
+    /// <exception cref="ArgumentOutOfRangeException">hrows an exception when the hash type is unknown.</exception>
+    /// <exception cref="ArgumentNullException">Throws an exception when the input is null.</exception>
     /// <returns>The <see cref="byte" />.</returns>
-    [SuppressMessage("Security", "CA5351:Ne pas utiliser d'algorithmes de chiffrement cassés", Justification = "Ca peut toujours servir.")]
-    [SuppressMessage("Security", "CA5350:Ne pas utiliser d'algorithmes de chiffrement faibles", Justification = "Ca peut toujours servir.")]
     private static byte[] GetHash(string input, HashType hash)
     {
-        var inputBytes = Encoding.ASCII.GetBytes(input);
-        HashAlgorithm algo;
-        switch (hash)
-        {
-            case HashType.MD5:
-                algo = MD5.Create();
-                break;
-            case HashType.SHA1:
-                algo = SHA1.Create();
-                break;
-            case HashType.SHA256:
-                algo = SHA256.Create();
-                break;
-            case HashType.SHA384:
-                algo = SHA384.Create();
-                break;
-            case HashType.SHA512:
-                algo = SHA512.Create();
-                break;
-            default:
-                return inputBytes;
-        }
+        var inputBytes = Encoding.UTF8.GetBytes(input);
 
-        using (algo)
+        return hash switch
         {
-            return algo.ComputeHash(inputBytes);
-        }
+            HashType.MD5 => MD5.HashData(inputBytes),
+            HashType.SHA1 => SHA1.HashData(inputBytes),
+            HashType.SHA256 => SHA256.HashData(inputBytes),
+            HashType.SHA384 => SHA384.HashData(inputBytes),
+            HashType.SHA512 => SHA512.HashData(inputBytes),
+            _ => throw new ArgumentOutOfRangeException(nameof(hash), hash, null),
+        };
     }
 }

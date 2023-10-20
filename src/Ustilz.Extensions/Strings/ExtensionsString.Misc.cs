@@ -1,7 +1,6 @@
 namespace Ustilz.Extensions.Strings;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Security;
 using System.Text;
@@ -101,7 +100,6 @@ public static partial class ExtensionsString
     /// <summary>The to exception.</summary>
     /// <param name="message">The message.</param>
     /// <typeparam name="T">Type de l'exception.</typeparam>
-    [SuppressMessage("ReSharper", "UnthrowableException", Justification = "Nope...")]
     public static void ToException<T>(this string message)
         where T : Exception, new() =>
         throw Activator.CreateInstance(typeof(T), message) as T ?? new Exception(message);

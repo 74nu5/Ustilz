@@ -1,1 +1,4 @@
-﻿#nullable enable
+#nullable enable
+static Ustilz.Json.JsonExtensions.FromJson<T>(this string json) -> T
+static Ustilz.Json.JsonExtensions.ToJson<T>(this T objectToSerialize) -> string!
+static Ustilz.Json.JsonExtensions.ToJsonFormatted<T>(this T objectToSerialize) -> string!
