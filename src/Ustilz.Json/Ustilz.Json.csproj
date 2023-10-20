@@ -17,13 +17,13 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+        <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <DefaultDocumentationFolder>..\..\documentation/$(AssemblyName)</DefaultDocumentationFolder>
         <OutputPath>bin\Debug</OutputPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <OutputPath>bin\Release</OutputPath>
-        <DocumentationFile>bin\Release\net7.0\Ustilz.Json.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\$(TargetFramework)\Ustilz.Json.xml</DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DefaultDocumentation" />
