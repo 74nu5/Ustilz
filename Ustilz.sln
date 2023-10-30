@@ -54,7 +54,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Sample.Api", "src\Us
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Medias", "src\Ustilz.Medias\Ustilz.Medias.csproj", "{7D8D56DA-D173-469A-A0AB-B307195AA670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Parsers", "src\Ustilz.Parsers\Ustilz.Parsers.csproj", "{D233962A-33C3-4C74-8602-8BC78C5D871D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Parsers", "src\Ustilz.Parsers\Ustilz.Parsers.csproj", "{D233962A-33C3-4C74-8602-8BC78C5D871D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.StateMachine", "src\Ustilz.StateMachine\Ustilz.StateMachine.csproj", "{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,12 @@ Global
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Only libs|Any CPU.Build.0 = Debug|Any CPU
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
