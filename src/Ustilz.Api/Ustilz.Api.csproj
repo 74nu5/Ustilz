@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,7 +8,7 @@
     <FileVersion>2.2.0</FileVersion>
     <Version>8.0.0-beta1</Version>
     <Nullable>enable</Nullable>
-    <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
   </PropertyGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
-    <DocumentationFile>bin\Debug\net7.0\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
     <Version>8.0.0-beta1</Version>
   </PropertyGroup>
