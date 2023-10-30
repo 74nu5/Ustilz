@@ -56,6 +56,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Medias", "src\Ustilz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Parsers", "src\Ustilz.Parsers\Ustilz.Parsers.csproj", "{D233962A-33C3-4C74-8602-8BC78C5D871D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{44681F79-D7DC-4350-A55E-6C2958A701EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Benchmark.Parsers", "benchmarks\Ustilz.Benchmark.Parsers\Ustilz.Benchmark.Parsers.csproj", "{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,12 +181,19 @@ Global
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Only libs|Any CPU.Build.0 = Debug|Any CPU
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B314D2D1-A929-45D3-8369-E61BE52442BD} = {1DB55402-3B08-40D2-8750-9AE49C9A2455}
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E} = {44681F79-D7DC-4350-A55E-6C2958A701EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36107DC6-4F59-40D1-8C7A-E9E8D69268D2}
