@@ -17,19 +17,12 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfAnyTrue(this Action? trueAction, Action? falseAction = null, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => x()))
-        {
             trueAction?.Invoke();
-        }
         else
-        {
             falseAction?.Invoke();
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
@@ -46,19 +39,12 @@ public static partial class ExtensionsAction
         Action<T>? falseAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => x()))
-        {
             trueAction?.Invoke(parameter);
-        }
         else
-        {
             falseAction?.Invoke(parameter);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
@@ -78,19 +64,12 @@ public static partial class ExtensionsAction
         Action<T1, T2>? falseAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => x()))
-        {
             trueAction?.Invoke(parameter1, parameter2);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
@@ -113,19 +92,12 @@ public static partial class ExtensionsAction
         Action<T1, T2, T3>? falseAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => x()))
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
@@ -151,19 +123,12 @@ public static partial class ExtensionsAction
         Action<T1, T2, T3, T4>? falseAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => x()))
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is true.</summary>
@@ -173,15 +138,10 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfAnyTrue(this Action? trueAction, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.Any(x => x()))
-        {
             return;
-        }
 
         trueAction?.Invoke();
     }
@@ -195,15 +155,10 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfAnyTrue<T>(this Action<T>? trueAction, T parameter, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.Any(x => x()))
-        {
             return;
-        }
 
         trueAction?.Invoke(parameter);
     }
@@ -223,15 +178,10 @@ public static partial class ExtensionsAction
         T2 parameter2,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.Any(x => x()))
-        {
             return;
-        }
 
         trueAction?.Invoke(parameter1, parameter2);
     }
@@ -254,15 +204,10 @@ public static partial class ExtensionsAction
         T3 parameter3,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.Any(x => x()))
-        {
             return;
-        }
 
         trueAction?.Invoke(parameter1, parameter2, parameter3);
     }
@@ -288,15 +233,10 @@ public static partial class ExtensionsAction
         T4 parameter4,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.Any(x => x()))
-        {
             return;
-        }
 
         trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
     }

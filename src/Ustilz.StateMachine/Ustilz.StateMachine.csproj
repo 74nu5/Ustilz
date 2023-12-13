@@ -55,13 +55,7 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
-    </ItemGroup>
-    <ItemGroup>
         <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <None Include="..\.editorconfig" Link=".editorconfig" />
     </ItemGroup>
 
 </Project>

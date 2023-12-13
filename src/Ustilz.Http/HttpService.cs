@@ -44,15 +44,8 @@ public sealed class HttpService
         string? authentification)
         where TResponse : class, new()
     {
-        if (url == null)
-        {
-            throw new ArgumentNullException(nameof(url));
-        }
-
-        if (headers == null)
-        {
-            throw new ArgumentNullException(nameof(headers));
-        }
+        ArgumentNullException.ThrowIfNull(url);
+        ArgumentNullException.ThrowIfNull(headers);
 
         var result =
             await new Func<Uri, Dictionary<string, IEnumerable<string>>, string?, Task<(HttpStatusCode, string?, Dictionary<string, IEnumerable<string>>, TResponse?)>>(
@@ -78,15 +71,8 @@ public sealed class HttpService
         Dictionary<string, IEnumerable<string>> headers,
         string? authentification)
     {
-        if (url == null)
-        {
-            throw new ArgumentNullException(nameof(url));
-        }
-
-        if (headers == null)
-        {
-            throw new ArgumentNullException(nameof(headers));
-        }
+        ArgumentNullException.ThrowIfNull(url);
+        ArgumentNullException.ThrowIfNull(headers);
 
         var result =
             await new Func<Uri, Dictionary<string, IEnumerable<string>>, string?, Task<(HttpStatusCode, string?, Dictionary<string, IEnumerable<string>>, string?)>>(

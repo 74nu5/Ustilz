@@ -23,9 +23,7 @@ internal static class ExtensionsIList
         {
             var el = tab[i];
             if (el == value)
-            {
                 return i;
-            }
         }
 
         return -1;

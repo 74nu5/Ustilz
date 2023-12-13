@@ -72,18 +72,14 @@ public static partial class ExtensionsIEnumerable
         var enumerable = list.ToList();
         var result = enumerable.FirstOrDefault();
         if (result == null)
-        {
             return default;
-        }
 
         var bestMax = selector(result);
         foreach (var item in enumerable.Skip(1))
         {
             var v = selector(item);
             if (v.CompareTo(bestMax) <= 0)
-            {
                 continue;
-            }
 
             bestMax = v;
             result = item;
@@ -107,18 +103,14 @@ public static partial class ExtensionsIEnumerable
         var enumerable = list.ToList();
         var result = enumerable.FirstOrDefault();
         if (result == null)
-        {
             return default;
-        }
 
         var bestMin = selector(result);
         foreach (var item in enumerable.Skip(1))
         {
             var v = selector(item);
             if (v.CompareTo(bestMin) >= 0)
-            {
                 continue;
-            }
 
             bestMin = v;
             result = item;
@@ -139,9 +131,7 @@ public static partial class ExtensionsIEnumerable
         _ = enumerable ?? throw new ArgumentNullException(nameof(enumerable));
 
         foreach (var item in enumerable)
-        {
             action(item);
-        }
     }
 
     /// <summary>The join. </summary>
@@ -210,16 +200,12 @@ public static partial class ExtensionsIEnumerable
 
         using var e = source.GetEnumerator();
         if (!e.MoveNext())
-        {
             throw new InvalidOperationException("Sequence cannot be empty.");
-        }
 
         var prev = e.Current;
 
         if (!e.MoveNext())
-        {
             throw new InvalidOperationException("Sequence must contain at least two elements.");
-        }
 
         do
         {
@@ -240,9 +226,7 @@ public static partial class ExtensionsIEnumerable
         var count = list.Count;
         var subN = count / split;
         for (var i = 0; i < count; i += subN)
-        {
             yield return list.Skip(i).Take(subN);
-        }
     }
 
     /// <summary>Read only collection of any enumeration.</summary>

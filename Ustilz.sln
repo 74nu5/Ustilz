@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		Directory.Packages.props = Directory.Packages.props
 		dotnet-version.ps1 = dotnet-version.ps1
 		GlobalSuppressions.cs = GlobalSuppressions.cs
-		src\Settings.StyleCop = src\Settings.StyleCop
-		src\stylecop.json = src\stylecop.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Http", "src\Ustilz.Http\Ustilz.Http.csproj", "{56DAC945-A08D-4961-A7C1-CC37BDEA8340}"
@@ -56,7 +54,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Medias", "src\Ustilz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Parsers", "src\Ustilz.Parsers\Ustilz.Parsers.csproj", "{D233962A-33C3-4C74-8602-8BC78C5D871D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.StateMachine", "src\Ustilz.StateMachine\Ustilz.StateMachine.csproj", "{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.StateMachine", "src\Ustilz.StateMachine\Ustilz.StateMachine.csproj", "{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

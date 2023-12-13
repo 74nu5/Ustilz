@@ -63,19 +63,13 @@ public static class Strings
     {
         var str = ResourceManager.GetString(name, CultureInfo.CurrentCulture);
         if (str == null)
-        {
             return name;
-        }
 
         if (formatterNames == null)
-        {
             return str;
-        }
 
         for (var index = 0; index < formatterNames.Length; ++index)
-        {
             str = str.Replace($"{{{formatterNames[index]}}}", $"{{{index}}}", StringComparison.CurrentCulture);
-        }
 
         return str;
     }

@@ -44,19 +44,12 @@ public static class ExtensionsDictionary
         where TValue : new()
     {
         if (key is null)
-        {
             throw new ArgumentNullException(nameof(key));
-        }
 
-        if (dictionary is null)
-        {
-            throw new ArgumentNullException(nameof(dictionary));
-        }
+        ArgumentNullException.ThrowIfNull(dictionary);
 
         if (dictionary.TryGetValue(key, out var ret))
-        {
             return ret;
-        }
 
         ret = new();
         dictionary[key] = ret;
@@ -78,24 +71,14 @@ public static class ExtensionsDictionary
         Func<TValue> valueProvider)
     {
         if (key is null)
-        {
             throw new ArgumentNullException(nameof(key));
-        }
 
-        if (dictionary is null)
-        {
-            throw new ArgumentNullException(nameof(dictionary));
-        }
+        ArgumentNullException.ThrowIfNull(dictionary);
 
-        if (valueProvider is null)
-        {
-            throw new ArgumentNullException(nameof(valueProvider));
-        }
+        ArgumentNullException.ThrowIfNull(valueProvider);
 
         if (dictionary.TryGetValue(key, out var ret))
-        {
             return ret;
-        }
 
         ret = valueProvider();
         dictionary[key] = ret;
@@ -117,19 +100,12 @@ public static class ExtensionsDictionary
         TValue missingValue)
     {
         if (key is null)
-        {
             throw new ArgumentNullException(nameof(key));
-        }
 
-        if (dictionary is null)
-        {
-            throw new ArgumentNullException(nameof(dictionary));
-        }
+        ArgumentNullException.ThrowIfNull(dictionary);
 
         if (dictionary.TryGetValue(key, out var ret))
-        {
             return ret;
-        }
 
         ret = missingValue;
         dictionary[key] = ret;
@@ -149,8 +125,6 @@ public static class ExtensionsDictionary
         _ = dictionary ?? throw new ArgumentNullException(nameof(dictionary));
 
         foreach (var key in keys)
-        {
             dictionary.Remove(key);
-        }
     }
 }

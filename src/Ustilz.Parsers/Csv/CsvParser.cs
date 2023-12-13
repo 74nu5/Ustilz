@@ -59,9 +59,7 @@ public abstract partial class CsvParser(IMemoryCache cache, ILogger<CsvParser> l
                 logger.LogWarning("Certaines colonnes n'ont pas d'index ou n'ont pas été trouvé.");
         }
         else
-        {
             columns = ProcessHeader(filePath, columns, options);
-        }
 
         var commissionType = typeof(TTypeToParsed);
 
@@ -402,9 +400,8 @@ public abstract partial class CsvParser(IMemoryCache cache, ILogger<CsvParser> l
                     return (startTrimCount > 1 ? options.Separator : string.Empty) + newValue.ToString();
                 }).AsSpan();
             if(options.EnableDoubleQuotesHandling)
-            {
                 txtSpan = this.GetDuoQuotesRegex().Replace(txtSpan.ToString(), "\"").AsSpan();
-            }
+
             var txtRange = new Span<Range>(new Range[txtSpan.Count(NewLineChar) + 1]);
             _ = txtSpan.Split(txtRange, NewLineChar);
 
@@ -419,9 +416,8 @@ public abstract partial class CsvParser(IMemoryCache cache, ILogger<CsvParser> l
 
         var lines = File.ReadLines(filePath, options.Encoding);
         if (options.EnableDoubleQuotesHandling)
-        {
             lines = lines.Select(line => this.GetDuoQuotesRegex().Replace(line, "\""));
-        }
+
         return lines;
     }
 }

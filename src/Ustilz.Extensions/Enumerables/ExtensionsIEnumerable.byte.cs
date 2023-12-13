@@ -14,10 +14,7 @@ public static partial class ExtensionsIEnumerable
     /// <returns>Hexadecimal representation string.</returns>
     public static string ToHexString(this IEnumerable<byte> bytes)
     {
-        if (bytes is null)
-        {
-            throw new ArgumentNullException(nameof(bytes));
-        }
+        ArgumentNullException.ThrowIfNull(bytes);
 
         return string.Join(string.Empty, bytes.Select(b => $"0{b:X}".Right(2)));
     }

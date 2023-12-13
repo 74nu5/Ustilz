@@ -92,9 +92,7 @@ public static partial class ExtensionsInt32
     public static double PercentOf(this int number, int total)
     {
         if (number <= 0)
-        {
             throw new DivideByZeroException("The number must be greater than zero.");
-        }
 
         return total / (double)number * 100;
     }
@@ -109,9 +107,7 @@ public static partial class ExtensionsInt32
     public static double PercentOf(this int number, double total)
     {
         if (number <= 0)
-        {
             throw new DivideByZeroException("The number must be greater than zero.");
-        }
 
         return total / number * 100;
     }
@@ -126,9 +122,7 @@ public static partial class ExtensionsInt32
     public static IEnumerable<int> RangeTo(this int startValue, int endValue)
     {
         if (startValue > endValue)
-        {
             throw new ArgumentException(Messages.RangeTo_ValueException, nameof(startValue));
-        }
 
         return Enumerable.Range(startValue, endValue - startValue);
     }

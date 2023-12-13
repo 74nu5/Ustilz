@@ -34,9 +34,7 @@ public class TodoService
         var existingTodo = await this.db.Todos.FindAsync(id);
 
         if (existingTodo is null)
-        {
             return null;
-        }
 
         existingTodo.Title = todo.Title;
         existingTodo.IsComplete = todo.IsComplete;

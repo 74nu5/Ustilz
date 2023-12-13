@@ -50,9 +50,7 @@ public static partial class ExtensionsString
             var ret = new StringBuilder();
 
             foreach (var t in hash)
-            {
                 ret.Append(t.ToString("x2", CultureInfo.CurrentCulture));
-            }
 
             return ret.ToString();
         }
@@ -71,9 +69,7 @@ public static partial class ExtensionsString
     public static string Decrypt(this string stringToDecrypt, string key)
     {
         if (string.IsNullOrEmpty(stringToDecrypt) || string.IsNullOrEmpty(key))
-        {
             throw new ArgumentException("Empty input or key are not allowed.");
-        }
 
         var cspp = new CspParameters { KeyContainerName = key };
         using var rsa = new RSACryptoServiceProvider(cspp);
@@ -95,14 +91,10 @@ public static partial class ExtensionsString
     public static string Encrypt(this string stringToEncrypt, string key)
     {
         if (string.IsNullOrEmpty(stringToEncrypt))
-        {
             throw new ArgumentException("An empty string value cannot be encrypted.");
-        }
 
         if (string.IsNullOrEmpty(key))
-        {
             throw new ArgumentException("Cannot encrypt using an empty key. Please supply an encryption key.");
-        }
 
         var cspp = new CspParameters { KeyContainerName = key };
         using var rsa = new RSACryptoServiceProvider(cspp);
@@ -165,9 +157,7 @@ public static partial class ExtensionsString
     public static bool Validate(string hashValue, string password)
     {
         if (string.IsNullOrEmpty(hashValue))
-        {
             throw new ArgumentException($@"{nameof(hashValue)}' parameter is null.", nameof(hashValue));
-        }
 
         Check.NotEmpty(hashValue, nameof(hashValue));
 

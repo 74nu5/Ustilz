@@ -15,10 +15,7 @@ public static class ExtensionsException
     public static string GetMessagesFromEntireExceptionChain(
         this Exception e)
     {
-        if (e is null)
-        {
-            throw new ArgumentNullException(nameof(e));
-        }
+        ArgumentNullException.ThrowIfNull(e);
 
         // get the full error message list from the inner exceptions
         var message = new StringBuilder(e.Message);

@@ -77,17 +77,13 @@ public sealed class AnsiConsole
                 while (endIndex != message.Length &&
                        message[endIndex] >= 0x20 &&
                        message[endIndex] <= 0x3f)
-                {
                     endIndex += 1;
-                }
 
                 var text = message.Substring(escapeScan, escapeIndex - escapeScan);
                 this.Writer.Write(text);
 
                 if (endIndex == message.Length)
-                {
                     break;
-                }
 
                 switch (message[endIndex])
                 {
@@ -155,9 +151,7 @@ public sealed class AnsiConsole
         this.boldRecursion += bold ? 1 : -1;
 
         if (this.boldRecursion > 1 || (this.boldRecursion == 1 && !bold))
-        {
             return;
-        }
 
         // switches on boldRecursion to handle boldness
         this.SetColor(Console.ForegroundColor);
