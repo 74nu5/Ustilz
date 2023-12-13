@@ -69,13 +69,9 @@ public class Reporter : IReporter
         lock (Lock)
         {
             if (ShouldPassAnsiCodesThrough)
-            {
                 this.console?.Writer.Write(message);
-            }
             else
-            {
                 this.console?.Write(message);
-            }
         }
     }
 
@@ -85,13 +81,9 @@ public class Reporter : IReporter
         lock (Lock)
         {
             if (ShouldPassAnsiCodesThrough)
-            {
                 this.console?.Writer.WriteLine(message);
-            }
             else
-            {
                 this.console?.WriteLine(message);
-            }
         }
     }
 
@@ -99,8 +91,6 @@ public class Reporter : IReporter
     public void WriteLine()
     {
         lock (Lock)
-        {
             this.console?.Writer.WriteLine();
-        }
     }
 }

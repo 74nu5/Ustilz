@@ -22,13 +22,9 @@ public static partial class ExtensionsAction
         ArgumentNullException.ThrowIfNull(falseAction);
 
         if (values.Any(x => !x()))
-        {
             falseAction();
-        }
         else
-        {
             trueAction?.Invoke();
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
@@ -49,13 +45,9 @@ public static partial class ExtensionsAction
         ArgumentNullException.ThrowIfNull(values);
 
         if (values.Any(x => !x()))
-        {
             falseAction?.Invoke(parameter);
-        }
         else
-        {
             trueAction?.Invoke(parameter);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
@@ -79,13 +71,9 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.Any(x => !x()))
-        {
             falseAction?.Invoke(parameter1, parameter2);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
@@ -112,13 +100,9 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.Any(x => !x()))
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
@@ -148,13 +132,9 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.Any(x => !x()))
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
     }
 
     /// <summary>Executes the specified action if one of the given Boolean values is false.</summary>
@@ -165,18 +145,11 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfAnyFalse(this Action falseAction, params Func<bool>[] values)
     {
-        _ = values ?? throw new ArgumentNullException(nameof(values));
-        _ = falseAction ?? throw new ArgumentNullException(nameof(falseAction));
-
-        if (values is null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
+        ArgumentNullException.ThrowIfNull(falseAction);
 
         if (values.All(x => x()))
-        {
             return;
-        }
 
         falseAction();
     }
@@ -195,9 +168,7 @@ public static partial class ExtensionsAction
         _ = falseAction ?? throw new ArgumentNullException(nameof(falseAction));
 
         if (values.All(x => x()))
-        {
             return;
-        }
 
         falseAction(parameter);
     }
@@ -221,9 +192,7 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.All(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2);
     }
@@ -250,9 +219,7 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.All(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2, parameter3);
     }
@@ -282,9 +249,7 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.All(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
     }

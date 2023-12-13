@@ -24,13 +24,9 @@ public static partial class ExtensionsAction
         _ = values ?? throw new ArgumentNullException(nameof(values));
 
         if (values.NotAny(x => x()))
-        {
             falseAction?.Invoke();
-        }
         else
-        {
             trueAction?.Invoke();
-        }
     }
 
     /// <summary>
@@ -47,19 +43,12 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfFalse<T>(this Action<T>? falseAction, T parameter, Action<T>? trueAction = null, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.NotAny(x => x()))
-        {
             falseAction?.Invoke(parameter);
-        }
         else
-        {
             trueAction?.Invoke(parameter);
-        }
     }
 
     /// <summary>
@@ -83,19 +72,12 @@ public static partial class ExtensionsAction
         Action<T1, T2>? trueAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.NotAny(x => x()))
-        {
             falseAction?.Invoke(parameter1, parameter2);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2);
-        }
     }
 
     /// <summary>
@@ -122,19 +104,12 @@ public static partial class ExtensionsAction
         Action<T1, T2, T3>? trueAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.NotAny(x => x()))
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3);
-        }
     }
 
     /// <summary>
@@ -164,19 +139,12 @@ public static partial class ExtensionsAction
         Action<T1, T2, T3, T4>? trueAction = null,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (values.NotAny(x => x()))
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
         else
-        {
             trueAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
     }
 
     /// <summary>Executes the specified action if the given Boolean values are false.</summary>
@@ -187,15 +155,10 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfFalse(this Action? falseAction, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.NotAny(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke();
     }
@@ -210,15 +173,10 @@ public static partial class ExtensionsAction
     [PublicAPI]
     public static void ExecuteIfFalse<T>(this Action<T>? falseAction, T parameter, params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.NotAny(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter);
     }
@@ -239,15 +197,10 @@ public static partial class ExtensionsAction
         T2 parameter2,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.NotAny(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2);
     }
@@ -271,15 +224,10 @@ public static partial class ExtensionsAction
         T3 parameter3,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.NotAny(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2, parameter3);
     }
@@ -306,15 +254,10 @@ public static partial class ExtensionsAction
         T4 parameter4,
         params Func<bool>[] values)
     {
-        if (values == null)
-        {
-            throw new ArgumentNullException(nameof(values));
-        }
+        ArgumentNullException.ThrowIfNull(values);
 
         if (!values.NotAny(x => x()))
-        {
             return;
-        }
 
         falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
     }

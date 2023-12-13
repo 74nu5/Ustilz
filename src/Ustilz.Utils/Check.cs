@@ -50,9 +50,7 @@ public static class Check
         NotNull(collection, parameterName);
 
         if (collection.All(e => e != null))
-        {
             return collection;
-        }
 
         NotEmpty(parameterName, nameof(parameterName));
 
@@ -129,9 +127,7 @@ public static class Check
     public static T NotNull<T>([NoEnumeration] T value, [InvokerParameterName] string parameterName, string propertyName)
     {
         if (value != null)
-        {
             return value;
-        }
 
         NotEmpty(parameterName, nameof(parameterName));
         NotEmpty(propertyName, nameof(propertyName));
@@ -148,9 +144,7 @@ public static class Check
     public static string? NullButNotEmpty(string? value, [InvokerParameterName] string parameterName)
     {
         if (value is null || value.Length != 0)
-        {
             return value;
-        }
 
         NotEmpty(parameterName, nameof(parameterName));
 
@@ -166,9 +160,7 @@ public static class Check
     public static Type ValidEntityType(Type value, [InvokerParameterName] string parameterName)
     {
         if (value.GetTypeInfo().IsClass)
-        {
             return value;
-        }
 
         NotEmpty(parameterName, nameof(parameterName));
 

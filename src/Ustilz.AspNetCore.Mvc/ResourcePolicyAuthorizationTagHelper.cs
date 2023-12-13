@@ -51,8 +51,6 @@ public class ResourcePolicyAuthorizationTagHelper : TagHelper
 
         var httpContext = this.httpContextAccessor.HttpContext;
         if (httpContext != null && !(await this.authorizationService.AuthorizeAsync(httpContext.User, this.ResourceId, this.PolicyName)).Succeeded)
-        {
             output.SuppressOutput();
-        }
     }
 }

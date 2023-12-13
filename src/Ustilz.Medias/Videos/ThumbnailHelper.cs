@@ -47,9 +47,7 @@ public class ThumbnailHelper
             var dv = new DrawingVisual();
 
             using (var dc = dv.RenderOpen())
-            {
                 dc.DrawVideo(player, new(0, 0, 240, 180));
-            }
 
             rtb.Render(dv);
             var frame = BitmapFrame.Create(rtb).GetCurrentValueAsFrozen() as BitmapFrame;

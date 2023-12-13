@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <LangVersion>preview</LangVersion>
@@ -14,25 +14,30 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <NeutralLanguage>fr</NeutralLanguage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-        <DefaultDocumentationFolder>..\..\documentation/$(AssemblyName)</DefaultDocumentationFolder>
-        <OutputPath>bin\Debug</OutputPath>
+        <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <OutputPath>bin\Release</OutputPath>
-        <DocumentationFile>bin\Release\$(TargetFramework)\Ustilz.Json.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="DefaultDocumentation" />
         <PackageReference Include="JetBrains.Annotations" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
+        <PackageReference Include="DefaultDocumentation" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -44,7 +49,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.Text.Json" />
         <PackageReference Include="Text.Analyzers">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -53,8 +57,5 @@
     <ItemGroup>
         <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
     </ItemGroup>
-    <ItemGroup>
-        <AdditionalFiles Include="PublicAPI.Shipped.txt" />
-        <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
-    </ItemGroup>
+
 </Project>

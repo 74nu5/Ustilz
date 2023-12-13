@@ -77,9 +77,7 @@ public static partial class ExtensionsAction
         catch (Exception ex)
         {
             if (exceptionsToThrow.Any(x => x == ex.GetType()))
-            {
                 throw;
-            }
 
             return false;
         }

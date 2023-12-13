@@ -33,21 +33,14 @@ public static partial class ExtensionsString
     /// <returns>Bytes of hex string.</returns>
     public static byte[] HexToBytes(this string hexString)
     {
-        if (hexString is null)
-        {
-            throw new ArgumentNullException(nameof(hexString));
-        }
+        ArgumentNullException.ThrowIfNull(hexString);
 
         if (hexString.Length % 2 != 0)
-        {
             throw new ArgumentException($"HexString cannot be in odd number: {hexString}");
-        }
 
         var retVal = new byte[hexString.Length / 2];
         for (var i = 0; i < hexString.Length; i += 2)
-        {
             retVal[i / 2] = byte.Parse(hexString.Substring(i, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
-        }
 
         return retVal;
     }
@@ -110,15 +103,11 @@ public static partial class ExtensionsString
     public static SecureString ToSecureString(this string str)
     {
         if (string.IsNullOrEmpty(str))
-        {
             return new();
-        }
 
         var ss = new SecureString();
         foreach (var @char in str)
-        {
             ss.AppendChar(@char);
-        }
 
         return ss;
     }
@@ -144,9 +133,7 @@ public static partial class ExtensionsString
         var sb = new StringBuilder();
 
         foreach (var t in from t in normalizedString let uc = CharUnicodeInfo.GetUnicodeCategory(t) where uc != UnicodeCategory.NonSpacingMark select t)
-        {
             sb.Append(t);
-        }
 
         return sb.ToString().Normalize(NormalizationForm.FormC);
     }

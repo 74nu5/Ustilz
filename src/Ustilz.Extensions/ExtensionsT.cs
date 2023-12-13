@@ -210,9 +210,7 @@ public static class ExtensionsT
         try
         {
             if (value == null || value.Equals(string.Empty))
-            {
                 return (T)ifError;
-            }
 
             var type = typeof(T);
             var nonNullableType = Nullable.GetUnderlyingType(type);

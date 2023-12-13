@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
@@ -58,7 +58,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
     <AdditionalFiles Include="PublicAPI.Shipped.txt" />
     <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
   </ItemGroup>
@@ -68,9 +67,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Ustilz.Time\Ustilz.Time.csproj" />
     <ProjectReference Include="..\Ustilz.Utils\Ustilz.Utils.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Messages.Designer.cs">

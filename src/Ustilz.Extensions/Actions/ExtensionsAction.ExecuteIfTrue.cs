@@ -24,13 +24,9 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (values.All(x => x()))
-        {
             trueAction();
-        }
         else
-        {
             falseAction?.Invoke();
-        }
     }
 
     /// <summary>
@@ -51,13 +47,9 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (values.All(x => x()))
-        {
             trueAction(parameter);
-        }
         else
-        {
             falseAction?.Invoke(parameter);
-        }
     }
 
     /// <summary>
@@ -85,13 +77,9 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (values.All(x => x()))
-        {
             trueAction(parameter1, parameter2);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2);
-        }
     }
 
     /// <summary>
@@ -122,13 +110,9 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (values.All(x => x()))
-        {
             trueAction(parameter1, parameter2, parameter3);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3);
-        }
     }
 
     /// <summary>
@@ -162,13 +146,9 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (values.All(x => x()))
-        {
             trueAction(parameter1, parameter2, parameter3, parameter4);
-        }
         else
-        {
             falseAction?.Invoke(parameter1, parameter2, parameter3, parameter4);
-        }
     }
 
     /// <summary>Executes the specified action if the given Boolean values are true.</summary>
@@ -183,9 +163,7 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (!values.All(x => x()))
-        {
             return;
-        }
 
         trueAction();
     }
@@ -204,9 +182,7 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (!values.All(x => x()))
-        {
             return;
-        }
 
         trueAction(parameter);
     }
@@ -231,9 +207,7 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (!values.All(x => x()))
-        {
             return;
-        }
 
         trueAction(parameter1, parameter2);
     }
@@ -261,9 +235,7 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (!values.All(x => x()))
-        {
             return;
-        }
 
         trueAction(parameter1, parameter2, parameter3);
     }
@@ -294,9 +266,7 @@ public static partial class ExtensionsAction
         _ = trueAction ?? throw new ArgumentNullException(nameof(trueAction));
 
         if (!values.All(x => x()))
-        {
             return;
-        }
 
         trueAction(parameter1, parameter2, parameter3, parameter4);
     }

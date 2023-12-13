@@ -106,9 +106,7 @@ public static partial class ExtensionsAction
         catch (Exception ex)
         {
             if (exceptionsToCatch.NotAny(x => x == ex.GetType()))
-            {
                 throw;
-            }
 
             return false;
         }

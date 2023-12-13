@@ -76,18 +76,14 @@ public abstract class ABaseAccessLayer<TContext, TEntity, TIdentity> : IBaseAcce
         var dbQuery = this.ModelSet.AsQueryable();
 
         if (navigationProperties != null)
-        {
             dbQuery = navigationProperties(dbQuery);
-        }
 
         if (filter != null)
-        {
             dbQuery = dbQuery.Where(filter);
-        }
 
         var collection = trackingEnabled
-                             ? dbQuery
-                             : dbQuery.AsNoTracking();
+                                 ? dbQuery
+                                 : dbQuery.AsNoTracking();
 
         return collection;
     }
@@ -102,18 +98,14 @@ public abstract class ABaseAccessLayer<TContext, TEntity, TIdentity> : IBaseAcce
         var dbQuery = this.ModelSet.AsQueryable();
 
         if (navigationProperties != null)
-        {
             dbQuery = navigationProperties(dbQuery);
-        }
 
         if (filter != null)
-        {
             dbQuery = dbQuery.Where(filter);
-        }
 
         var collection = trackingEnabled
-                             ? dbQuery.Select(selector)
-                             : dbQuery.AsNoTracking().Select(selector);
+                                 ? dbQuery.Select(selector)
+                                 : dbQuery.AsNoTracking().Select(selector);
 
         return collection;
     }
@@ -127,18 +119,14 @@ public abstract class ABaseAccessLayer<TContext, TEntity, TIdentity> : IBaseAcce
         var dbQuery = this.ModelSet.AsQueryable();
 
         if (navigationProperties != null)
-        {
             dbQuery = navigationProperties(dbQuery);
-        }
 
         if (filter != null)
-        {
             dbQuery = dbQuery.Where(filter);
-        }
 
         var item = trackingEnabled
-                       ? await dbQuery.FirstOrDefaultAsync()
-                       : await dbQuery.AsNoTracking().FirstOrDefaultAsync();
+                           ? await dbQuery.FirstOrDefaultAsync()
+                           : await dbQuery.AsNoTracking().FirstOrDefaultAsync();
 
         return item;
     }
@@ -153,18 +141,14 @@ public abstract class ABaseAccessLayer<TContext, TEntity, TIdentity> : IBaseAcce
         var dbQuery = this.ModelSet.AsQueryable();
 
         if (navigationProperties != null)
-        {
             dbQuery = navigationProperties(dbQuery);
-        }
 
         if (filter != null)
-        {
             dbQuery = dbQuery.Where(filter);
-        }
 
         var item = trackingEnabled
-                       ? await dbQuery.Select(selector).FirstOrDefaultAsync()
-                       : await dbQuery.AsNoTracking().Select(selector).FirstOrDefaultAsync();
+                           ? await dbQuery.Select(selector).FirstOrDefaultAsync()
+                           : await dbQuery.AsNoTracking().Select(selector).FirstOrDefaultAsync();
 
         return item;
     }
@@ -181,9 +165,7 @@ public abstract class ABaseAccessLayer<TContext, TEntity, TIdentity> : IBaseAcce
     {
         var model = this.ModelSet.FirstOrDefault(model => model.Id.CompareTo(id) == 0);
         if (model == null)
-        {
             return -1;
-        }
 
         this.ModelSet.Remove(model);
         return await this.Context.SaveChangesAsync().ConfigureAwait(false);
