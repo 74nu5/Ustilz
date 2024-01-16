@@ -9,13 +9,11 @@
     <Version>8.0.0-beta1</Version>
     <Nullable>enable</Nullable>
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

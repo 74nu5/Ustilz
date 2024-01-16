@@ -1,205 +1,200 @@
 #nullable enable
-Ustilz.Extensions.Actions.ExtensionsAction
-Ustilz.Extensions.Enumerables.ExtensionsIEnumerable
-Ustilz.Extensions.ExtensionsBool
-Ustilz.Extensions.ExtensionsDictionary
-Ustilz.Extensions.ExtensionsDouble
-Ustilz.Extensions.ExtensionsEnum
-Ustilz.Extensions.ExtensionsException
-Ustilz.Extensions.ExtensionsFunc
-Ustilz.Extensions.ExtensionsNameValueCollection
-Ustilz.Extensions.ExtensionsT
-Ustilz.Extensions.ExtensionsTimeSpan
-Ustilz.Extensions.ExtensionsType
-Ustilz.Extensions.Int32.ExtensionsInt32
+Ustilz.Extensions.Actions.ActionExtensions
+Ustilz.Extensions.Enumerables.EnumerableExtensions
+Ustilz.Extensions.Misc.BoolExtensions
+Ustilz.Extensions.Misc.DictionaryExtensions
+Ustilz.Extensions.Misc.DoubleExtensions
+Ustilz.Extensions.Misc.EnumExtensions
+Ustilz.Extensions.Misc.ExceptionExtensions
+Ustilz.Extensions.Misc.FuncExtensions
+Ustilz.Extensions.Misc.NameValueCollectionExtensions
+Ustilz.Extensions.Misc.TypeParamExtensions
+Ustilz.Extensions.Misc.TimeSpanExtensions
+Ustilz.Extensions.Misc.TypeExtensions
+Ustilz.Extensions.Int32.Int32Extensions
 Ustilz.Extensions.Models.IExecutionResult<T>
 Ustilz.Extensions.Models.IExecutionResult<T>.Exception.get -> System.Exception?
 Ustilz.Extensions.Models.IExecutionResult<T>.Exception.set -> void
 Ustilz.Extensions.Models.IExecutionResult<T>.Result.get -> T
 Ustilz.Extensions.Models.IExecutionResult<T>.Result.set -> void
-Ustilz.Extensions.Strings.ExtensionsString
-Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Strings.ExtensionsString.HashType.MD5 = 0 -> Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Strings.ExtensionsString.HashType.SHA1 = 1 -> Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Strings.ExtensionsString.HashType.SHA256 = 2 -> Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Strings.ExtensionsString.HashType.SHA384 = 3 -> Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Strings.ExtensionsString.HashType.SHA512 = 4 -> Ustilz.Extensions.Strings.ExtensionsString.HashType
-Ustilz.Extensions.Tuples.ExtensionsTupleInt
-Ustilz.Extensions.Tuples.ExtensionsTuples
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse(this System.Action! falseAction, System.Action? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse(this System.Action! falseAction, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T>(this System.Action<T>! falseAction, T parameter, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyFalse<T>(this System.Action<T>? falseAction, T parameter, System.Action<T>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue(this System.Action? trueAction, System.Action? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue(this System.Action? trueAction, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2, T3>(this System.Action<T1, T2, T3>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2, T3>(this System.Action<T1, T2, T3>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2>(this System.Action<T1, T2>? trueAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T1, T2>(this System.Action<T1, T2>? trueAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T>(this System.Action<T>? trueAction, T parameter, System.Action<T>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfAnyTrue<T>(this System.Action<T>? trueAction, T parameter, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse(this System.Action? falseAction, System.Action? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse(this System.Action? falseAction, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T>(this System.Action<T>? falseAction, T parameter, System.Action<T>? trueAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfFalse<T>(this System.Action<T>? falseAction, T parameter, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue(this System.Action! trueAction, System.Action? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue(this System.Action! trueAction, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2, T3>(this System.Action<T1, T2, T3>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2, T3>(this System.Action<T1, T2, T3>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2>(this System.Action<T1, T2>! trueAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T1, T2>(this System.Action<T1, T2>! trueAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T>(this System.Action<T>! trueAction, T parameter, System.Action<T>? falseAction = null, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.ExecuteIfTrue<T>(this System.Action<T>! trueAction, T parameter, params System.Func<bool>![]! values) -> void
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute(this System.Action! action, params System.Type![]! exceptionsToCatch) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute<TException1, TException2, TException3, TException4>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute<TException1, TException2, TException3>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute<TException1, TException2>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecute<TException>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecuteExcept(this System.Action! action, params System.Type![]! exceptionsToThrow) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecuteExcept<TException1, TException2, TException3, TException4>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecuteExcept<TException1, TException2, TException3>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecuteExcept<TException1, TException2>(this System.Action! action) -> bool
-static Ustilz.Extensions.Actions.ExtensionsAction.SafeExecuteExcept<TException>(this System.Action! action) -> bool
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Adjust<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Func<T, int, bool>! shouldReplace, T replacement) -> System.Collections.Generic.IEnumerable<T>!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Bifurcate<T>(this System.Collections.Generic.IEnumerable<T>! items, System.Collections.Generic.IList<bool>! filter) -> (System.Collections.Generic.IEnumerable<T>! FilteredTrue, System.Collections.Generic.IEnumerable<T>! FilteredFalse)
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Bifurcate<T>(this System.Collections.Generic.IEnumerable<T>! items, System.Func<T, bool>! filter) -> (System.Collections.Generic.IEnumerable<T>! FilteredTrue, System.Collections.Generic.IEnumerable<T>! FilteredFalse)
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.ForEach<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Action<T>! action) -> void
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Join<T>(this System.Collections.Generic.IEnumerable<T>! tab, string! separateur) -> string!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.NotAny<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Func<T, bool>! predicate) -> bool
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Page<T>(this System.Collections.Generic.IEnumerable<T>! source, int page, int pageSize) -> System.Collections.Generic.IEnumerable<T>!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.Pairwise<T, TReturn>(this System.Collections.Generic.IEnumerable<T>! source, System.Func<T, T, TReturn>! selector) -> System.Collections.Generic.IEnumerable<TReturn>!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.PathCombine(this System.Collections.Generic.IEnumerable<string!>! enumerable) -> string!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.SplitList<T>(System.Collections.Generic.IEnumerable<T>! enumerable, int split) -> System.Collections.Generic.IEnumerable<System.Collections.Generic.IEnumerable<T>!>!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.ToHexString(this System.Collections.Generic.IEnumerable<byte>! bytes) -> string!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.ToReadOnly<T>(this System.Collections.Generic.IEnumerable<T>! collection) -> System.Collections.ObjectModel.ReadOnlyCollection<T>!
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.WithIndex<T>(this System.Collections.Generic.IEnumerable<T>! enumerable) -> System.Collections.Generic.IEnumerable<(T Item, int Index)>!
-static Ustilz.Extensions.ExtensionsBool.AsInt(this bool b) -> int
-static Ustilz.Extensions.ExtensionsDictionary.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key) -> TValue
-static Ustilz.Extensions.ExtensionsDictionary.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key, System.Func<TValue>! valueProvider) -> TValue
-static Ustilz.Extensions.ExtensionsDictionary.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key, TValue missingValue) -> TValue
-static Ustilz.Extensions.ExtensionsDictionary.Remove<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, params TKey[]! keys) -> void
-static Ustilz.Extensions.ExtensionsDouble.Hours(this double time) -> System.TimeSpan
-static Ustilz.Extensions.ExtensionsDouble.IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2) -> bool
-static Ustilz.Extensions.ExtensionsEnum.GetDescriptionDictionary<T>() -> System.Collections.Generic.Dictionary<string!, string?>!
-static Ustilz.Extensions.ExtensionsEnum.GetEnumDescription<T>(this T value) -> string!
-static Ustilz.Extensions.ExtensionsEnum.IsIn(this System.Enum! value, params System.Enum![]! values) -> bool
-static Ustilz.Extensions.ExtensionsEnum.ToInt(this System.Enum! enumValue) -> int
-static Ustilz.Extensions.ExtensionsException.GetMessagesFromEntireExceptionChain(this System.Exception! e) -> string!
-static Ustilz.Extensions.ExtensionsFunc.ExecuteSafe<T, TResult>(this System.Func<T, TResult>! func, T parameter) -> Ustilz.Extensions.Models.IExecutionResult<TResult>!
-static Ustilz.Extensions.ExtensionsFunc.ExecuteSafe<T>(this System.Action<T>! action, T parameter) -> Ustilz.Extensions.Models.IExecutionResult<T>!
-static Ustilz.Extensions.ExtensionsFunc.Memoize<T, TResult>(this System.Func<T, TResult>! func) -> System.Func<T, TResult>!
-static Ustilz.Extensions.ExtensionsFunc.Memoize<TResult>(this System.Func<TResult>! func) -> System.Func<TResult>!
-static Ustilz.Extensions.ExtensionsFunc.TestPerf(this System.Action! action) -> long
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<T, TResult>(this System.Func<T, TResult>! function, out long timestamp, T param) -> TResult
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<T1, T2, T3, T4, TResult>(this System.Func<T1, T2, T3, T4, TResult>! function, out long timestamp, T1 param1, T2 param2, T3 param3, T4 param4) -> TResult
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<T1, T2, T3, TResult>(this System.Func<T1, T2, T3, TResult>! function, out long timestamp, T1 param1, T2 param2, T3 param3) -> TResult
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<T1, T2, TResult>(this System.Func<T1, T2, TResult>! function, out long timestamp, T1 param1, T2 param2) -> TResult
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<T>(this System.Action<T>! action, T param) -> long
-static Ustilz.Extensions.ExtensionsFunc.TestPerf<TResult>(this System.Func<TResult>! function, out long timestamp) -> TResult
-static Ustilz.Extensions.ExtensionsNameValueCollection.ToDictionary(this System.Collections.Specialized.NameValueCollection? nvc) -> System.Collections.Generic.Dictionary<string!, string!>!
-static Ustilz.Extensions.ExtensionsT.AsBool<T>(this T transformObject) -> bool
-static Ustilz.Extensions.ExtensionsT.Between<T>(this T value, T from, T to) -> bool
-static Ustilz.Extensions.ExtensionsT.Display<T>(this T o) -> T
-static Ustilz.Extensions.ExtensionsT.IfNull<T>(this T? source, T! defaultValue) -> T!
-static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, params T[]! values) -> bool
-static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, params T[]! values) -> bool
-static Ustilz.Extensions.ExtensionsT.IsNotNull<T>(this T? source) -> bool
-static Ustilz.Extensions.ExtensionsT.IsNull<T>(this T? source) -> bool
-static Ustilz.Extensions.ExtensionsT.Swap<T>(this object! nullObject, ref T value0, ref T value1) -> void
-static Ustilz.Extensions.ExtensionsT.To<T>(this System.IConvertible! value) -> T
-static Ustilz.Extensions.ExtensionsT.To<T>(this System.IConvertible? value, System.IConvertible! ifError) -> T
-static Ustilz.Extensions.ExtensionsTimeSpan.Ago(this System.TimeSpan value) -> System.DateTime
-static Ustilz.Extensions.ExtensionsTimeSpan.AgoUtc(this System.TimeSpan value) -> System.DateTime
-static Ustilz.Extensions.ExtensionsTimeSpan.FromNow(this System.TimeSpan value) -> System.DateTime
-static Ustilz.Extensions.ExtensionsTimeSpan.FromNowUtc(this System.TimeSpan value) -> System.DateTime
-static Ustilz.Extensions.ExtensionsType.Ctor<TArg1, TArg2, TArg3, TArg4, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TArg3, TArg4, TResult>!
-static Ustilz.Extensions.ExtensionsType.Ctor<TArg1, TArg2, TArg3, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TArg3, TResult>!
-static Ustilz.Extensions.ExtensionsType.Ctor<TArg1, TArg2, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TResult>!
-static Ustilz.Extensions.ExtensionsType.Ctor<TArg1, TResult>(this System.Type! type) -> System.Func<TArg1, TResult>!
-static Ustilz.Extensions.ExtensionsType.Ctor<TResult>(this System.Type! type) -> System.Func<TResult>!
-static Ustilz.Extensions.Int32.ExtensionsInt32.Août(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Avril(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Days(this int days) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.Décembre(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.FactorOf(this int value, int factorNumer) -> bool
-static Ustilz.Extensions.Int32.ExtensionsInt32.Février(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Hours(this int hours) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.IsEven(this int value) -> bool
-static Ustilz.Extensions.Int32.ExtensionsInt32.IsLeapYear(this int year) -> bool
-static Ustilz.Extensions.Int32.ExtensionsInt32.IsMultipleOf(this int value, int factor) -> bool
-static Ustilz.Extensions.Int32.ExtensionsInt32.IsOdd(this int value) -> bool
-static Ustilz.Extensions.Int32.ExtensionsInt32.Janvier(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Juillet(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Juin(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Mai(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Mars(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Milliseconds(this int milliseconds) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.Minutes(this int minutes) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.Novembre(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Octobre(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentOf(this int number, double total) -> double
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentOf(this int number, int total) -> double
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentageOf(this int number, decimal percent) -> decimal
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentageOf(this int number, double percent) -> double
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentageOf(this int number, int percent) -> double
-static Ustilz.Extensions.Int32.ExtensionsInt32.PercentageOf(this int number, long percent) -> double
-static Ustilz.Extensions.Int32.ExtensionsInt32.RangeTo(this int startValue, int endValue) -> System.Collections.Generic.IEnumerable<int>!
-static Ustilz.Extensions.Int32.ExtensionsInt32.Seconds(this int seconds) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.Septembre(this int day, int year) -> System.DateTime
-static Ustilz.Extensions.Int32.ExtensionsInt32.Ticks(this int ticks) -> System.TimeSpan
-static Ustilz.Extensions.Int32.ExtensionsInt32.Times(this int count, System.Action! action) -> void
-static Ustilz.Extensions.Strings.ExtensionsString.ComputeHash(this string! input, Ustilz.Extensions.Strings.ExtensionsString.HashType hashType) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.Decrypt(this string! stringToDecrypt, string! key) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.Encrypt(this string! stringToEncrypt, string! key) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.GenerateHash(string! password, string? salt = null, Ustilz.Extensions.Strings.ExtensionsString.HashType provider = Ustilz.Extensions.Strings.ExtensionsString.HashType.MD5) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.GeneratePassword() -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.GenerateSalt(int length = 4) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.GenerateSaltBytes(int length = 16) -> byte[]!
-static Ustilz.Extensions.Strings.ExtensionsString.HexToBytes(this string! hexString) -> byte[]!
-static Ustilz.Extensions.Strings.ExtensionsString.IsNullOrEmpty(this string! str) -> bool
-static Ustilz.Extensions.Strings.ExtensionsString.Join(this string![]! strs, string! separator) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.Left(this string! value, int length) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.Right(this string! value, int length) -> string!
-static Ustilz.Extensions.Strings.ExtensionsString.ToEnum<T>(this string! value) -> T
-static Ustilz.Extensions.Strings.ExtensionsString.ToException<T>(this string! message) -> void
-static Ustilz.Extensions.Strings.ExtensionsString.ToSecureString(this string! str) -> System.Security.SecureString!
-static Ustilz.Extensions.Strings.ExtensionsString.ToSecureStringReadOnly(this string! str) -> System.Security.SecureString!
-static Ustilz.Extensions.Strings.ExtensionsString.Validate(string! hashValue, string! password) -> bool
-static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Hours(this (int Hour, int Minute) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Hours(this (int Hour, int Minute, int Second, int Milliseconds) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTupleInt.Minutes(this (int Minute, int Second) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTuples.Hours(this (int Hour, int Minute, int Second, int Milliseconds) time) -> System.TimeSpan
-static Ustilz.Extensions.Tuples.ExtensionsTuples.Minutes(this (int Minute, int Second) time) -> System.TimeSpan
-static Ustilz.Extensions.ExtensionsDictionary.AddOrUpdate<TKey, TValue>(this System.Collections.Generic.Dictionary<TKey, TValue>! dictionary, TKey key, TValue value) -> bool
-static Ustilz.Extensions.ExtensionsT.Chain<T>(this T chainObject, System.Action<T?>! action) -> T
-static Ustilz.Extensions.ExtensionsT.IsIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
-static Ustilz.Extensions.ExtensionsT.IsNotIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
-static Ustilz.Extensions.Strings.ExtensionsString.SplitPascalCase(this string! text) -> string!
-static Ustilz.Extensions.ExtensionsRandom.NextEnum<T>(this System.Random! random) -> T
-Ustilz.Extensions.ExtensionsRandom
-static Ustilz.Extensions.Strings.ExtensionsString.GenerateInitials(this string? nom) -> string?
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.FindMax<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
-static Ustilz.Extensions.Enumerables.ExtensionsIEnumerable.FindMin<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
-static Ustilz.Extensions.ExtensionsDouble.GetPercentage(this double value, int percentage) -> double
-static Ustilz.Extensions.ExtensionsT.ImplementsInterfaces<T>(this T obj, params System.Type![]! interfaces) -> System.Collections.Generic.List<System.Type?>!
-static Ustilz.Extensions.Strings.ExtensionsString.Format<T>(this string! template, T data) -> string!
+Ustilz.Extensions.Strings.StringExtensions
+Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Strings.StringExtensions.HashType.MD5 = 0 -> Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Strings.StringExtensions.HashType.SHA1 = 1 -> Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Strings.StringExtensions.HashType.SHA256 = 2 -> Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Strings.StringExtensions.HashType.SHA384 = 3 -> Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Strings.StringExtensions.HashType.SHA512 = 4 -> Ustilz.Extensions.Strings.StringExtensions.HashType
+Ustilz.Extensions.Tuples.TupleIntExtensions
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse(this System.Action! falseAction, System.Action? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse(this System.Action! falseAction, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T>(this System.Action<T>! falseAction, T parameter, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse<T>(this System.Action<T>? falseAction, T parameter, System.Action<T>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue(this System.Action? trueAction, System.Action? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue(this System.Action? trueAction, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2, T3>(this System.Action<T1, T2, T3>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2, T3>(this System.Action<T1, T2, T3>? trueAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2>(this System.Action<T1, T2>? trueAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T1, T2>(this System.Action<T1, T2>? trueAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T>(this System.Action<T>? trueAction, T parameter, System.Action<T>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue<T>(this System.Action<T>? trueAction, T parameter, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse(this System.Action? falseAction, System.Action? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse(this System.Action? falseAction, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2, T3>(this System.Action<T1, T2, T3>? falseAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T1, T2>(this System.Action<T1, T2>? falseAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T>(this System.Action<T>? falseAction, T parameter, System.Action<T>? trueAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse<T>(this System.Action<T>? falseAction, T parameter, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue(this System.Action! trueAction, System.Action? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue(this System.Action! trueAction, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, System.Action<T1, T2, T3, T4>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2, T3, T4>(this System.Action<T1, T2, T3, T4>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, T4 parameter4, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2, T3>(this System.Action<T1, T2, T3>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, System.Action<T1, T2, T3>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2, T3>(this System.Action<T1, T2, T3>! trueAction, T1 parameter1, T2 parameter2, T3 parameter3, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2>(this System.Action<T1, T2>! trueAction, T1 parameter1, T2 parameter2, System.Action<T1, T2>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T1, T2>(this System.Action<T1, T2>! trueAction, T1 parameter1, T2 parameter2, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T>(this System.Action<T>! trueAction, T parameter, System.Action<T>? falseAction = null, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue<T>(this System.Action<T>! trueAction, T parameter, params System.Func<bool>![]! values) -> void
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute(this System.Action! action, params System.Type![]! exceptionsToCatch) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute<TException1, TException2, TException3, TException4>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute<TException1, TException2, TException3>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute<TException1, TException2>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecute<TException>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept(this System.Action! action, params System.Type![]! exceptionsToThrow) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept<TException1, TException2, TException3, TException4>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept<TException1, TException2, TException3>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept<TException1, TException2>(this System.Action! action) -> bool
+static Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept<TException>(this System.Action! action) -> bool
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Adjust<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Func<T, int, bool>! shouldReplace, T replacement) -> System.Collections.Generic.IEnumerable<T>!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Bifurcate<T>(this System.Collections.Generic.IEnumerable<T>! items, System.Collections.Generic.IList<bool>! filter) -> (System.Collections.Generic.IEnumerable<T>! FilteredTrue, System.Collections.Generic.IEnumerable<T>! FilteredFalse)
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Bifurcate<T>(this System.Collections.Generic.IEnumerable<T>! items, System.Func<T, bool>! filter) -> (System.Collections.Generic.IEnumerable<T>! FilteredTrue, System.Collections.Generic.IEnumerable<T>! FilteredFalse)
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.ForEach<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Action<T>! action) -> void
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Join<T>(this System.Collections.Generic.IEnumerable<T>! tab, string! separateur) -> string!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.NotAny<T>(this System.Collections.Generic.IEnumerable<T>! enumerable, System.Func<T, bool>! predicate) -> bool
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Page<T>(this System.Collections.Generic.IEnumerable<T>! source, int page, int pageSize) -> System.Collections.Generic.IEnumerable<T>!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.Pairwise<T, TReturn>(this System.Collections.Generic.IEnumerable<T>! source, System.Func<T, T, TReturn>! selector) -> System.Collections.Generic.IEnumerable<TReturn>!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.PathCombine(this System.Collections.Generic.IEnumerable<string!>! enumerable) -> string!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.SplitList<T>(System.Collections.Generic.IEnumerable<T>! enumerable, int split) -> System.Collections.Generic.IEnumerable<System.Collections.Generic.IEnumerable<T>!>!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.ToHexString(this System.Collections.Generic.IEnumerable<byte>! bytes) -> string!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.ToReadOnly<T>(this System.Collections.Generic.IEnumerable<T>! collection) -> System.Collections.ObjectModel.ReadOnlyCollection<T>!
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.WithIndex<T>(this System.Collections.Generic.IEnumerable<T>! enumerable) -> System.Collections.Generic.IEnumerable<(T Item, int Index)>!
+static Ustilz.Extensions.Misc.BoolExtensions.AsInt(this bool b) -> int
+static Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key) -> TValue
+static Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key, System.Func<TValue>! valueProvider) -> TValue
+static Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, TKey key, TValue missingValue) -> TValue
+static Ustilz.Extensions.Misc.DictionaryExtensions.Remove<TKey, TValue>(this System.Collections.Generic.IDictionary<TKey, TValue>! dictionary, params TKey[]! keys) -> void
+static Ustilz.Extensions.Misc.DoubleExtensions.Hours(this double time) -> System.TimeSpan
+static Ustilz.Extensions.Misc.DoubleExtensions.IsNearlyEqualByTwoDecimals(this double valeur1, double valeur2) -> bool
+static Ustilz.Extensions.Misc.EnumExtensions.GetDescriptionDictionary<T>() -> System.Collections.Generic.Dictionary<string!, string?>!
+static Ustilz.Extensions.Misc.EnumExtensions.GetEnumDescription<T>(this T value) -> string!
+static Ustilz.Extensions.Misc.EnumExtensions.IsIn(this System.Enum! value, params System.Enum![]! values) -> bool
+static Ustilz.Extensions.Misc.EnumExtensions.ToInt(this System.Enum! enumValue) -> int
+static Ustilz.Extensions.Misc.ExceptionExtensions.GetMessagesFromEntireExceptionChain(this System.Exception! e) -> string!
+static Ustilz.Extensions.Misc.FuncExtensions.ExecuteSafe<T, TResult>(this System.Func<T, TResult>! function, T parameter) -> Ustilz.Extensions.Models.IExecutionResult<TResult>!
+static Ustilz.Extensions.Misc.FuncExtensions.ExecuteSafe<T>(this System.Action<T>! action, T parameter) -> Ustilz.Extensions.Models.IExecutionResult<T>!
+static Ustilz.Extensions.Misc.FuncExtensions.Memoize<T, TResult>(this System.Func<T, TResult>! func) -> System.Func<T, TResult>!
+static Ustilz.Extensions.Misc.FuncExtensions.Memoize<TResult>(this System.Func<TResult>! func) -> System.Func<TResult>!
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf(this System.Action! action) -> long
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<T, TResult>(this System.Func<T, TResult>! function, out long timestamp, T param) -> TResult
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<T1, T2, T3, T4, TResult>(this System.Func<T1, T2, T3, T4, TResult>! function, out long timestamp, T1 param1, T2 param2, T3 param3, T4 param4) -> TResult
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<T1, T2, T3, TResult>(this System.Func<T1, T2, T3, TResult>! function, out long timestamp, T1 param1, T2 param2, T3 param3) -> TResult
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<T1, T2, TResult>(this System.Func<T1, T2, TResult>! function, out long timestamp, T1 param1, T2 param2) -> TResult
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<T>(this System.Action<T>! action, T param) -> long
+static Ustilz.Extensions.Misc.FuncExtensions.TestPerf<TResult>(this System.Func<TResult>! function, out long timestamp) -> TResult
+static Ustilz.Extensions.Misc.NameValueCollectionExtensions.ToDictionary(this System.Collections.Specialized.NameValueCollection? nvc) -> System.Collections.Generic.Dictionary<string!, string!>!
+static Ustilz.Extensions.Misc.TypeParamExtensions.AsBool<T>(this T transformObject) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.Between<T>(this T value, T from, T to) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.Display<T>(this T o) -> T
+static Ustilz.Extensions.Misc.TypeParamExtensions.IfNull<T>(this T? source, T! defaultValue) -> T!
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsIn<T>(this T value, params T[]! values) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsNotIn<T>(this T value, params T[]! values) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsNotNull<T>(this T? source) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsNull<T>(this T? source) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.Swap<T>(this object! nullObject, ref T value0, ref T value1) -> void
+static Ustilz.Extensions.Misc.TypeParamExtensions.To<T>(this System.IConvertible! value) -> T
+static Ustilz.Extensions.Misc.TypeParamExtensions.To<T>(this System.IConvertible? value, System.IConvertible! ifError) -> T
+static Ustilz.Extensions.Misc.TimeSpanExtensions.Ago(this System.TimeSpan value) -> System.DateTime
+static Ustilz.Extensions.Misc.TimeSpanExtensions.AgoUtc(this System.TimeSpan value) -> System.DateTime
+static Ustilz.Extensions.Misc.TimeSpanExtensions.FromNow(this System.TimeSpan value) -> System.DateTime
+static Ustilz.Extensions.Misc.TimeSpanExtensions.FromNowUtc(this System.TimeSpan value) -> System.DateTime
+static Ustilz.Extensions.Misc.TypeExtensions.Ctor<TArg1, TArg2, TArg3, TArg4, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TArg3, TArg4, TResult>!
+static Ustilz.Extensions.Misc.TypeExtensions.Ctor<TArg1, TArg2, TArg3, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TArg3, TResult>!
+static Ustilz.Extensions.Misc.TypeExtensions.Ctor<TArg1, TArg2, TResult>(this System.Type! type) -> System.Func<TArg1, TArg2, TResult>!
+static Ustilz.Extensions.Misc.TypeExtensions.Ctor<TArg1, TResult>(this System.Type! type) -> System.Func<TArg1, TResult>!
+static Ustilz.Extensions.Misc.TypeExtensions.Ctor<TResult>(this System.Type! type) -> System.Func<TResult>!
+static Ustilz.Extensions.Int32.Int32Extensions.Août(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Avril(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Days(this int days) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.Décembre(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.FactorOf(this int value, int factorNumer) -> bool
+static Ustilz.Extensions.Int32.Int32Extensions.Février(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Hours(this int hours) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.IsEven(this int value) -> bool
+static Ustilz.Extensions.Int32.Int32Extensions.IsLeapYear(this int year) -> bool
+static Ustilz.Extensions.Int32.Int32Extensions.IsMultipleOf(this int value, int factor) -> bool
+static Ustilz.Extensions.Int32.Int32Extensions.IsOdd(this int value) -> bool
+static Ustilz.Extensions.Int32.Int32Extensions.Janvier(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Juillet(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Juin(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Mai(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Mars(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Milliseconds(this int milliseconds) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.Minutes(this int minutes) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.Novembre(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Octobre(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.PercentOf(this int number, double total) -> double
+static Ustilz.Extensions.Int32.Int32Extensions.PercentOf(this int number, int total) -> double
+static Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(this int number, decimal percent) -> decimal
+static Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(this int number, double percent) -> double
+static Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(this int number, int percent) -> double
+static Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(this int number, long percent) -> double
+static Ustilz.Extensions.Int32.Int32Extensions.RangeTo(this int startValue, int endValue) -> System.Collections.Generic.IEnumerable<int>!
+static Ustilz.Extensions.Int32.Int32Extensions.Seconds(this int seconds) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.Septembre(this int day, int year) -> System.DateTime
+static Ustilz.Extensions.Int32.Int32Extensions.Ticks(this int ticks) -> System.TimeSpan
+static Ustilz.Extensions.Int32.Int32Extensions.Times(this int count, System.Action! action) -> void
+static Ustilz.Extensions.Strings.StringExtensions.ComputeHash(this string! input, Ustilz.Extensions.Strings.StringExtensions.HashType hashType) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.Decrypt(this string! stringToDecrypt, string! key) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.Encrypt(this string! stringToEncrypt, string! key) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.GenerateHash(string! password, string? salt = null, Ustilz.Extensions.Strings.StringExtensions.HashType provider = Ustilz.Extensions.Strings.StringExtensions.HashType.MD5) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.GeneratePassword() -> string!
+static Ustilz.Extensions.Strings.StringExtensions.GenerateSalt(int length = 4) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.GenerateSaltBytes(int length = 16) -> byte[]!
+static Ustilz.Extensions.Strings.StringExtensions.HexToBytes(this string! hexString) -> byte[]!
+static Ustilz.Extensions.Strings.StringExtensions.IsNullOrEmpty(this string! str) -> bool
+static Ustilz.Extensions.Strings.StringExtensions.Join(this string![]! strs, string! separator) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.Left(this string! value, int length) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.Right(this string! value, int length) -> string!
+static Ustilz.Extensions.Strings.StringExtensions.ToEnum<T>(this string! value) -> T
+static Ustilz.Extensions.Strings.StringExtensions.ToException<T>(this string! message) -> void
+static Ustilz.Extensions.Strings.StringExtensions.ToSecureString(this string! str) -> System.Security.SecureString!
+static Ustilz.Extensions.Strings.StringExtensions.ToSecureStringReadOnly(this string! str) -> System.Security.SecureString!
+static Ustilz.Extensions.Strings.StringExtensions.Validate(string! hashValue, string! password) -> bool
+static Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(this (int Hour, int Minute) time) -> System.TimeSpan
+static Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(this (int Hour, int Minute, int Second) time) -> System.TimeSpan
+static Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(this (int Hour, int Minute, int Second, int Milliseconds) time) -> System.TimeSpan
+static Ustilz.Extensions.Tuples.TupleIntExtensions.Minutes(this (int Minute, int Second) time) -> System.TimeSpan
+static Ustilz.Extensions.Misc.DictionaryExtensions.AddOrUpdate<TKey, TValue>(this System.Collections.Generic.Dictionary<TKey, TValue>! dictionary, TKey key, TValue value) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.Chain<T>(this T chainObject, System.Action<T?>! action) -> T
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
+static Ustilz.Extensions.Misc.TypeParamExtensions.IsNotIn<T>(this T value, System.Collections.Generic.IEnumerable<T?>! values) -> bool
+static Ustilz.Extensions.Strings.StringExtensions.SplitPascalCase(this string! text) -> string!
+static Ustilz.Extensions.Misc.RandomExtensions.NextEnum<T>(this System.Random! random) -> T
+Ustilz.Extensions.Misc.RandomExtensions
+static Ustilz.Extensions.Strings.StringExtensions.GenerateInitials(this string? nom) -> string?
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.FindMax<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
+static Ustilz.Extensions.Enumerables.EnumerableExtensions.FindMin<T, TValue>(this System.Collections.Generic.IEnumerable<T>! list, System.Func<T, TValue>! selector) -> T?
+static Ustilz.Extensions.Misc.DoubleExtensions.GetPercentage(this double value, int percentage) -> double
+static Ustilz.Extensions.Misc.TypeParamExtensions.ImplementsInterfaces<T>(this T obj, params System.Type![]! interfaces) -> System.Collections.Generic.List<System.Type?>!
+static Ustilz.Extensions.Strings.StringExtensions.Format<T>(this string! template, T data) -> string!
