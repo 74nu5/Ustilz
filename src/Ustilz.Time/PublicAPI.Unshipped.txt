@@ -1,4 +1,4 @@
-﻿Ustilz.Time.Clock
+Ustilz.Time.Clock
 Ustilz.Time.Duration
 Ustilz.Time.Duration.Day = 4 -> Ustilz.Time.Duration
 Ustilz.Time.Duration.Decade = 10 -> Ustilz.Time.Duration
@@ -16,7 +16,7 @@ Ustilz.Time.ExtensionsDuration
 static Ustilz.Time.Clock.Now.get -> System.DateTime
 static Ustilz.Time.Clock.Reset() -> void
 static Ustilz.Time.Clock.SetFunctionNow(System.Func<System.DateTime>? value) -> void
-static Ustilz.Time.ExtensionsDateTime.AgeFrom(this System.DateTime startDay, System.DateTime? day = null) -> (int YearAge, int MonthAge, int DayAge)
+static Ustilz.Time.ExtensionsDateTime.AgeFrom(this System.DateTime startDate, System.DateTime? date = null) -> (int YearAge, int MonthAge, int DayAge)
 static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours) -> System.DateTime
 static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours, int minutes) -> System.DateTime
 static Ustilz.Time.ExtensionsDateTime.AtTime(this System.DateTime date, int hours, int minutes, int seconds) -> System.DateTime

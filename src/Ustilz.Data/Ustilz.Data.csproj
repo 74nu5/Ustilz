@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <!--<PackageReference Include="DefaultDocumentation" />-->
+    <PackageReference Include="CommunityToolkit.Diagnostics" />
     <PackageReference Include="JetBrains.Annotations" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
       <PrivateAssets>all</PrivateAssets>
@@ -56,6 +57,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ustilz.Extensions\Ustilz.Extensions.csproj" />
     <ProjectReference Include="..\Ustilz.Models\Ustilz.Models.csproj" />
   </ItemGroup>
 </Project>

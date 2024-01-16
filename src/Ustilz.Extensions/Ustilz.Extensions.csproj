@@ -30,6 +30,7 @@
     <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Diagnostics" />
     <PackageReference Include="JetBrains.Annotations" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
       <PrivateAssets>all</PrivateAssets>
@@ -65,6 +66,7 @@
     <Compile Include="..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ustilz.Models\Ustilz.Models.csproj" />
     <ProjectReference Include="..\Ustilz.Time\Ustilz.Time.csproj" />
     <ProjectReference Include="..\Ustilz.Utils\Ustilz.Utils.csproj" />
   </ItemGroup>
