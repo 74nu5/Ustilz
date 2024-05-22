@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <UseWpf>true</UseWpf>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
-    <Version>8.0.0-beta1</Version>
+    <Version>9.0.0-beta1</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
     <PackageReference Include="DefaultDocumentation" />

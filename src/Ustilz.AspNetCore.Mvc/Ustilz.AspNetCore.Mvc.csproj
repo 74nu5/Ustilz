@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageTags>aspnetcore;routing</PackageTags>
     <AssemblyVersion>8.0.0</AssemblyVersion>
     <FileVersion>8.0.0</FileVersion>
-    <Version>8.0.0-beta1</Version>
+    <Version>9.0.0-beta1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
@@ -40,10 +40,6 @@
     <PackageReference Include="DefaultDocumentation" />
     <PackageReference Include="JetBrains.Annotations" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
