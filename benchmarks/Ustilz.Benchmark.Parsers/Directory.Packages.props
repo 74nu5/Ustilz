@@ -3,8 +3,9 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="BenchmarkDotNet" Version="0.13.9" />
-    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageVersion Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageVersion Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.12" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0-preview.6.24327.7" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0-preview.6.24327.7" />
   </ItemGroup>
 </Project>

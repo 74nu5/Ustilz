@@ -22,7 +22,7 @@ internal class CsvColumn(string columnName, Type columnType)
     /// <summary>
     ///     Obtient l'index de la colonne.
     /// </summary>
-    public int Index { get; set; } = -1;
+    public virtual int Index { get; set; } = -1;
 
     /// <summary>
     ///     Obtient le nom de la propriété lié à la colonne.

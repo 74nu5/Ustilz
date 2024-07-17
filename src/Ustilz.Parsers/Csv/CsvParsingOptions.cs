@@ -5,36 +5,53 @@ using System.Text;
 using JetBrains.Annotations;
 
 /// <summary>
-///     Un objet représentant des options de parsing.
+///     An object representing parsing options.
 /// </summary>
 [PublicAPI]
-public sealed class CsvParsingOptions
+public readonly struct CsvParsingOptions
 {
     /// <summary>
-    ///     Indique si le fichier CSV contient un header.
+    ///     Initializes a new instance of the <see cref="CsvParsingOptions" /> class.
     /// </summary>
-    /// <remarks>Ce paramètre est obligatoire.</remarks>
-    public required bool HasHeader { get; set; }
+    public CsvParsingOptions()
+    {
+    }
 
     /// <summary>
-    ///     Le séparateur utilisé dans le fichier CSV. Par défaut, c'est la virgule.
+    ///     Indicates whether the CSV file has a header.
     /// </summary>
-    public char Separator { get; set; } = ',';
+    /// <remarks>This parameter is required.</remarks>
+    public required bool HasHeader { get; init; } = false;
 
     /// <summary>
-    ///     L'encodage à utiliser pour la lecture du fichier. Par défaut, c'est l'UTF-8.
+    ///     The separator used in the CSV file. By default, it is a comma.
     /// </summary>
-    public Encoding Encoding { get; set; } = Encoding.UTF8;
+    public char Separator { get; init; } = ',';
 
     /// <summary>
-    ///     Indique si le parseur devrait gérer les sauts de ligne. Par défaut, non.
+    ///     The encoding to use for reading the file. By default, it is UTF-8.
     /// </summary>
-    /// <remarks>Attention, les fichiers CSV générés à partir d'Excel peuvent contenir des champs avec des retours à la ligne.</remarks>
-    public bool EnableNewLineHandling { get; set; }
+    public Encoding? Encoding { get; init; }
 
     /// <summary>
-    ///     Indique si le parseur deverait gérer les guillemets. Par défaut, non.
+    ///     Indicates whether the parser should handle new lines. By default, no.
     /// </summary>
-    /// <remarks>Attention, les fichiers CSV générés à partir d'Excel peuvent contenir des champs avec des doubles guillements.</remarks>
-    public bool EnableDoubleQuotesHandling { get; set; }
+    /// <remarks>Attention, CSV files generated from Excel may contain fields with line breaks.</remarks>
+    public bool EnableNewLineHandling { get; init; } = false;
+
+    /// <summary>
+    ///     Indicates whether the parser should handle double quotes. By default, no.
+    /// </summary>
+    /// <remarks>Attention, CSV files generated from Excel may contain fields with double quotes.</remarks>
+    public bool EnableDoubleQuotesHandling { get; init; } = false;
+
+    /// <summary>
+    ///     Gets or sets the maximum length of a line. By default, 4096.
+    /// </summary>
+    public int MaxLineLength { get; init; } = 4096;
+
+    /// <summary>
+    ///     Gets or sets a value indicating whether values should be trimmed.
+    /// </summary>
+    public bool TrimValues { get; init; } = false;
 }

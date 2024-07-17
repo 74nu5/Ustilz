@@ -20,7 +20,6 @@ public static class FuncExtensions
     /// <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
     /// <exception cref="ArgumentNullException">L'action ne peut pas être nulle.</exception>
     /// <exception cref="Exception">A delegate callback throws an exception.</exception>
-    [SuppressMessage("Design", "CA1031:Ne pas intercepter les types d'exception générale", Justification = "It's what we want !")]
     public static IExecutionResult<T> ExecuteSafe<T>(
         this Action<T> action,
         [MaybeNull] T parameter)
@@ -50,7 +49,6 @@ public static class FuncExtensions
     /// <typeparam name="TResult">Le type du résultat.</typeparam>
     /// <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
     /// <exception cref="ArgumentNullException">La fonction ne peut pas être nulle.</exception>
-    [SuppressMessage("Design", "CA1031:Ne pas intercepter les types d'exception générale", Justification = "It's what we want !")]
     public static IExecutionResult<TResult> ExecuteSafe<T, TResult>(
         this Func<T, TResult> function,
         [MaybeNull] T parameter)

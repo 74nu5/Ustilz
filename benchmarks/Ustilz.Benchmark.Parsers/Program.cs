@@ -1,19 +1,26 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Diagnostics.Windows.Configs;
 using BenchmarkDotNet.Running;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using Ustilz.Parsers.Csv;
+using Ustilz.Benchmark.Parsers.Parsers;
 
 BenchmarkSwitcher.FromAssembly(typeof(Tests).Assembly).Run(args);
 
-[HideColumns("Error", "StdDev", "Median", "RatioSD")]
+//[HideColumns("Error", "StdDev", "Median", "RatioSD")]
 [DisassemblyDiagnoser(0)]
+[MemoryDiagnoser]
+[NativeMemoryProfiler]
+[ThreadingDiagnoser]
+[ExceptionDiagnoser]
 public class Tests
 {
-    private string csv = new HttpClient().GetStringAsync(new Uri("https://projects.fivethirtyeight.com/soccer-api/international/2018/wc_matches.csv")).Result;
+    private readonly string csv = new HttpClient().GetStringAsync(new Uri("https://projects.fivethirtyeight.com/soccer-api/international/2018/wc_matches.csv")).Result;
 
-    private CsvParser parser;
+    private WorldCupMatchesParser worldCupMatchesParser;
+    private OneBillionRowChallengeParser oneBillionRowChallengeParser;
+    private string csvWorldCupTemp;
 
 
     [GlobalSetup]
@@ -22,20 +29,30 @@ public class Tests
         IServiceCollection services = new ServiceCollection();
         services.AddLogging();
         services.AddMemoryCache();
-        services.AddTransient<CsvParser>();
-        this.parser = services.BuildServiceProvider().GetRequiredService<CsvParser>();
+        services.AddTransient<WorldCupMatchesParser>();
+        services.AddTransient<OneBillionRowChallengeParser>();
+        this.worldCupMatchesParser = services.BuildServiceProvider().GetRequiredService<WorldCupMatchesParser>();
+        this.oneBillionRowChallengeParser = services.BuildServiceProvider().GetRequiredService<OneBillionRowChallengeParser>();
+        this.csvWorldCupTemp = Path.GetTempFileName();
+        File.WriteAllText(this.csvWorldCupTemp, this.csv);
     }
+
+    //[Benchmark]
+    public void ParseWorlCupResult() => this.worldCupMatchesParser.Parse(this.csvWorldCupTemp,
+        new()
+        {
+            HasHeader = true,
+            MaxLineLength = 256,
+            Separator = ',',
+        });
+
 
     [Benchmark]
-    public int Parse() => this.parser.;
-
-    internal interface IValueProducer
-    {
-        int GetValue();
-    }
-
-    private class Producer42 : IValueProducer
-    {
-        public int GetValue() => 42;
-    }
+    public void Parse1Brc() => this.oneBillionRowChallengeParser.Parse(@"C:\Temp\1brc\measurements-10_000.txt",
+        new()
+        {
+            HasHeader = false,
+            MaxLineLength = 256,
+            Separator = ';',
+        });
 }
