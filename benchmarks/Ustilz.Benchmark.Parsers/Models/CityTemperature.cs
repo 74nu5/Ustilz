@@ -3,7 +3,7 @@
 using Ustilz.Benchmark.Parsers.Abstractions;
 using Ustilz.Parsers.Csv.Attributes;
 
-internal class CityTemperature : ICityTemperature
+internal sealed class CityTemperature : ICityTemperature
 {
     [CsvColumn<string>("City", Index = 0)]
     public string City { get; set; }

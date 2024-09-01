@@ -14,7 +14,7 @@ BenchmarkSwitcher.FromAssembly(typeof(Tests).Assembly).Run(args);
 [NativeMemoryProfiler]
 [ThreadingDiagnoser]
 [ExceptionDiagnoser]
-public class Tests
+public sealed class Tests
 {
     private readonly string csv = new HttpClient().GetStringAsync(new Uri("https://projects.fivethirtyeight.com/soccer-api/international/2018/wc_matches.csv")).Result;
 

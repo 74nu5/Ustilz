@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Ustilz.Models;
 
-public class TodoService
+public sealed class TodoService
 {
     private readonly TodoDb db;
 

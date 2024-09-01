@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 
 using JetBrains.Annotations;
 
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -21,15 +20,13 @@ using Ustilz.Parsers.Utils;
 /// <summary>
 ///     Classe abstraite représentant un parser de fichier CSV.
 /// </summary>
-/// <param name="cache">Le <see cref="IMemoryCache" /> permettant de mettre en cache les méthodes de parsing.</param>
 /// <param name="logger">Le <see cref="ILogger{TCategoryName}" /> permettant de logger.</param>
+/// <param name="serviceProvider">Le <see cref="IServiceProvider" /> permettant de récupérer les services nécessaires au parsing.</param>
 [PublicAPI]
-public abstract class CsvParser(IMemoryCache cache, ILogger<CsvParser> logger, IServiceProvider serviceProvider)
+public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serviceProvider)
 {
     private const char NewLineReplacement = '\u1c70'; // 0x1c70 "ᱰ";
-
     private const BindingFlags PropertyBindingFlags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public;
-
     private readonly char[] specialsChars = ['\r', '"', '\n'];
     private IMethodsParseProvider methodsParseProvider = null!;
 
@@ -437,7 +434,7 @@ public abstract class CsvParser(IMemoryCache cache, ILogger<CsvParser> logger, I
                     if (value.StartsWith("\"") && value.EndsWith("\""))
                         fields[columnIndex++] = new(startColumnIndex + 1, currentCharIndex - 1);
                     else
-                        // Ajoute la plage du champ entre startIndex et currentIndex
+                            // Ajoute la plage du champ entre startIndex et currentIndex
                         fields[columnIndex++] = range;
 
                     startColumnIndex = currentCharIndex + 1; // Déplace le début du prochain champ
@@ -460,6 +457,7 @@ public abstract class CsvParser(IMemoryCache cache, ILogger<CsvParser> logger, I
             // Crée un span de la ligne
             var lineSpan = spanBuffer[..currentCharIndex];
             var typeToParsed = new TTypeToParsed();
+
             foreach (var column in csvColumns)
             {
                 if (column.Index < 0)
@@ -549,7 +547,7 @@ public abstract class CsvParser(IMemoryCache cache, ILogger<CsvParser> logger, I
         if (numberColumn.Style is not null)
         {
             var parseNumberStyleMethod = this.methodsParseProvider.GetParseNumberMethod(numberColumn);
-            return InvokeParse(parseNumberStyleMethod, sanitizeValue, [sanitizeValue.ToString(), numberColumn.Style, numberColumn.Culture]);
+            return InvokeParse(parseNumberStyleMethod, sanitizeValue, sanitizeValue.ToString(), numberColumn.Style, numberColumn.Culture);
         }
 
         var parseNumberMethod = this.methodsParseProvider.GetParseNumberMethod(numberColumn);

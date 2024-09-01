@@ -3,7 +3,7 @@
 using Ustilz.Benchmark.Parsers.Abstractions;
 using Ustilz.Parsers.Csv.Attributes;
 
-public class Match : IMatch
+public sealed class Match : IMatch
 {
     [CsvColumnDateTime("Date")]
     public DateTime Date { get; set; }

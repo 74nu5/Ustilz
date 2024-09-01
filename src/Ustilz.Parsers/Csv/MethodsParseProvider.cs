@@ -8,7 +8,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Ustilz.Parsers.Csv.Abstractions;
 using Ustilz.Parsers.Csv.Models;
 
-internal class MethodsParseProvider(IMemoryCache cache) : IMethodsParseProvider
+internal sealed class MethodsParseProvider(IMemoryCache cache) : IMethodsParseProvider
 {
     private const string DefautlParseMethodKey = "DefaultParseMethod";
     private const string FormatParseMethodKey = "FormatParseMethod";
