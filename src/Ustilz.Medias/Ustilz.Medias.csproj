@@ -8,7 +8,8 @@
     <LangVersion>preview</LangVersion>
     <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
-    <Version>9.0.0-beta1</Version>
+    <Version>9.0.0-beta2</Version>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" />
