@@ -1,6 +1,5 @@
 namespace Ustilz.Sample.Api.Modules;
 
-using System.Diagnostics.CodeAnalysis;
 using System.Net;
 
 using JetBrains.Annotations;
@@ -46,7 +45,6 @@ public sealed class TodoModule : IModule
     ///     Maps incoming requests to the specified services types declared by the module.
     /// </summary>
     /// <param name="endpoints">The route builder.</param>
-    [SuppressMessage("ReSharper", "RouteTemplates.RouteParameterConstraintNotResolved")]
     public void MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         endpoints.MapGet("/todos", GetTodos)

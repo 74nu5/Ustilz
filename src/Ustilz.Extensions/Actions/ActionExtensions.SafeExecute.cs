@@ -1,7 +1,6 @@
 namespace Ustilz.Extensions.Actions;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using JetBrains.Annotations;
 
@@ -15,7 +14,6 @@ public static partial class ActionExtensions
     /// <param name="action">The action to execute.</param>
     /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
     [PublicAPI]
-    [SuppressMessage("Design", "CA1031:Ne pas intercepter les types d'exception générale", Justification = "It's what we want !")]
     public static bool SafeExecute(this Action action)
     {
         ArgumentNullException.ThrowIfNull(action);
