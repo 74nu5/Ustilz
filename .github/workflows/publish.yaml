@@ -7,8 +7,6 @@ jobs:
   publish:
     name: build, pack & publish
     runs-on: ubuntu-latest
-    env:
-      NUGET_URL: https://api.nuget.org/v3/index.json
     steps:
       - uses: actions/checkout@v4
 
@@ -76,5 +74,5 @@ jobs:
         run: dotnet pack -c Release -o . src/Ustilz.Xml/Ustilz.Xml.csproj
         
       - name: Publish
-        run: dotnet nuget push *.nupkg -k ${{ secrets.NUGET_KEY }} -s $NUGET_URL
+        run: dotnet nuget push "*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
 
