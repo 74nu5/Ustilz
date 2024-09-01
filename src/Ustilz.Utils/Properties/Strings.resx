@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArgumentIsEmpty" xml:space="preserve">
-    <value>The string argument '{argumentName}' cannot be empty.</value>
+      <value>The string argument '{argumentName}' cannot be empty</value>
   </data>
   <data name="ArgumentPropertyNull" xml:space="preserve">
-    <value>The property '{property}' of the argument '{argument}' cannot be null.</value>
+      <value>The property '{property}' of the argument '{argument}' cannot be null</value>
   </data>
   <data name="CollectionArgumentIsEmpty" xml:space="preserve">
-    <value>The collection argument '{argumentName}' must contain at least one element.</value>
+    <value>The collection argument '{argumentName}' must contain at least one element</value>
   </data>
   <data name="InvalidEntityType" xml:space="preserve">
-    <value>The entity type '{type}' provided for the argument '{argumentName}' must be a reference type.</value>
+    <value>The entity type '{type}' provided for the argument '{argumentName}' must be a reference type</value>
   </data>
   <data name="MustBePositive" xml:space="preserve">
-    <value>The numeric value {numeric} must be positive.</value>
+    <value>The numeric value {numeric} must be positive</value>
   </data>
 </root>

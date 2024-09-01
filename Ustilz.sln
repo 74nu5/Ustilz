@@ -9,10 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conf", "Conf", "{219FD85A-9
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.gitlab-ci.yml = .gitlab-ci.yml
+		Directory.Packages.props = Directory.Packages.props
 		dotnet-version.ps1 = dotnet-version.ps1
 		GlobalSuppressions.cs = GlobalSuppressions.cs
-		src\Settings.StyleCop = src\Settings.StyleCop
-		src\stylecop.json = src\stylecop.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Http", "src\Ustilz.Http\Ustilz.Http.csproj", "{56DAC945-A08D-4961-A7C1-CC37BDEA8340}"
@@ -43,8 +42,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore.Mvc", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.AspNetCore", "src\Ustilz.AspNetCore\Ustilz.AspNetCore.csproj", "{C80843D7-7164-4B95-A36D-B08FF37A51F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api.Data", "src\Ustilz.Api.Data\Ustilz.Api.Data.csproj", "{6184C763-8071-4D15-A78A-D9B1A46B2886}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Api", "src\Ustilz.Api\Ustilz.Api.csproj", "{79A33D64-3088-4064-8112-C0A048E5CBA9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Models", "src\Ustilz.Models\Ustilz.Models.csproj", "{9480858B-09EE-45E2-9560-9E55B23924F1}"
@@ -52,6 +49,25 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{1DB55402-3B08-40D2-8750-9AE49C9A2455}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Sample.Api", "src\Ustilz.Sample.Api\Ustilz.Sample.Api.csproj", "{B314D2D1-A929-45D3-8369-E61BE52442BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Medias", "src\Ustilz.Medias\Ustilz.Medias.csproj", "{7D8D56DA-D173-469A-A0AB-B307195AA670}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Parsers", "src\Ustilz.Parsers\Ustilz.Parsers.csproj", "{D233962A-33C3-4C74-8602-8BC78C5D871D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.StateMachine", "src\Ustilz.StateMachine\Ustilz.StateMachine.csproj", "{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{44681F79-D7DC-4350-A55E-6C2958A701EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Benchmark.Parsers", "benchmarks\Ustilz.Benchmark.Parsers\Ustilz.Benchmark.Parsers.csproj", "{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ustilz.Wtf", "src\Ustilz.Wtf\Ustilz.Wtf.csproj", "{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Parsers.Samples", "samples\Ustilz.Parsers.Samples\Ustilz.Parsers.Samples.csproj", "{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{E6E589A4-14AD-46BA-A384-0F19F38DB18A}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,12 +160,6 @@ Global
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Only libs|Any CPU.Build.0 = Release|Any CPU
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C80843D7-7164-4B95-A36D-B08FF37A51F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Only libs|Any CPU.Build.0 = Debug|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6184C763-8071-4D15-A78A-D9B1A46B2886}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A33D64-3088-4064-8112-C0A048E5CBA9}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
@@ -168,12 +178,50 @@ Global
 		{B314D2D1-A929-45D3-8369-E61BE52442BD}.Only libs|Any CPU.Build.0 = Debug|Any CPU
 		{B314D2D1-A929-45D3-8369-E61BE52442BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B314D2D1-A929-45D3-8369-E61BE52442BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8D56DA-D173-469A-A0AB-B307195AA670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D233962A-33C3-4C74-8602-8BC78C5D871D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A80A37-69EE-4BFA-B6C2-1A576C9FA719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F408B9B0-204B-48D9-9AD4-2A47E37DF0D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Only libs|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Only libs|Any CPU.Build.0 = Debug|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B314D2D1-A929-45D3-8369-E61BE52442BD} = {1DB55402-3B08-40D2-8750-9AE49C9A2455}
+		{9C4B85F8-054A-41FC-A9E1-76DEB2F0989E} = {44681F79-D7DC-4350-A55E-6C2958A701EF}
+		{6F7EE5D8-4355-4686-B7F8-E674F3ED72B7} = {1DB55402-3B08-40D2-8750-9AE49C9A2455}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36107DC6-4F59-40D1-8C7A-E9E8D69268D2}

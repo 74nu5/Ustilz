@@ -1,13 +1,11 @@
 namespace Ustilz.Utils;
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 using JetBrains.Annotations;
 
 /// <summary>Classe d'aide pour la lévée d'exception.</summary>
 [PublicAPI]
-[SuppressMessage("ReSharper", "HollowTypeName", Justification = "It's a helper !")]
 public static class ThrowHelper
 {
     /// <summary>Lève une exeption <see cref="ArgumentNullException" />.</summary>

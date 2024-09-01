@@ -2,12 +2,17 @@ namespace Ustilz.Logging.Console;
 
 #region Usings
 
-using System;
-using System.IO;
+using JetBrains.Annotations;
+
+using Console = System.Console;
 
 #endregion
 
-public class AnsiConsole
+/// <summary>
+///     Class to write to the console using ANSI escape sequences.
+/// </summary>
+[PublicAPI]
+public sealed class AnsiConsole
 {
     private const int Light = 0x08;
 
@@ -21,26 +26,46 @@ public class AnsiConsole
         this.boldRecursion = ((int)this.OriginalForegroundColor & Light) != 0 ? 1 : 0;
     }
 
+    /// <summary>
+    ///     Gets the original foreground color of the console.
+    /// </summary>
     public ConsoleColor OriginalForegroundColor { get; }
 
+    /// <summary>
+    ///     Gets the <see cref="TextWriter" /> to write to.
+    /// </summary>
     public TextWriter Writer { get; }
 
+    /// <summary>
+    ///     Gets the error console.
+    /// </summary>
+    /// <returns>The <see cref="AnsiConsole" />.</returns>
     public static AnsiConsole GetError()
         => new(Console.Error);
 
+    /// <summary>
+    ///     Gets the output console.
+    /// </summary>
+    /// <returns>The <see cref="AnsiConsole" />.</returns>
     public static AnsiConsole GetOutput()
         => new(Console.Out);
 
 
+    /// <summary>
+    ///     Writes the message to the console.
+    /// </summary>
+    /// <param name="message">The message to write.</param>
     public void Write(string message)
     {
         var escapeScan = 0;
+
         for (;;)
         {
             var escapeIndex = message.IndexOf("\x1b[", escapeScan, StringComparison.Ordinal);
+
             if (escapeIndex == -1)
             {
-                var text = message.Substring(escapeScan);
+                var text = message[escapeScan..];
                 this.Writer.Write(text);
                 break;
             }
@@ -48,19 +73,17 @@ public class AnsiConsole
             {
                 var startIndex = escapeIndex + 2;
                 var endIndex = startIndex;
+
                 while (endIndex != message.Length &&
                        message[endIndex] >= 0x20 &&
                        message[endIndex] <= 0x3f)
-                {
                     endIndex += 1;
-                }
 
                 var text = message.Substring(escapeScan, escapeIndex - escapeScan);
                 this.Writer.Write(text);
+
                 if (endIndex == message.Length)
-                {
                     break;
-                }
 
                 switch (message[endIndex])
                 {
@@ -113,6 +136,10 @@ public class AnsiConsole
         }
     }
 
+    /// <summary>
+    ///     Writes the message to the console.
+    /// </summary>
+    /// <param name="message">The message to write.</param>
     public void WriteLine(string message)
     {
         this.Write(message);
@@ -122,10 +149,9 @@ public class AnsiConsole
     private void SetBold(bool bold)
     {
         this.boldRecursion += bold ? 1 : -1;
+
         if (this.boldRecursion > 1 || (this.boldRecursion == 1 && !bold))
-        {
             return;
-        }
 
         // switches on boldRecursion to handle boldness
         this.SetColor(Console.ForegroundColor);

@@ -12,7 +12,7 @@ using JetBrains.Annotations;
 public static class ColorUtils
 {
     /// <summary>The random.</summary>
-    private static readonly Random Random = new ();
+    private static readonly Random Random = new();
 
     /// <summary>Méthode de génération de couleurs.</summary>
     /// <returns>The <see cref="string" />.</returns>
@@ -30,8 +30,7 @@ public static class ColorUtils
     /// </exception>
     public static string GetColorFromNom(string nom)
     {
-        if (nom == null)
-            throw new ArgumentNullException(nameof(nom));
+        ArgumentNullException.ThrowIfNull(nom);
 
         if (nom.Length == 3)
             return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";
@@ -55,8 +54,7 @@ public static class ColorUtils
     /// </exception>
     public static string GetLightColorFromNom(string nom)
     {
-        if (nom == null)
-            throw new ArgumentNullException(nameof(nom));
+        ArgumentNullException.ThrowIfNull(nom);
 
         if (nom.Length == 3)
             return $"#{string.Join(string.Empty, nom.Select(c => ((byte)c).ToString("X", CultureInfo.CurrentCulture)))}";

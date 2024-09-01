@@ -1,7 +1,7 @@
 namespace Ustilz.Api.ApiResponse;
 
 /// <summary>
-///     Represents all result states for an <seealso cref="ApiResponse{TResponse}" />
+///     Represents all result states for an <seealso cref="ApiResponseBody{TResponse}" />
 /// </summary>
 public enum ApiResponseResultState
 {

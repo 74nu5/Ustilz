@@ -20,17 +20,11 @@ public static class LoggerActionExtensions
     /// <exception cref="ArgumentNullException"><paramref name="action" /> is <see langword="null" />.</exception>
     public static ILoggingBuilder AddLoggerEvent(this ILoggingBuilder builder, LoggerAction.LogDelegate action)
     {
-        if (builder == null)
-        {
-            throw new ArgumentNullException(nameof(builder));
-        }
+        ArgumentNullException.ThrowIfNull(builder);
 
-        if (action == null)
-        {
-            throw new ArgumentNullException(nameof(action));
-        }
+        ArgumentNullException.ThrowIfNull(action);
 
-        builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(_ => new (action)));
+        builder.Services.TryAdd(ServiceDescriptor.Singleton<ILoggerProvider, LoggerActionProvider>(_ => new(action)));
         return builder;
     }
 }

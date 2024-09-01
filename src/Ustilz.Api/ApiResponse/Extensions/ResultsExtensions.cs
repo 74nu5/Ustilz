@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 
 using Ustilz.Api.ApiResponse.Results;
 
+/// <summary>
+///    Class which contains extension methods for <see cref="IResultExtensions" />.
+/// </summary>
 public static class ResultsExtensions
 {
     /// <summary>
@@ -94,7 +97,7 @@ public static class ResultsExtensions
     /// <param name="resultExtensions">The result extensions.</param>
     /// <param name="headers">The api headers.</param>
     /// <param name="location">The resources created uri.</param>
-    /// <param name="apiResponseBody">The result.</param>
+    /// <param name="result">The result.</param>
     /// <returns>Returns a new api response result.</returns>
     public static IResult Created<TResult>(this IResultExtensions resultExtensions, ApiRequestHeaders headers, string location, TResult? result = default)
     {

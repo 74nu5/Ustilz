@@ -11,7 +11,7 @@ internal sealed class ExecutionResult<T> : IExecutionResult<T>
     ///     Initialise une nouvelle instance de la classe <see cref="ExecutionResult{T}" />.
     /// </summary>
     public ExecutionResult()
-        => this.Result = new ();
+        => this.Result = new();
 
     /// <summary>Obtient ou définit l'exception.</summary>
     /// <value>The exception.</value>

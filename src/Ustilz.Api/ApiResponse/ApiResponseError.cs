@@ -25,6 +25,10 @@ public record ApiResponseError(int ErrorCode, string ErrorMessage)
     /// </summary>
     public static readonly ApiResponseError NotFound = new(4004, "Resource not found");
 
+    /// <summary>
+    /// Implict operator which convert a string to a <see cref="ApiResponseError" />.
+    /// </summary>
+    /// <param name="error">The error.</param>
     public static implicit operator ApiResponseError(string error)
         => new(99999, error);
 }

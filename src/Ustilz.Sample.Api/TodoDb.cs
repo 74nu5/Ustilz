@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace Ustilz.Sample.Api;
 
 public class TodoDb : DbContext
 {

@@ -25,9 +25,7 @@ public static class ModuleExtension
         var modules = DiscoverModules();
 
         foreach (var module in modules)
-        {
             services.AddTransient(typeof(IModule), module);
-        }
 
         return services.RegisterModulesDependencies();
     }
@@ -42,20 +40,21 @@ public static class ModuleExtension
         var modules = GetRegisteredModules(endpoints.ServiceProvider);
 
         foreach (var module in modules)
-        {
             module.MapEndpoints(endpoints);
-        }
 
         return endpoints;
     }
 
+    /// <summary>
+    ///    Executes all modules build actions.
+    /// </summary>
+    /// <param name="app">The application builder.</param>
+    /// <returns>The application builder.</returns>
     public static IApplicationBuilder UseModuleBuildActions(this IApplicationBuilder app)
     {
         var modules = app.ApplicationServices.GetServices<IModule>();
         foreach (var module in modules)
-        {
             module.ConfigureModule(app.ApplicationServices);
-        }
 
         return app;
     }
@@ -71,9 +70,7 @@ public static class ModuleExtension
         var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
         foreach (var module in modules)
-        {
             module.RegisterModule(services, configuration);
-        }
 
         return services;
     }

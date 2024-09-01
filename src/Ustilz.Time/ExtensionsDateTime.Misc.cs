@@ -1,43 +1,41 @@
 namespace Ustilz.Time;
 
-using System;
-
 using JetBrains.Annotations;
 
 /// <summary>Classe d'extension du type DateTime.</summary>
 public static partial class ExtensionsDateTime
 {
     /// <summary>Calcule la différence entre l'année de la date et l'heure actuelles.</summary>
-    /// <param name="startDay">Date à laquelle l'age est calculé.</param>
-    /// <param name="day">Date depuis l'age est calculé.</param>
+    /// <param name="startDate">Date à laquelle l'age est calculé.</param>
+    /// <param name="date">Date depuis l'age est calculé.</param>
     /// <returns>La différence entre l'année de la date courante et celle de la date.</returns>
     /// <exception cref="ArgumentException">Birthday date must be earlier than current date.</exception>
     /// <exception cref="ArgumentOutOfRangeException">month is less than 1 or greater than 12. -or- year is less than 1 or greater than 9999.</exception>
     /// <exception cref="OverflowException">value equals <see cref="int.MinValue"></see>.</exception>
     [Pure]
     [PublicAPI]
-    public static (int YearAge, int MonthAge, int DayAge) AgeFrom(this DateTime startDay, DateTime? day = null)
+    public static (int YearAge, int MonthAge, int DayAge) AgeFrom(this DateTime startDate, DateTime? date = null)
     {
-        var toDay = day ?? Clock.Now;
-        var toDayToStartDayYear = toDay.Year - startDay.Year;
-        if (toDayToStartDayYear <= 0 &&
-            (toDayToStartDayYear != 0 || (startDay.Month >= toDay.Month && (startDay.Month != toDay.Month || startDay.Day > toDay.Day))))
-        {
+        var (year, month, day) = date ?? Clock.Now;
+        var (startYear, startMonth, startDay) = startDate;
+
+        var toDayToStartDayYear = year - startYear;
+        if (toDayToStartDayYear <= 0 && (toDayToStartDayYear != 0 || (startMonth >= month && (startMonth != month || startDay > day))))
             throw new ArgumentException(Resources.ExtensionsDateTime_Age_Birthday_date_must_be_earlier_than_current_date);
-        }
 
-        var daysInStartDayMonth = DateTime.DaysInMonth(startDay.Year, startDay.Month);
-        var daysRemain = toDay.Day + (daysInStartDayMonth - startDay.Day);
+        var daysInStartDayMonth = DateTime.DaysInMonth(startYear, startMonth);
+        var daysRemain = day + (daysInStartDayMonth - startDay);
 
-        return toDay.Month > startDay.Month
-                   ? (toDayToStartDayYear, (toDay.Month - (startDay.Month + 1)) + Math.Abs(daysRemain / daysInStartDayMonth),
-                      ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth)
-                   : toDay.Month != startDay.Month
-                       ? (toDay.Year - 1 - startDay.Year, toDay.Month + (11 - startDay.Month) + Math.Abs(daysRemain / daysInStartDayMonth),
-                          ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth)
-                       : toDay.Day >= startDay.Day
-                           ? (toDayToStartDayYear, 0, toDay.Day - startDay.Day)
-                           : (toDay.Year - 1 - startDay.Year, 11, DateTime.DaysInMonth(startDay.Year, startDay.Month) - (startDay.Day - toDay.Day));
+        if (month > startMonth)
+            return (toDayToStartDayYear, month - (startMonth + 1) + Math.Abs(daysRemain / daysInStartDayMonth), ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth);
+
+        if (month != startMonth)
+            return (year - 1 - startYear, month + (11 - startMonth) + Math.Abs(daysRemain / daysInStartDayMonth), ((daysRemain % daysInStartDayMonth) + daysInStartDayMonth) % daysInStartDayMonth);
+
+        if (day >= startDay)
+            return (toDayToStartDayYear, 0, day - startDay);
+
+        return (year - 1 - startYear, 11, DateTime.DaysInMonth(startYear, startMonth) - (startDay - day));
     }
 
     /// <summary>Défini une heure pour une date donnée.</summary>
@@ -49,7 +47,7 @@ public static partial class ExtensionsDateTime
     ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
     /// </exception>
     public static DateTime AtTime(this DateTime date, int hours)
-        => new (date.Year, date.Month, date.Day, hours, 0, 0);
+        => new(date.Year, date.Month, date.Day, hours, 0, 0);
 
     /// <summary>Défini une heure et les minutes pour une date donnée.</summary>
     /// <param name="date">Date à modifier.</param>
@@ -61,7 +59,7 @@ public static partial class ExtensionsDateTime
     ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
     /// </exception>
     public static DateTime AtTime(this DateTime date, int hours, int minutes)
-        => new (date.Year, date.Month, date.Day, hours, minutes, 0);
+        => new(date.Year, date.Month, date.Day, hours, minutes, 0);
 
     /// <summary>Défini l'heure, les minutes et les secondes pour une date donnée.</summary>
     /// <param name="date">Date à modifier.</param>
@@ -74,7 +72,7 @@ public static partial class ExtensionsDateTime
     ///     number of days in month. -or- hour is less than 0 or greater than 23. -or- minute is less than 0 or greater than 59. -or- second is less than 0 or greater than 59.
     /// </exception>
     public static DateTime AtTime(this DateTime date, int hours, int minutes, int seconds)
-        => new (date.Year, date.Month, date.Day, hours, minutes, seconds);
+        => new(date.Year, date.Month, date.Day, hours, minutes, seconds);
 
     /// <summary>Calcule le temps écoulé entre la valeur d'heure de date donnée et DateTime.Now.</summary>
     /// <param name="dateTime">La date fournie.</param>
