@@ -1,39 +1,24 @@
-## .NET 7.0.12 (7.0.1223.47720), X64 RyuJIT AVX2
+## .NET 9.0.1 (9.0.124.61010), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
 ```assembly
-; Tests.GetValue()
-       push      rsi
-       sub       rsp,20
-       mov       rsi,rcx
-       mov       rcx,[rsi+8]
-       mov       r11,7FFD057A0470
-       call      qword ptr [r11]
-       imul      eax,[rsi+10]
-       add       rsp,20
-       pop       rsi
+; Tests.ParseWorlCupResult()
+       sub       rsp,38
+       vxorps    xmm4,xmm4,xmm4
+       vmovdqa   xmmword ptr [rsp+20],xmm4
+       xor       eax,eax
+       mov       [rsp+30],rax
+       mov       rdx,[rcx+10]
+       mov       rax,[rcx+20]
+       mov       dword ptr [rsp+28],100
+       mov       word ptr [rsp+30],2C
+       mov       byte ptr [rsp+32],1
+       lea       r8,[rsp+20]
+       mov       rcx,rdx
+       mov       rdx,rax
+       cmp       [rcx],ecx
+       call      qword ptr [7FFD36145980]; Ustilz.Benchmark.Parsers.Parsers.WorldCupMatchesParser.Parse(System.String, Ustilz.Parsers.Csv.CsvParsingOptions)
+       nop
+       add       rsp,38
        ret
-; Total bytes of code 35
-```
-
-## .NET 8.0.0 (8.0.23.47906), X64 RyuJIT AVX2
-```assembly
-; Tests.GetValue()
-       push      rbx
-       sub       rsp,20
-       mov       rbx,rcx
-       mov       rcx,[rbx+8]
-       mov       rax,offset MT_Tests+Producer42
-       cmp       [rcx],rax
-       jne       short M00_L01
-       mov       eax,2A
-M00_L00:
-       imul      eax,[rbx+10]
-       add       rsp,20
-       pop       rbx
-       ret
-M00_L01:
-       mov       r11,7FFD743C04B0
-       call      qword ptr [r11]
-       jmp       short M00_L00
-; Total bytes of code 57
+; Total bytes of code 74
 ```
 

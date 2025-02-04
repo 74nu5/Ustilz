@@ -14,7 +14,7 @@ BenchmarkSwitcher.FromAssembly(typeof(Tests).Assembly).Run(args);
 [NativeMemoryProfiler]
 [ThreadingDiagnoser]
 [ExceptionDiagnoser]
-public sealed class Tests
+public class Tests
 {
     private readonly string csv = new HttpClient().GetStringAsync(new Uri("https://projects.fivethirtyeight.com/soccer-api/international/2018/wc_matches.csv")).Result;
 
@@ -36,8 +36,8 @@ public sealed class Tests
         this.csvWorldCupTemp = Path.GetTempFileName();
         File.WriteAllText(this.csvWorldCupTemp, this.csv);
     }
-
-    //[Benchmark]
+    
+    [Benchmark]
     public void ParseWorlCupResult() => this.worldCupMatchesParser.Parse(this.csvWorldCupTemp,
         new()
         {
@@ -47,7 +47,7 @@ public sealed class Tests
         });
 
 
-    [Benchmark]
+    //[Benchmark]
     public void Parse1Brc() => this.oneBillionRowChallengeParser.Parse(@"C:\Temp\1brc\measurements-10_000.txt",
         new()
         {
