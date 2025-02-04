@@ -14,8 +14,9 @@ internal sealed class PercentageCsvColumn : NumberCsvColumn
     /// </summary>
     /// <param name="columnName">Nom de la colonne.</param>
     /// <param name="columnType">Type de la colonne.</param>
-    public PercentageCsvColumn(string columnName, Type columnType)
-        : base(columnName, columnType)
+    /// <param name="nullable">Indique si la colonne est nullable.</param>
+    public PercentageCsvColumn(string columnName, Type columnType, bool nullable)
+        : base(columnName, columnType, nullable)
     {
     }
 
