@@ -1,15 +1,13 @@
 ```
 
-BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 11 (10.0.22621.2428/22H2/2022Update/SunValley2)
-Intel Core i7-1065G7 CPU 1.30GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK 8.0.100-rc.2.23502.2
-  [Host]     : .NET 7.0.12 (7.0.1223.47720), X64 RyuJIT AVX2
-  Job-TMETWW : .NET 7.0.12 (7.0.1223.47720), X64 RyuJIT AVX2
-  Job-QLBEFC : .NET 8.0.0 (8.0.23.47906), X64 RyuJIT AVX2
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26100.2894)
+11th Gen Intel Core i7-11370H 3.30GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 9.0.200-preview.0.25057.12
+  [Host]     : .NET 9.0.1 (9.0.124.61010), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  DefaultJob : .NET 9.0.1 (9.0.124.61010), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
 
 
 ```
-| Method   | Runtime  | Mean      | Ratio | Code Size |
-|--------- |--------- |----------:|------:|----------:|
-| GetValue | .NET 7.0 | 2.0724 ns |  1.00 |      35 B |
-| GetValue | .NET 8.0 | 0.3131 ns |  0.15 |      57 B |
+| Method             | Mean     | Error    | StdDev   | Gen0   | Exceptions | Code Size | Completed Work Items | Lock Contentions | Allocated native memory | Native memory leak | Allocated |
+|------------------- |---------:|---------:|---------:|-------:|-----------:|----------:|---------------------:|-----------------:|------------------------:|-------------------:|----------:|
+| ParseWorlCupResult | 537.5 μs | 11.63 μs | 32.60 μs | 1.9531 |          - |      74 B |                    - |                - |                    0 KB |               0 KB |  49.23 KB |

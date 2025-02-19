@@ -3,32 +3,37 @@ namespace Ustilz.Parsers.Csv;
 using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
-using JetBrains.Annotations;
-
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
 using Ustilz.Parsers.Csv.Abstractions;
 using Ustilz.Parsers.Csv.Attributes;
+using Ustilz.Parsers.Csv.Enums;
 using Ustilz.Parsers.Csv.Models;
-using Ustilz.Parsers.Utils;
+using Ustilz.Parsers.Extensions;
 
 /// <summary>
 ///     Classe abstraite représentant un parser de fichier CSV.
 /// </summary>
+/// <param name="cache">Le <see cref="IMemoryCache" /> permettant de mettre en cache les méthodes de parsing.</param>
 /// <param name="logger">Le <see cref="ILogger{TCategoryName}" /> permettant de logger.</param>
-/// <param name="serviceProvider">Le <see cref="IServiceProvider" /> permettant de récupérer les services nécessaires au parsing.</param>
-[PublicAPI]
-public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serviceProvider)
+public abstract class CsvParser(IMemoryCache cache, ILogger<CsvParser> logger)
 {
     private const char NewLineReplacement = '\u1c70'; // 0x1c70 "ᱰ";
     private const BindingFlags PropertyBindingFlags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public;
-    private readonly char[] specialsChars = ['\r', '"', '\n'];
-    private IMethodsParseProvider methodsParseProvider = null!;
+    private static readonly Type[] DateTimeParseExactTypes = [typeof(string), typeof(string[]), typeof(IFormatProvider), typeof(DateTimeStyles), typeof(DateTime).MakeByRefType()];
+    private static readonly Type[] DateOnlyParseExactTypes = [typeof(string), typeof(string[]), typeof(IFormatProvider), typeof(DateTimeStyles), typeof(DateOnly).MakeByRefType()];
+    private static readonly Type[] ParseCultureTypes = [typeof(string), typeof(IFormatProvider)];
+    private static readonly Type[] ParseTypes = [typeof(string)];
+    private static readonly Type[] NumberStylesTypes = [typeof(string), typeof(NumberStyles), typeof(IFormatProvider)];
+    private static readonly char[] SpecialsChars = ['\r', '"', '\n'];
+    private static readonly char[] TrimValues = ['\r', '\n', '\"'];
+    private static readonly object?[] DateParseExactParameters = new object?[5];
 
     /// <summary>
     ///     Parse un fichier CSV.
@@ -48,6 +53,10 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         // Génère les colonnes à partir du type de l'objet à parser.
         var columns = GenerateColumns<TTypeToParsed>();
 
+        // Si aucune colonne n'a été trouvée, on lève une exception
+        if (columns.Count == 0)
+            throw new InvalidDataException("Aucune colonne n'a été trouvée.");
+
         // Détermine l'encodage à utiliser
         var encoding = this.GetEncodingToUse(filePath, options);
 
@@ -62,18 +71,19 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
             if (columns.Exists(col => col.Index == -1))
                 logger.LogWarning("Certaines colonnes n'ont pas d'index ou n'ont pas été trouvé.");
         }
-        else // Sinon, on traite l'en-tête
+        else
         {
+            // Sinon, on traite l'en-tête
             (columns, byteToSkip) = ProcessHeader(filePath, columns, encoding, options);
 
-            logger.LogDebug("Header traité en {Elapsed}.", watch.Elapsed);
+            if (columns.Count == 0)
+                throw new InvalidDataException("Aucune colonne n'a été trouvée.");
         }
 
         var parsedType = typeof(TTypeToParsed);
-        watch = Stopwatch.StartNew();
 
-        this.methodsParseProvider = serviceProvider.GetRequiredService<IMethodsParseProvider>();
-        this.methodsParseProvider.AddParseMethodsToCache(columns);
+        logger.LogDebug("Header traité en {Elapsed}.", watch.Elapsed);
+        watch = Stopwatch.StartNew();
 
         var result = this.ParseLines<TOutput, TTypeToParsed>(filePath, byteToSkip, encoding, options, columns, parsedType, postProcessLine);
 
@@ -81,6 +91,42 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         watch.Stop();
 
         return result;
+    }
+
+    private static Encoding DetectEncoding(string filePath)
+    {
+        var buffer = new byte[4];
+
+        using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+        if (fs.Length < 2)
+            return Encoding.ASCII; // Not enough data to determine encoding
+
+        _ = fs.Read(buffer, 0, 4);
+
+        var encodingSpan = new ReadOnlySpan<byte>(buffer, 0, 4);
+
+        // Check for BOMs (Byte Order Mark)
+        if (Encoding.UTF8.Preamble.SequenceEqual(encodingSpan[..3])) // UTF-8
+            return Encoding.UTF8;
+
+        if (Encoding.UTF32.Preamble.SequenceEqual(encodingSpan[..4])) // UTF-32 LE
+            return Encoding.UTF32;
+
+        var utf32Encoding = new UTF32Encoding(true, true);
+
+        if (utf32Encoding.Preamble.SequenceEqual(encodingSpan[..4])) // UTF-32 BE
+            return utf32Encoding;
+
+        if (Encoding.BigEndianUnicode.Preamble.SequenceEqual(encodingSpan[..2])) // UTF-16 BE
+            return Encoding.BigEndianUnicode;
+
+        if (Encoding.Unicode.Preamble.SequenceEqual(encodingSpan[..2])) // UTF-16 LE
+            return Encoding.Unicode;
+
+        // If no BOM is found, we can assume ASCII or UTF-8 without BOM
+        // This is a simplistic assumption; in a real scenario, you might need more sophisticated heuristics
+        return Encoding.ASCII;
     }
 
     /// <summary>
@@ -132,7 +178,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         if (property.PropertyType.GetInterface(nameof(IDictionary)) is null)
             throw new InvalidOperationException($"The type of the column {property.Name} must be a dictionary.");
 
-        return new(property.Name, property.PropertyType)
+        return new(property.Name, property.PropertyType, csvColumnAttribute.Nullable)
         {
             HeaderRegex = GetHeaderRegex(dynamicAttr, property), PropertyName = property.Name, InternalCsvColumn = CreateColumn(csvColumnAttribute, property.Name, columnType, property),
         };
@@ -160,36 +206,40 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
     private static CsvColumn CreateColumn(CsvColumnAttribute displayAttr, string columnName, Type columnType, MemberInfo property)
         => displayAttr switch
         {
-            ICsvColumnNumber attrNumber => new NumberCsvColumn(columnName, columnType)
+            ICsvColumnNumber attrNumber => new NumberCsvColumn(columnName, columnType, displayAttr.Nullable)
             {
                 PropertyName = property.Name,
+                HomonymNumber = displayAttr.HomonymNumber,
                 Index = GetColumnIndex(displayAttr),
                 Style = attrNumber.Style,
                 Culture = new(displayAttr.Culture),
                 CharReplaceByDefaultValue = displayAttr.CharReplaceByDefaultValue,
                 IgnoreValue = displayAttr.IgnoreValue,
             },
-            ICsvColumnFormatter attrFormat => new FormatCsvColumn(columnName, columnType)
+            ICsvColumnFormatter attrFormat => new FormatCsvColumn(columnName, columnType, displayAttr.Nullable)
             {
                 PropertyName = property.Name,
+                HomonymNumber = displayAttr.HomonymNumber,
                 Index = GetColumnIndex(displayAttr),
                 Format = attrFormat.Format,
                 Culture = new(displayAttr.Culture),
                 CharReplaceByDefaultValue = displayAttr.CharReplaceByDefaultValue,
                 IgnoreValue = displayAttr.IgnoreValue,
             },
-            ICsvColumnPercentage attrPercentage => new PercentageCsvColumn(columnName, columnType)
+            ICsvColumnPercentage attrPercentage => new PercentageCsvColumn(columnName, columnType, displayAttr.Nullable)
             {
                 PropertyName = property.Name,
+                HomonymNumber = displayAttr.HomonymNumber,
                 Index = GetColumnIndex(displayAttr),
                 Base = attrPercentage.Base,
                 Culture = new(displayAttr.Culture),
                 CharReplaceByDefaultValue = displayAttr.CharReplaceByDefaultValue,
                 IgnoreValue = displayAttr.IgnoreValue,
             },
-            _ => new(columnName, columnType)
+            _ => new(columnName, columnType, displayAttr.Nullable)
             {
                 PropertyName = property.Name,
+                HomonymNumber = displayAttr.HomonymNumber,
                 Index = GetColumnIndex(displayAttr),
                 Culture = new(displayAttr.Culture),
                 CharReplaceByDefaultValue = displayAttr.CharReplaceByDefaultValue,
@@ -250,12 +300,15 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         var currentCharIndex = 0; // Indique le caractère courant
         var startColumnIndex = 0; // Indique le début de la colonne
         var inQuotes = false; // Indique si nous sommes entre guillemets
+        var byteToSkip = 0; // Indique le nombre de bytes à sauter pour lire les lignes du fichier.
 
         var buffer = new char[options.MaxLineLength];
         using var reader = new StreamReader(filePath, encoding, true, buffer.Length);
 
         // Lit le fichier et stocke les données dans le buffer (4096 caractères maximum)
-        var bytesRead = reader.ReadBlock(buffer, encoding.GetPreamble().Length, options.MaxLineLength - encoding.GetPreamble().Length);
+        var preambleLength = encoding.GetPreamble().Length;
+
+        var bytesRead = reader.ReadBlock(buffer, preambleLength, options.MaxLineLength - preambleLength);
 
         // Si le fichier est vide, on retourne une liste vide
         if (bytesRead <= 0)
@@ -263,13 +316,39 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
 
         var headerSpan = new Span<char>(buffer, 0, bytesRead);
 
-        headerSpan = headerSpan.TrimStart('\0');
+        // Si des lignes doivent être sautées
+        if (options.LinesSkipped > 0)
+        {
+            var numberOfNewLine = headerSpan.Count('\n');
+            if (numberOfNewLine < options.LinesSkipped)
+                throw new InvalidDataException("Le nombre de lignes à sauter est supérieur au nombre de lignes lu par le buffer de la première ligne. Veuillez augmenter la taille buffer (MaxLineLength).");
+
+            var nthIndexOf = headerSpan.NthIndexOf('\n', options.LinesSkipped) + encoding.GetByteCount(['\n']);
+
+            buffer = new char[options.MaxLineLength];
+
+            // Si le stream peut être positionné, on se positionne après les lignes à sauter.
+            if (reader.BaseStream.CanSeek)
+                _ = reader.BaseStream.Seek(nthIndexOf, SeekOrigin.Begin);
+
+            bytesRead = reader.ReadBlock(buffer, 0, options.MaxLineLength);
+
+            // Si le fichier est vide, on retourne une liste vide
+            if (bytesRead <= 0)
+                return (headers.ToArray(), 0);
+
+            headerSpan = new(buffer, 0, bytesRead);
+            byteToSkip += encoding.GetByteCount(headerSpan[..nthIndexOf]);
+        }
+
+        var trimmedSpan = headerSpan.TrimStart('\0');
+        byteToSkip += headerSpan.Length - trimmedSpan.Length;
 
         // Parcours le buffer pour trouver les colonnes
-        while (currentCharIndex < headerSpan.Length)
+        while (currentCharIndex < trimmedSpan.Length)
         {
             // Récupère le caractère courant
-            var currentChar = headerSpan[currentCharIndex];
+            var currentChar = trimmedSpan[currentCharIndex];
 
             // Vérifie si nous sommes entre guillemets
             if (currentChar == '"')
@@ -279,7 +358,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
             if (currentChar == options.Separator && !inQuotes)
             {
                 // Ajoute la colonne entre startIndex et currentIndex
-                headers.Add(headerSpan[startColumnIndex..currentCharIndex].Trim().Trim('"').ToString());
+                headers.Add(trimmedSpan[startColumnIndex..currentCharIndex].Trim().Trim('"').ToString());
                 startColumnIndex = currentCharIndex + 1; // Déplace le début de la prochaine colonne
             }
 
@@ -287,7 +366,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
             if (currentChar == '\n' && !inQuotes)
             {
                 // Ajoute la colonne entre startIndex et currentIndex
-                headers.Add(headerSpan[startColumnIndex..currentCharIndex].Trim().Trim('"').ToString());
+                headers.Add(trimmedSpan[startColumnIndex..currentCharIndex].Trim().Trim('"').ToString());
 
                 break; // Arrête le parsing car l'en-tête est terminée
             }
@@ -296,11 +375,12 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         }
 
         // On retourne les colonnes trouvées et le nombre de bytes à sauter pour lire les lignes
-        var readOnlySpan = headerSpan[..(currentCharIndex + 1)];
-        if (headerSpan[currentCharIndex] != '\n')
+        var readOnlySpan = trimmedSpan[..(currentCharIndex + 1)];
+        if (trimmedSpan[currentCharIndex] != '\n')
             throw new InvalidDataException("Le caractère précédent les lignes à parser doit être un retour à la ligne");
 
-        return (headers.ToArray(), encoding.GetByteCount(readOnlySpan));
+        byteToSkip += encoding.GetByteCount(readOnlySpan);
+        return (headers.ToArray(), byteToSkip);
     }
 
     private static string GetParsedStringValue(ReadOnlySpan<char> columnValue, char charReplaceByDefaultValue)
@@ -328,7 +408,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
 
     private Encoding GetEncodingToUse(string filePath, CsvParsingOptions options)
     {
-        var encoding = FileUtils.DetectEncoding(filePath);
+        var encoding = DetectEncoding(filePath);
         logger.LogDebug("Encodage détecté : {Encoding}.", encoding.EncodingName);
 
         if (options.Encoding is not null)
@@ -363,32 +443,28 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         var fileName = Path.GetFileName(filePath);
         var result = new List<TOutput>();
 
-        var csvColumns = columns.Where(column => column.Index is not -1 and not int.MaxValue).ToArray();
-
         using var reader = new StreamReader(filePath, encoding, true, options.MaxLineLength);
         var endLineByteToSkip = byteToSkip;
-        char[] excludedChars = [options.Separator, .. this.specialsChars];
-        Span<char> buffer = stackalloc char[options.MaxLineLength];
+        char[] excludedChars = [options.Separator, .. SpecialsChars];
 
-        var fields = new Range[columns.Count]; // Stocke les plages des champs
-        var columnIndex = 0;
+        var buffer = new char[options.MaxLineLength];
+
+        var fields = new List<Range>(columns.Count + 1); // Stocke les plages des champs
 
         // Parcours le fichier pour parser les lignes
-
         while (endLineByteToSkip < reader.BaseStream.Length - 1)
         {
             // Efface le buffer
-            //reader.DiscardBufferedData();
+            reader.DiscardBufferedData();
 
             // Si le stream peut être positionné, on se positionne à la ligne suivante
             if (reader.BaseStream.CanSeek)
                 _ = reader.BaseStream.Seek(endLineByteToSkip, SeekOrigin.Begin);
 
             // Lit le fichier et stocke les données dans le buffer (4096 caractères maximum)
-            _ = reader.ReadBlock(buffer);
+            var bytesRead = reader.ReadBlock(buffer, 0, options.MaxLineLength);
 
-            var spanBuffer = buffer.TrimStart();
-
+            var spanBuffer = new Span<char>(buffer, 0, bytesRead).TrimStart();
             var startColumnIndex = 0; // Indique le début de la colonne
             var currentCharIndex = startColumnIndex; // Indique le caractère courant
             var inQuotes = false; // Indique si nous sommes entre guillemets
@@ -432,10 +508,9 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
                     var value = spanBuffer[range];
 
                     if (value.StartsWith("\"") && value.EndsWith("\""))
-                        fields[columnIndex++] = new(startColumnIndex + 1, currentCharIndex - 1);
+                        fields.Add(new(startColumnIndex + 1, currentCharIndex - 1));
                     else
-                            // Ajoute la plage du champ entre startIndex et currentIndex
-                        fields[columnIndex++] = range;
+                        fields.Add(range); // Ajoute la plage du champ entre startIndex et currentIndex
 
                     startColumnIndex = currentCharIndex + 1; // Déplace le début du prochain champ
                 }
@@ -444,22 +519,25 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
                 if (currentChar == '\n' && !inQuotes)
                 {
                     // Ajoute la plage du champ entre startIndex et currentIndex
-                    fields[columnIndex++] = new(startColumnIndex, currentCharIndex - 1);
+                    fields.Add(new(startColumnIndex, currentCharIndex - 1));
                     break; // Arrête le parsing de la ligne
                 }
 
                 currentCharIndex++;
             }
 
-            if (fields.Length <= 0)
+            if (fields.Count <= 0)
                 continue;
 
             // Crée un span de la ligne
             var lineSpan = spanBuffer[..currentCharIndex];
             var typeToParsed = new TTypeToParsed();
 
-            foreach (var column in csvColumns)
+            foreach (var column in columns)
             {
+                if (column.Index is -1 or int.MaxValue)
+                    continue;
+
                 if (column.Index < 0)
                     continue;
 
@@ -470,8 +548,27 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
                 if (options.TrimValues)
                     spanValue = spanValue.Trim();
 
-                var parsed = this.GetParsedValue(column, spanValue.Trim(this.specialsChars));
-                columnType.GetProperty(column.PropertyName, PropertyBindingFlags)?.SetValue(typeToParsed, parsed);
+                var parsed = this.GetParsedValue(column, spanValue.Trim(TrimValues));
+
+                var propertyInfo = columnType.GetProperty(column.PropertyName, PropertyBindingFlags);
+
+                if (parsed is null)
+                    continue;
+
+                // Vérifie si le type de la valeur parsée correspond au type de la propriété
+                if (propertyInfo is not null && parsed.GetType() != propertyInfo.PropertyType && propertyInfo.PropertyType.IsGenericType && parsed.GetType() != propertyInfo.PropertyType.GetGenericArguments()[0])
+                    throw new InvalidDataException($"L{result.Count} : The type {parsed.GetType()} of the value {parsed} does not correspond to the type {propertyInfo.PropertyType} of the expected property {propertyInfo.Name} of type {typeof(TTypeToParsed)}.");
+
+                // Vérifie si la colonne est nullable
+                if (column.IsNullableColumn)
+                {
+                    var parsedNullable = typeof(Nullable<>).MakeGenericType(column.Type).GetConstructor([column.Type])?.Invoke([parsed]);
+                    propertyInfo?.SetValue(typeToParsed, parsedNullable);
+                }
+                else
+                {
+                    propertyInfo?.SetValue(typeToParsed, parsed);
+                }
             }
 
             if (columns[^1] is DynamicCsvColumn dynamicColumn)
@@ -495,8 +592,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
             postProcessLine?.Invoke(fileName, typeToParsed);
 
             result.Add(typeToParsed);
-            columnIndex = 0;
-            Array.Clear(fields);
+            fields.Clear();
         }
 
         return result;
@@ -506,7 +602,7 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
     {
         try
         {
-            if (columnValue.IsEmpty)
+            if (columnValue.IsEmpty || (column.IsNullableColumn && columnValue.Contains("null", StringComparison.InvariantCultureIgnoreCase)))
                 return null;
 
             return column switch
@@ -533,7 +629,15 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         if (percentageColumn.Base is not null)
             columnValue.Replace(sanitizeValue, '%', '\0');
 
-        return this.GetParsedNumberValue(percentageColumn, sanitizeValue, columnCharReplaceByDefaultValue);
+        var parsedPercentageValue = this.GetParsedNumberValue(percentageColumn, sanitizeValue, columnCharReplaceByDefaultValue);
+
+        if (percentageColumn.Type.IsAssignableTo(typeof(INumber<>).MakeGenericType(percentageColumn.Type)) && percentageColumn.Base == BasePercentage.Base100)
+        {
+            var number = Convert.ChangeType(parsedPercentageValue, percentageColumn.Type, CultureInfo.InvariantCulture);
+            return (decimal?)number / 100;
+        }
+
+        return parsedPercentageValue;
     }
 
     private object? GetParsedNumberValue(NumberCsvColumn numberColumn, ReadOnlySpan<char> columnValue, char charReplaceByDefaultValue)
@@ -544,14 +648,8 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         if (sanitizeValue.ContainsAny(numberColumn.IgnoreValue.AsSpan()))
             return GetColumnDefaultValue(numberColumn.Type);
 
-        if (numberColumn.Style is not null)
-        {
-            var parseNumberStyleMethod = this.methodsParseProvider.GetParseNumberMethod(numberColumn);
-            return InvokeParse(parseNumberStyleMethod, sanitizeValue, sanitizeValue.ToString(), numberColumn.Style, numberColumn.Culture);
-        }
-
-        var parseNumberMethod = this.methodsParseProvider.GetParseNumberMethod(numberColumn);
-        return InvokeParse(parseNumberMethod, sanitizeValue, sanitizeValue.ToString(), NumberStyles.Any, numberColumn.Culture);
+        var parseNumberStyleMethod = this.GetParseMethod(numberColumn, BindingFlags.Public | BindingFlags.Static, NumberStylesTypes);
+        return InvokeParse(parseNumberStyleMethod, sanitizeValue, sanitizeValue.ToString(), numberColumn.Style ?? NumberStyles.Any, numberColumn.Culture);
     }
 
     private object? GetParsedFormatValue(FormatCsvColumn formatColumn, ReadOnlySpan<char> columnValue, char charReplaceByDefaultValue)
@@ -562,13 +660,35 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         if (sanitizeValue.ContainsAny(formatColumn.IgnoreValue.AsSpan()))
             return GetColumnDefaultValue(formatColumn.Type);
 
-        var parseExactWithFormatMethod = this.methodsParseProvider.GetFormatParseExactMethod(formatColumn);
+        var parseExactWithFormatMethod = this.GetParseExactWithFormatMethod(formatColumn);
 
         if (parseExactWithFormatMethod != null)
-            return InvokeParse(parseExactWithFormatMethod, sanitizeValue, sanitizeValue.ToString(), formatColumn.Format, formatColumn.Culture);
+        {
+            DateParseExactParameters[0] = sanitizeValue.ToString();
+            DateParseExactParameters[1] = formatColumn.Format;
+            DateParseExactParameters[2] = formatColumn.Culture;
+            DateParseExactParameters[3] = DateTimeStyles.None;
+            DateParseExactParameters[4] = null;
 
-        var parseWithFormatMethod = this.methodsParseProvider.GetFormatParseMethod(formatColumn);
-        return InvokeParse(parseWithFormatMethod, sanitizeValue, sanitizeValue.ToString(), formatColumn.Format);
+            var parseResult = (bool?)parseExactWithFormatMethod.Invoke(null, DateParseExactParameters);
+
+            if (parseResult ?? false)
+                return DateParseExactParameters[4];
+        }
+
+        var parseWithFormatMethod = this.GetParseMethod(formatColumn, BindingFlags.Public | BindingFlags.Static, ParseCultureTypes);
+        return InvokeParse(parseWithFormatMethod, sanitizeValue, sanitizeValue.ToString(), formatColumn.Culture);
+    }
+
+    private MethodInfo? GetParseExactWithFormatMethod(FormatCsvColumn formatColumn)
+    {
+        if (formatColumn.Type == typeof(DateTime))
+            return this.GetTryParseExactMethod(formatColumn, BindingFlags.Public | BindingFlags.Static, DateTimeParseExactTypes);
+
+        if (formatColumn.Type == typeof(DateOnly))
+            return this.GetTryParseExactMethod(formatColumn, BindingFlags.Public | BindingFlags.Static, DateOnlyParseExactTypes);
+
+        return null;
     }
 
     private object? GetDefaultParsedValue(CsvColumn column, ReadOnlySpan<char> columnValue, char charReplaceByDefaultValue)
@@ -579,7 +699,39 @@ public abstract class CsvParser(ILogger<CsvParser> logger, IServiceProvider serv
         if (sanitizeValue.ContainsAny(column.IgnoreValue.AsSpan()))
             return GetColumnDefaultValue(column.Type);
 
-        var parseMethod = this.methodsParseProvider.GetDefaultParseMethod(column);
+        var parseMethod = this.GetParseMethod(column, BindingFlags.Public | BindingFlags.Static, ParseTypes);
         return InvokeParse(parseMethod, sanitizeValue, sanitizeValue.ToString());
+    }
+
+    private MethodInfo? GetParseMethod(CsvColumn column, BindingFlags bindingFlags, params Type[] types)
+    {
+        column.ParseMethodInfoKey = !string.IsNullOrEmpty(column.ParseMethodInfoKey)
+                                            ? column.ParseMethodInfoKey
+                                            : $"{column.Type.Name}_{nameof(IParsable<int>.Parse)}_{string.Join(",", types.Select(type => type.Name))}";
+
+        if (cache.TryGetValue(column.ParseMethodInfoKey, out MethodInfo? parseMethod))
+            return parseMethod;
+
+        var methodInfo = column.Type.GetMethod(nameof(IParsable<>.Parse), bindingFlags, types);
+        _ = cache.Set(column.ParseMethodInfoKey, methodInfo);
+        return methodInfo;
+    }
+
+    private MethodInfo? GetTryParseExactMethod(CsvColumn column, BindingFlags bindingFlags, params Type[] types)
+    {
+        column.ParseMethodInfoKey = !string.IsNullOrEmpty(column.ParseMethodInfoKey)
+                                            ? column.ParseMethodInfoKey
+                                            : $"{column.Type.Name}_{nameof(DateTime.TryParseExact)}_{string.Join(",", types.Select(type => type.Name))}";
+
+        if (cache.TryGetValue(column.ParseMethodInfoKey, out MethodInfo? parseMethod))
+            return parseMethod;
+
+        var methodInfo = column.Type.GetMethod(nameof(DateTime.TryParseExact), bindingFlags, types);
+
+        if (methodInfo is null)
+            return null;
+
+        _ = cache.Set(column.ParseMethodInfoKey, methodInfo);
+        return methodInfo;
     }
 }

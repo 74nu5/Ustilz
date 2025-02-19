@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>Tests-20231020-081646</title>
+<title>Tests-20250204-082852</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,20 +13,18 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 11 (10.0.22621.2428/22H2/2022Update/SunValley2)
-Intel Core i7-1065G7 CPU 1.30GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK 8.0.100-rc.2.23502.2
-  [Host]     : .NET 7.0.12 (7.0.1223.47720), X64 RyuJIT AVX2
-  Job-TMETWW : .NET 7.0.12 (7.0.1223.47720), X64 RyuJIT AVX2
-  Job-QLBEFC : .NET 8.0.0 (8.0.23.47906), X64 RyuJIT AVX2
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.26100.2894)
+11th Gen Intel Core i7-11370H 3.30GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 9.0.200-preview.0.25057.12
+  [Host]     : .NET 9.0.1 (9.0.124.61010), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
+  DefaultJob : .NET 9.0.1 (9.0.124.61010), X64 RyuJIT AVX-512F+CD+BW+DQ+VL+VBMI
 </code></pre>
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th>Method</th><th>Runtime</th><th>Mean</th><th>Ratio</th><th>Code Size</th>
+<thead><tr><th>Method      </th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Exceptions</th><th>Code Size</th><th>Completed Work Items</th><th>Lock Contentions</th><th>Allocated native memory</th><th>Native memory leak</th><th>Allocated</th>
 </tr>
-</thead><tbody><tr><td>GetValue</td><td>.NET 7.0</td><td>2.0724 ns</td><td>1.00</td><td>35 B</td>
-</tr><tr><td>GetValue</td><td>.NET 8.0</td><td>0.3131 ns</td><td>0.15</td><td>57 B</td>
+</thead><tbody><tr><td>ParseWorlCupResult</td><td>537.5 &mu;s</td><td>11.63 &mu;s</td><td>32.60 &mu;s</td><td>1.9531</td><td>-</td><td>74 B</td><td>-</td><td>-</td><td>0 KB</td><td>0 KB</td><td>49.23 KB</td>
 </tr></tbody></table>
 </body>
 </html>
