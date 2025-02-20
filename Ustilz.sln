@@ -67,6 +67,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elements de solution", "Ele
 	ProjectSection(SolutionItems) = preProject
 		src\.editorconfig = src\.editorconfig
 		Directory.Packages.props = Directory.Packages.props
+		GitVersion.json = GitVersion.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ustilz.Network", "src\Ustilz.Network\Ustilz.Network.csproj", "{095C7E2A-83EB-4239-83A1-865EF7529CC1}"
