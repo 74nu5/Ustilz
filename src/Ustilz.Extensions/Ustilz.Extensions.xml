@@ -1,0 +1,1863 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ustilz.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Ustilz.Extensions.Actions.ActionExtensions">
+            <summary>Class containing some extension methods for <see cref="T:System.Action" />.</summary>
+            <summary>Class containing some extension methods for <see cref="T:System.Action" />.</summary>
+            <summary>The extensions action.</summary>
+            <summary>The extensions action.</summary>
+            <summary>Class containing some extension methods for <see cref="T:System.Action" />.</summary>
+            <summary>Class containing some extension methods for <see cref="T:System.Action" />.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse(System.Action,System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="trueAction">The action to execute if all of the given value is true.</param>
+            <param name="values">The Boolean values to check.</param>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``1(System.Action{``0},``0,System.Action{``0},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if all values are true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``2(System.Action{``0,``1},``0,``1,System.Action{``0,``1},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if all values are true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``3(System.Action{``0,``1,``2},``0,``1,``2,System.Action{``0,``1,``2},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if all values are true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Action{``0,``1,``2,``3},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if all values are true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse(System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``1(System.Action{``0},``0,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``2(System.Action{``0,``1},``0,``1,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``3(System.Action{``0,``1,``2},``0,``1,``2,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyFalse``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue(System.Action,System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``1(System.Action{``0},``0,System.Action{``0},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``2(System.Action{``0,``1},``0,``1,System.Action{``0,``1},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``3(System.Action{``0,``1,``2},``0,``1,``2,System.Action{``0,``1,``2},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Action{``0,``1,``2,``3},System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true, otherwise it executes the specified false action, if one is specified.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue(System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``1(System.Action{``0},``0,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``2(System.Action{``0,``1},``0,``1,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``3(System.Action{``0,``1,``2},``0,``1,``2,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfAnyTrue``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if one of the given Boolean values is true.</summary>
+            <exception cref="T:System.ArgumentNullException">True action can not be null, if any value is true.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="trueAction">The action to execute if one of the values is true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse(System.Action,System.Action,System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are false,
+                otherwise it executes the specified true action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="trueAction">The action to execute if any of the given values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``1(System.Action{``0},``0,System.Action{``0},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are false,
+                otherwise it executes the specified true action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if any of the given values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``2(System.Action{``0,``1},``0,``1,System.Action{``0,``1},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are false,
+                otherwise it executes the specified true action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if any of the given values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``3(System.Action{``0,``1,``2},``0,``1,``2,System.Action{``0,``1,``2},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are false,
+                otherwise it executes the specified true action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if any of the given values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Action{``0,``1,``2,``3},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are false,
+                otherwise it executes the specified true action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="trueAction">The action to execute if any of the given values is true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse(System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``1(System.Action{``0},``0,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``2(System.Action{``0,``1},``0,``1,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``3(System.Action{``0,``1,``2},``0,``1,``2,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfFalse``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are false.</summary>
+            <exception cref="T:System.ArgumentNullException">FalseAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="falseAction">The action to execute if the given values are false.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue(System.Action,System.Action,System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are true,
+                otherwise it executes the specified false action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``1(System.Action{``0},``0,System.Action{``0},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are true,
+                otherwise it executes the specified false action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``2(System.Action{``0,``1},``0,``1,System.Action{``0,``1},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are true,
+                otherwise it executes the specified false action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``3(System.Action{``0,``1,``2},``0,``1,``2,System.Action{``0,``1,``2},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are true,
+                otherwise it executes the specified false action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Action{``0,``1,``2,``3},System.Func{System.Boolean}[])">
+            <summary>
+                Executes the specified action if the given Boolean values are true,
+                otherwise it executes the specified false action, if one is specified.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="falseAction">The action to execute if any of the given values is false.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue(System.Action,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are true.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``1(System.Action{``0},``0,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are true.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T">The type of the parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter">The parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``2(System.Action{``0,``1},``0,``1,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are true.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``3(System.Action{``0,``1,``2},``0,``1,``2,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are true.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.ExecuteIfTrue``4(System.Action{``0,``1,``2,``3},``0,``1,``2,``3,System.Func{System.Boolean}[])">
+            <summary>Executes the specified action if the given Boolean values are true.</summary>
+            <exception cref="T:System.ArgumentNullException">TrueAction can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">Values can not be null.</exception>
+            <typeparam name="T1">The type of the first parameter.</typeparam>
+            <typeparam name="T2">The type of the second parameter.</typeparam>
+            <typeparam name="T3">The type of the third parameter.</typeparam>
+            <typeparam name="T4">The type of the fourth parameter.</typeparam>
+            <param name="trueAction">The action to execute if the given values are true.</param>
+            <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
+            <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
+            <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
+            <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
+            <param name="values">The Boolean values to check.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute(System.Action)">
+            <summary>Executes the given action inside of a try catch block and catches all exceptions.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute``1(System.Action)">
+            <summary>Executes the given action inside of a try catch block. Catches exceptions of the given type.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException">The type of the exception.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute``2(System.Action)">
+            <summary>Executes the given action inside of a try catch block. Catches exceptions of the given types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to catch.</typeparam>
+            <typeparam name="TException2">The second exception type to catch.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute``3(System.Action)">
+            <summary>Executes the given action inside of a try catch block. Catches exceptions of the given types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to catch.</typeparam>
+            <typeparam name="TException2">The second exception type to catch.</typeparam>
+            <typeparam name="TException3">The third exception type to catch.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute``4(System.Action)">
+            <summary>Executes the given action inside of a try catch block. Catches exceptions of the given types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to catch.</typeparam>
+            <typeparam name="TException2">The second exception type to catch.</typeparam>
+            <typeparam name="TException3">The third exception type to catch.</typeparam>
+            <typeparam name="TException4">The fourth exception type to catch.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecute(System.Action,System.Type[])">
+            <summary>
+                Executes the given action inside of a try catch block. Catches all exception types contained in the given list of
+                exception types.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">ExceptionsToCatch can not be null.</exception>
+            <param name="action">The action to execute.</param>
+            <param name="exceptionsToCatch">A list of exception types to catch.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept``1(System.Action)">
+            <summary>Executes the given action inside of a try catch block and catches all exception expect the specified type.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException">The type of the exception to throw.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept``2(System.Action)">
+            <summary>Executes the given action inside of a try catch block and catches all exception expect the specified types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to throw.</typeparam>
+            <typeparam name="TException2">The second exception type to throw.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept``3(System.Action)">
+            <summary>Executes the given action inside of a try catch block and catches all exception expect the specified types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to throw.</typeparam>
+            <typeparam name="TException2">The second exception type to throw.</typeparam>
+            <typeparam name="TException3">The third exception type to throw.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept``4(System.Action)">
+            <summary>Executes the given action inside of a try catch block and catches all exception expect the specified types.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <typeparam name="TException1">The first exception type to throw.</typeparam>
+            <typeparam name="TException2">The second exception type to throw.</typeparam>
+            <typeparam name="TException3">The third exception type to throw.</typeparam>
+            <typeparam name="TException4">The fourth exception type to throw.</typeparam>
+            <param name="action">The action to execute.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Actions.ActionExtensions.SafeExecuteExcept(System.Action,System.Type[])">
+            <summary>Executes the given action inside of a try catch block and catches all exception expect the given ones.</summary>
+            <exception cref="T:System.ArgumentNullException">Action can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">ExceptionsToThrow can not be null.</exception>
+            <param name="action">The action to execute.</param>
+            <param name="exceptionsToThrow">The exceptions to throw.</param>
+            <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Enumerables.EnumerableExtensions">
+            <summary>The extensions i enumerable.</summary>
+            <summary>The extensions i enumerable string.</summary>
+            <summary>The extensions i enumerable.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ToHexString(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+                Converts bytes collection to hexadecimal representation.
+            </summary>
+            <param name="bytes">Bytes to convert.</param>
+            <returns>Hexadecimal representation string.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ByteArrayToBase64Image(System.Byte[],System.String)">
+            <summary>
+                Converts a byte array to a base64 image.
+            </summary>
+            <param name="byteArrayIn">Byte array to convert.</param>
+            <param name="imageType">The image type.</param>
+            <returns>The base64 image.</returns>
+            <remarks>
+                This method takes a byte array and an image type as input, converts the byte array to a base64 string,
+                and then formats it as a data URL with the specified image type.
+            </remarks>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.PathCombine(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>Returns a path combined out of the items in the given IEnumerable.</summary>
+            <exception cref="T:System.ArgumentNullException">The enumerable can not be null.</exception>
+            <param name="enumerable">The IEnumerable to act on.</param>
+            <returns>The combined path.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Adjust``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int32,System.Boolean},``0)">
+            <summary>
+                Method to adjust elements of an <see cref="T:System.Collections.Generic.IEnumerable`1" />.
+            </summary>
+            <typeparam name="T">Type of enumerable element.</typeparam>
+            <param name="enumerable">Enumerable to adjust.</param>
+            <param name="shouldReplace">Condition for adjustment.</param>
+            <param name="replacement">Replacement value.</param>
+            <returns>Returns the initial list with adjustments.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Bifurcate``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IList{System.Boolean})">
+            <summary>
+                Method to split a list based on a boolean array.
+            </summary>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="items">List to split.</param>
+            <param name="filter">Filter to apply.</param>
+            <returns>Returns a tuple containing the two lists.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Bifurcate``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+                Method to split a list based on a predicate.
+            </summary>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="items">List to split.</param>
+            <param name="filter">Predicate to apply.</param>
+            <returns>Returns a tuple containing the two lists.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.FindMax``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+                Method to retrieve the element of the list for which the selector returns the maximum value.
+            </summary>
+            <typeparam name="T">Type of list elements.</typeparam>
+            <typeparam name="TValue">Type of the value to compare. This must implement <see cref="T:System.IComparable`1" />.</typeparam>
+            <param name="list">List in which the search is performed.</param>
+            <param name="selector">Comparison selector.</param>
+            <returns>Returns the element of the list for which the selector returns the maximum value.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.FindMin``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+                Method to retrieve the element of the list for which the selector returns the minimum value.
+            </summary>
+            <typeparam name="T">Type of list elements.</typeparam>
+            <typeparam name="TValue">Type of the value to compare. This must implement <see cref="T:System.IComparable`1" />.</typeparam>
+            <param name="list">List in which the search is performed.</param>
+            <param name="selector">Comparison selector.</param>
+            <returns>Returns the element of the list for which the selector returns the minimum value.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+                Enumerate each element in the enumeration and execute specified action.
+            </summary>
+            <typeparam name="T">Type of enumeration.</typeparam>
+            <param name="enumerable">Enumerable collection.</param>
+            <param name="action">Action to perform.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Join``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+                The join.
+            </summary>
+            <param name="tab">The tab. </param>
+            <param name="separator">The separator. </param>
+            <typeparam name="T">The type. </typeparam>
+            <returns>The <see cref="T:System.String" />. </returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.NotAny``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+                Determines whether the given IEnumerable contains no items, or not.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The enumerable can not be null.</exception>
+            <param name="enumerable">The IEnumerable to check.</param>
+            <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
+            <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.NotAny``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+                Determines whether the given IEnumerable contains no items matching the given predicate, or not.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The enumerable can not be null.</exception>
+            <exception cref="T:System.ArgumentNullException">The predicate can not be null.</exception>
+            <param name="enumerable">The IEnumerable to check.</param>
+            <param name="predicate">The predicate.</param>
+            <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
+            <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Page``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            <summary>
+                Gets a subset of IEnumerable by passing the page number.
+            </summary>
+            <typeparam name="T">Type of enumerable.</typeparam>
+            <param name="source">Enumerable source.</param>
+            <param name="page">Page number.</param>
+            <param name="pageSize">Page size.</param>
+            <returns>Return a subset of IEnumerable by passing the page number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Pairwise``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``1})">
+            <summary>
+                Method to process elements of a list pairwise.
+            </summary>
+            <param name="source">Source list.</param>
+            <param name="selector">Method to calculate elements pairwise.</param>
+            <typeparam name="T">Type of list elements.</typeparam>
+            <typeparam name="TReturn">Return type of the pairwise calculation.</typeparam>
+            <returns>Returns a list containing the results of the pairwise element calculations.</returns>
+            <exception cref="T:System.ArgumentNullException">Throws an exception if any of the arguments are null.</exception>
+            <exception cref="T:System.InvalidOperationException">Throws an exception if the list is empty.</exception>
+            <exception cref="T:System.InvalidOperationException">Throws an exception if the list contains less than two elements.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.SplitList``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+                Method to split a list into n lists.
+            </summary>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="enumerable">List to split.</param>
+            <param name="split">Number of lists.</param>
+            <returns>Returns a split list.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ToReadOnly``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+                Read only collection of any enumeration.
+            </summary>
+            <typeparam name="T">Type of enumeration.</typeparam>
+            <param name="collection">Enumerable collection.</param>
+            <returns>ReadOnlyCollection of the collection.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.WithIndex``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+                Method to retrieve an enumeration with index.
+            </summary>
+            <typeparam name="T">Type of the list.</typeparam>
+            <param name="enumerable">Enumerable to process.</param>
+            <returns>Returns an enumerable containing <see cref="T:System.Tuple" />, representing a pair (item, index).</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ToDataTable``1(System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+                Converts a list of objects to a <see cref="T:System.Data.DataTable" />.
+            </summary>
+            <typeparam name="T">The type of object to convert.</typeparam>
+            <param name="items">The list of objects to convert.</param>
+            <param name="withParentProperties">
+                Indicates whether parent properties should be included in the conversion.
+                <remarks>
+                    Only if <typeparamref name="T" /> is an interface.
+                </remarks>
+            </param>
+            <returns>The <see cref="T:System.Data.DataTable" /> containing the data from the list of objects.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Int32.Int32Extensions">
+            <summary>The extensions int 32.</summary>
+            <summary>The extensions int 32.</summary>
+            <summary>The extensions int 32.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Août(System.Int32,System.Int32)">
+            <summary>
+                Méthode qui renvoie une date du mois d'août.
+                <code>
+            12.Août(2010); // = new DateTime(2010, 8, 12)
+            </code>
+            </summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Avril(System.Int32,System.Int32)">
+            <summary>The avril.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Décembre(System.Int32,System.Int32)">
+            <summary>The décembre.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Février(System.Int32,System.Int32)">
+            <summary>The février.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsLeapYear(System.Int32)">
+            <summary>Returns whether the given year is a leap year or not.</summary>
+            <param name="year">The year.</param>
+            <returns>Returns true if the year is a leap year, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Janvier(System.Int32,System.Int32)">
+            <summary>The janvier.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Juillet(System.Int32,System.Int32)">
+            <summary>The juillet.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Juin(System.Int32,System.Int32)">
+            <summary>The juin.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Mai(System.Int32,System.Int32)">
+            <summary>The mai.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Mars(System.Int32,System.Int32)">
+            <summary>The mars.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Novembre(System.Int32,System.Int32)">
+            <summary>The novembre.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Octobre(System.Int32,System.Int32)">
+            <summary>The octobre.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Septembre(System.Int32,System.Int32)">
+            <summary>The septembre.</summary>
+            <param name="day">The day.</param>
+            <param name="year">The year.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.FactorOf(System.Int32,System.Int32)">
+            <summary>Checks if the Int32 value is a factor of the specified factor number.</summary>
+            <exception cref="T:System.DivideByZeroException">Value is 0.</exception>
+            <param name="value">The Int32 value to check.</param>
+            <param name="factorNumer">The factor number.</param>
+            <returns>Returns true if the value is a factor of the specified factor number, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsEven(System.Int32)">
+            <summary>Checks if the Int32 is even.</summary>
+            <param name="value">The Int32 to check.</param>
+            <returns>Returns true if the Int32 is even, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsMultipleOf(System.Int32,System.Int32)">
+            <summary>Checks if the Int32 value is a multiple of the given factor.</summary>
+            <exception cref="T:System.DivideByZeroException">Factor is 0.</exception>
+            <param name="value">The Int32 to check.</param>
+            <param name="factor">The factor.</param>
+            <returns>Returns true if the Int32 value is a multiple of the given factor.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsOdd(System.Int32)">
+            <summary>Checks if the Int32 is odd.</summary>
+            <param name="value">The Int32 to check.</param>
+            <returns>Returns true if the Int32 is odd, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(System.Int32,System.Int32)">
+            <summary>Gets the specified percentage of the number.</summary>
+            <param name="number">The number.</param>
+            <param name="percent">The percent.</param>
+            <returns>Returns the specified percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(System.Int32,System.Decimal)">
+            <summary>Gets the specified percentage of the number.</summary>
+            <param name="number">The number.</param>
+            <param name="percent">The percent.</param>
+            <returns>Returns the specified percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(System.Int32,System.Double)">
+            <summary>Gets the specified percentage of the number.</summary>
+            <param name="number">The number.</param>
+            <param name="percent">The percent.</param>
+            <returns>Returns the specified percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentageOf(System.Int32,System.Int64)">
+            <summary>Gets the specified percentage of the number.</summary>
+            <param name="number">The number.</param>
+            <param name="percent">The percent.</param>
+            <returns>Returns the specified percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentOf(System.Int32,System.Int32)">
+            <summary>Gets the percentage of the number.</summary>
+            <exception cref="T:System.DivideByZeroException">The number must be greater than zero.</exception>
+            <param name="number">The number.</param>
+            <param name="total">The total value.</param>
+            <returns>Returns the percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.PercentOf(System.Int32,System.Double)">
+            <summary>Gets the percentage of the number.</summary>
+            <exception cref="T:System.DivideByZeroException">The number must be greater than zero.</exception>
+            <param name="number">The number.</param>
+            <param name="total">The total value.</param>
+            <returns>Returns the percentage of the number.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.RangeTo(System.Int32,System.Int32)">
+            <summary>Returns a list containing all values of the given range.</summary>
+            <exception cref="T:System.ArgumentException">The start value can not be greater than the end value.</exception>
+            <param name="startValue">The start of the range.</param>
+            <param name="endValue">The end of the range.</param>
+            <returns>Returns a list containing the specified range.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Times(System.Int32,System.Action)">
+            <summary>The times.</summary>
+            <param name="count">The count.</param>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Days(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of days.</summary>
+            <param name="days">The days.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Hours(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of hours.</summary>
+            <param name="hours">The hours.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Milliseconds(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of milliseconds.</summary>
+            <param name="milliseconds">The milliseconds.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Minutes(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of minutes.</summary>
+            <param name="minutes">The minutes.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Seconds(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of seconds.</summary>
+            <param name="seconds">The seconds.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Ticks(System.Int32)">
+            <summary>Returns a TimeSpan representing the specified number of ticks.</summary>
+            <param name="ticks">The ticks.</param>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Messages">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Extensions.Messages.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Extensions.Messages.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Extensions.Messages.MustBeOneOrGreater">
+            <summary>
+              Recherche une chaîne localisée semblable à Must be 1 or greater.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Extensions.Messages.RangeTo_ValueException">
+            <summary>
+              Recherche une chaîne localisée semblable à The start value can not be greater than the end value.
+            </summary>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.BoolExtensions">
+            <summary>The extensions bool.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.BoolExtensions.AsInt(System.Boolean)">
+            <summary>The as int.</summary>
+            <param name="b">The b.</param>
+            <returns>The <see cref="T:System.Int32" />.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.DateTimeExtensions">
+            <summary>
+                Extensions for <see cref="T:System.DateTime" />.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.ToUnixTimestamp(System.DateTime)">
+            <summary>
+                Convert a <see cref="T:System.DateTime" /> to a Unix timestamp.
+            </summary>
+            <param name="dateTime">The <see cref="T:System.DateTime" /> to convert.</param>
+            <returns>The Unix timestamp.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.ToDateTime(System.Int64)">
+            <summary>
+                Convert a Unix timestamp to a <see cref="T:System.DateTime" />.
+            </summary>
+            <param name="unixTimestamp">The Unix timestamp to convert.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.ToLastDayOfMonth(System.DateTime)">
+            <summary>
+                Brings a date to its end of month date.
+            </summary>
+            <param name="source">The source date.</param>
+            <returns>The transformed date.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.ToFirstDayOfMonth(System.DateTime)">
+            <summary>
+                Brings a date to its start of month date.
+            </summary>
+            <param name="source">The source date.</param>
+            <returns>The transformed date.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.IsWeekEnd(System.DateTime)">
+            <summary>
+                Indicates if it is a weekend day.
+            </summary>
+            <param name="date">Date to test.</param>
+            <returns><see langword="true" /> if it is a weekend day, <see langword="false" /> otherwise.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DateTimeExtensions.IsFerie(System.DateTime)">
+            <summary>
+                Indicates if the day is a holiday.
+            </summary>
+            <param name="dtDate">The date to check.</param>
+            <returns>Returns a boolean.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.DictionaryExtensions">
+            <summary>The extensions dictionary.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DictionaryExtensions.AddOrUpdate``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>Méthode d'ajout ou de mise à jour de valeur dans un dictionnaire.</summary>
+            <typeparam name="TKey">Type de la clé du dictionnaire.</typeparam>
+            <typeparam name="TValue">Type de la valeur du dictionnaire.</typeparam>
+            <param name="dictionary">Dictionnaire à modifier.</param>
+            <param name="key">Clé de l'élément à ajouter/modifier.</param>
+            <param name="value">Valeur de l'élément à ajouter/modifier.</param>
+            <returns>Retourn True si la clé existe déjà, False sinon.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>Méthode qui obtient une valeur d'un dictionnaire, si la clé n'existe pas la valeur par défaut est créé avec la clé fournie.</summary>
+            <param name="dictionary">Le dictionnaire.</param>
+            <param name="key">La clé.</param>
+            <typeparam name="TKey">Le type de la clé.</typeparam>
+            <typeparam name="TValue">Le type de la valeur.</typeparam>
+            <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur par défaut est retournée.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1})">
+            <summary>Méthode qui obtient une valeur d'un dictionnaire, si la clé n'existe pas la valeur calculée est créé avec la clé fournie.</summary>
+            <param name="dictionary">Le dictionnaire.</param>
+            <param name="key">La clé.</param>
+            <param name="valueProvider">Fonction permettant d'obtenir la valeur à insérer si la clé n'existe pas.</param>
+            <typeparam name="TKey">Le type de la clé.</typeparam>
+            <typeparam name="TValue">Le type de la valeur.</typeparam>
+            <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur calculée est retournée.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DictionaryExtensions.GetOrCreate``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)">
+            <summary>Méthode qui obtient une valeur d'un dictionnaire, si la clé n'existe pas la valeur calculée est créé avec la clé fournie.</summary>
+            <param name="dictionary">Le dictionnaire.</param>
+            <param name="key">La clé.</param>
+            <param name="missingValue">La valeur à insérer si la clé n'existe pas.</param>
+            <typeparam name="TKey">Le type de la clé.</typeparam>
+            <typeparam name="TValue">Le type de la valeur.</typeparam>
+            <returns>Retourne la valeur associé à la clé, si la clé n'existe pas la valeur calculée est retournée.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DictionaryExtensions.Remove``2(System.Collections.Generic.IDictionary{``0,``1},``0[])">
+            <summary>Méthode de suppression de plusieurs éléments dans un dictionnaire.</summary>
+            <typeparam name="TKey">Type de la clé.</typeparam>
+            <typeparam name="TValue">Type de la valeur.</typeparam>
+            <param name="dictionary">Dictionnaire à modifier.</param>
+            <param name="keys">Clés à supprimer.</param>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.DoubleExtensions">
+            <summary>Extensions pour le type double.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Misc.DoubleExtensions.ToleranceTwoDecimal">
+            <summary>The tolerance two decimal.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.Hours(System.Double)">
+            <summary>Méthode d'obtention d'un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</summary>
+            <param name="time">Valeur décimal à convertir.</param>
+            <returns>Retourne un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.IsNearlyEqualByTwoDecimals(System.Double,System.Double)">
+            <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
+            <param name="valeur1">The valeur1.</param>
+            <param name="valeur2">The valeur2.</param>
+            <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.GetPercentage(System.Double,System.Int32)">
+            <summary>
+            Get a certain percentage of the specified number.
+            </summary>
+            <param name="value">The number to get the percentage of.</param>
+            <param name="percentage">The percentage of the specified number to get.</param>
+            <returns>The actual specified percentage of the specified number.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.EnumExtensions">
+            <summary>The extensions enum.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.EnumExtensions.GetDescriptionDictionary``1">
+            <summary>To the description dictionary.</summary>
+            <typeparam name="T">Type de l'énumération.</typeparam>
+            <returns>Retourne un dictionnaire { key = name, value = description } pour une enum.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.EnumExtensions.GetEnumDescription``1(``0)">
+            <summary>Méthode d'obtention de la description d'une valeur d'une énumération.</summary>
+            <param name="value">The value. </param>
+            <typeparam name="T">Type de l'énumération.</typeparam>
+            <returns>The <see cref="T:System.String" />. </returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.EnumExtensions.IsIn(System.Enum,System.Enum[])">
+            <summary>Returns true if enum matches any of the given values.</summary>
+            <param name="value">Value to match.</param>
+            <param name="values">Values to match against.</param>
+            <returns>Return true if matched.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.EnumExtensions.ToInt(System.Enum)">
+            <summary>Méthode d'extension de récupération de la valeur entière d'une énumération.</summary>
+            <param name="enumValue">Valeur de l'énumération.</param>
+            <returns>Retourne la valeur entière de l'énumération.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.ExceptionExtensions">
+            <summary>The extensions exception.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.ExceptionExtensions.GetMessagesFromEntireExceptionChain(System.Exception)">
+            <summary>The get messages from entire exception chain.</summary>
+            <param name="e">The e.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.FuncExtensions">
+            <summary>The extensions func. </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.ExecuteSafe``1(System.Action{``0},``0)">
+            <summary>Exécute l'action donnée avec la valeur comme paramètre et gère toutes les exceptions pendant l'exécution.</summary>
+            <param name="action">L'action à exécuter.</param>
+            <param name="parameter">Paramètre de l'action, celui-ci est retourné après l'exécution dans la propriété <see cref="P:Ustilz.Extensions.Models.ExecutionResult`1.Result" />.</param>
+            <typeparam name="T">Le type du paramètre.</typeparam>
+            <returns>Renvoie la valeur donnée en tant que résultat ou exception si une est survenue.</returns>
+            <exception cref="T:System.ArgumentNullException">L'action ne peut pas être nulle.</exception>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.ExecuteSafe``2(System.Func{``0,``1},``0)">
+            <summary>Exécute la fonction donnée avec la valeur comme paramètre et gère toutes les exceptions pendant l'exécution.</summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="parameter">Le paramètre de la fonction.</param>
+            <typeparam name="T">Le type du paramètre.</typeparam>
+            <typeparam name="TResult">Le type du résultat.</typeparam>
+            <returns>Renvoie le résultat de la fonction ou une exception si une est survenue.</returns>
+            <exception cref="T:System.ArgumentNullException">La fonction ne peut pas être nulle.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.Memoize``2(System.Func{``0,``1})">
+            <summary>Méthode de mémoïsation d'une fonction. </summary>
+            <param name="func">Fonction à mémoïser. </param>
+            <typeparam name="T">Type du paramètres d'entrée. </typeparam>
+            <typeparam name="TResult">Type du retour. </typeparam>
+            <returns>Retourne une fonction <see cref="T:System.Func`2" />. </returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.Memoize``1(System.Func{``0})">
+            <summary>Méthode de mémoïsation d'une fonction. </summary>
+            <param name="func">Fonction à mémoïser. </param>
+            <typeparam name="TResult">Type du retour. </typeparam>
+            <returns>Retourne une fonction <see cref="T:System.Func`2" />. </returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``1(System.Func{``0},System.Int64@)">
+            <summary>Méthode de test de performance.</summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+            <typeparam name="TResult">Le type du résultat. </typeparam>
+            <returns>La valeur de retour.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``2(System.Func{``0,``1},System.Int64@,``0)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+            <param name="param">Le paramètre de la fonction. </param>
+            <typeparam name="T">Le type du paramètre. </typeparam>
+            <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+            <returns>La valeur de retour.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``3(System.Func{``0,``1,``2},System.Int64@,``0,``1)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+            <param name="param1">Le premier paramètre de la fonction.</param>
+            <param name="param2">Le second paramètre de la fonction.</param>
+            <typeparam name="T1">Le type du premier paramètre. </typeparam>
+            <typeparam name="T2">Le type du second paramètre. </typeparam>
+            <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+            <returns>La valeur de retour.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``4(System.Func{``0,``1,``2,``3},System.Int64@,``0,``1,``2)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+            <param name="param1">Le premier paramètre de la fonction.</param>
+            <param name="param2">Le second paramètre de la fonction.</param>
+            <param name="param3">Le troisième paramètre de la fonction.</param>
+            <typeparam name="T1">Le type du premier paramètre. </typeparam>
+            <typeparam name="T2">Le type du second paramètre. </typeparam>
+            <typeparam name="T3">Le type du troisième paramètre.</typeparam>
+            <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+            <returns>La valeur de retour.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``5(System.Func{``0,``1,``2,``3,``4},System.Int64@,``0,``1,``2,``3)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="function">La fonction à exécuter.</param>
+            <param name="timestamp">Retourne le temps d'exécution de la méthode en millisecondes.</param>
+            <param name="param1">Le premier paramètre de la fonction.</param>
+            <param name="param2">Le second paramètre de la fonction.</param>
+            <param name="param3">Le troisième paramètre de la fonction.</param>
+            <param name="param4">Le quatrième paramètre de la fonction.</param>
+            <typeparam name="T1">Le type du premier paramètre. </typeparam>
+            <typeparam name="T2">Le type du second paramètre. </typeparam>
+            <typeparam name="T3">Le type du troisième paramètre.</typeparam>
+            <typeparam name="T4">Le type du quatrième paramètre.</typeparam>
+            <typeparam name="TResult">Le type du retour de la fonction.</typeparam>
+            <returns>La valeur de retour.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf``1(System.Action{``0},``0)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="action">L'action à exécuter. </param>
+            <param name="param">Le paramètre de l'action. </param>
+            <typeparam name="T">Le type du paramètre. </typeparam>
+            <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.FuncExtensions.TestPerf(System.Action)">
+            <summary>Méthode de test de performance. </summary>
+            <param name="action">L'action à exécuter. </param>
+            <returns>Retourne le temps d'exécution de la méthode en millisecondes.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.ListExtensions">
+            <summary>The extensions list. </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.ListExtensions.IndexOf(System.Collections.Generic.IList{System.String},System.String)">
+            <summary>The index of. </summary>
+            <param name="tab">The tab. </param>
+            <param name="value">The value. </param>
+            <returns>The <see cref="T:System.Int32" />. </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"></see>.</exception>
+            <exception cref="T:System.NotSupportedException">The property is set and the <see cref="T:System.Collections.Generic.IList`1"></see> is read-only.</exception>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.NameValueCollectionExtensions">
+            <summary>The extensions name value collection.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.NameValueCollectionExtensions.ToDictionary(System.Collections.Specialized.NameValueCollection)">
+            <summary>The to dictionary.</summary>
+            <param name="nvc">The nvc.</param>
+            <returns>The Dictionary{string, string}.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="nvc" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException">keySelector produces duplicate keys for two elements.</exception>
+            <exception cref="T:System.NotSupportedException">The collection is read-only and the operation attempts to modify the collection.</exception>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.QueryableExtensions">
+            <summary>
+                Extensions for <see cref="T:System.Linq.IQueryable`1" />.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.QueryableExtensions.Paginate``1(System.Linq.IQueryable{``0},System.Int32,System.Int32,System.Func{System.Linq.IQueryable{``0},System.Linq.IOrderedQueryable{``0}})">
+            <summary>
+                Paginate a queryable.
+            </summary>
+            <typeparam name="T">The type of the elements of <paramref name="queryable" />.</typeparam>
+            <param name="queryable">The queryable to paginate.</param>
+            <param name="page">The page number to return. Page numbers are 1-based, so the first page is page 1.</param>
+            <param name="pageSize">The size of the page to return. Must be greater than 0.</param>
+            <param name="orderBy">A function to order elements of the queryable. The function must return an <see cref="T:System.Linq.IOrderedQueryable`1" />.</param>
+            <returns>A <see cref="T:Ustilz.Models.PageableResult`1" /> that contains the elements of the current page and the total number of elements.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.RandomExtensions">
+            <summary>
+            Classe statique d'extension du type <see cref="T:System.Random"/>.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.RandomExtensions.NextEnum``1(System.Random)">
+            <summary>
+            Méthode de sélection aléatoire dans une énumération.
+            </summary>
+            <typeparam name="T">Type de l'énumération.</typeparam>
+            <param name="random">Objet <see cref="T:System.Random"/>.</param>
+            <returns>Retourne une valeur aléatoire présente dans l'énumération.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.TaskExtensions">
+            <summary>
+            Classe statique d'extension du type <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TaskExtensions.GetAwaiter``2(System.ValueTuple{System.Threading.Tasks.Task,System.Threading.Tasks.Task})">
+            <summary>
+            Méthode d'extension permettant d'attendre la fin de l'exécution d'un tuple de deux tâches sans résultats.
+            </summary>
+            <typeparam name="T1">Type de la première tâche.</typeparam>
+            <typeparam name="T2">Type de la deuxième tâche.</typeparam>
+            <param name="tuple">Tuple de tâches.</param>
+            <returns><see cref="T:System.Runtime.CompilerServices.TaskAwaiter`1"/> contenant le résultat du tuple de tâches.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TaskExtensions.GetAwaiter``2(System.ValueTuple{System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Méthode d'extension permettant d'attendre la fin de l'exécution d'un tuple de deux tâches.
+            </summary>
+            <typeparam name="T1">Type de la première tâche.</typeparam>
+            <typeparam name="T2">Type de la deuxième tâche.</typeparam>
+            <param name="tuple">Tuple de tâches.</param>
+            <returns><see cref="T:System.Runtime.CompilerServices.TaskAwaiter`1"/> contenant le résultat du tuple de tâches.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TaskExtensions.GetAwaiter``3(System.ValueTuple{System.Threading.Tasks.Task{``0},System.Threading.Tasks.Task{``1},System.Threading.Tasks.Task{``2}})">
+            <summary>
+            Méthode d'extension permettant d'attendre la fin de l'exécution d'un tuple de trois tâches.
+            </summary>
+            <typeparam name="T1">Type de la première tâche.</typeparam>
+            <typeparam name="T2">Type de la deuxième tâche.</typeparam>
+            <typeparam name="T3">Type de la troisième tâche.</typeparam>
+            <param name="tuple">Tuple de tâches.</param>
+            <returns><see cref="T:System.Runtime.CompilerServices.TaskAwaiter`1"/> contenant le résultat du tuple de tâches.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.TimeSpanExtensions">
+            <summary>Classe d'extensions des TimeSpan.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TimeSpanExtensions.Ago(System.TimeSpan)">
+            <summary>Renvoie un DateTime dont la valeur est définie sur Now moins la valeur TimeSpan fournie.</summary>
+            <param name="value">Durée fournie.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue"></see> or greater than <see cref="F:System.DateTime.MaxValue"></see>.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TimeSpanExtensions.AgoUtc(System.TimeSpan)">
+            <summary>Renvoie un DateTime dont la valeur est définie sur Now moins la valeur TimeSpan fournie.</summary>
+            <param name="value">Durée fournie.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue"></see> or greater than <see cref="F:System.DateTime.MaxValue"></see>.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TimeSpanExtensions.FromNow(System.TimeSpan)">
+            <summary>Retourne un DateTime avec sa valeur définie sur Now plus la valeur TimeSpan fournie.</summary>
+            <param name="value">Durée fournie.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                The resulting <see cref="T:System.DateTime"></see> is less than <see cref="F:System.DateTime.MinValue"></see> or greater than
+                <see cref="F:System.DateTime.MaxValue"></see>.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TimeSpanExtensions.FromNowUtc(System.TimeSpan)">
+            <summary>Retourne un DateTime avec sa valeur définie sur Now plus la valeur TimeSpan fournie.</summary>
+            <param name="value">Durée fournie.</param>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                The resulting <see cref="T:System.DateTime"></see> is less than <see cref="F:System.DateTime.MinValue"></see> or greater than
+                <see cref="F:System.DateTime.MaxValue"></see>.
+            </exception>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.TypeExtensions">
+            <summary>The extensions type.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.Ctor``1(System.Type)">
+            <summary>The ctor.</summary>
+            <param name="type">The type.</param>
+            <typeparam name="TResult">Type du résultat.</typeparam>
+            <returns>The <see cref="T:System.Func`1" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+            <exception cref="T:System.ArgumentNullException">constructor is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+                not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="P:System.Linq.Expressions.Expression.Type"></see> property of an element of
+                parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.Ctor``2(System.Type)">
+            <summary>The ctor.</summary>
+            <param name="type">The type.</param>
+            <typeparam name="TArg1">Type du premier argument.</typeparam>
+            <typeparam name="TResult">Type du résultat.</typeparam>
+            <returns>The <see cref="T:System.Func`2" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+            <exception cref="T:System.ArgumentNullException">constructor is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+                not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="P:System.Linq.Expressions.Expression.Type"></see> property of an element of
+                parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.Ctor``3(System.Type)">
+            <summary>The ctor.</summary>
+            <param name="type">The type.</param>
+            <typeparam name="TArg1">Type du premier argument.</typeparam>
+            <typeparam name="TArg2">Type du deuxième argument.</typeparam>
+            <typeparam name="TResult">Type du résultat.</typeparam>
+            <returns>The <see cref="T:System.Func`3" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+            <exception cref="T:System.ArgumentNullException">constructor is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+                not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="P:System.Linq.Expressions.Expression.Type"></see> property of an element of
+                parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.Ctor``4(System.Type)">
+            <summary>The ctor.</summary>
+            <param name="type">The type.</param>
+            <typeparam name="TArg1">Type du premier argument.</typeparam>
+            <typeparam name="TArg2">Type du deuxième argument.</typeparam>
+            <typeparam name="TArg3">Type du troisième argument.</typeparam>
+            <typeparam name="TResult">Type du résultat.</typeparam>
+            <returns>The <see cref="T:System.Func`4" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+            <exception cref="T:System.ArgumentNullException">constructor is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+                not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="P:System.Linq.Expressions.Expression.Type"></see> property of an element of
+                parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.Ctor``5(System.Type)">
+            <summary>The ctor.</summary>
+            <param name="type">The type.</param>
+            <typeparam name="TArg1">Type du premier argument.</typeparam>
+            <typeparam name="TArg2">Type du deuxième argument.</typeparam>
+            <typeparam name="TArg3">Type du troisième argument.</typeparam>
+            <typeparam name="TArg4">Type du quatrième argument.</typeparam>
+            <typeparam name="TResult">Type du résultat.</typeparam>
+            <returns>The <see cref="T:System.Func`5" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+            <exception cref="T:System.ArgumentNullException">constructor is null.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="type" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                TDelegate is not a delegate type. -or- body.Type represents a type that is not assignable to the return type of TDelegate. -or- parameters does
+                not contain the same number of elements as the list of parameters for TDelegate. -or- The <see cref="P:System.Linq.Expressions.Expression.Type"></see> property of an element of
+                parameters is not assignable from the type of the corresponding parameter type of TDelegate.
+            </exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeExtensions.GetConstructor(System.Type,System.Type[])">
+            <summary>The get constructor.</summary>
+            <param name="type">The type.</param>
+            <param name="argumentTypes">The argument types.</param>
+            <returns>The <see cref="T:System.Reflection.ConstructorInfo" />.</returns>
+            <exception cref="T:System.InvalidOperationException">Lève une exception lorsque le constructeur n'existe pas.</exception>
+        </member>
+        <member name="T:Ustilz.Extensions.Misc.TypeParamExtensions">
+            <summary>The extensions t. </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.AsBool``1(``0)">
+            <summary>Méthode de "transformation" d'objet en boolean.</summary>
+            <typeparam name="T">Type à "transformer".</typeparam>
+            <param name="transformObject">Objet à "transformer".</param>
+            <returns>Retourne l'interprétation de l'objet passé en paramètre en booléen.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.Between``1(``0,``0,``0)">
+            <summary>The between. </summary>
+            <param name="value">The value. </param>
+            <param name="from">The from. </param>
+            <param name="to">The to. </param>
+            <typeparam name="T">Type à comparer. </typeparam>
+            <returns>The <see cref="T:System.Boolean" />. </returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.Chain``1(``0,System.Action{``0})">
+            <summary>Executes the action specified, which the given object as parameter.</summary>
+            <remarks>Use this method to chain method calls on the same object.</remarks>
+            <param name="chainObject">The object to act on.</param>
+            <param name="action">The action.</param>
+            <typeparam name="T">The type of the object.</typeparam>
+            <returns>Returns the given object.</returns>
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+            <exception cref="T:System.ArgumentNullException">The action can not be null.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.Display``1(``0)">
+            <summary>Méthode d'affichage d'un objet. </summary>
+            <param name="o">L'objet à afficher. </param>
+            <typeparam name="T">Type de l'objet. </typeparam>
+            <returns>Retourne l'objet. </returns>
+            <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+            <exception cref="T:System.ArgumentNullException">values is null.</exception>
+            <exception cref="T:System.InvalidCastException">An element in the sequence cannot be cast to type TResult.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IfNull``1(``0,``0)">
+            <summary>Méthode de test du nullité d'une valeur, si la valeur est nulle la méthode renvoie la valeur par défaut renseignée.</summary>
+            <param name="source">La valeur à tester.</param>
+            <param name="defaultValue">La valeur par défaut.</param>
+            <typeparam name="T">Type de l'objet.</typeparam>
+            <returns>Retourne l'objet passé en entrée, la valeur par défaut si celle-ci est nulle.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.ImplementsInterfaces``1(``0,System.Type[])">
+            <summary>
+                Détermine si un objet de classe implémente un type d'interface et renvoie une liste des types qu'il implémente réellement. Si aucun type correspondant n'est trouvé, une
+                liste vide sera renvoyée.
+            </summary>
+            <summary xml:lang="en">
+                Determines if a class object implements an interface type and returns a list of types it actually implements. If no matching type is found an empty list
+                will be returned.
+            </summary>
+            <typeparam name="T">Type de l'objet à tester.</typeparam>
+            <param name="obj">Objet à tester.</param>
+            <param name="interfaces">Liste des interfaces à tester.</param>
+            <returns>Retourne la liste des interfaces implémenter par l'objet.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsIn``1(``0,``0[])">
+            <summary>Vérifie si la valeur est présente dans le tableau donné.</summary>
+            <param name="value">La valeur à rechercher.</param>
+            <param name="values">Un tableau contenant les valeurs.</param>
+            <typeparam name="T">Le type de la valeur.</typeparam>
+            <returns>Renvoie true si la valeur est présente dans le tableau, false sinon.</returns>
+            <exception cref="T:System.ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsIn``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>Vérifie si la valeur est présente dans le IEnumerable donné.</summary>
+            <param name="value">La valeur à rechercher.</param>
+            <param name="values">Un IEnumerable contenant les valeurs.</param>
+            <typeparam name="T">Le type de la valeur.</typeparam>
+            <returns>Retourne true si la valeur est présente dans le IEnumerable, false sinon.</returns>
+            <exception cref="T:System.ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsNotIn``1(``0,``0[])">
+            <summary>Vérifie si la valeur n'est pas présente dans le tableau donné.</summary>
+            <param name="value">La valeur à rechercher.</param>
+            <param name="values">Un tableau contenant les valeurs.</param>
+            <typeparam name="T">Le type de la valeur.</typeparam>
+            <returns>Renvoie true si la valeur n'est pas présente dans le tableau, false sinon.</returns>
+            <exception cref="T:System.ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsNotIn``1(``0,System.Collections.Generic.IEnumerable{``0})">
+            <summary>Vérifie si la valeur n'est pas présente dans le IEnumerable donné.</summary>
+            <param name="value">La valeur à rechercher.</param>
+            <param name="values">Un IEnumerable contenant les valeurs.</param>
+            <typeparam name="T">Le type de la valeur.</typeparam>
+            <returns>Retourne true si la valeur n'est pas présente dans le IEnumerable, false sinon.</returns>
+            <exception cref="T:System.ArgumentNullException">Les valeurs ne peuvent pas être nulles.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsNotNull``1(``0)">
+            <summary>Détermine si l'objet n'est pas nul.</summary>
+            <param name="source">L'objet à tester.</param>
+            <typeparam name="T">Type de l'objet.</typeparam>
+            <returns>Retourne true si l'objet n'est pas null, false sinon.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.IsNull``1(``0)">
+            <summary>Détermine si l'objet est nul.</summary>
+            <param name="source">L'objet à tester.</param>
+            <typeparam name="T">Type de l'objet.</typeparam>
+            <returns>Retourne true si l'objet est null, false sinon.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.Swap``1(System.Object,``0@,``0@)">
+            <summary>Permute les valeurs données.</summary>
+            <param name="nullObject">Un objet pour appeler la méthode d'extension, qui peut être nul.</param>
+            <param name="value0">La première valeur.</param>
+            <param name="value1">La deuxième valeur.</param>
+            <typeparam name="T">Le type des valeurs.</typeparam>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.To``1(System.IConvertible)">
+            <summary>Méthode de conversion.</summary>
+            <param name="value">Valeur à convertir.</param>
+            <typeparam name="T">Type vers lequel convertir.</typeparam>
+            <returns>Retourne l'objet convertit.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="value" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.TypeParamExtensions.To``1(System.IConvertible,System.IConvertible)">
+            <summary>Méthode de conversion.</summary>
+            <param name="value">Valeur à convertir.</param>
+            <param name="ifError">Valeur à renvoyer si la conversion échoue.</param>
+            <typeparam name="T">Type vers lequel convertir.</typeparam>
+            <returns>Retourne l'objet convertit.</returns>
+        </member>
+        <member name="T:Ustilz.Extensions.Models.ExecutionResult`1">
+            <summary>Le résultat de l'exécution.</summary>
+            <typeparam name="T">Type du résultat.</typeparam>
+        </member>
+        <member name="M:Ustilz.Extensions.Models.ExecutionResult`1.#ctor">
+            <summary>
+                Initialise une nouvelle instance de la classe <see cref="T:Ustilz.Extensions.Models.ExecutionResult`1" />.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Extensions.Models.ExecutionResult`1.Exception">
+            <summary>Obtient ou définit l'exception.</summary>
+            <value>The exception.</value>
+        </member>
+        <member name="P:Ustilz.Extensions.Models.ExecutionResult`1.Result">
+            <summary>Obtient ou définit le résultat.</summary>
+            <value>The result.</value>
+        </member>
+        <member name="T:Ustilz.Extensions.Models.IExecutionResult`1">
+            <summary>The ExecutionResult interface.</summary>
+            <typeparam name="T">Type du résultat.</typeparam>
+        </member>
+        <member name="P:Ustilz.Extensions.Models.IExecutionResult`1.Exception">
+            <summary>Obtient ou définit l'exception.</summary>
+            <value>The exception.</value>
+        </member>
+        <member name="P:Ustilz.Extensions.Models.IExecutionResult`1.Result">
+            <summary>Obtient ou définit le result.</summary>
+            <value>The result.</value>
+        </member>
+        <member name="T:Ustilz.Extensions.Strings.StringExtensions">
+            <summary>The extensions string.</summary>
+            <summary>The extensions string.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Black(System.String)">
+            <summary>
+                The console black color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Blue(System.String)">
+            <summary>
+                The console blue color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Bold(System.String)">
+            <summary>
+                The console bold transformation.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Cyan(System.String)">
+            <summary>
+                The console cyan color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Green(System.String)">
+            <summary>
+                The console green color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Magenta(System.String)">
+            <summary>
+                The console magenta color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Red(System.String)">
+            <summary>
+                The console red color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.White(System.String)">
+            <summary>
+                The console white color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Yellow(System.String)">
+            <summary>
+                The console yellow color.
+            </summary>
+            <param name="text">The text to color.</param>
+            <returns>Returns the colored text.</returns>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashProviders">
+            <summary>The hash providers.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.Random">
+            <summary>The random.</summary>
+        </member>
+        <member name="T:Ustilz.Extensions.Strings.StringExtensions.HashType">
+            <summary>Supported hash algorithms.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashType.MD5">
+            <summary>The m d 5.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashType.SHA1">
+            <summary>The sh a 1.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashType.SHA256">
+            <summary>The sh a 256.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashType.SHA384">
+            <summary>The sh a 384.</summary>
+        </member>
+        <member name="F:Ustilz.Extensions.Strings.StringExtensions.HashType.SHA512">
+            <summary>The sh a 512.</summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.ComputeHash(System.String,Ustilz.Extensions.Strings.StringExtensions.HashType)">
+            <summary>Computes the hash of the string using a specified hash algorithm.</summary>
+            <param name="input">The string to hash.</param>
+            <param name="hashType">The hash algorithm to use.</param>
+            <returns>The resulting hash or an empty string on error.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Decrypt(System.String,System.String)">
+            <summary>The decrypt.</summary>
+            <param name="stringToDecrypt">The string to decrypt.</param>
+            <param name="key">The key.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Encrypt(System.String,System.String)">
+            <summary>The encrypt.</summary>
+            <param name="stringToEncrypt">The string to encrypt.</param>
+            <param name="key">The key.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GenerateHash(System.String,System.String,Ustilz.Extensions.Strings.StringExtensions.HashType)">
+            <summary>The generate hash.</summary>
+            <param name="password">The password.</param>
+            <param name="salt">The salt.</param>
+            <param name="provider">The provider.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+            <exception cref="T:System.NotSupportedException">Throws an exception when the hash type is unknown.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GeneratePassword">
+            <summary>Generate random string to be used as passwords and salts.</summary>
+            <returns>Base 64 random string.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GenerateSalt(System.Int32)">
+            <summary>Random salt to comsume in hash generation.</summary>
+            <param name="length">Length of salt value should be even, hex string will be twice of the length.</param>
+            <returns>Hex string representation of salt value.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GenerateSaltBytes(System.Int32)">
+            <summary>Random salt to comsume in hash generation.</summary>
+            <param name="length">Length of salt value should be even, hex string will be twice of the length.</param>
+            <returns>Bytes representation of salt value.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Validate(System.String,System.String)">
+            <summary>Validate password is equal to hashValue(Generated from Compute hash).</summary>
+            <param name="hashValue">Computed hash value of actual password 'MD5$Salt$Hash'.</param>
+            <param name="password">Password to validate against hash value.</param>
+            <returns>True if password is equal to the hash value.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GetHash(System.String,Ustilz.Extensions.Strings.StringExtensions.HashType)">
+            <summary>The get hash.</summary>
+            <param name="input">The input.</param>
+            <param name="hash">The hash.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">hrows an exception when the hash type is unknown.</exception>
+            <exception cref="T:System.ArgumentNullException">Throws an exception when the input is null.</exception>
+            <returns>The <see cref="T:System.Byte" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Format``1(System.String,``0)">
+            <summary>The format.</summary>
+            <param name="template">The template.</param>
+            <param name="data">The data.</param>
+            <typeparam name="T">Type à formatter.</typeparam>
+            <returns>The <see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GenerateInitials(System.String)">
+            <summary>Méthode de génération des initiales.</summary>
+            <param name="nom">The nom.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">startIndex plus length indicates a position not within this instance. -or- startIndex or length is less than zero.</exception>
+            <exception cref="T:System.ArgumentNullException">The property is set to null.</exception>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.HexToBytes(System.String)">
+            <summary>Convert hex String to bytes representation.</summary>
+            <param name="hexString">Hex string to convert into bytes.</param>
+            <returns>Bytes of hex string.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>The is null or empty.</summary>
+            <param name="str">The str.</param>
+            <returns>The <see cref="T:System.Boolean" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Join(System.String[],System.String)">
+            <summary>The join.</summary>
+            <param name="strs">The strs.</param>
+            <param name="separator">The separator.</param>
+            <returns>The <see cref="T:System.String" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Left(System.String,System.Int32)">
+            <summary>Returns characters from left of specified length.</summary>
+            <param name="value">String value.</param>
+            <param name="length">Max number of charaters to return.</param>
+            <returns>Returns string from left.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.Right(System.String,System.Int32)">
+            <summary>Returns characters from right of specified length.</summary>
+            <param name="value">String value.</param>
+            <param name="length">Max number of charaters to return.</param>
+            <returns>Returns string from right.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.SplitPascalCase(System.String)">
+            <summary>Splits the string by pascal case.</summary>
+            <param name="text">The text.</param>
+            <returns>Return text split by pascal case.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.ToEnum``1(System.String)">
+            <summary>Converts string to enum object.</summary>
+            <typeparam name="T">Type of enum.</typeparam>
+            <param name="value">String value to convert.</param>
+            <returns>Returns enum object.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.ToException``1(System.String)">
+            <summary>The to exception.</summary>
+            <param name="message">The message.</param>
+            <typeparam name="T">Type de l'exception.</typeparam>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.ToSecureString(System.String)">
+            <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString.</summary>
+            <param name="str">Chaine de caractère à transformer.</param>
+            <returns>Retourne un objet SecureString correspondant à la chaine passée en paramètre.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.ToSecureStringReadOnly(System.String)">
+            <summary>Méthode d'extension de transformation d'une chaine de caractère en SecureString. la chaine sécurisée est marquée comme étant en lecture seule.</summary>
+            <param name="str">Chaine de caractère à transformer.</param>
+            <returns>Retourne un objet SecureString correspondant à la chaine passée en paramètre.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.RemoveDiacritics(System.String)">
+            <summary>
+                A string extension method that removes the diacritics character from the strings.
+            </summary>
+            <param name="str">The @this to act on.</param>
+            <returns>The string without diacritics character.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Strings.StringExtensions.GetValue``1(System.Text.RegularExpressions.Match,``0)">
+            <summary>The get value.</summary>
+            <param name="match">The match.</param>
+            <param name="data">The data.</param>
+            <typeparam name="T">Type à inspecter.</typeparam>
+            <returns>The <see cref="T:System.String" />.</returns>
+            <exception cref="T:System.ArgumentException">Lève une exception lorsque la propriété et/ou la valeur n'est pas trouvé.</exception>
+        </member>
+        <member name="T:Ustilz.Extensions.Tuples.TupleIntExtensions">
+            <summary>
+            Classe d'extension pour les ints.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32})">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes.
+            </summary>
+            <param name="time">Tuple représentant les heures et les minutes.</param>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant une heure et minute correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32})">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes et secondes.
+            </summary>
+            <param name="time">Tuple représentant une heure, minutes et secondes.</param>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes et secondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32,System.Int32})">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes, secondes et millisecondes.
+            </summary>
+            <param name="time">Tuple représentant une heure, minutes, secondes et millisecondes.</param>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes, secondes et millisecondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Minutes(System.ValueTuple{System.Int32,System.Int32})">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant des minutes et secondes.
+            </summary>
+            <param name="time">Tuple représentant des minutes et secondes.</param>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant des minutes et secondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+    </members>
+</doc>

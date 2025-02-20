@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ustilz.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Ustilz.Logging.Action.LoggerAction">
+            <summary>Classe du logger d'action.</summary>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerAction.#ctor(System.String,Ustilz.Logging.Action.LoggerAction.LogDelegate)">
+            <summary>Initialise une nouvelle instance de la classe <see cref="T:Ustilz.Logging.Action.LoggerAction" />.</summary>
+            <param name="categoryName">Catégorie du log.</param>
+            <param name="action">Action à effectuer lors du log.</param>
+        </member>
+        <member name="T:Ustilz.Logging.Action.LoggerAction.LogDelegate">
+            <summary>Délégué représentant l'action à effectuer lors du log.</summary>
+            <param name="categoryName">Nom de la catégorie du log.</param>
+            <param name="logLevel">Niveau de log.</param>
+            <param name="eventId">Identifiant de l'évènement.</param>
+            <param name="exception">Exception levée, null s'il n'y en a pas.</param>
+            <param name="message">Message à loguer.</param>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerAction.BeginScope``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerAction.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerAction.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <inheritdoc />
+            <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="formatter" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="T:Ustilz.Logging.Action.LoggerActionExtensions">
+            <summary>Classe d'extensions du logger d'action.</summary>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerActionExtensions.AddLoggerEvent(Microsoft.Extensions.Logging.ILoggingBuilder,Ustilz.Logging.Action.LoggerAction.LogDelegate)">
+            <summary>Méthode d'ajout du logger d'action au services du builder.</summary>
+            <param name="builder">Builder de log de l'application.</param>
+            <param name="action">Action à effectuer.</param>
+            <returns>Retourne le builder de logger.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="builder" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="action" /> is <see langword="null" />.</exception>
+        </member>
+        <member name="T:Ustilz.Logging.Action.LoggerActionProvider">
+            <summary>Classe du provider du logger d'action.</summary>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerActionProvider.#ctor(Ustilz.Logging.Action.LoggerAction.LogDelegate)">
+            <summary>Initialise une nouvelle instance de la classe <see cref="T:Ustilz.Logging.Action.LoggerActionProvider" />.</summary>
+            <param name="action">Action à effectuer lors du log.</param>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerActionProvider.CreateLogger(System.String)">
+            <summary>Méthode de création du logger.</summary>
+            <param name="categoryName">Nom de la catégorie du logger.</param>
+            <returns>Retourne le logger.</returns>
+            <exception cref="T:System.OverflowException">The dictionary already contains the maximum number of elements (<see cref="F:System.Int32.MaxValue"></see>).</exception>
+            <exception cref="T:System.ArgumentNullException">key or valueFactory is null.</exception>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerActionProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Ustilz.Logging.Console.AnsiConsole">
+            <summary>
+                Class to write to the console using ANSI escape sequences.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.AnsiConsole.OriginalForegroundColor">
+            <summary>
+                Gets the original foreground color of the console.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.AnsiConsole.Writer">
+            <summary>
+                Gets the <see cref="T:System.IO.TextWriter" /> to write to.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Logging.Console.AnsiConsole.GetError">
+            <summary>
+                Gets the error console.
+            </summary>
+            <returns>The <see cref="T:Ustilz.Logging.Console.AnsiConsole" />.</returns>
+        </member>
+        <member name="M:Ustilz.Logging.Console.AnsiConsole.GetOutput">
+            <summary>
+                Gets the output console.
+            </summary>
+            <returns>The <see cref="T:Ustilz.Logging.Console.AnsiConsole" />.</returns>
+        </member>
+        <member name="M:Ustilz.Logging.Console.AnsiConsole.Write(System.String)">
+            <summary>
+                Writes the message to the console.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="M:Ustilz.Logging.Console.AnsiConsole.WriteLine(System.String)">
+            <summary>
+                Writes the message to the console.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="T:Ustilz.Logging.Console.IReporter">
+            <summary>
+                Interface for a reporter.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Logging.Console.IReporter.WriteLine(System.String)">
+            <summary>
+                Writes a line to the console.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="M:Ustilz.Logging.Console.IReporter.WriteLine">
+            <summary>
+                Writes a line to the console.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Logging.Console.IReporter.Write(System.String)">
+            <summary>
+                Writes a line to the console.
+            </summary>
+            <param name="message">The message to write.</param>
+        </member>
+        <member name="T:Ustilz.Logging.Console.Reporter">
+            <summary>
+                Class to write to the console using ANSI escape sequences.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.Reporter.Error">
+            <summary>
+                Gets the error console.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.Reporter.Output">
+            <summary>
+                Gets the output console.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.Reporter.Verbose">
+            <summary>
+                Gets the verbose console.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.Reporter.IsVerbose">
+            <summary>
+                Gets or sets a value indicating whether the console should be verbose.
+            </summary>
+        </member>
+        <member name="P:Ustilz.Logging.Console.Reporter.ShouldPassAnsiCodesThrough">
+            <summary>
+                Gets or sets a value indicating whether ANSI codes should be passed through.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Logging.Console.Reporter.Reset">
+            <summary>
+                Resets the Reporters to write to the current Console Out/Error.
+            </summary>
+        </member>
+        <member name="M:Ustilz.Logging.Console.Reporter.Write(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ustilz.Logging.Console.Reporter.WriteLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Ustilz.Logging.Console.Reporter.WriteLine">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

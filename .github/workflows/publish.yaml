@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
@@ -72,6 +74,9 @@ jobs:
       - name: Package Ustilz.Xml
         run: dotnet pack -c Release -o . src/Ustilz.Xml/Ustilz.Xml.csproj
 
+      - name: Package Ustilz.Network
+        run: dotnet pack -c Release -o . src/Ustilz.Network/Ustilz.Network.csproj
+        
       - name: Package Ustilz.Network
         run: dotnet pack -c Release -o . src/Ustilz.Network/Ustilz.Network.csproj
         
