@@ -3,10 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <LangVersion>preview</LangVersion>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
-    <FileVersion>1.2.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>9.0.0-beta2</Version>
     <Authors>T4nu5</Authors>
     <Company>Tanuscorp</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
