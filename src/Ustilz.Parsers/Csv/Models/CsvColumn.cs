@@ -1,5 +1,6 @@
 namespace Ustilz.Parsers.Csv.Models;
 
+using System.Diagnostics;
 using System.Globalization;
 
 /// <summary>
@@ -7,7 +8,9 @@ using System.Globalization;
 /// </summary>
 /// <param name="columnName">Nom de la colonne.</param>
 /// <param name="columnType">Type de la colonne.</param>
-internal class CsvColumn(string columnName, Type columnType)
+/// <param name="nullable">Indique si la colonne est nullable.</param>
+[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+internal class CsvColumn(string columnName, Type columnType, bool nullable)
 {
     /// <summary>
     ///     Obtient le nom de la colonne.
@@ -15,12 +18,23 @@ internal class CsvColumn(string columnName, Type columnType)
     public string Name { get; } = columnName;
 
     /// <summary>
+    ///     Obtient le numéro de la colonne colonne parmis les colonnes homonymes.
+    /// </summary>
+    /// <remarks>Base 1. Par défaut 1.</remarks>
+    public int HomonymNumber { get; init; } = 1;
+
+    /// <summary>
     ///     Obtient le type de la colonne.
     /// </summary>
     public Type Type { get; } = columnType;
 
     /// <summary>
-    ///     Obtient l'index de la colonne.
+    ///     Obtient une valeur indiquant si la colonne est nullable.
+    /// </summary>
+    public bool IsNullableColumn { get; } = nullable;
+
+    /// <summary>
+    ///     Obtient ou définit l'index de la colonne.
     /// </summary>
     public virtual int Index { get; set; } = -1;
 
@@ -40,7 +54,18 @@ internal class CsvColumn(string columnName, Type columnType)
     public char CharReplaceByDefaultValue { get; init; } = '\0';
 
     /// <summary>
-    ///    Obtient ou définit la valeur à ignorer.
+    ///     Obtient ou définit la valeur à ignorer.
     /// </summary>
     public string IgnoreValue { get; init; } = string.Empty;
+
+    /// <summary>
+    ///     Obtient ou définit la clé de la méthode de parsing.
+    /// </summary>
+    public string ParseMethodInfoKey { get; set; } = string.Empty;
+
+    private string GetDebuggerDisplay()
+    {
+        var nullable = this.IsNullableColumn ? "?" : string.Empty;
+        return $"{this.Name} : {this.Type.Name}{nullable}";
+    }
 }

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <LangVersion>preview</LangVersion>
@@ -14,23 +14,25 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/avondero/Ustilz</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <NeutralLanguage>fr</NeutralLanguage>
     </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Diagnostics" />
+        <PackageReference Include="JetBrains.Annotations" />
+    </ItemGroup>
+
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DocumentationFile>bin\Debug\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-        <DefaultDocumentationFolder>..\..\documentation/$(AssemblyName)</DefaultDocumentationFolder>
-        <OutputPath>bin\Debug</OutputPath>
+        <DefaultDocumentationFolder>../../documentation/$(AssemblyName)</DefaultDocumentationFolder>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <OutputPath>bin\Release</OutputPath>
-        <DocumentationFile>bin\Release\$(TargetFramework)\Ustilz.Json.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <DefineConstants>JETBRAINS_ANNOTATIONS</DefineConstants>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
-    </ItemGroup>
-
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
             <PrivateAssets>all</PrivateAssets>
