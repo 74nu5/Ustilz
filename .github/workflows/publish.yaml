@@ -14,7 +14,6 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0.x'
-          dotnet-quality: 'preview'
 
       - name: Build solution
         run: dotnet build -c Release Ustilz.sln
@@ -72,6 +71,9 @@ jobs:
         
       - name: Package Ustilz.Xml
         run: dotnet pack -c Release -o . src/Ustilz.Xml/Ustilz.Xml.csproj
+
+      - name: Package Ustilz.Network
+        run: dotnet pack -c Release -o . src/Ustilz.Network/Ustilz.Network.csproj
         
       - name: Publish
         run: dotnet nuget push "*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
