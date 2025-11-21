@@ -56,11 +56,11 @@
     </PackageVersion>
   </ItemGroup>
   <ItemGroup>
-    <PackageVersion Include="DefaultDocumentation" Version="1.0.0-beta04">
+    <PackageVersion Include="DefaultDocumentation" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="DefaultDocumentation.Markdown" Version="0.8.3-beta1">
+    <PackageVersion Include="DefaultDocumentation.Markdown" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
