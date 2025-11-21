@@ -10,23 +10,25 @@ using Microsoft.Extensions.DependencyInjection;
 [PublicAPI]
 public static class HttpServiceExtension
 {
-    /// <summary>
-    ///     The add ustilz http.
-    /// </summary>
-    /// <param name="services">The services collection.</param>
-    /// <returns>The <see cref="IServiceCollection" />.</returns>
-    public static IServiceCollection AddUstilzHttp(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddHttpClient(HttpService.HttpClientName)
-                .ConfigurePrimaryHttpMessageHandler(
-                     () =>
-                     {
-                         var httpMessageHandler = new HttpClientHandler();
-                         httpMessageHandler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
-                         return httpMessageHandler;
-                     });
+        /// <summary>
+        ///     The add ustilz http.
+        /// </summary>
+        /// <returns>The <see cref="IServiceCollection" />.</returns>
+        public IServiceCollection AddUstilzHttp()
+        {
+            services.AddHttpClient(HttpService.HttpClientName)
+                    .ConfigurePrimaryHttpMessageHandler(
+                         () =>
+                         {
+                             var httpMessageHandler = new HttpClientHandler();
+                             httpMessageHandler.ServerCertificateCustomValidationCallback += (_, _, _, _) => true;
+                             return httpMessageHandler;
+                         });
 
-        services.AddTransient<HttpService>();
-        return services;
+            services.AddTransient<HttpService>();
+            return services;
+        }
     }
 }
