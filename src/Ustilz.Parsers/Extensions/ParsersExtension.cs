@@ -11,16 +11,18 @@ using Ustilz.Parsers.Csv.Abstractions;
 /// </summary>
 public static class ParsersExtension
 {
-    /// <summary>
-    ///     Adds parsers to the service collection.
-    /// </summary>
-    /// <param name="services">The service collection.</param>
-    /// <returns>The service collection.</returns>
-    public static IServiceCollection AddParsers(this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddMemoryCache();
-        services.TryAddTransient<IMethodsParseProvider, MethodsParseProvider>();
+        /// <summary>
+        ///     Adds parsers to the service collection.
+        /// </summary>
+        /// <returns>The service collection.</returns>
+        public IServiceCollection AddParsers()
+        {
+            services.AddMemoryCache();
+            services.TryAddTransient<IMethodsParseProvider, MethodsParseProvider>();
 
-        return services;
+            return services;
+        }
     }
 }

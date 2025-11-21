@@ -5,39 +5,36 @@ using System;
 /// <summary>The extensions int 32.</summary>
 public static partial class Int32Extensions
 {
-    /// <summary>Returns a TimeSpan representing the specified number of days.</summary>
-    /// <param name="days">The days.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Days(this int days)
-        => TimeSpan.FromDays(days);
+    extension(int days)
+    {
+        /// <summary>Returns a TimeSpan representing the specified number of days.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Days()
+            => TimeSpan.FromDays(days);
 
-    /// <summary>Returns a TimeSpan representing the specified number of hours.</summary>
-    /// <param name="hours">The hours.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Hours(this int hours)
-        => TimeSpan.FromHours(hours);
+        /// <summary>Returns a TimeSpan representing the specified number of hours.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Hours()
+            => TimeSpan.FromHours(days);
 
-    /// <summary>Returns a TimeSpan representing the specified number of milliseconds.</summary>
-    /// <param name="milliseconds">The milliseconds.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Milliseconds(this int milliseconds)
-        => TimeSpan.FromMilliseconds(milliseconds);
+        /// <summary>Returns a TimeSpan representing the specified number of milliseconds.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Milliseconds()
+            => TimeSpan.FromMilliseconds(days);
 
-    /// <summary>Returns a TimeSpan representing the specified number of minutes.</summary>
-    /// <param name="minutes">The minutes.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Minutes(this int minutes)
-        => TimeSpan.FromMinutes(minutes);
+        /// <summary>Returns a TimeSpan representing the specified number of minutes.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Minutes()
+            => TimeSpan.FromMinutes(days);
 
-    /// <summary>Returns a TimeSpan representing the specified number of seconds.</summary>
-    /// <param name="seconds">The seconds.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Seconds(this int seconds)
-        => TimeSpan.FromSeconds(seconds);
+        /// <summary>Returns a TimeSpan representing the specified number of seconds.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Seconds()
+            => TimeSpan.FromSeconds(days);
 
-    /// <summary>Returns a TimeSpan representing the specified number of ticks.</summary>
-    /// <param name="ticks">The ticks.</param>
-    /// <returns>The <see cref="TimeSpan" />.</returns>
-    public static TimeSpan Ticks(this int ticks)
-        => TimeSpan.FromTicks(ticks);
+        /// <summary>Returns a TimeSpan representing the specified number of ticks.</summary>
+        /// <returns>The <see cref="TimeSpan" />.</returns>
+        public TimeSpan Ticks()
+            => TimeSpan.FromTicks(days);
+    }
 }

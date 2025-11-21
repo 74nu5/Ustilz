@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\net5.0\</OutputPath>
-    <DocumentationFile>bin\Debug\net5.0\Ustilz.Test.Models.xml</DocumentationFile>
+    <OutputPath>bin\Debug\net10.0\</OutputPath>
+    <DocumentationFile>bin\Debug\net10.0\Ustilz.Test.Models.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
