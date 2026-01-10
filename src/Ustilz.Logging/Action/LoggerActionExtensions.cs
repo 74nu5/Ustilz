@@ -12,13 +12,13 @@ using Microsoft.Extensions.Logging;
 [PublicAPI]
 public static class LoggerActionExtensions
 {
-    extension(ILoggingBuilder builder, LoggerAction.LogDelegate action)
+    extension(ILoggingBuilder builder)
     {
         /// <summary>Méthode d'ajout du logger d'action au services du builder.</summary>
         /// <returns>Retourne le builder de logger.</returns>
         /// <exception cref="ArgumentNullException">builder is <see langword="null" />.</exception>
         /// <exception cref="ArgumentNullException">action is <see langword="null" />.</exception>
-        public ILoggingBuilder AddLoggerEvent()
+        public ILoggingBuilder AddLoggerEvent(LoggerAction.LogDelegate action)
         {
             ArgumentNullException.ThrowIfNull(builder);
 

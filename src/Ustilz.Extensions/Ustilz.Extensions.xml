@@ -593,29 +593,13 @@
             <summary>The extensions i enumerable.</summary>
         </member>
         <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ToHexString(System.Collections.Generic.IEnumerable{System.Byte})">
-            <summary>
-                Converts bytes collection to hexadecimal representation.
-            </summary>
-            <param name="bytes">Bytes to convert.</param>
-            <returns>Hexadecimal representation string.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$82A76ECCE3AD4C46D57DE6A475A12ADC.ToHexString"/>
         </member>
         <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.ByteArrayToBase64Image(System.Byte[],System.String)">
-            <summary>
-                Converts a byte array to a base64 image.
-            </summary>
-            <param name="byteArrayIn">Byte array to convert.</param>
-            <param name="imageType">The image type.</param>
-            <returns>The base64 image.</returns>
-            <remarks>
-                This method takes a byte array and an image type as input, converts the byte array to a base64 string,
-                and then formats it as a data URL with the specified image type.
-            </remarks>
+            <inheritdoc cref="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$CFF5569F447ACD79F0E183612A282817.ByteArrayToBase64Image(System.String)"/>
         </member>
         <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.PathCombine(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>Returns a path combined out of the items in the given IEnumerable.</summary>
-            <exception cref="T:System.ArgumentNullException">The enumerable can not be null.</exception>
-            <param name="enumerable">The IEnumerable to act on.</param>
-            <returns>The combined path.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$847E497AF7B3C92F46645CBF28E0BD00.PathCombine"/>
         </member>
         <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.Adjust``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Int32,System.Boolean},``0)">
             <summary>
@@ -764,92 +748,70 @@
             </param>
             <returns>The <see cref="T:System.Data.DataTable" /> containing the data from the list of objects.</returns>
         </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$82A76ECCE3AD4C46D57DE6A475A12ADC.ToHexString">
+            <summary>
+                Converts bytes collection to hexadecimal representation.
+            </summary>
+            <returns>Hexadecimal representation string.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$CFF5569F447ACD79F0E183612A282817.ByteArrayToBase64Image(System.String)">
+            <summary>
+                Converts a byte array to a base64 image.
+            </summary>
+            <returns>The base64 image.</returns>
+            <remarks>
+                This method takes a byte array and an image type as input, converts the byte array to a base64 string,
+                and then formats it as a data URL with the specified image type.
+            </remarks>
+        </member>
+        <member name="M:Ustilz.Extensions.Enumerables.EnumerableExtensions.&lt;G&gt;$847E497AF7B3C92F46645CBF28E0BD00.PathCombine">
+            <summary>Returns a path combined out of the items in the given IEnumerable.</summary>
+            <exception cref="T:System.ArgumentNullException">The enumerable can not be null.</exception>
+            <returns>The combined path.</returns>
+        </member>
         <member name="T:Ustilz.Extensions.Int32.Int32Extensions">
             <summary>The extensions int 32.</summary>
             <summary>The extensions int 32.</summary>
             <summary>The extensions int 32.</summary>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Août(System.Int32,System.Int32)">
-            <summary>
-                Méthode qui renvoie une date du mois d'août.
-                <code>
-            12.Août(2010); // = new DateTime(2010, 8, 12)
-            </code>
-            </summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Août(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Avril(System.Int32,System.Int32)">
-            <summary>The avril.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Avril(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Décembre(System.Int32,System.Int32)">
-            <summary>The décembre.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Décembre(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Février(System.Int32,System.Int32)">
-            <summary>The février.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
-        </member>
-        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsLeapYear(System.Int32)">
-            <summary>Returns whether the given year is a leap year or not.</summary>
-            <param name="year">The year.</param>
-            <returns>Returns true if the year is a leap year, otherwise false.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Février(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Janvier(System.Int32,System.Int32)">
-            <summary>The janvier.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Janvier(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Juillet(System.Int32,System.Int32)">
-            <summary>The juillet.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Juillet(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Juin(System.Int32,System.Int32)">
-            <summary>The juin.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Juin(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Mai(System.Int32,System.Int32)">
-            <summary>The mai.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Mai(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Mars(System.Int32,System.Int32)">
-            <summary>The mars.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Mars(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Novembre(System.Int32,System.Int32)">
-            <summary>The novembre.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Novembre(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Octobre(System.Int32,System.Int32)">
-            <summary>The octobre.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Octobre(System.Int32)"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Septembre(System.Int32,System.Int32)">
-            <summary>The septembre.</summary>
-            <param name="day">The day.</param>
-            <param name="year">The year.</param>
-            <returns>The <see cref="T:System.DateTime" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Septembre(System.Int32)"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.IsLeapYear(System.Int32)">
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.IsLeapYear"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.FactorOf(System.Int32,System.Int32)">
             <summary>Checks if the Int32 value is a factor of the specified factor number.</summary>
@@ -926,33 +888,102 @@
             <param name="action">The action.</param>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Days(System.Int32)">
-            <summary>Returns a TimeSpan representing the specified number of days.</summary>
-            <param name="days">The days.</param>
-            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Days"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Hours(System.Int32)">
-            <summary>Returns a TimeSpan representing the specified number of hours.</summary>
-            <param name="hours">The hours.</param>
-            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Hours"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Milliseconds(System.Int32)">
-            <summary>Returns a TimeSpan representing the specified number of milliseconds.</summary>
-            <param name="milliseconds">The milliseconds.</param>
-            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Milliseconds"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Minutes(System.Int32)">
-            <summary>Returns a TimeSpan representing the specified number of minutes.</summary>
-            <param name="minutes">The minutes.</param>
-            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Minutes"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Seconds(System.Int32)">
-            <summary>Returns a TimeSpan representing the specified number of seconds.</summary>
-            <param name="seconds">The seconds.</param>
-            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Seconds"/>
         </member>
         <member name="M:Ustilz.Extensions.Int32.Int32Extensions.Ticks(System.Int32)">
+            <inheritdoc cref="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Ticks"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Août(System.Int32)">
+            <summary>
+                Méthode qui renvoie une date du mois d'août.
+                <code>
+            12.Août(2010); // = new DateTime(2010, 8, 12)
+            </code>
+            </summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Avril(System.Int32)">
+            <summary>The avril.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Décembre(System.Int32)">
+            <summary>The décembre.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Février(System.Int32)">
+            <summary>The février.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Janvier(System.Int32)">
+            <summary>The janvier.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Juillet(System.Int32)">
+            <summary>The juillet.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Juin(System.Int32)">
+            <summary>The juin.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Mai(System.Int32)">
+            <summary>The mai.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Mars(System.Int32)">
+            <summary>The mars.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Novembre(System.Int32)">
+            <summary>The novembre.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Octobre(System.Int32)">
+            <summary>The octobre.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Septembre(System.Int32)">
+            <summary>The septembre.</summary>
+            <returns>The <see cref="T:System.DateTime" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.IsLeapYear">
+            <summary>Returns whether the given year is a leap year or not.</summary>
+            <returns>Returns true if the year is a leap year, otherwise false.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Days">
+            <summary>Returns a TimeSpan representing the specified number of days.</summary>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Hours">
+            <summary>Returns a TimeSpan representing the specified number of hours.</summary>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Milliseconds">
+            <summary>Returns a TimeSpan representing the specified number of milliseconds.</summary>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Minutes">
+            <summary>Returns a TimeSpan representing the specified number of minutes.</summary>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Seconds">
+            <summary>Returns a TimeSpan representing the specified number of seconds.</summary>
+            <returns>The <see cref="T:System.TimeSpan" />.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Int32.Int32Extensions.&lt;G&gt;$BA41CFE2B5EDAEB8C1B9062F59ED4D69.Ticks">
             <summary>Returns a TimeSpan representing the specified number of ticks.</summary>
-            <param name="ticks">The ticks.</param>
             <returns>The <see cref="T:System.TimeSpan" />.</returns>
         </member>
         <member name="T:Ustilz.Extensions.Messages">
@@ -985,8 +1016,10 @@
             <summary>The extensions bool.</summary>
         </member>
         <member name="M:Ustilz.Extensions.Misc.BoolExtensions.AsInt(System.Boolean)">
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.BoolExtensions.&lt;G&gt;$A73C5770D9DE823384DE9FB3AFAAD000.AsInt"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.BoolExtensions.&lt;G&gt;$A73C5770D9DE823384DE9FB3AFAAD000.AsInt">
             <summary>The as int.</summary>
-            <param name="b">The b.</param>
             <returns>The <see cref="T:System.Int32" />.</returns>
         </member>
         <member name="T:Ustilz.Extensions.Misc.DateTimeExtensions">
@@ -1088,22 +1121,26 @@
             <summary>The tolerance two decimal.</summary>
         </member>
         <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.Hours(System.Double)">
-            <summary>Méthode d'obtention d'un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</summary>
-            <param name="time">Valeur décimal à convertir.</param>
-            <returns>Retourne un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.Hours"/>
         </member>
         <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.IsNearlyEqualByTwoDecimals(System.Double,System.Double)">
-            <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
-            <param name="valeur1">The valeur1.</param>
-            <param name="valeur2">The valeur2.</param>
-            <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.IsNearlyEqualByTwoDecimals(System.Double)"/>
         </member>
         <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.GetPercentage(System.Double,System.Int32)">
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.GetPercentage(System.Int32)"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.Hours">
+            <summary>Méthode d'obtention d'un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</summary>
+            <returns>Retourne un <see cref="T:System.TimeSpan" /> réprésentant la valeur décimale passée en paramètre.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.IsNearlyEqualByTwoDecimals(System.Double)">
+            <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
+            <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.DoubleExtensions.&lt;G&gt;$4EDA8CBD8B61F6706755C541165134FD.GetPercentage(System.Int32)">
             <summary>
             Get a certain percentage of the specified number.
             </summary>
-            <param name="value">The number to get the percentage of.</param>
-            <param name="percentage">The percentage of the specified number to get.</param>
             <returns>The actual specified percentage of the specified number.</returns>
         </member>
         <member name="T:Ustilz.Extensions.Misc.EnumExtensions">
@@ -1255,10 +1292,12 @@
             <summary>The extensions name value collection.</summary>
         </member>
         <member name="M:Ustilz.Extensions.Misc.NameValueCollectionExtensions.ToDictionary(System.Collections.Specialized.NameValueCollection)">
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.NameValueCollectionExtensions.&lt;G&gt;$6B46EBA1E4E4A35E051F830127E88F4F.ToDictionary"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.NameValueCollectionExtensions.&lt;G&gt;$6B46EBA1E4E4A35E051F830127E88F4F.ToDictionary">
             <summary>The to dictionary.</summary>
-            <param name="nvc">The nvc.</param>
             <returns>The Dictionary{string, string}.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="nvc" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentNullException">nvc is <see langword="null" />.</exception>
             <exception cref="T:System.ArgumentException">keySelector produces duplicate keys for two elements.</exception>
             <exception cref="T:System.NotSupportedException">The collection is read-only and the operation attempts to modify the collection.</exception>
         </member>
@@ -1284,11 +1323,13 @@
             </summary>
         </member>
         <member name="M:Ustilz.Extensions.Misc.RandomExtensions.NextEnum``1(System.Random)">
+            <inheritdoc cref="M:Ustilz.Extensions.Misc.RandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextEnum``1"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Misc.RandomExtensions.&lt;G&gt;$5AB4ABAAFA3359CDE65D50F3C2439F05.NextEnum``1">
             <summary>
             Méthode de sélection aléatoire dans une énumération.
             </summary>
             <typeparam name="T">Type de l'énumération.</typeparam>
-            <param name="random">Objet <see cref="T:System.Random"/>.</param>
             <returns>Retourne une valeur aléatoire présente dans l'énumération.</returns>
         </member>
         <member name="T:Ustilz.Extensions.Misc.TaskExtensions">
@@ -1832,32 +1873,40 @@
             </summary>
         </member>
         <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32})">
+            <inheritdoc cref="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$49AAF2D3C1326E88AED3848611C299DA.Hours"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32})">
+            <inheritdoc cref="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$EF161719494683DA875278E7493581D4.Hours"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32,System.Int32})">
+            <inheritdoc cref="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$7170508582A0AF89F02300B8BDB3CE68.Hours"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Minutes(System.ValueTuple{System.Int32,System.Int32})">
+            <inheritdoc cref="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$49AAF2D3C1326E88AED3848611C299DA.Minutes"/>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$49AAF2D3C1326E88AED3848611C299DA.Hours">
             <summary>
             Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes.
             </summary>
-            <param name="time">Tuple représentant les heures et les minutes.</param>
             <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant une heure et minute correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
         </member>
-        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32})">
-            <summary>
-            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes et secondes.
-            </summary>
-            <param name="time">Tuple représentant une heure, minutes et secondes.</param>
-            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes et secondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
-        </member>
-        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Hours(System.ValueTuple{System.Int32,System.Int32,System.Int32,System.Int32})">
-            <summary>
-            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes, secondes et millisecondes.
-            </summary>
-            <param name="time">Tuple représentant une heure, minutes, secondes et millisecondes.</param>
-            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes, secondes et millisecondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
-        </member>
-        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.Minutes(System.ValueTuple{System.Int32,System.Int32})">
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$49AAF2D3C1326E88AED3848611C299DA.Minutes">
             <summary>
             Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant des minutes et secondes.
             </summary>
-            <param name="time">Tuple représentant des minutes et secondes.</param>
             <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant des minutes et secondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$EF161719494683DA875278E7493581D4.Hours">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes et secondes.
+            </summary>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes et secondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
+        </member>
+        <member name="M:Ustilz.Extensions.Tuples.TupleIntExtensions.&lt;G&gt;$7170508582A0AF89F02300B8BDB3CE68.Hours">
+            <summary>
+            Méthode de définition d'un <see cref="T:System.TimeSpan"/> à partir d'un tuple de int représentant une heure, minutes, secondes et millisecondes.
+            </summary>
+            <returns>Retourne un <see cref="T:System.TimeSpan"/> représentant représentant une heure, minutes, secondes et millisecondes correspondant au valeur du <see cref="T:System.Tuple`2"/>.</returns>
         </member>
     </members>
 </doc>

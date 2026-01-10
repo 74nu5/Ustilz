@@ -21,7 +21,7 @@ public static partial class EnumerableExtensions
         }
     }
 
-    extension(byte[] byteArrayIn, string imageType)
+    extension(byte[] byteArrayIn)
     {
         /// <summary>
         ///     Converts a byte array to a base64 image.
@@ -31,7 +31,7 @@ public static partial class EnumerableExtensions
         ///     This method takes a byte array and an image type as input, converts the byte array to a base64 string,
         ///     and then formats it as a data URL with the specified image type.
         /// </remarks>
-        public string ByteArrayToBase64Image()
+        public string ByteArrayToBase64Image(string imageType)
             => $"data:image/{imageType};base64,{Convert.ToBase64String(byteArrayIn)}";
     }
 }

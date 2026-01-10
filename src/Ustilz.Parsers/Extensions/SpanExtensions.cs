@@ -5,14 +5,14 @@ namespace Ustilz.Parsers.Extensions;
 /// </summary>
 internal static class SpanExtensions
 {
-    extension<T>(Span<T> span, T value, int n)
+    extension<T>(Span<T> span)
         where T : IEquatable<T>
     {
         /// <summary>
         ///     Returns the index of the n-th occurrence of a value in a <see cref="Span{T}" />.
         /// </summary>
         /// <returns>The index of the n-th occurrence of the value in the <see cref="Span{T}" />. If the value is not found, returns -1.</returns>
-        public int NthIndexOf()
+        public int NthIndexOf(T value, int n)
         {
             var currentIndex = -1;
 

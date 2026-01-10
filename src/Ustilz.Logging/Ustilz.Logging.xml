@@ -35,12 +35,13 @@
             <summary>Classe d'extensions du logger d'action.</summary>
         </member>
         <member name="M:Ustilz.Logging.Action.LoggerActionExtensions.AddLoggerEvent(Microsoft.Extensions.Logging.ILoggingBuilder,Ustilz.Logging.Action.LoggerAction.LogDelegate)">
+            <inheritdoc cref="M:Ustilz.Logging.Action.LoggerActionExtensions.&lt;G&gt;$465DD08F0AEA3B7CB037F35CF020E355.AddLoggerEvent(Ustilz.Logging.Action.LoggerAction.LogDelegate)"/>
+        </member>
+        <member name="M:Ustilz.Logging.Action.LoggerActionExtensions.&lt;G&gt;$465DD08F0AEA3B7CB037F35CF020E355.AddLoggerEvent(Ustilz.Logging.Action.LoggerAction.LogDelegate)">
             <summary>Méthode d'ajout du logger d'action au services du builder.</summary>
-            <param name="builder">Builder de log de l'application.</param>
-            <param name="action">Action à effectuer.</param>
             <returns>Retourne le builder de logger.</returns>
-            <exception cref="T:System.ArgumentNullException"><paramref name="builder" /> is <see langword="null" />.</exception>
-            <exception cref="T:System.ArgumentNullException"><paramref name="action" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentNullException">builder is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentNullException">action is <see langword="null" />.</exception>
         </member>
         <member name="T:Ustilz.Logging.Action.LoggerActionProvider">
             <summary>Classe du provider du logger d'action.</summary>

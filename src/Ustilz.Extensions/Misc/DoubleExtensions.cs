@@ -24,21 +24,21 @@ public static class DoubleExtensions
         }
     }
 
-    extension(double valeur1, double valeur2)
+    extension(double valeur1)
     {
         /// <summary>Compare deux doubles pour savoir si ils sont égaux à la deuxième décimales près.</summary>
         /// <returns><c>true</c> if [is nearly equal by two decimals] [the specified valeur2]; otherwise, <c>false</c>.</returns>
-        public bool IsNearlyEqualByTwoDecimals()
+        public bool IsNearlyEqualByTwoDecimals(double valeur2)
             => Math.Abs(valeur1 - valeur2) < ToleranceTwoDecimal;
     }
 
-    extension(double value, int percentage)
+    extension(double value)
     {
         /// <summary>
         /// Get a certain percentage of the specified number.
         /// </summary>
         /// <returns>The actual specified percentage of the specified number.</returns>
-        public double GetPercentage()
+        public double GetPercentage(int percentage)
             => value * percentage / 100;
     }
 }

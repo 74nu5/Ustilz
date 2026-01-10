@@ -10,7 +10,7 @@ using static Duration;
 [PublicAPI]
 public static class ExtensionsDuration
 {
-    extension(Duration duration, DateTime dateTime)
+    extension(Duration duration)
     {
         /// <summary>Méthode calcul de projection d'une date.</summary>
         /// <returns>Retourne la date projétée.</returns>
@@ -18,7 +18,7 @@ public static class ExtensionsDuration
         ///     The resulting <see cref="System.DateTime"></see> is less than <see cref="System.DateTime.MinValue"></see> or greater than
         ///     <see cref="System.DateTime.MaxValue"></see>.
         /// </exception>
-        public DateTime From()
+        public DateTime From(DateTime dateTime)
             => duration switch
                {
                    Second => dateTime.AddSeconds(1),
