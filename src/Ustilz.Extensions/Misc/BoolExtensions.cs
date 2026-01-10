@@ -6,9 +6,11 @@ using JetBrains.Annotations;
 [PublicAPI]
 public static class BoolExtensions
 {
-    /// <summary>The as int.</summary>
-    /// <param name="b">The b.</param>
-    /// <returns>The <see cref="int" />.</returns>
-    public static int AsInt(this bool b)
-        => b ? 1 : 0;
+    extension(bool b)
+    {
+        /// <summary>The as int.</summary>
+        /// <returns>The <see cref="int" />.</returns>
+        public int AsInt()
+            => b ? 1 : 0;
+    }
 }
