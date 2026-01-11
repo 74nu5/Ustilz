@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if [ -f \"O:\\\\Perso\\\\Ustilz\\\\CLAUDE.MD\" ])",
+      "Bash(then echo \"exists\")",
+      "Bash(else echo \"not found\")",
+      "Bash(fi:*)"
+    ]
+  }
+}
